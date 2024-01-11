@@ -13,6 +13,11 @@ class RecipeController extends Controller
     public function __construct() {
         $this->recipeService = new RecipeService();
     }
+
+    public function index() {
+        return view('homepage');
+    }
+
     public function retrieve() {
         $recipes = Recipe::all();
         return view('recipes.retrieve', ['recipes' => $recipes]);
