@@ -15,7 +15,8 @@ class Recipe extends Model
         'preparationTime',
         'ingredients',
         'preparationDescription',
-        'additionalDescription',];
+        'additionalDescription',
+        'slug'];
 
     use HasFactory;
 }

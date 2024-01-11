@@ -48,7 +48,7 @@
         <br>
 
         <label> Opis recepta </label>
-        <textarea name="description" >""</textarea>
+        <textarea name="description" ></textarea>
         <br>
 
         <label> Sastojci </label>
