@@ -1,0 +1,390 @@
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../fonts/ProximaNova-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../fonts/ProximaNova-Semibold.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../fonts/ProximaNova-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../fonts/Proxima Nova Bold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#main-header {
+    padding: 11px 7.5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+#main-header nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+#main-header nav ul {
+    display: flex;
+    justify-content: center;
+    column-gap: 45px;
+    list-style: none;
+    padding: 30px 0 0 0;
+}
+
+#main-header ul a {
+    text-decoration: none;
+    text-align: center;
+    font: normal normal 600 16px/19px Montserrat;
+    letter-spacing: 0px;
+    color: #2E4765;
+}
+
+#main-header img {
+    width: 148px;
+}
+
+.add-recipe, .search-cont button {
+    background: #F5CC45;
+    height: 50px;
+    width: 160px;
+    text-align: center;
+    font: normal normal 500 15px/19px Montserrat;
+    letter-spacing: 0;
+    color: #2E4765;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    justify-content: center;
+    border-radius: 26px;
+    margin-top: 15px;
+    padding-bottom: 2px;
+}
+
+.search-cont button {
+    color: white !important;
+    background: #56924C !important;
+    outline: none;
+    border: none;
+}
+
+#main-banner {
+    background-image: url("../images/Main-banner.png");
+    background-size: cover;
+}
+
+#main-banner .main-banner-inner {
+    padding: 30vh 10% 8vh;
+}
+
+.container-space {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+#main-banner .main-banner-inner h1 {
+    font: normal normal 600 74px/90px Montserrat;
+    letter-spacing: 0px;
+    color: #2E4765;
+    margin-bottom: 17vh;
+}
+
+.search-cont {
+    display: flex;
+    justify-content: center;
+    column-gap: 40px;
+    align-items: baseline;
+}
+
+.search-cont input {
+    width: 600px;
+    background: white;
+    border: none;
+    outline: none;
+    border-radius: 26px;
+    font: normal normal normal 15px/19px Montserrat;
+    letter-spacing: 0px;
+    color: #2E4765;
+    height: 50px;
+    padding: 14px 30px;
+}
+
+.search-cont input::placeholder {
+    opacity: 0.75;
+}
+
+.title-row {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-row h2 {
+    text-align: left;
+    font: normal normal 600 40px/49px Montserrat;
+    letter-spacing: 0;
+    color: #2E4765;
+    position: relative;
+    z-index: 2;
+    background: white;
+    padding-right: 40px;
+}
+
+.title-row button, .recipes-bottom button {
+    background: #E2EFFF 0% 0% no-repeat padding-box;
+    border-radius: 500px;
+    width: 160px;
+    height: 40px;
+    font: normal normal 500 14px/18px Montserrat;
+    letter-spacing: 0px;
+    color: #2E4765;
+    text-align: center;
+    outline: none;
+    border: none;
+    position: relative;
+    z-index: 2;
+}
+
+.title-line {
+    position: absolute;
+    width: calc(100% - 200px);
+    top: 49%;
+    left: 0;
+    height: 1px;
+    background: #2E4765;
+    z-index: 0;
+}
+
+#featured-recipes {
+    background: white;
+}
+
+.featured-recipes-inner {
+    padding-top: 70px;
+    padding-bottom: 80px;
+}
+
+.single-recipe {
+    border-radius: 20px;
+    border: 1px solid #2E476580;
+    margin-bottom: 30px;
+}
+
+.recipe-top-img {
+    height: 193px;
+    background-image: url("../images/recipe-background.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px 20px 0 0;
+}
+
+.recipe-title, .recipe-details {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.recipe-title img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.recipe-title img.full-heart, .recipe-title.active img.empty-heart {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.recipe-title img.empty-heart, .recipe-title.active img.full-heart {
+    visibility: visible;
+    opacity: 1;
+}
+
+.recipe-bottom-content {
+    padding: 20px 30px 20px 20px;
+}
+
+.recipe-title {
+    margin-bottom: 50px;
+}
+
+.recipe-title h3 {
+    text-align: left;
+    font: normal normal 600 20px/24px Proxima Nova;
+    letter-spacing: 0px;
+    color: #2E4765;
+}
+
+.recipe-details span {
+    text-align: left;
+    font: normal normal normal 18px/22px Proxima Nova;
+    letter-spacing: 0px;
+    color: #2E4765;
+    padding-left: 10px;
+    top: 2px;
+    position: relative;
+}
+
+.recipes-categories {
+    display: flex;
+    column-gap: 25px;
+    margin: 28px 0 32px;
+}
+
+.recipes-categories span {
+    height: 50px;
+    border-radius: 500px;
+    text-align: center;
+    font: normal normal 500 16px/19px Montserrat;
+    letter-spacing: 0px;
+    color: #2E4765;
+    padding: 14px 40px 0;
+    border: 1px solid #2E4765;
+    cursor: pointer;
+}
+
+.recipes-bottom {
+    position: relative;
+    margin-top: 26px;
+}
+
+.recipes-bottom .bottom-line {
+    width: 100% !important;
+}
+
+.recipes-bottom button {
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0 0 0 30px white;
+}
+
+#homepage-banner, #homepage-banner2 {
+    background-image: url("../images/homepage-banner-1.png");
+    background-size: cover;
+    padding: 94px 0;
+}
+
+#homepage-banner h3, #homepage-banner2 h3 {
+    text-align: left;
+    font: normal normal 600 44px/64px Montserrat;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    text-shadow: 0px 1px 24px #000000;
+    margin-bottom: 30px;
+}
+
+#homepage-banner p, #homepage-banner2 p {
+    text-align: left;
+    font: normal normal 500 20px/32px Montserrat;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    text-shadow: 0px 1px 34px #000000;
+    margin-bottom: 60px;
+}
+
+#homepage-banner a, #homepage-banner2 a {
+    background: #F5CC45 0% 0% no-repeat padding-box;
+    border-radius: 26px;
+    width: 240px;
+    height: 50px;
+    font: normal normal 500 15px/19px Montserrat;
+    letter-spacing: 0px;
+    color: #2E4765;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    padding-top: 14px;
+}
+
+#action h2 {
+    text-align: center;
+    font: normal normal 600 54px/94px Montserrat;
+    letter-spacing: 0px;
+    color: #E84F5B;
+}
+
+#action p {
+    text-align: center;
+    font: normal normal 500 24px/40px Montserrat;
+    letter-spacing: 0px;
+    color: #2E4765;
+}
+
+.single-category-banner {
+    padding: 62px 40px;
+    background-image: url("../images/category-banner-1.png");
+    background-size: cover;
+    border-radius: 20px;
+    margin-bottom: 33px;
+}
+
+.categories-banners {
+    margin-top: 60px;
+}
+
+.categories-banners a {
+    text-decoration: none;
+}
+
+.single-category-banner span {
+    text-align: left;
+    font: normal normal normal 17px/21px Proxima Nova;
+    letter-spacing: 0px;
+    color: #F5CC45;
+}
+
+#action .single-category-banner p {
+    text-align: left;
+    font: normal normal bold 32px/39px Proxima Nova;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    margin-top: 24px;
+}
+
+#action {
+    padding: 72px 0 90px;
+    background: white;
+}
+
+#homepage-banner2 {
+    background-image: url("../images/homepage-banner-2.png");
+}
+
+#homepage-banner2 p {
+    margin-bottom: 32px !important;
+    text-shadow: none;
+}
+
+#homepage-banner2 h3 {
+    margin-bottom: 42px;
+    text-shadow: none;
+}
