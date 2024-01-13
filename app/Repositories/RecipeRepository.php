@@ -11,6 +11,11 @@ use App\Models\Recipe;
 use App\Http\Requests\RecipeRequest;
 
 
+// to - do
+// 1. pretraga recepata po stringu (ime ili sastojak)
+// 2. lista kategorija sa brojem recepata po pojedinacnoj kategoriji
+// 3. dohvatanje svih recepata po kategoriji
+
 class RecipeRepository
 {
     public function addRecipe(FormRequest $request) {
@@ -37,10 +42,26 @@ class RecipeRepository
             Log::error('Can\'t add post: ' . $exception->getMessage());
             return null;
         }
-
-
-
     }
+
+    public function getRecipeByString() {
+        try {
+            //
+        } catch (QueryException $exception) {
+            Log::error('Can\'t add post: ' . $exception->getMessage());
+            return null;
+        }
+    }
+
+    public function getRecipeByCategory() {
+        try {
+            //
+        } catch (QueryException $exception) {
+            Log::error('Can\'t add post: ' . $exception->getMessage());
+            return null;
+        }
+    }
+
 }
 
 // 'slug' => Str::slug('title', '-')
