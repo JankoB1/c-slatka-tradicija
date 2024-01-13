@@ -20,10 +20,12 @@
         <br>
 
         <label> Kategorija recepta</label>
-        <select name="category" size="3">
-            <option> Kategorija 1 hardcoded</option>
-            <option> Kategorija 2 hardcoded</option>
-            <option> Kategorija 3 hardcoded</option>
+        <select name="category">
+            @forelse($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->categoryName }}</option>
+            @empty
+                <option> Ne postoji nijedna kategorija. </option>
+            @endforelse
         </select>
         <br>
 

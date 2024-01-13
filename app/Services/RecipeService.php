@@ -19,6 +19,6 @@ class RecipeService
     }
 
     public function getRecipe() {
-
+        //
     }
 }

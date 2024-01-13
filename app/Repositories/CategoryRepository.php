@@ -10,9 +10,9 @@ class CategoryRepository
 {
     public function getAllCategories() {
         try {
-            return Category::orderBy('categoryName')->get();
+            return Category::all();
         } catch (QueryException $exception) {
-            Log::error('Can\'t add post: ' . $exception->getMessage());
+            Log::error('Can\'t retrieve categories: ' . $exception->getMessage());
             return null;
         }
     }
@@ -21,7 +21,7 @@ class CategoryRepository
         try {
             //
         } catch (QueryException $exception) {
-            Log::error('Can\'t add post: ' . $exception->getMessage());
+            Log::error('Can\'t retrieve categories: ' . $exception->getMessage());
             return null;
         }
     }
