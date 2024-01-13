@@ -9,11 +9,13 @@ class Recipe extends Model
 {
     protected $fillable = ['userEmail',
         'userName',
+        'publicName',
         'category',
         'title',
         'difficulty',
         'preparationTime',
         'ingredients',
+        'description',
         'preparationDescription',
         'additionalDescription',
         'slug'];
