@@ -189,32 +189,35 @@
                 <div class="col-md-6">
                     <a href="#">
                         <div class="single-category-banner">
-                            <span>Zimnica</span>
-                            <p>Recepti za ukusne<br>zimske specijalitete</p>
+                            <p>Torte</p>
                         </div>
                     </a>
                 </div>
                 <div class="col-md-6">
                     <a href="#">
                         <div class="single-category-banner">
-                            <span>Zimnica</span>
-                            <p>Recepti za ukusne<br>zimske specijalitete</p>
+                            <p>Kolači</p>
                         </div>
                     </a>
                 </div>
                 <div class="col-md-6">
                     <a href="#">
                         <div class="single-category-banner">
-                            <span>Zimnica</span>
-                            <p>Recepti za ukusne<br>zimske specijalitete</p>
+                            <p>Hleb i<br>peciva</p>
                         </div>
                     </a>
                 </div>
                 <div class="col-md-6">
                     <a href="#">
                         <div class="single-category-banner">
-                            <span>Zimnica</span>
-                            <p>Recepti za ukusne<br>zimske specijalitete</p>
+                            <p>Zimnica</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#">
+                        <div class="single-category-banner">
+                            <p>Deserti</p>
                         </div>
                     </a>
                 </div>
@@ -232,6 +235,11 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <section id="newsletter">
+        <img src="{{ asset('images/logo-c.png') }}" alt="logo c">
+        <div class="nl-inner"></div>
     </section>
 @endsection
 

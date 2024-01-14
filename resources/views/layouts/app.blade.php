@@ -43,5 +43,20 @@
     <main>
         @yield('content')
     </main>
+
+<footer>
+    <ul>
+        <li><a href="#">Kontakt</a></li>
+        <li><a href="#">Impressum</a></li>
+        <li><a href="#">Pravna Napomena</a></li>
+        <li><a href="#">Politika zaštite podataka</a></li>
+    </ul>
+    <div class="socials">
+        <img src="{{ asset('images/fb.svg') }}" alt="fb">
+        <img src="{{ asset('images/ig.svg') }}" alt="ig">
+        <img src="{{ asset('images/yt.svg') }}" alt="yt">
+    </div>
+    <p>C Slatka Tradicija © 2024 · Sva prava zadržana.</p>
+</footer>
 </body>
 </html>

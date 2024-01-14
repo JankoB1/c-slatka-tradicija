@@ -339,12 +339,37 @@ body {
     color: #2E4765;
 }
 
-.single-category-banner {
+.categories-banners {
+    padding-top: 55px;
+}
+
+.categories-banners .col-md-6 {
+    margin-bottom: 33px;
+}
+
+.categories-banners .col-md-6 .single-category-banner {
     padding: 62px 40px;
     background-image: url("../images/category-banner-1.png");
     background-size: cover;
     border-radius: 20px;
-    margin-bottom: 33px;
+    height: 100%;
+    height: 287px;
+}
+
+.categories-banners .col-md-6:nth-child(2) .single-category-banner {
+    background-image: url("../images/category-banner-2.png");
+}
+
+.categories-banners .col-md-6:nth-child(3) .single-category-banner {
+    background-image: url("../images/category-banner-3.png");
+}
+
+.categories-banners .col-md-6:nth-child(4) .single-category-banner {
+    background-image: url("../images/category-banner-4.png");
+}
+
+.categories-banners .col-md-6:nth-child(5) .single-category-banner {
+    background-image: url("../images/category-banner-5.png");
 }
 
 .categories-banners {
@@ -364,7 +389,7 @@ body {
 
 #action .single-category-banner p {
     text-align: left;
-    font: normal normal bold 32px/39px Proxima Nova;
+    font-size: 48px;
     letter-spacing: 0px;
     color: #FFFFFF;
     margin-top: 24px;
@@ -387,4 +412,213 @@ body {
 #homepage-banner2 h3 {
     margin-bottom: 42px;
     text-shadow: none;
+}
+
+#newsletter {
+    padding: 78px 0 90px;
+    background: #56924C;
+}
+
+#newsletter img {
+    width: 230px;
+    display: block;
+    margin: 0 auto;
+}
+
+footer {
+    background: white;
+    padding: 62px 0 34px;
+}
+
+footer ul {
+    padding: 0;
+    list-style: none;
+    margin-bottom: 64px;
+    display: flex;
+    justify-content: center;
+    column-gap: 80px;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: #2E4765;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+footer .socials {
+    display: flex;
+    justify-content: center;
+    column-gap: 24px;
+    margin-bottom: 55px;
+}
+
+footer p {
+    color: #2E4765;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px; /* 185.714% */
+}
+
+#create-recipe-hero {
+    background-image: url("../images/create-recipe-banner.png");
+    background-size: cover;
+    padding: 35vh 10% 25vh;
+    position: relative;
+}
+
+#create-recipe-hero h1 {
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 74px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100px; /* 135.135% */
+}
+
+#create-recipe-hero img {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#recipe-form {
+    padding: 70px 10% 78px;
+    position: relative;
+}
+
+.recipe-form-inner h2 {
+    color: #F5CC45;
+    font-family: Montserrat;
+    font-size: 54px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 94px; /* 174.074% */
+}
+
+.recipe-form-inner p {
+    color: #2E4765;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px; /* 166.667% */
+}
+
+.recipe-form-inner p a{
+    text-decoration: underline;
+}
+
+#recipe-form .bowl {
+    position: absolute;
+    top: -20vh;
+}
+
+.form-inner {
+    margin-top: 40px;
+}
+
+.form-section {
+    border-top: 1px solid #F5CC45;
+    padding: 36px 0;
+}
+
+.form-section .col-md-5 {
+    position: relative;
+    padding-left: 50px;
+}
+
+.form-section .col-md-5 img {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.form-section .col-md-5 p {
+    color: #2E4765;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+}
+
+.form-section .col-md-7 input, .form-section .col-md-7 select,
+.form-section .col-md-7 textarea {
+    border-radius: 32px;
+    border: 1px solid #2E4765;
+    background: #FFF;
+    height: 64px;
+    padding: 15px 30px;
+    color: #2E4765;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+}
+
+.form-section .col-md-7 textarea {
+    height: unset;
+}
+
+.form-section .col-md-7 input::placeholder, .form-section .col-md-7 textarea::placeholder {
+    opacity: 0.75;
+    color: #2E4765;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.form-section .col-md-7 input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+
+.form-section .col-md-7 .checkbox-username label {
+    color: #2E4765;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    opacity: 0.75;
+    margin-left: 16px;
+}
+
+.checkbox-username {
+    margin: 30px 0 0 auto;
+}
+
+.form-section .col-md-7 .row {
+    margin-bottom: 24px;
+}
+
+.submit-recipe {
+    border-radius: 32px;
+    background: #56924C;
+    height: 64px;
+    color: #FFF;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    width: 100%;
+    outline: none;
+    border: none;
+    box-shadow: none;
 }
