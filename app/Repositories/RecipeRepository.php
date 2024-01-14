@@ -13,8 +13,6 @@ use App\Http\Requests\RecipeRequest;
 
 // to - do
 // 1. pretraga recepata po stringu (ime ili sastojak)
-// 2. lista kategorija sa brojem recepata po pojedinacnoj kategoriji
-// 3. dohvatanje svih recepata po kategoriji
 
 class RecipeRepository
 {
@@ -23,11 +21,17 @@ class RecipeRepository
         try {
             $request->validated();
             $slug = Str::slug($request->title);
+            $publicName = true;
+
+            if($request->publicName) {
+                $publicName = false;
+                Log::alert('publicName is set not to be shown');
+            }
 
             return Recipe::create([
                 'userEmail'=>$request->userEmail,
                 'userName'=>$request->userName,
-                'publicName'=>$request->publicName,
+                'publicName'=>$publicName,
                 'category'=>$request->category,
                 'title'=>$request->title,
                 'slug'=>$slug,

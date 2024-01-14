@@ -42,7 +42,7 @@
                                 <div class="col-md-6">
                                     <input type="text" name="userName" placeholder="Ime ili nadimak">
                                     <div class="checkbox-username">
-                                        <input type="checkbox" name="publicName" value="0">
+                                        <input type="checkbox" name="publicName">
                                         <label for="publicName">Ne želim da moje ime bude<br>objavljeno uz naziv recepta</label>
                                     </div>
                                 </div>
