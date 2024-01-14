@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use App\Services\RecipeService;
 use App\Models\Recipe;
@@ -27,7 +28,7 @@ class RecipeController extends Controller
         return view('recipes.create');
     }
 
-    public function store(Request $request) {
+    public function store(FormRequest $request) {
         $this->recipeService->addRecipe($request);
         return redirect()->route('recipes.retrieve')->with('success', 'Recipe created successfully');
     }
