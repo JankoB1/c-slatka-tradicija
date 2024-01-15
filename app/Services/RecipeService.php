@@ -15,7 +15,7 @@ class RecipeService
     }
 
     public function addRecipe(FormRequest $request) {
-        $this->recipeRepository->addRecipe($request);
+        return $this->recipeRepository->addRecipe($request);
     }
 
     public function getRecipe() {
