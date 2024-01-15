@@ -56,6 +56,12 @@ return [
             'throw' => false,
         ],
 
+        'recipe_images_disk' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/',
+            'throw' => true,
+        ]
+
     ],
 
     /*
