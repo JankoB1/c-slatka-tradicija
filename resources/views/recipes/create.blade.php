@@ -126,7 +126,7 @@
                     <div class="row">
                         <div class="col-md-5">
                             <img src="{{ asset('images/lamp.svg') }}" alt="lamp">
-                            <p>Fotografije su obavezan element recepta, a možeš da"Screenshot from 2024-01-15 17-46-33.png" // app/Http/Controllers/RecipeController.php:42 ih dodaš maksimalno 10.</p>
+                            <p>Fotografije su obavezan element recepta, a možeš da ih dodaš maksimalno 10.</p>
                             <p>Obavezno je okačiti fotografiju finalnog proizvoda, a ostatak je tvoj izbor. Možeš prikazati neki deo procesa, fotografije C proizvoda ili nekog alata.</p>
                             <label for="images">Upload Images (up to 10)</label>
                             <input type="file" name="images[]" multiple accept="images/*">
