@@ -58,7 +58,7 @@ return [
 
         'recipe_images_disk' => [
             'driver' => 'local',
-            'root'   => public_path() . '/',
+            'root'   => public_path() . '/recipe_images/',
             'throw' => true,
         ]
 
