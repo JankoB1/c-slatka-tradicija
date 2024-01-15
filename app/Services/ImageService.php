@@ -13,7 +13,7 @@ class ImageService
         $this->imageRepository = new ImageRepository();
     }
 
-    public function addImage($path, $recipeId) {
-        return $this->imageRepository->addImage($path, $recipeId);
+    public function addImage($path, $recipe_id) {
+        return $this->imageRepository->addImage($path, $recipe_id);
     }
 }

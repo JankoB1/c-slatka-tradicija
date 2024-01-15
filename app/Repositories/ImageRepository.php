@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Log;
 
 class ImageRepository
 {
-    public function addImage($path, $recipeId) {
+    public function addImage($path, $recipe_id) {
         try {
             RecipeImages::create([
                 'path' => $path,
-                'recipeId' => $recipeId
+                'recipe_id' => $recipe_id,
             ]);
         }
         catch (QueryException $exception) {

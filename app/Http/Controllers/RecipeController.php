@@ -8,8 +8,10 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use App\Services\RecipeService;
 use App\Models\Recipe;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use PHPUnit\Logging\Exception;
 
 class RecipeController extends Controller
 {
@@ -38,13 +40,29 @@ class RecipeController extends Controller
     }
 
     public function store(FormRequest $request) {
-        $recipe = $this->recipeService->addRecipe($request);
 
-        foreach($request->input('images') as $image)
-        {
-            Log::alert("The image string is $image");
-            Storage::disk('recipe_images_disk')->put('recipe_images/', $image);
-            $this->imageService->addImage($image, $recipe->id);
+        DB::beginTransaction();
+        //dd($request->input('images'));
+        try {
+
+            $recipe = $this->recipeService->addRecipe($request);
+            $type = gettype($request->file('images'));
+            Log::info("Image type is $type");
+
+            foreach( $request->file('images') as $image)
+            {
+                Log::alert("The image string is $image");
+                Storage::append("public_path() . /recipe_images/image", $image);
+                $this->imageService->addImage($image, $recipe->id);
+            }
+
+
+            DB::commit();
+        }
+        catch (Exception $exception) {
+            Log::error('Can\'t upload image: ' . $exception->getMessage());
+            DB::rollBack();
+            return null;
         }
 
         return redirect()->route('recipes.retrieve')->with('success', 'Recipe created successfully');
