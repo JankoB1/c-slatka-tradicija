@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="form-inner">
-            <form action="{{ route('recipes.store') }}" method="post">
+            <form action="{{ route('recipes.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-section">
