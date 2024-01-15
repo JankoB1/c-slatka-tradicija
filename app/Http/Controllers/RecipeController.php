@@ -42,20 +42,16 @@ class RecipeController extends Controller
     public function store(FormRequest $request) {
 
         DB::beginTransaction();
-        //dd($request->input('images'));
+
         try {
 
             $recipe = $this->recipeService->addRecipe($request);
-            $type = gettype($request->file('images'));
-            Log::info("Image type is $type");
 
             foreach( $request->file('images') as $image)
             {
-                Log::alert("The image string is $image");
                 Storage::append("public_path() . /recipe_images/image", $image);
                 $this->imageService->addImage($image, $recipe->id);
             }
-
 
             DB::commit();
         }
