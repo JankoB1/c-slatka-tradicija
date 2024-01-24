@@ -11,9 +11,6 @@ use App\Models\Recipe;
 use App\Http\Requests\RecipeRequest;
 
 
-// to - do
-// 1. pretraga recepata po stringu (ime ili sastojak)
-
 class RecipeRepository
 {
     public function addRecipe(FormRequest $request) {
@@ -21,29 +18,18 @@ class RecipeRepository
         try {
             $request->validated();
             $slug = Str::slug($request->title);
-            $publicName = true;
-
-            if($request->publicName) {
-                $publicName = false;
-                Log::alert('publicName is set not to be shown');
-            }
 
             return Recipe::create([
-                'userEmail'=>$request->userEmail,
-                'userName'=>$request->userName,
-                'publicName'=>$publicName,
                 'category'=>$request->category,
                 'title'=>$request->title,
                 'slug'=>$slug,
                 'difficulty' => $request->difficulty,
-                'preparationTime' => $request->preparationTime,
-                'ingredients' => $request->ingredients,
+                'preparation_time' => $request->preparation_time,
                 'description' => $request->description,
-                'preparationDescription' => $request->preparationDescription,
-                'additionalDescription' => $request->additionalDescription,
+                'preparation_description' => $request->preparationDescription,
             ]);
         } catch (QueryException $exception) {
-            Log::error('Can\'t add post: ' . $exception->getMessage());
+            Log::error('Can\'t add recipe: ' . $exception->getMessage());
             return null;
         }
     }

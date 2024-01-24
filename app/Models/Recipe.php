@@ -26,5 +26,9 @@ class Recipe extends Model
         return $this->hasMany(RecipeImages::class, 'recipe_id');
     }
 
+    public function ingredients() : HasMany {
+        return $this->hasMany(Ingredient::class, 'recipe_id');
+    }
+
     use HasFactory;
 }

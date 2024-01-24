@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\CategoryService;
+use App\Services\IngredientService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
 use App\Services\RecipeService;
@@ -12,10 +13,12 @@ class RecipeController extends Controller
 {
     protected RecipeService $recipeService;
     protected CategoryService $categoryService;
+    protected IngredientService $ingredientService;
 
     public function __construct() {
         $this->recipeService = new RecipeService();
         $this->categoryService = new CategoryService();
+        $this->ingredientService = new IngredientService();
     }
 
     public function index() {
@@ -29,7 +32,11 @@ class RecipeController extends Controller
 
     public function create() {
         $categories = $this->categoryService->getCategories();
-        return view('recipes.create', ['categories' => $categories]);
+        $ingredients = $this->ingredientService->getIngredientsC();
+        return view('recipes.create', [
+            'categories' => $categories,
+            'ingredients' => $ingredients,
+        ]);
     }
 
     public function store(FormRequest $request) {
