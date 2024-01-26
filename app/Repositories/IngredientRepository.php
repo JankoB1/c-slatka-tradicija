@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Category;
+use App\Models\Ingredient;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Log;
 
@@ -24,5 +25,14 @@ class IngredientRepository
             Log::error('Can\'t retrieve ingredients: ' . $exception->getMessage());
             return null;
         }
+    }
+
+    public function addIngredients($request) {
+        foreach ($request as $item) {
+            return Ingredient::create([
+
+            ]);
+        }
+
     }
 }

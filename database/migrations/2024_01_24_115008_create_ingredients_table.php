@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('recipe_id');
             $table->string('title');
-            $table->boolean('c_ingredient');
+            $table->foreignId('product_id')->nullable();
             $table->timestamps();
         });
     }

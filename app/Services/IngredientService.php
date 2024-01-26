@@ -15,4 +15,8 @@ class IngredientService
     public function getIngredientsC() {
         return $this->ingredientRepository->getIngredientsC();
     }
+
+    public function addIngredients() {
+        return $this->ingredientRepository->addIngredients();
+    }
 }
