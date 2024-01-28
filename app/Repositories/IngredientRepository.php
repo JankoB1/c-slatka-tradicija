@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\Category;
 use App\Models\Ingredient;
 use Illuminate\Database\QueryException;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Log;
 
 class IngredientRepository
@@ -27,7 +28,7 @@ class IngredientRepository
         }
     }
 
-    public function addIngredients($request) {
+    public function addIngredients(FormRequest $request, int $recipe_id) {
         foreach ($request as $item) {
             return Ingredient::create([
 

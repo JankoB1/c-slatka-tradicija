@@ -20,13 +20,13 @@ class RecipeRepository
             $slug = Str::slug($request->title);
 
             return Recipe::create([
-                'category'=>$request->category,
+                'category_id'=>$request->category,
                 'title'=>$request->title,
                 'slug'=>$slug,
                 'difficulty' => $request->difficulty,
                 'preparation_time' => $request->preparation_time,
                 'description' => $request->description,
-                'preparation_description' => $request->preparationDescription,
+                'preparation_description' => $request->preparation_description,
             ]);
         } catch (QueryException $exception) {
             Log::error('Can\'t add recipe: ' . $exception->getMessage());

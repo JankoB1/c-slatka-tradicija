@@ -40,8 +40,9 @@ class RecipeController extends Controller
     }
 
     public function store(FormRequest $request) {
-        $this->recipeService->addRecipe($request);
-        $this->ingredientService->addIngredients($request);
+        $recipe = $this->recipeService->addRecipe($request);
+        $recipe_id = $recipe->id;
+        $this->ingredientService->addIngredients($request, $recipe_id);
         return redirect()->route('recipes.retrieve')->with('success', 'Recipe created successfully');
     }
 }
