@@ -63,7 +63,7 @@
                                         <select name="category">
                                             <option selected value="">Kategorija recepta (izaberi)</option>
                                             @forelse($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->categoryName }}</option>
+                                                <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                                             @empty
                                                 <option> Ne postoji nijedna kategorija. </option>
                                             @endforelse
@@ -83,7 +83,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <select name="preparationTime">
+                                    <select name="preparation_time">
                                         <option selected value="">Vreme pripreme (izaberi)</option>
                                         <option value="10">10 min</option>
                                         <option value="20">20 min</option>
@@ -111,7 +111,7 @@
                         <div class="col-md-7">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <textarea name="preparationDescription" id="" cols="30" rows="10" placeholder="Kako se priprema?"></textarea>
+                                    <textarea name="preparation_description" id="" cols="30" rows="10" placeholder="Kako se priprema?"></textarea>
                                 </div>
                             </div>
                             <div class="row">

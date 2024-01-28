@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Repositories\RecipeRepository;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Request;
 
 class RecipeService
 {

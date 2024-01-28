@@ -9,21 +9,23 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Recipe extends Model
 {
-    protected $fillable = ['userEmail',
-        'userName',
-        'publicName',
-        'category',
+    protected $fillable = [
+        'category_id',
         'title',
+        'slug',
         'difficulty',
-        'preparationTime',
-        'ingredients',
+        'preparation_time',
+        'portion_number',
         'description',
-        'preparationDescription',
-        'additionalDescription',
-        'slug'];
+        'preparation_description',
+        ];
 
     public function images() : HasMany {
         return $this->hasMany(RecipeImages::class, 'recipe_id');
+    }
+
+    public function ingredients() : HasMany {
+        return $this->hasMany(Ingredient::class, 'recipe_id');
     }
 
     use HasFactory;
