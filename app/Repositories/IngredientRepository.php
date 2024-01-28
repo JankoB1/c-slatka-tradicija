@@ -31,7 +31,9 @@ class IngredientRepository
     public function addIngredients(FormRequest $request, int $recipe_id) {
         foreach ($request as $item) {
             return Ingredient::create([
-
+                'recipe_id'=>$recipe_id,
+                'title'=>$item->title,
+                'product_id'=>$item->product_id
             ]);
         }
 
