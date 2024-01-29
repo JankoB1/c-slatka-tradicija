@@ -32,8 +32,8 @@ class IngredientRepository
         foreach ($request as $item) {
             return Ingredient::create([
                 'recipe_id'=>$recipe_id,
+                'product_id'=>$item->product_id,
                 'title'=>$item->title,
-                'product_id'=>$item->product_id
             ]);
         }
 

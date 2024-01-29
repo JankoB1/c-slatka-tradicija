@@ -19,7 +19,7 @@ class RecipeRepository
             $request->validated();
             $slug = Str::slug($request->title);
 
-            return Recipe::create([
+            $recipe = Recipe::create([
                 'category_id'=>$request->category,
                 'title'=>$request->title,
                 'slug'=>$slug,
@@ -28,6 +28,11 @@ class RecipeRepository
                 'description' => $request->description,
                 'preparation_description' => $request->preparation_description,
             ]);
+
+            $recipe_id = $recipe->id;
+            Log::info('Recipe id: ' . $recipe_id);
+            return $recipe;
+
         } catch (QueryException $exception) {
             Log::error('Can\'t add recipe: ' . $exception->getMessage());
             return null;

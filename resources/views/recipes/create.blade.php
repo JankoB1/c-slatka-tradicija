@@ -65,7 +65,7 @@
                                             @forelse($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                                             @empty
-                                                <option> Ne postoji nijedna kategorija. </option>
+                                                <option> 1 </option>
                                             @endforelse
                                     </select>
                                 </div>

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('image_path');
+            $table->boolean('c_product');
             $table->timestamps();
         });
     }

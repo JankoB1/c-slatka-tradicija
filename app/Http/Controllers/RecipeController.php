@@ -49,18 +49,17 @@ class RecipeController extends Controller
         DB::beginTransaction();
         try {
 
-            $recipe = $this->recipeService->addRecipe($request);
-            $recipe_id = $recipe->id;
+            $recipe_id = $this->recipeService->addRecipe($request)->id;
             $this->ingredientService->addIngredients($request, $recipe_id);
 
             foreach( $request->file('images') as $image)
             {
                 Storage::append("public_path() . /recipe_images/image", $image);
-                $this->imageService->addImage($image, $recipe->id);
+                $this->imageService->addImage($image, $recipe_id);
             }
             DB::commit();
 
-            return redirect()->route('recipes.retrieve')->with('success', 'Recipe created successfully')
+            return redirect()->route('recipes.retrieve')->with('success', 'Recipe created successfully');
 
         }
         catch (Exception $exception) {

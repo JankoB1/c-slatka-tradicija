@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('slug')->unique()->nullable();
             $table->string('difficulty');
             $table->string('preparation_time');
-            $table->string('portion_number');
-            $table->string('description')->nullable()->change();;
+            $table->string('portion_number')->default(1);
+            $table->string('description')->nullable();
             $table->string('preparation_description');
             $table->timestamps();
         });
