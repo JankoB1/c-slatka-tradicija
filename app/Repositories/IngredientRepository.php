@@ -29,13 +29,14 @@ class IngredientRepository
     }
 
     public function addIngredients(FormRequest $request, int $recipe_id) {
-        foreach ($request as $item) {
-            return Ingredient::create([
+        $ingredients = $request->input('ingredients');
+        foreach ($ingredients as $item) {
+            Log::info($item);
+            Ingredient::create([
                 'recipe_id'=>$recipe_id,
                 'product_id'=>$item->product_id,
                 'title'=>$item->title,
             ]);
         }
-
     }
 }
