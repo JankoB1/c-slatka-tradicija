@@ -29,14 +29,19 @@ class IngredientRepository
     }
 
     public function addIngredients(FormRequest $request, int $recipe_id) {
-        $ingredients = $request->input('ingredients');
+
+        // proba samo da vidim da l' radi, ne bi trebalo ovako da se radi, ovo je cisto test mog ulaza
+        $ingredients = collect(explode(',', $request->input('ingredients')));
         foreach ($ingredients as $item) {
-            Log::info($item);
             Ingredient::create([
                 'recipe_id'=>$recipe_id,
                 'product_id'=>$item->product_id,
                 'title'=>$item->title,
             ]);
         }
+    }
+
+    public function filterIngredients() {
+
     }
 }

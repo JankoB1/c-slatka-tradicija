@@ -37,8 +37,10 @@ class RecipeController extends Controller
     }
 
     public function create() {
-        $categories = $this->categoryService->getCategories();
+        $categories = $this->categoryService->getAllCategories();
+        //$subcategories = $this->categoryService->getSubCategories();
         $ingredients = $this->ingredientService->getIngredientsC();
+
         return view('recipes.create', [
             'categories' => $categories,
             'ingredients' => $ingredients,
@@ -49,25 +51,31 @@ class RecipeController extends Controller
         DB::beginTransaction();
         try {
 
-            $recipe_id = $this->recipeService->addRecipe($request)->id;
+            $recipe = $this->recipeService->addRecipe($request);
+            $recipe_id = $recipe->id;
+            Log::info('Recipe id is: ' . $recipe_id);
             $this->ingredientService->addIngredients($request, $recipe_id);
 
+            /*
             foreach( $request->file('images') as $image)
             {
                 Storage::append("public_path() . /recipe_images/image", $image);
                 $this->imageService->addImage($image, $recipe_id);
             }
-            DB::commit();
+            */
 
+            foreach ($request->file('images') as $image) {
+                $path = $image->store('recipe_images', 'public');
+                $this->imageService->addImage($path, $recipe_id);
+            }
+            DB::commit();
             return redirect()->route('recipes.retrieve')->with('success', 'Recipe created successfully');
 
         }
         catch (Exception $exception) {
             Log::error('Can\'t upload image: ' . $exception->getMessage());
             DB::rollBack();
-            return null;
+            return redirect()->back()->with('error', 'Failed to create recipe. Please try again.');
         }
-
-
     }
 }

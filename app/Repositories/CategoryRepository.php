@@ -10,7 +10,7 @@ class CategoryRepository
 {
     public function getAllCategories() {
         try {
-            return Category::where('parent_id', 0)->get();
+            return Category::where('parent_id', null)->get();
         } catch (QueryException $exception) {
             Log::error('Can\'t retrieve categories: ' . $exception->getMessage());
             return null;

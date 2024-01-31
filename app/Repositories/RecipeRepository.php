@@ -25,6 +25,7 @@ class RecipeRepository
                 'slug'=>$slug,
                 'difficulty' => $request->difficulty,
                 'preparation_time' => $request->preparation_time,
+                'portion_number' => $request->portion_number,
                 'description' => $request->description,
                 'preparation_description' => $request->preparation_description,
             ]);
@@ -39,20 +40,20 @@ class RecipeRepository
         }
     }
 
-    public function getRecipeByString() {
+    public function getRecipeBySlug($slug) {
         try {
-            //
+            return Recipe::where('slug', '=', $slug)->get()->first();
         } catch (QueryException $exception) {
-            Log::error('Can\'t add post: ' . $exception->getMessage());
+            Log::error('Can\'t retrieve recipe by slug: ' . $exception->getMessage());
             return null;
         }
     }
 
-    public function getRecipeByCategory() {
+    public function getRecipeByCategory($category_id) {
         try {
-            //
+            return Recipe::where('category_id', '=', $category_id)->get();
         } catch (QueryException $exception) {
-            Log::error('Can\'t add post: ' . $exception->getMessage());
+            Log::error('Can\'t retrieve recipe by category: ' . $exception->getMessage());
             return null;
         }
     }
