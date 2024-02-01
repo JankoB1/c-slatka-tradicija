@@ -20,4 +20,15 @@ class ImageRepository
                 return null;
             }
     }
+
+    public function getImageByPath($path) {
+        try {
+            return RecipeImages::where('path', '=', $path)->get()->first();
+        } catch (QueryException $exception) {
+            Log::error('Can\'t get image by path: ' . $exception->getMessage());
+            return null;
+        }
+    }
+
+
 }

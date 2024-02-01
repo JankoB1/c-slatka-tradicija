@@ -10,6 +10,7 @@ Route::prefix('recipes')->group(function() {
     Route::get('/', [RecipeController::class, 'retrieve'])->name('recipes.retrieve');
     Route::get('/create', [RecipeController::class, 'create'])->name('recipes.create');
     Route::post('/', [RecipeController::class, 'store'])->name('recipes.store');
+    Route::get('/{slug}', [RecipeController::class, 'retrieveSingleRecipe']);
 });
 
 Route::prefix('categories')->group(function() {
