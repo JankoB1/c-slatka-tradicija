@@ -10,16 +10,16 @@ class CategoryRepository
 {
     public function getAllCategories() {
         try {
-            return Category::all();
+            return Category::where('parent_id', null)->get();
         } catch (QueryException $exception) {
             Log::error('Can\'t retrieve categories: ' . $exception->getMessage());
             return null;
         }
     }
 
-    public function getAllCategoriesWithRecipesCount() {
+    public function getAllSubcategories(int $parent_id) {
         try {
-            //
+            return Category::where('parent_id', $parent_id)->get();
         } catch (QueryException $exception) {
             Log::error('Can\'t retrieve categories: ' . $exception->getMessage());
             return null;

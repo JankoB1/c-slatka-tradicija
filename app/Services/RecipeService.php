@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Repositories\RecipeRepository;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Request;
 
 class RecipeService
 {
@@ -18,7 +17,7 @@ class RecipeService
         return $this->recipeRepository->addRecipe($request);
     }
 
-    public function getRecipe() {
-        //
+    public function getRecipeBySlug($slug) {
+        return $this->recipeRepository->getRecipeBySlug($slug);
     }
 }

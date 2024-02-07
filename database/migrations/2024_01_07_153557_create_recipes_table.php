@@ -13,16 +13,14 @@ return new class extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
-            $table->string('userEmail');
-            $table->string('userName');
-            $table->string('category'); // kategorija, mozda ne sme string
+            $table->unsignedBigInteger('category_id');
             $table->string('title');
+            $table->string('slug')->unique()->nullable();
             $table->string('difficulty');
-            $table->string('preparationTime');
-            $table->string('description');
-            $table->string('ingredients');
-            $table->string('preparationDescription');
-            $table->string('additionalDescription');
+            $table->string('preparation_time');
+            $table->string('portion_number')->default(1);
+            $table->string('description')->nullable();
+            $table->string('preparation_description');
             $table->timestamps();
         });
     }

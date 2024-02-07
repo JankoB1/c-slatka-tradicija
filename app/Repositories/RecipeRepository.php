@@ -11,9 +11,6 @@ use App\Models\Recipe;
 use App\Http\Requests\RecipeRequest;
 
 
-// to - do
-// 1. pretraga recepata po stringu (ime ili sastojak)
-
 class RecipeRepository
 {
     public function addRecipe(FormRequest $request) {
@@ -21,47 +18,42 @@ class RecipeRepository
         try {
             $request->validated();
             $slug = Str::slug($request->title);
-            $publicName = true;
 
-            if($request->publicName) {
-                $publicName = false;
-                Log::alert('publicName is set not to be shown');
-            }
-
-            return Recipe::create([
-                'userEmail'=>$request->userEmail,
-                'userName'=>$request->userName,
-                'publicName'=>$publicName,
-                'category'=>$request->category,
+            $recipe = Recipe::create([
+                'category_id'=>$request->category,
                 'title'=>$request->title,
                 'slug'=>$slug,
                 'difficulty' => $request->difficulty,
-                'preparationTime' => $request->preparationTime,
-                'ingredients' => $request->ingredients,
+                'preparation_time' => $request->preparation_time,
+                'portion_number' => $request->portion_number,
                 'description' => $request->description,
-                'preparationDescription' => $request->preparationDescription,
-                'additionalDescription' => $request->additionalDescription,
+                'preparation_description' => $request->preparation_description,
             ]);
+
+            $recipe_id = $recipe->id;
+            Log::info('Recipe id: ' . $recipe_id);
+            return $recipe;
+
         } catch (QueryException $exception) {
-            Log::error('Can\'t add post: ' . $exception->getMessage());
+            Log::error('Can\'t add recipe: ' . $exception->getMessage());
             return null;
         }
     }
 
-    public function getRecipeByString() {
+    public function getRecipeBySlug($slug) {
         try {
-            //
+            return Recipe::where('slug', '=', $slug)->get()->first();
         } catch (QueryException $exception) {
-            Log::error('Can\'t add post: ' . $exception->getMessage());
+            Log::error('Can\'t retrieve recipe by slug: ' . $exception->getMessage());
             return null;
         }
     }
 
-    public function getRecipeByCategory() {
+    public function getRecipeByCategory($category_id) {
         try {
-            //
+            return Recipe::where('category_id', '=', $category_id)->get();
         } catch (QueryException $exception) {
-            Log::error('Can\'t add post: ' . $exception->getMessage());
+            Log::error('Can\'t retrieve recipe by category: ' . $exception->getMessage());
             return null;
         }
     }

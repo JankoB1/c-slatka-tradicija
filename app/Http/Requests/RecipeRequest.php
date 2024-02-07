@@ -22,17 +22,12 @@ class RecipeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'userEmail' => 'required|string|max:50',
-            'userName' => 'required|string|max:50',
-            'publicName' => 'int',
             'category' => 'nullable|exists:categories|id',
             'title' => 'required|max:100|string',
             'difficulty' => 'required|string',
-            'preparationTime' => 'required|string',
-            'ingredients' => 'required|string',
-            'description' => 'nullable|string',
-            'preparationDescription' => 'required|string',
-            'additionalDescription' => 'required|string'
+            'preparation_time' => 'required|string',
+            'description' => 'nullable|string|max:300',
+            'preparation_description' => 'required|string',
         ];
     }
 }

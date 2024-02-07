@@ -31,30 +31,6 @@
                     <div class="row">
                         <div class="col-md-5">
                             <img src="{{ asset('images/lamp.svg') }}" alt="lamp">
-                            <p>Potrebne su nam osnove informacije o tebi, e-mail i tvoje ime ili nadimak.</p>
-                            <p>Ukoliko te interesuje zašto su nam ove informacije značajne, to možeš pogledati ovde.</p>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type="email" name="userEmail" placeholder="E-mail adresa">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="text" name="userName" placeholder="Ime ili nadimak">
-                                    <div class="checkbox-username">
-                                        <input type="checkbox" name="publicName">
-                                        <label for="publicName">Ne želim da moje ime bude<br>objavljeno uz naziv recepta</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <img src="{{ asset('images/lamp.svg') }}" alt="lamp">
                             <p>Potrudi se da svoj recept opišeš što detaljnije. To će pomoći drugima da postanu bolji majstori i spreme tvoju poslasticu na što bolji način.</p>
                         </div>
                         <div class="col-md-7">
@@ -62,11 +38,9 @@
                                 <div class="col-md-6">
                                         <select name="category">
                                             <option selected value="">Kategorija recepta (izaberi)</option>
-                                            @forelse($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->categoryName }}</option>
-                                            @empty
-                                                <option> Ne postoji nijedna kategorija. </option>
-                                            @endforelse
+                                            <option value="1"> Torte</option>
+                                            <option value="2"> Kolaci </option>
+
                                     </select>
                                 </div>
                                 <div class="col-md-6">
@@ -75,6 +49,14 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
+                                    <select name="subcategory">
+                                        <option selected value="">Podkategorija recepta (izaberi)</option>
+                                        <option value="4">Torte sa slagom </option>
+                                        <option value="5">Torte bez slaga </option>
+                                        <option value="6">Kolaci sa vocem</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
                                     <select name="difficulty">
                                         <option selected value="">Težina pripreme (izaberi)</option>
                                         <option value="Lako">Lako</option>
@@ -82,13 +64,18 @@
                                         <option value="Teško">Teško</option>
                                     </select>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
-                                    <select name="preparationTime">
+                                    <select name="preparation_time">
                                         <option selected value="">Vreme pripreme (izaberi)</option>
                                         <option value="10">10 min</option>
                                         <option value="20">20 min</option>
                                         <option value="30">30 min</option>
                                     </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" name="portion_number" placeholder="Broj porcija">
                                 </div>
                             </div>
                             <div class="row">
@@ -111,7 +98,7 @@
                         <div class="col-md-7">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <textarea name="preparationDescription" id="" cols="30" rows="10" placeholder="Kako se priprema?"></textarea>
+                                    <textarea name="preparation_description" id="" cols="30" rows="10" placeholder="Kako se priprema?"></textarea>
                                 </div>
                             </div>
                             <div class="row">
@@ -126,7 +113,7 @@
                     <div class="row">
                         <div class="col-md-5">
                             <img src="{{ asset('images/lamp.svg') }}" alt="lamp">
-                            <p>Fotografije su obavezan element recepta, a možeš da"Screenshot from 2024-01-15 17-46-33.png" // app/Http/Controllers/RecipeController.php:42 ih dodaš maksimalno 10.</p>
+                            <p>Fotografije su obavezan element recepta, a možeš da ih dodaš maksimalno 10.</p>
                             <p>Obavezno je okačiti fotografiju finalnog proizvoda, a ostatak je tvoj izbor. Možeš prikazati neki deo procesa, fotografije C proizvoda ili nekog alata.</p>
                             <label for="images">Upload Images (up to 10)</label>
                             <input type="file" name="images[]" multiple accept="images/*">

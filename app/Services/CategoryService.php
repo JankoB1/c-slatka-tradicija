@@ -12,7 +12,11 @@ class CategoryService
         $this->categoryRepository = new CategoryRepository();
     }
 
-    public function getCategories() {
+    public function getAllCategories() {
         return $this->categoryRepository->getAllCategories();
+    }
+
+    public function getAllSubcategories() {
+        return $this->categoryRepository->getAllSubcategories();
     }
 }
