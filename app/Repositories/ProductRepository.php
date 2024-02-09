@@ -9,16 +9,12 @@ use Illuminate\Support\Facades\Log;
 
 class ProductRepository
 {
-    public function getAllProducts() {
+    public function getAllProductsByCategory(int $product_category_id) {
         try {
-            return Product::all();
+            return Product::where('product_category_id', '=', $product_category_id)->get();
         } catch (QueryException $exception) {
             Log::error('Can\'t retrieve products: ' . $exception->getMessage());
             return null;
         }
-    }
-
-    public function getAllProductsMadeByC() {
-
     }
 }
