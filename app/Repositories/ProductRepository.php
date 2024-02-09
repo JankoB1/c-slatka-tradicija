@@ -3,22 +3,20 @@
 namespace App\Repositories;
 
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Log;
 
 
 class ProductRepository
 {
-    public function getAllProducts() {
+    public function getAllProductsByCategory(int $product_category_id) {
         try {
-            return Product::all();
+            $category = ProductCategory::findOrFail($product_category_id);
+            return $category->products();
         } catch (QueryException $exception) {
             Log::error('Can\'t retrieve products: ' . $exception->getMessage());
             return null;
         }
-    }
-
-    public function getAllProductsMadeByC() {
-
     }
 }
