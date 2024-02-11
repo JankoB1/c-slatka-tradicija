@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Recepti')</title>
+    <title>C Slatka Tradicija | @yield('title')</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,13 +31,20 @@
         </a>
         <ul>
             <li><a href="#">O nama</a></li>
-            <li><a href="#">Proizvodi</a></li>
+            <li><a href="{{ route('show-all-categories') }}">Proizvodi</a></li>
             <li><a href="{{ route('recipes.retrieve') }}">Recepti</a></li>
-            <li><a href="#">Predstavljamo</a></li>
-            <li><a href="#">Kontakt</a></li>
-            <li><a href="{{ route('recipes.create') }}">Kreiraj recept</a></li>
+            <li><a href="#">Priče iz C sveta</a></li>
+            <li><a href="#">Nagradni konkursi</a></li>
+            <li><a href="{{ route('show-recipe-book') }}">Moja knjižica recepata</a></li>
         </ul>
-        <a href="#" class="add-recipe">Dodaj recept</a>
+        <div class="header-buttons">
+            @guest()
+                <a href="{{ route('login') }}" class="login-btn">Prijavi se</a>
+            @else
+                <a href="{{ route('logout') }}" class="login-btn">Odjavi se</a>
+            @endguest
+            <a href="{{ route('recipes.create') }}" class="add-recipe">Dodaj recept</a>
+        </div>
     </nav>
 </header>
     <main>
@@ -45,18 +52,30 @@
     </main>
 
 <footer>
+    <img src="{{ asset('images/logo-c.png') }}" alt="logo c" class="logo-footer">
+    <div class="socials">
+        <a href="#">
+            <img src="{{ asset('images/ig.svg') }}" alt="ig">
+        </a>
+        <a href="#">
+            <img src="{{ asset('images/yt.svg') }}" alt="yt">
+        </a>
+        <a href="#">
+            <img src="{{ asset('images/fb.svg') }}" alt="fb">
+        </a>
+    </div>
+
     <ul>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Impressum</a></li>
         <li><a href="#">Pravna Napomena</a></li>
-        <li><a href="#">Politika zaštite podataka</a></li>
+        <li><a href="#">Politika Zaštite Podataka</a></li>
+        <li><a href="#">Mapa sajta</a></li>
     </ul>
-    <div class="socials">
-        <img src="{{ asset('images/fb.svg') }}" alt="fb">
-        <img src="{{ asset('images/ig.svg') }}" alt="ig">
-        <img src="{{ asset('images/yt.svg') }}" alt="yt">
-    </div>
+
     <p>C Slatka Tradicija © 2024 · Sva prava zadržana.</p>
 </footer>
+
+@yield('scriptsBottom')
 </body>
 </html>

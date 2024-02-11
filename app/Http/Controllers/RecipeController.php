@@ -85,4 +85,8 @@ class RecipeController extends Controller
             return redirect()->back()->with('error', 'Failed to create recipe. Please try again.');
         }
     }
+
+    public function showRecipeBook() {
+        return view('recipes-book');
+    }
 }
