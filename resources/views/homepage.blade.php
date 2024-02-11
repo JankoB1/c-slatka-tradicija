@@ -3,167 +3,55 @@
 @section('content')
     <section id="main-banner">
         <div class="main-banner-inner">
-            <h1>Učestvuj u konkursu<br>Torte i kolači sa<br>Eskimko sladoledom</h1>
-            <div class="search-cont">
-                <input type="search" placeholder="Pretraži recept po imenu ili sastojku">
-                <button>Pretraži</button>
-            </div>
+            <h1>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h1>
+            <a href="#">Nagradni konkus</a>
         </div>
     </section>
 
     <section id="featured-recipes">
         <div class="featured-recipes-inner container-space">
-            <div class="title-row">
-                <div class="title-line"></div>
-                <h2>Najpopularniji recepti</h2>
-                <button>Pogledaj sve</button>
-            </div>
-            <div class="recipes-categories">
-                <span class="single-category">Torte (98)</span>
-                <span class="single-category">Torte (98)</span>
-                <span class="single-category">Torte (98)</span>
-                <span class="single-category">Torte (98)</span>
-                <span class="single-category">Torte (98)</span>
-                <span class="single-category">Torte (98)</span>
-            </div>
-            <div class="recipes-list">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="single-recipe">
-                            <div class="recipe-top-img"></div>
-                            <div class="recipe-bottom-content">
-                                <div class="recipe-title">
-                                    <h3>Torta sa borovnicama</h3>
-                                    <img src="{{ asset('images/empty-heart.svg') }}" alt="empty heart" class="empty-heart">
-                                    <img src="{{ asset('images/full-heart.svg') }}" alt="full heart" class="full-heart">
-                                </div>
-                                <div class="recipe-details">
-                                    <div class="advanced">
-                                        <img src="{{ asset('images/settings.svg') }}" alt="settings">
-                                        <span>Napredna priprema</span>
-                                    </div>
-                                    <div class="timing">
-                                        <img src="{{ asset('images/time.svg') }}" alt="time">
-                                        <span>20-30</span>
-                                    </div>
-                                </div>
+            <h2>Najpopularniji recepti</h2>
+            <p>Izdvojili smo za vas najpopularnije recepte po izboru C Slatka tradicija tima. Uživajte u pripremi i javite nam utiske!</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="featured-recipe-single mini">
+                                <div class="featured-image-cont" style="background-image: url('{{ asset('images/f1.png') }}');"></div>
+                                <p>Torta sa borovnicama</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="featured-recipe-single mini">
+                                <div class="featured-image-cont" style="background-image: url('{{ asset('images/f2.png') }}');"></div>
+                                <p>Torta sa borovnicama</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="single-recipe">
-                            <div class="recipe-top-img"></div>
-                            <div class="recipe-bottom-content">
-                                <div class="recipe-title">
-                                    <h3>Torta sa borovnicama</h3>
-                                    <img src="{{ asset('images/empty-heart.svg') }}" alt="empty heart" class="empty-heart">
-                                    <img src="{{ asset('images/full-heart.svg') }}" alt="full heart" class="full-heart">
-                                </div>
-                                <div class="recipe-details">
-                                    <div class="advanced">
-                                        <img src="{{ asset('images/settings.svg') }}" alt="settings">
-                                        <span>Napredna priprema</span>
-                                    </div>
-                                    <div class="timing">
-                                        <img src="{{ asset('images/time.svg') }}" alt="time">
-                                        <span>20-30</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="single-recipe">
-                            <div class="recipe-top-img"></div>
-                            <div class="recipe-bottom-content">
-                                <div class="recipe-title">
-                                    <h3>Torta sa borovnicama</h3>
-                                    <img src="{{ asset('images/empty-heart.svg') }}" alt="empty heart" class="empty-heart">
-                                    <img src="{{ asset('images/full-heart.svg') }}" alt="full heart" class="full-heart">
-                                </div>
-                                <div class="recipe-details">
-                                    <div class="advanced">
-                                        <img src="{{ asset('images/settings.svg') }}" alt="settings">
-                                        <span>Napredna priprema</span>
-                                    </div>
-                                    <div class="timing">
-                                        <img src="{{ asset('images/time.svg') }}" alt="time">
-                                        <span>20-30</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="single-recipe">
-                            <div class="recipe-top-img"></div>
-                            <div class="recipe-bottom-content">
-                                <div class="recipe-title">
-                                    <h3>Torta sa borovnicama</h3>
-                                    <img src="{{ asset('images/empty-heart.svg') }}" alt="empty heart" class="empty-heart">
-                                    <img src="{{ asset('images/full-heart.svg') }}" alt="full heart" class="full-heart">
-                                </div>
-                                <div class="recipe-details">
-                                    <div class="advanced">
-                                        <img src="{{ asset('images/settings.svg') }}" alt="settings">
-                                        <span>Napredna priprema</span>
-                                    </div>
-                                    <div class="timing">
-                                        <img src="{{ asset('images/time.svg') }}" alt="time">
-                                        <span>20-30</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="single-recipe">
-                            <div class="recipe-top-img"></div>
-                            <div class="recipe-bottom-content">
-                                <div class="recipe-title">
-                                    <h3>Torta sa borovnicama</h3>
-                                    <img src="{{ asset('images/empty-heart.svg') }}" alt="empty heart" class="empty-heart">
-                                    <img src="{{ asset('images/full-heart.svg') }}" alt="full heart" class="full-heart">
-                                </div>
-                                <div class="recipe-details">
-                                    <div class="advanced">
-                                        <img src="{{ asset('images/settings.svg') }}" alt="settings">
-                                        <span>Napredna priprema</span>
-                                    </div>
-                                    <div class="timing">
-                                        <img src="{{ asset('images/time.svg') }}" alt="time">
-                                        <span>20-30</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="single-recipe">
-                            <div class="recipe-top-img"></div>
-                            <div class="recipe-bottom-content">
-                                <div class="recipe-title">
-                                    <h3>Torta sa borovnicama</h3>
-                                    <img src="{{ asset('images/empty-heart.svg') }}" alt="empty heart" class="empty-heart">
-                                    <img src="{{ asset('images/full-heart.svg') }}" alt="full heart" class="full-heart">
-                                </div>
-                                <div class="recipe-details">
-                                    <div class="advanced">
-                                        <img src="{{ asset('images/settings.svg') }}" alt="settings">
-                                        <span>Napredna priprema</span>
-                                    </div>
-                                    <div class="timing">
-                                        <img src="{{ asset('images/time.svg') }}" alt="time">
-                                        <span>20-30</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="featured-recipe-single">
+                        <div class="featured-image-cont" style="background-image: url('{{ asset('images/f4.png') }}');"></div>
+                        <p>Torta sa borovnicama</p>
                     </div>
                 </div>
-                <div class="recipes-bottom">
-                    <div class="title-line bottom-line"></div>
-                    <button>Pogledaj još</button>
+                <div class="col-md-6">
+                    <div class="featured-recipe-single big">
+                        <div class="featured-image-cont" style="background-image: url('{{ asset('images/f3.png') }}');"></div>
+                        <p>Torta sa borovnicama</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="featured-recipe-single">
+                        <div class="featured-image-cont" style="background-image: url('{{ asset('images/f5.png') }}');"></div>
+                        <p>Torta sa borovnicama</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="featured-recipe-single">
+                        <div class="featured-image-cont" style="background-image: url('{{ asset('images/f6.png') }}');"></div>
+                        <p>Torta sa borovnicama</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -173,9 +61,9 @@
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <h3>Tvoj sladak začin još od 1976. godine</h3>
+                    <h3>Tvoj sladak začin <br>još od 1976. godine</h3>
                     <p>Kada se najbliži okupe i sa osmesima uživaju u najlepšim trenucima uz omiljene ukuse, tada je jasno zašto decenijama duga tradicija čini C proizvode neizostavnim delom svake trpeze.</p>
-                    <a href="#">Pogledaj sve proizvode</a>
+                    <a href="#">Proizvodi</a>
                 </div>
             </div>
         </div>
@@ -229,18 +117,14 @@
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <p>AKTIVNI KONKURSI</p>
-                    <h3>Učestvuj u konkursu<br>Torte i kolači sa<br>Eskimko sladoledom</h3>
-                    <a href="#">Saznaj više</a>
+                    <p>AKTIVNI NAGRADNI KONKURS</p>
+                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
+                    <a href="#">Nagradni konkursi</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="newsletter">
-        <img src="{{ asset('images/logo-c.png') }}" alt="logo c">
-        <div class="nl-inner"></div>
-    </section>
 @endsection
 
 @section('scriptsBottom')

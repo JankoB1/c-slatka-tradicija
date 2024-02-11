@@ -1,31 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-    <section id="single-category-banner">
-
-    </section>
-
-    <section id="single-category-meta">
-        <div class="single-category-meta container-space">
-            <h1>{{ $category->name }}</h1>
-            <p>{{ $category->description }}</p>
+    <section id="single-product-main">
+        <div class="single-product-main-inner container-space">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>{{ $product->name }}</h1>
+                    <p>{{ $product->description }}</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="{{ asset('images/' . $product->image_path) }}" alt="{{ $product->name }}">
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="single-category-products">
-        <div class="single-category-products-inner container-space">
-            <h2>Svi proizvodi</h2>
-            <p>Pogledajte sve proizvode u okviru ove kategorije i pronađite inspiraciju za naredni recept koji ćete pripremati.</p>
-            <div class="category-products">
-                @foreach($products as $product)
-                    <div class="single-product">
-                        <a href="{{ route('show-single-product', ['slug' => $product->slug]) }}">
-                            <img src="{{ asset('images/' . $product->image_path) }}" alt="">
-                            <p>{{ $product->name }}</p>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
+    <section id="single-product-guide">
+        <div class="single-product-guide-inner container-space">
+            <h2>Uputstvo za pripremu</h2>
+            <p>{{ $product->product_guide }}</p>
+            <a href="#">Nutritivne vrednosti</a>
         </div>
     </section>
 
@@ -64,16 +58,22 @@
         </div>
     </section>
 
-    <section id="homepage-banner2">
-        <div class="homepage-banner-inner container-space">
-            <div class="row">
-                <div class="col-md-6">
-                    <p>AKTIVNI NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
-                    <a href="#">Nagradni konkursi</a>
-                </div>
+    <section id="single-category-products">
+        <div class="single-category-products-inner container-space">
+            <h2>Potrebno ti je još inspiracije</h2>
+            <p>Bez brige! Naša C Slatka tradicija porodica nudi širok izbora proizvoda, a brza i jednostavna priprema olakšaće svako upuštanje u novu kulinarsku avanturu. </p>
+            <div class="category-products">
+                @foreach($products as $singleProduct)
+                    @if($singleProduct->id != $product->id)
+                        <div class="single-product">
+                            <a href="{{ route('show-single-product', ['slug' => $singleProduct->slug]) }}">
+                                <img src="{{ asset('images/' . $singleProduct->image_path) }}" alt="">
+                                <p>{{ $singleProduct->name }}</p>
+                            </a>
+                        </div>
+                    @endif
+                @endforeach
             </div>
         </div>
     </section>
-
 @endsection
