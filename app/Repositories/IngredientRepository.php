@@ -40,8 +40,4 @@ class IngredientRepository
             ]);
         }
     }
-
-    public function filterIngredients() {
-
-    }
 }
