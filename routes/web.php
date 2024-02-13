@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,5 @@ Route::get('/mapa-sajta', [SiteController::class, 'showSitemap'])->name('show-si
 Route::get('/knjiga-recepata', [RecipeController::class, 'showRecipeBook'])->name('show-recipe-book');
 
 Auth::routes();
+
+Route::get('/logout', [LoginController::class, 'logout']);

@@ -41,7 +41,7 @@
             @guest()
                 <a href="{{ route('login') }}" class="login-btn">Prijavi se</a>
             @else
-                <a href="{{ route('logout') }}" class="login-btn">Odjavi se</a>
+                <a href="/logout" class="login-btn">Odjavi se</a>
             @endguest
             <a href="{{ route('recipes.create') }}" class="add-recipe">Dodaj recept</a>
         </div>
