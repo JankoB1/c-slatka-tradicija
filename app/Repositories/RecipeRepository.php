@@ -5,6 +5,7 @@ namespace App\Repositories;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use App\Models\Recipe;
@@ -18,9 +19,11 @@ class RecipeRepository
         try {
             $request->validated();
             $slug = Str::slug($request->title);
+            $user = Auth::user();
 
             $recipe = Recipe::create([
                 'category_id'=>$request->category,
+                'user_id'=> $user->id,
                 'title'=>$request->title,
                 'slug'=>$slug,
                 'difficulty' => $request->difficulty,
