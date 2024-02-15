@@ -32,7 +32,7 @@ class Recipe extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function recipes_saved() : BelongsToMany
+    public function recipes_liked() : BelongsToMany
     {
         return $this->belongsToMany(User::class);
     }

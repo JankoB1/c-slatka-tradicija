@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('recipe_id');
             // if true like, if false save, if null not liked nor saved
             $table->boolean('like')->default(null);
+            $table->boolean('save')->default(null);
             $table->timestamps();
         });
     }
