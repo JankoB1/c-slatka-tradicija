@@ -25,4 +25,15 @@ class RecipeService
     public function getRecipeBySlug($slug) {
         return $this->recipeRepository->getRecipeBySlug($slug);
     }
+
+    public function likeRecipe(Request $request, int $recipe_id, bool $action)
+    {
+        return $this->recipeRepository->likeRecipe($request, $recipe_id,  $action);
+    }
+
+
+    public function saveRecipe(Request $request, int $recipe_id, bool $action)
+    {
+        return $this->recipeRepository->saveRecipe($request, $recipe_id,  $action);
+    }
 }

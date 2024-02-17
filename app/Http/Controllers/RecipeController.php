@@ -98,6 +98,17 @@ class RecipeController extends Controller
         }
     }
 
+    public function likeRecipe(Request $request, int $recipe_id, bool $action)
+    {
+        $this->recipeService->likeRecipe($request, $recipe_id,  $action);
+    }
+
+    public function saveRecipe(Request $request, int $recipe_id, bool $action)
+    {
+        $this->recipeService->saveRecipe($request, $recipe_id,  $action);
+
+    }
+
     public function showRecipeBook() {
         return view('recipes-book');
     }

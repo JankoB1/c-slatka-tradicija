@@ -14,6 +14,9 @@ Route::prefix('recipes')->group(function() {
     Route::get('/', [RecipeController::class, 'retrieve'])->name('recipes.retrieve');
     Route::post('/store', [RecipeController::class, 'store'])->name('recipes.store');
     Route::get('/{slug}', [RecipeController::class, 'retrieveSingleRecipe']);
+    Route::post('/', [RecipeController::class, 'likeRecipe']);
+    Route::post('/', [RecipeController::class, 'saveRecipe']);
+
 });
 
 Route::prefix('categories')->group(function() {
