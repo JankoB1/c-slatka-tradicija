@@ -61,7 +61,7 @@ category.addEventListener('change', function() {
 });
 
 const newIngredientHtml = `<div class="row ingredients-cont">
-                                    <input type="hidden" name="ingredient_product" value="null">
+                                    <input type="hidden" name="ingredient_product" value="">
                                     <div class="col-md-6">
                                         <input type="text" name="ingredient_name" placeholder="Naziv sastojka">
                                     </div>
@@ -81,7 +81,7 @@ const newIngredientHtml = `<div class="row ingredients-cont">
                                 </div>`;
 
 const newIngredientHtmlNoAdd = `<div class="row ingredients-cont">
-                                    <input type="hidden" name="ingredient_product" value="null">
+                                    <input type="hidden" name="ingredient_product" value="">
                                     <div class="col-md-6">
                                         <input type="text" name="ingredient_name" placeholder="Naziv sastojka">
                                     </div>
@@ -218,7 +218,7 @@ createRecipeBtn.addEventListener('click', function(e) {
             let product = single.querySelector('input[type="hidden"]').value;
             ingredients.push({
                 title: name + ' ' + qty + ' ' + measure,
-                product: product
+                product: product === ''? null: product
             });
         });
         let group = {
@@ -235,7 +235,7 @@ createRecipeBtn.addEventListener('click', function(e) {
         let product = single.querySelector('input[type="hidden"]').value;
         independentIngredientsParsed.push({
             title: name + ' ' + qty + ' ' + measure,
-            product: product
+            product: product === ''? null: product
         });
     });
 
