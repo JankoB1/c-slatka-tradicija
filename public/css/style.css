@@ -537,12 +537,12 @@ footer p {
     padding: 36px 0;
 }
 
-.form-section .col-md-5 {
+.form-section .col-md-5, .edit-profile-container .col-md-5 {
     position: relative;
     padding-left: 50px;
 }
 
-.form-section .col-md-5 img {
+.form-section .col-md-5 img, .edit-profile-container .col-md-5 img {
     position: absolute;
     left: 0;
     top: 0;
@@ -557,8 +557,19 @@ footer p {
     line-height: 24px; /* 150% */
 }
 
+.edit-profile-container .col-md-5 p {
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2E4765;
+}
+
 .form-section .col-md-7 input, .form-section .col-md-7 select,
-.form-section .col-md-7 textarea {
+.form-section .col-md-7 textarea, .edit-profile-container .col-md-7 input,
+.edit-profile-container .col-md-7 textarea {
     border-radius: 32px;
     border: 1px solid #2E4765;
     background: #FFF;
@@ -573,11 +584,12 @@ footer p {
     width: 100%;
 }
 
-.form-section .col-md-7 textarea {
+.form-section .col-md-7 textarea, .edit-profile-container .col-md-7 textarea {
     height: unset;
 }
 
-.form-section .col-md-7 input::placeholder, .form-section .col-md-7 textarea::placeholder {
+.form-section .col-md-7 input::placeholder, .form-section .col-md-7 textarea::placeholder,
+.edit-profile-container .col-md-7 input::placeholder, .edit-profile-container .col-md-7 textarea::placeholder {
     opacity: 0.75;
     color: #2E4765;
     font-family: Montserrat;
@@ -1481,4 +1493,46 @@ span.ingridient-plus {
 
 .profile-recipes .top-nav .single-btn p.active {
     background: #E2EFFF;
+}
+
+.edit-profile-container h3 {
+    font-family: Montserrat;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 61px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2E4765;
+}
+
+.edit-profile-container > .row {
+    padding: 40px 0;
+    border-bottom: 1px solid #F5CC45;
+    display: flex;
+    align-items: center;
+}
+
+.profile-save {
+    color: white;
+    background: #56924C;
+    width: 320px !important;
+    height: 64px;
+    display: flex;
+    margin: 40px 0 0 auto !important;
+    align-items: center;
+    justify-content: center;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+    box-shadow: none;
+    outline: none;
+    border: none;
+    border-radius: 32px;
+}
+
+.edit-profile-container .col-md-7 {
+    padding-right: 0;
 }
