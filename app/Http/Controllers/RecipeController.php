@@ -71,11 +71,12 @@ class RecipeController extends Controller
                 $this->imageService->addImage($image, $recipe_id);
             }
             */
-
+            /*
             foreach ($request->file('images') as $image) {
                 $path = $image->store('recipe_images', 'public');
                 $this->imageService->addImage($path, $recipe_id);
             }
+            */
             DB::commit();
             return redirect()->route('recipes.retrieve')->with('success', 'Recipe created successfully');
 

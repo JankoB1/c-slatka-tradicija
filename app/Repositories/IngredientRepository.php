@@ -34,8 +34,8 @@ class IngredientRepository
     public function addIngredients(Request $request, int $recipe_id) {
         $all_ingredients = $request->input('ingredients');
         $groups = $all_ingredients['ingredientGroups'];
-
         $ingredients_without_group = $all_ingredients['ingredients'];
+
         foreach ($groups as $group) {
             $ingredient_group = IngredientGroup::create([
                 'name' => $group['name'],
@@ -53,8 +53,8 @@ class IngredientRepository
         foreach($ingredients_without_group as $item) {
             Ingredient::create([
                 'recipe_id' => $recipe_id,
-                'product_id' => $ingredients_in_group->product_id,
-                'title' => $ingredients_in_group,
+                'product_id' => $item['product'],
+                'title' => $item['title'],
                 'group' => null,
             ]);
         }
