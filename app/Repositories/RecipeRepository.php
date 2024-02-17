@@ -17,17 +17,15 @@ class RecipeRepository
     public function addRecipe(Request $request) {
 
         try {
-            $slug = Str::slug($request->title);
+
             $user = Auth::user();
             $recipe = Recipe::create([
                 'category_id'=>$request->cat,
                 'user_id'=> $user->id,
                 'title'=>$request->title,
-                'slug'=>$slug,
+                'slug'=>$this->createSlug($request->title),
                 'difficulty' => $request->difficulty,
                 'preparation_time' => $request->preparationTime,
-                'preparation_description' => 'nista',
-                'featured_image' => 'nista',
                 'portion_number' => $request->portionNum,
                 'description' => $request->description,
             ]);
@@ -40,6 +38,21 @@ class RecipeRepository
             Log::error('Can\'t add recipe: ' . $exception->getMessage());
             return null;
         }
+    }
+
+    public function createSlug(string $title, int $increment = 0)
+    {
+        $slug = Str::slug($title);
+        if ($increment > 0) {
+            $slug .= '-' . $increment; // Append numeric suffix if needed
+        }
+        $existingSlug = Recipe::where('slug', $slug)->exists(); // Checking if slug already exists
+        if ($existingSlug) {
+            // If slug already exists, recursively call the function with an incremented counter
+            return $this->createSlug($title, $increment + 1);
+        }
+        return $slug;
+
     }
 
     public function likeRecipe(RecipeRequest $request, $recipeId, bool $action)

@@ -21,8 +21,7 @@ return new class extends Migration
             $table->string('preparation_time');
             $table->string('portion_number')->default(1);
             $table->string('description')->nullable();
-            $table->string('preparation_description');
-            $table->string('featured_image');
+            $table->string('featured_image')->nullable();
             $table->timestamps();
         });
     }
