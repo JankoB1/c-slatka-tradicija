@@ -35,4 +35,6 @@ Route::get('/get-all-products', [ProductController::class, 'getAllProducts'])->n
 Route::middleware(['auth'])->group(function() {
     Route::get('/profil', [UserController::class, 'showProfile'])->name('show-profile');
     Route::get('/edit-profil', [UserController::class, 'showEditProfile'])->name('show-edit-profile');
+    Route::post('/izmeni-kontakt', [UserController::class, 'editContactDetails'])->name('edit-contact-details');
+    Route::post('/izmeni-profil', [UserController::class, 'editDetails'])->name('edit-details');
 });
