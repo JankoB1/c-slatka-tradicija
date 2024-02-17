@@ -57,7 +57,7 @@
                         <img src="{{ asset('images/avatar.png') }}" alt="avatar" class="avatar-img-popup">
                     @endif
                     <p class="hello">Zdravo, {{ Auth::user()->name }}</p>
-                    <a href="#" class="my-profile-link">Moj profil</a>
+                    <a href="{{ route('show-profile') }}" class="my-profile-link">Moj profil</a>
                     <div class="list">
                         <a href="#" class="single-list-item">
                             <p>Objavljeni recepti</p>
