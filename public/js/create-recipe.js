@@ -45,18 +45,43 @@ const srSteps = [
 ];
 
 const subcategories = [
-    ['Čokoladne torte', 'Voćne torte', 'Kremaste torte'],
-    ['Sitni kolači', 'Voćni kolači', 'Čokoladni kolači', 'Kremasti kolači', 'Oblande', 'Biskvitni kolači'],
-    ['Hleb i pogače', 'Slatka peciva', 'Slana peciva', 'Predjela'],
-    ['Slatka zimnica', 'Kisela zimnica'],
-    ['Sladoled', 'Voćne salate i kupovi', 'Deserti u čaši']
+    [
+        {'Čokoladne torte': 6},
+        {'Voćne torte': 7},
+        {'Kremaste torte': 8}
+    ],
+    [
+        {'Sitni kolači': 9},
+        {'Voćni kolači': 10},
+        {'Čokoladni kolači': 11},
+        {'Kremasti kolači': 12},
+        {'Oblande': 13},
+        {'Biskvitni kolači': 14}
+    ],
+    [
+        {'Hleb i pogače': 15},
+        {'Slatka peciva': 16},
+        {'Slana peciva': 17},
+        {'Predjela': 18}
+    ],
+    [
+        {'Slatka zimnica': 19},
+        {'Kisela zimnica': 20}
+    ],
+    [
+        {'Sladoled': 21},
+        {'Voćne salate i kupovi': 22},
+        {'Deserti u čaši': 23}
+    ]
 ];
 
 category.addEventListener('change', function() {
     subcategory.innerHTML = '';
     let subArr = subcategories[parseInt(this.value)];
     subArr.forEach((el) => {
-        subcategory.innerHTML += `<option value="${el}">${el}</option>`;
+        Object.entries(el).forEach(([key, value]) => {
+            subcategory.innerHTML += `<option value="${value}">${key}</option>`;
+        });
     });
 });
 
