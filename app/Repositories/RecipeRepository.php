@@ -19,7 +19,6 @@ class RecipeRepository
         try {
             $slug = Str::slug($request->title);
             $user = Auth::user();
-            dd($request);
             $recipe = Recipe::create([
                 'category_id'=>$request->cat,
                 'user_id'=> $user->id,
@@ -27,6 +26,8 @@ class RecipeRepository
                 'slug'=>$slug,
                 'difficulty' => $request->difficulty,
                 'preparation_time' => $request->preparationTime,
+                'preparation_description' => 'nista',
+                'featured_image' => 'nista',
                 'portion_number' => $request->portionNum,
                 'description' => $request->description,
             ]);

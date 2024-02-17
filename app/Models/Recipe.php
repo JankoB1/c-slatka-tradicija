@@ -11,16 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Recipe extends Model
 {
-    protected $fillable = [
-        'category_id',
-        'title',
-        'slug',
-        'difficulty',
-        'preparation_time',
-        'portion_number',
-        'description',
-        'preparation_description',
-        ];
+    protected $guarded = [];
 
     public function images() : HasMany
     {

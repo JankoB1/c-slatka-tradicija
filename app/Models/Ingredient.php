@@ -10,6 +10,7 @@ class Ingredient extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
     public function recipe() : BelongsTo {
         return $this->belongsTo(Recipe::class, 'recipe_id');
     }

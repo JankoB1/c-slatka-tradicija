@@ -10,6 +10,7 @@ class IngredientGroup extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
     public function ingredient() : HasMany
     {
         return $this->hasMany(Ingredient::class);

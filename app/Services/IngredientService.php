@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Repositories\IngredientRepository;
-use http\Client\Request;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 
 class IngredientService
@@ -20,6 +20,6 @@ class IngredientService
     }
 
     public function addIngredients(Request $request, int $recipe_id) {
-        return $this->ingredientRepository->addIngredients($request, $recipe_id);
+        $this->ingredientRepository->addIngredients($request, $recipe_id);
     }
 }
