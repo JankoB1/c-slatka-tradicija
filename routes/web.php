@@ -14,9 +14,6 @@ Route::prefix('recipes')->group(function() {
     Route::get('/', [RecipeController::class, 'retrieve'])->name('recipes.retrieve');
     Route::post('/store', [RecipeController::class, 'store'])->name('recipes.store');
     Route::get('/{slug}', [RecipeController::class, 'retrieveSingleRecipe']);
-    Route::post('/', [RecipeController::class, 'likeRecipe']);
-    Route::post('/', [RecipeController::class, 'saveRecipe']);
-
 });
 
 Route::prefix('categories')->group(function() {
@@ -40,4 +37,6 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/edit-profil', [UserController::class, 'showEditProfile'])->name('show-edit-profile');
     Route::post('/izmeni-kontakt', [UserController::class, 'editContactDetails'])->name('edit-contact-details');
     Route::post('/izmeni-profil', [UserController::class, 'editDetails'])->name('edit-details');
+    Route::post('/handle-like', [RecipeController::class, 'likeRecipe'])->name('handle-like');
+    Route::post('/handle-save', [RecipeController::class, 'saveRecipe'])->name('handle-save');
 });

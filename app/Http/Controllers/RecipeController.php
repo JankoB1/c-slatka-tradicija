@@ -98,9 +98,9 @@ class RecipeController extends Controller
         }
     }
 
-    public function likeRecipe(Request $request, int $recipe_id, bool $action)
+    public function likeRecipe(Request $request)
     {
-        $this->recipeService->likeRecipe($request, $recipe_id,  $action);
+        $this->recipeService->likeRecipe($request, $request->recipe_id,  $request->action);
     }
 
     public function saveRecipe(Request $request, int $recipe_id, bool $action)

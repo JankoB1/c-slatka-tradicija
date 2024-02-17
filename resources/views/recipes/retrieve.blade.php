@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <section id="recipe-gallery"></section>
+    <section data-recipe-id="{{ $recipe->id }}" id="recipe-gallery"></section>
 
     <section id="recipe-actions">
         <div class="recipe-actions-inner container-space">
