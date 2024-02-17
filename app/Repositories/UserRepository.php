@@ -33,7 +33,9 @@ class UserRepository
             $user->name = $request->name;
             $user->surname = $request->surname;
             $user->phone = $request->phone;
-            $user->email = $request->email;
+            $user->email_contact = $request->email_contact;
+            $user->save();
+            return $user;
         }
         catch (QueryException $exception) {
             Log::error('Can\'t update user profile contact details: ' . $exception->getMessage());

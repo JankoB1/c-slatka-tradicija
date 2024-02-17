@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('email')->unique();
+            $table->string('email_contact')->nullable();
             $table->string('password');
             $table->unsignedSmallInteger('admin')->default(0);
 
