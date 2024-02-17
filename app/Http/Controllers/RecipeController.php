@@ -43,6 +43,7 @@ class RecipeController extends Controller
 
     public function retrieveSingleRecipe(string $slug) {
         $recipe = $this->recipeService->getRecipeBySlug($slug);
+        return view('recipes.retrieve', compact('recipe'));
     }
 
     public function create() {
