@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Step;
+use App\Repositories\StepRepository;
 use App\Services\CategoryService;
 use App\Services\ImageService;
 use App\Services\IngredientService;
@@ -20,12 +22,14 @@ class RecipeController extends Controller
     protected CategoryService $categoryService;
     protected ImageService $imageService;
     protected IngredientService $ingredientService;
+    protected StepRepository $stepRepository;
 
     public function __construct() {
         $this->recipeService = new RecipeService();
         $this->categoryService = new CategoryService();
         $this->imageService = new ImageService();
         $this->ingredientService = new IngredientService();
+        $this->stepRepository = new StepRepository();
     }
 
     public function index() {
@@ -63,6 +67,7 @@ class RecipeController extends Controller
             $recipe_id = $recipe->id;
             Log::info('Recipe id is: ' . $recipe_id);
             $this->ingredientService->addIngredients($request, $recipe_id);
+            $this->stepRepository->addSteps($request, $recipe_id);
 
             /*
             foreach( $request->file('images') as $image)
