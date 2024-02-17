@@ -195,7 +195,7 @@ createRecipeBtn.addEventListener('click', function(e) {
     let difficulty = document.querySelector('form select[name="difficulty"]').value;
     let preparationTime = document.querySelector('form select[name="preparation_time"]').value;
     let portionNum = document.querySelector('form input[name="portion_number"]').value;
-    let description = document.querySelector('textarea[name="description"]');
+    let description = document.querySelector('textarea[name="description"]').value;
 
     let ingredientGroups = document.querySelectorAll('.single-ingredient-group');
     let independentIngredients = document.querySelectorAll('.single-ingredients-inner .ingredients-cont');
@@ -217,9 +217,7 @@ createRecipeBtn.addEventListener('click', function(e) {
             let measure = single.querySelector('input[name="ingredient_measure"]').value;
             let product = single.querySelector('input[type="hidden"]').value;
             ingredients.push({
-                name: name,
-                qty: qty,
-                measure: measure,
+                title: name + ' ' + qty + ' ' + measure,
                 product: product
             });
         });
@@ -236,9 +234,7 @@ createRecipeBtn.addEventListener('click', function(e) {
         let measure = single.querySelector('input[name="ingredient_measure"]').value;
         let product = single.querySelector('input[type="hidden"]').value;
         independentIngredientsParsed.push({
-            name: name,
-            qty: qty,
-            measure: measure,
+            title: name + ' ' + qty + ' ' + measure,
             product: product
         });
     });

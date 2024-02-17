@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CategoryController;
@@ -30,3 +31,7 @@ Auth::routes();
 
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/get-all-products', [ProductController::class, 'getAllProducts'])->name('get-all-products');
+
+Route::middleware(['auth'])->group(function() {
+    Route::get('/profil', [UserController::class, 'showProfile'])->name('show-profile');
+});
