@@ -55,10 +55,10 @@ class RecipeRepository
 
     }
 
-    public function likeRecipe(Request $request, $recipeId, bool $action)
+    public function likeRecipe(RecipeRequest $request, $recipeId, bool $action)
     {
         $user = Auth::user();
-        $user->recipes_liked->syncWithoutDetaching([$recipeId => ['like' => $action]]);
+        $user->recipes_liked()->syncWithoutDetaching([$recipeId => ['like' => $action]]);
         Log::info("User with ID: $user->id liked recipe with ID: $recipeId");
         return response()->json(['message' => 'Recipe liked successfully']);
     }
