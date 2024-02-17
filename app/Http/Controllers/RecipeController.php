@@ -56,6 +56,7 @@ class RecipeController extends Controller
         try {
 
             $recipe = $this->recipeService->addRecipe($request);
+
             $type = gettype($request->file('images'));
             Log::info("Image type is $type");
 //            dd($recipe);

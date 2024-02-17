@@ -14,23 +14,21 @@ use App\Http\Requests\RecipeRequest;
 
 class RecipeRepository
 {
-    public function addRecipe(FormRequest $request) {
+    public function addRecipe(Request $request) {
 
         try {
-            $request->validated();
             $slug = Str::slug($request->title);
             $user = Auth::user();
-
+            dd($request);
             $recipe = Recipe::create([
-                'category_id'=>$request->category,
+                'category_id'=>$request->cat,
                 'user_id'=> $user->id,
                 'title'=>$request->title,
                 'slug'=>$slug,
                 'difficulty' => $request->difficulty,
-                'preparation_time' => $request->preparation_time,
-                'portion_number' => $request->portion_number,
+                'preparation_time' => $request->preparationTime,
+                'portion_number' => $request->portionNum,
                 'description' => $request->description,
-                'preparation_description' => $request->preparation_description,
             ]);
 
             $recipe_id = $recipe->id;

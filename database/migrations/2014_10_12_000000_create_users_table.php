@@ -20,7 +20,7 @@ return new class extends Migration
 
             $table->string('name')->nullable();
             $table->string('surname')->nullable();
-            $table->unsignedBigInteger('image_id')->nullable();
+            $table->unsignedBigInteger('image_path')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('city')->nullable();
             $table->string('fb')->nullable();
