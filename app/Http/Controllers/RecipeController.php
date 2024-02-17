@@ -8,6 +8,7 @@ use App\Services\IngredientService;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Services\RecipeService;
 use App\Models\Recipe;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -50,7 +51,7 @@ class RecipeController extends Controller
         ]);
     }
 
-    public function store(FormRequest $request) {
+    public function store(Request $request) {
         DB::beginTransaction();
         try {
 

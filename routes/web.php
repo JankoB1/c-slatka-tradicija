@@ -11,7 +11,7 @@ Route::get('/', [RecipeController::class, 'index'])->name('show-homepage');
 
 Route::prefix('recipes')->group(function() {
     Route::get('/', [RecipeController::class, 'retrieve'])->name('recipes.retrieve');
-    Route::post('/', [RecipeController::class, 'store'])->name('recipes.store');
+    Route::post('/store', [RecipeController::class, 'store'])->name('recipes.store');
     Route::get('/{slug}', [RecipeController::class, 'retrieveSingleRecipe']);
 });
 

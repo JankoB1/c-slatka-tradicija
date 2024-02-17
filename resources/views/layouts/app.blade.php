@@ -107,6 +107,14 @@
     <p>C Slatka Tradicija © 2024 · Sva prava zadržana.</p>
 </footer>
 
+<script>
+    let avatarImg = document.querySelector('.avatar-img');
+    if(avatarImg) {
+        avatarImg.addEventListener('click', function() {
+            document.querySelector('.user-popup').classList.toggle('active');
+        });
+    }
+</script>
 @yield('scriptsBottom')
 </body>
 </html>

@@ -28,7 +28,7 @@ jQuery.ajax({
     success: function(response) {
         products = response;
     }
-})
+});
 
 const srSteps = [
     'Prvi',
@@ -283,7 +283,18 @@ createRecipeBtn.addEventListener('click', function(e) {
         steps: stepsForm
     }
 
-    console.log(data);
+    jQuery.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        },
+        url: window.origin + '/recipes/store',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        method: 'POST',
+        success: function(response) {
+            console.log(response);
+        }
+    });
 });
 
 function searchProducts(target) {
