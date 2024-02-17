@@ -57,7 +57,12 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="col-md-9"></div>
+                <div class="col-md-9">
+                    <h1>{{ $recipe->title }}</h1>
+                    <h4>Opis recepta</h4>
+                    <p>{{ $recipe->description }}</p>
+                    <h4>Kako se priprema?</h4>
+                </div>
             </div>
         </div>
     </section>
