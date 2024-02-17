@@ -55,19 +55,19 @@ class RecipeRepository
 
     }
 
-    public function likeRecipe(RecipeRequest $request, $recipeId, bool $action)
+    public function likeRecipe(RecipeRequest $request, $recipe_id, bool $action)
     {
         $user = Auth::user();
-        $recipe = Recipe::findOrFail($recipeId);
+        $recipe = Recipe::findOrFail($recipe_id);
         $user->recipes_liked()->syncWithoutDetaching([$recipe->id => ['like' => $action]]);
         Log::info("User with ID: $user->id liked recipe with ID: $recipe->id");
         return response()->json(['message' => 'Recipe liked successfully']);
     }
 
-    public function saveRecipe(RecipeRequest $request, $recipeId, bool $action)
+    public function saveRecipe(RecipeRequest $request, $recipe_id, bool $action)
     {
         $user = Auth::user();
-        $recipe = Recipe::findOrFail($recipeId);
+        $recipe = Recipe::findOrFail($recipe_id);
         $user->recipes_liked()->syncWithoutDetaching([$recipe->id => ['save' => $action]]);
         Log::info("User with ID: $user->id saved recipe with ID: $recipe->id");
         return response()->json(['message' => 'Recipe saved successfully']);
