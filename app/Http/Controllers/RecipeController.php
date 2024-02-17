@@ -6,6 +6,7 @@ use App\Models\Step;
 use App\Repositories\StepRepository;
 use App\Services\CategoryService;
 use App\Services\ImageService;
+use App\Services\IngredientGroupService;
 use App\Services\IngredientService;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Services\RecipeService;
@@ -23,6 +24,7 @@ class RecipeController extends Controller
     protected ImageService $imageService;
     protected IngredientService $ingredientService;
     protected StepRepository $stepRepository;
+    protected IngredientGroupService $ingredientGroupService;
 
     public function __construct() {
         $this->recipeService = new RecipeService();
@@ -30,6 +32,7 @@ class RecipeController extends Controller
         $this->imageService = new ImageService();
         $this->ingredientService = new IngredientService();
         $this->stepRepository = new StepRepository();
+        $this->ingredientGroupService = new IngredientGroupService();
     }
 
     public function index() {
@@ -43,7 +46,8 @@ class RecipeController extends Controller
 
     public function retrieveSingleRecipe(string $slug) {
         $recipe = $this->recipeService->getRecipeBySlug($slug);
-        return view('recipes.retrieve', compact('recipe'));
+        $ingredientGroups = $this->ingredientGroupService->getGroupsByRecipeId($recipe->id);
+        return view('recipes.retrieve', compact('recipe', 'ingredientGroups'));
     }
 
     public function create() {

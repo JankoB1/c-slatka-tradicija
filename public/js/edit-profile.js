@@ -20,7 +20,7 @@ save1.addEventListener('click', function() {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         },
-        url: window.origin + '/',
+        url: window.origin + '/izmeni-profil',
         data: JSON.stringify(data),
         contentType: 'application/json',
         method: 'POST',
@@ -47,7 +47,7 @@ save2.addEventListener('click', function() {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         },
-        url: window.origin + '/',
+        url: window.origin + '/izmeni-kontakt',
         data: JSON.stringify(data),
         contentType: 'application/json',
         method: 'POST',

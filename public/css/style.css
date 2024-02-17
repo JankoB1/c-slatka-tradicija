@@ -1536,3 +1536,7 @@ span.ingridient-plus {
 .edit-profile-container .col-md-7 {
     padding-right: 0;
 }
+
+section#recipe-actions {
+    padding-top: 300px;
+}
