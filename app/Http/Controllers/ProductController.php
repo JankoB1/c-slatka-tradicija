@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Services\ProductService;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    protected ProductService $productService;
+
+    public function __construct() {
+        $this->productService = new ProductService();
+    }
 
     public function showAllCategories() {
         return view('products.categories');
@@ -23,6 +30,10 @@ class ProductController extends Controller
         $product = Product::where('slug', '=', $slug)->get()->first();
         $products = $product->productCategory->products;
         return view('products.single-product', compact('product', 'products'));
+    }
+
+    public function getAllProducts() {
+        return response()->json($this->productService->getAllProducts());
     }
 
 }

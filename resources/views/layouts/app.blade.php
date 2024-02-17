@@ -40,10 +40,41 @@
         <div class="header-buttons">
             @guest()
                 <a href="{{ route('login') }}" class="login-btn">Prijavi se</a>
-            @else
-                <a href="/logout" class="login-btn">Odjavi se</a>
             @endguest
             <a href="{{ route('recipes.create') }}" class="add-recipe">Dodaj recept</a>
+            @auth()
+                @if(Auth::user()->image_id != null)
+                    <img src="{{ asset('images/' . Auth::user()->image_id) }}" alt="avatar" class="avatar-img">
+                @else
+                    <img src="{{ asset('images/avatar.png') }}" alt="avatar" class="avatar-img">
+                @endif
+
+                <div class="user-popup">
+                    <p class="email">{{ Auth::user()->email }}</p>
+                    @if(Auth::user()->image_id != null)
+                        <img src="{{ asset('images/' . Auth::user()->image_id) }}" alt="avatar" class="avatar-img-popup">
+                    @else
+                        <img src="{{ asset('images/avatar.png') }}" alt="avatar" class="avatar-img-popup">
+                    @endif
+                    <p class="hello">Zdravo, {{ Auth::user()->name }}</p>
+                    <a href="#" class="my-profile-link">Moj profil</a>
+                    <div class="list">
+                        <a href="#" class="single-list-item">
+                            <p>Objavljeni recepti</p>
+                            <img src="{{ asset('images/or-icon.svg') }}" alt="">
+                        </a>
+                        <a href="#" class="single-list-item">
+                            <p>Sačuvani recepti</p>
+                            <img src="{{ asset('images/sr-icon.svg') }}" alt="">
+                        </a>
+                        <a href="/logout" class="single-list-item">
+                            <p>Odjavi se</p>
+                            <img src="{{ asset('images/os-icon.svg') }}" alt="">
+                        </a>
+                    </div>
+                </div>
+
+            @endauth
         </div>
     </nav>
 </header>

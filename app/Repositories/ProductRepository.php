@@ -19,4 +19,13 @@ class ProductRepository
             return null;
         }
     }
+
+    public function getAllProducts() {
+        try {
+            return Product::all();
+        } catch (QueryException $exception) {
+            Log::error('Can\'t retrieve products: ' . $exception->getMessage());
+            return null;
+        }
+    }
 }

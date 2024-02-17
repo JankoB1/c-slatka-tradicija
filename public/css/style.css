@@ -44,6 +44,7 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
+    background: white;
 }
 
 #main-header nav {
@@ -1211,4 +1212,40 @@ span.ingridient-plus {
     outline: none;
     border: none;
     margin-top: 20px;
+}
+
+.create-recipe-step .col-md-7 {
+    position: relative;
+}
+
+.products-ingredients {
+    position: absolute;
+    height: 200px;
+    background: red;
+    width: 45%;
+    display: none;
+    left: 0;
+}
+
+.products-ingredients.active {
+    display: block;
+}
+
+.avatar-img {
+    height: 50px;
+    width: 50px !important;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.header-buttons {
+    position: relative;
+}
+
+.user-popup {
+    position: absolute;
+    width: 510px;
+    top:
+    box-shadow: 0px 0px 42.900001525878906px 0px #53555673;
+    display: none;
 }

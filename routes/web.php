@@ -29,3 +29,4 @@ Route::get('/knjiga-recepata', [RecipeController::class, 'showRecipeBook'])->nam
 Auth::routes();
 
 Route::get('/logout', [LoginController::class, 'logout']);
+Route::get('/get-all-products', [ProductController::class, 'getAllProducts'])->name('get-all-products');

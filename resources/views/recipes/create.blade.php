@@ -41,8 +41,11 @@
                                     <div class="col-md-6">
                                         <select name="category">
                                             <option selected value="">Kategorija recepta (izaberi)</option>
-                                            <option value="1"> Torte</option>
-                                            <option value="2"> Kolaci </option>
+                                            <option value="0">Torte</option>
+                                            <option value="1">Kolaci</option>
+                                            <option value="2">Hleb i peciva</option>
+                                            <option value="3">Zimnica</option>
+                                            <option value="4">Deserti</option>
                                         </select>
                                     </div>
                                 </div>
@@ -50,9 +53,6 @@
                                     <div class="col-md-6">
                                         <select name="subcategory">
                                             <option selected value="">Podkategorija recepta (izaberi)</option>
-                                            <option value="4">Torte sa slagom </option>
-                                            <option value="5">Torte bez slaga </option>
-                                            <option value="6">Kolaci sa vocem</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
@@ -92,24 +92,22 @@
                                 <img src="{{ asset('images/lamp.svg') }}" alt="lamp">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec velit a orci malesuada fermentum id a massa. Cras interdum porttitor sapien ac congue. </p>
                             </div>
-                            <div class="col-md-7">
-                                <div class="row ingredients-cont">
-                                    <div class="col-md-6">
-                                        <input type="text" name="ingredient_name" placeholder="Naziv sastojka">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <input type="text" name="ingredient_quantity" placeholder="Količina (izaberi)">
-                                            </div>
-                                            <div class="col-md-5">
-                                                <input type="text" name="ingredient_measure" placeholder="Jedinica mere (izaberi)">
-                                            </div>
-                                            <div class="col-md-2">
-                                                <span class="ingridient-plus"><img src="{{ asset('images/ingridient-plus.svg') }}" alt="dodaj sastojak"></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="col-md-7 ingredients-section">
+                                <div class="products-ingredients">
+
+                                </div>
+
+                                <div class="ingredients-inner">
+
+                                </div>
+
+                                <div class="single-ingredients-inner">
+
+                                </div>
+
+                                <div class="add-ingredients-btns">
+                                    <button class="add-group-ingredient" type="button">Dodaj grupu sastojaka</button>
+                                    <button class="add-ingredient" type="button">Dodaj sastojak</button>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +120,18 @@
                                 <p>Predlažemo da ovaj deo raspišeš u koracima kako bi ostalima bilo lakše da prate sam proces spremanja.</p>
                             </div>
                             <div class="col-md-7">
-                                <input type="text" name="single_step" placeholder="Prvi korak">
+                                <div class="steps-inner">
+
+                                </div>
+
+                                <div class="single-steps-inner">
+
+                                </div>
+
+                                <div class="add-steps-btns">
+                                    <button class="add-group-step" type="button">Dodaj grupu koraka</button>
+                                    <button class="add-single-step" type="button">Dodaj korak</button>
+                                </div>
                             </div>
                         </div>
                     </div>
