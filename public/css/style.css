@@ -1310,7 +1310,7 @@ span.ingridient-plus {
     align-items: center;
     padding: 15px 40px;
     text-decoration: none;
-    border-bottom: 1px solid #2E476512
+    border-bottom: 1px solid #2E476512;
 }
 
 .user-popup .list a:last-child {
@@ -1373,6 +1373,7 @@ span.ingridient-plus {
     justify-content: space-between;
     align-items: baseline;
     padding-top: 80px;
+    margin-bottom: 100px;
 }
 
 .profile-top-details p {
@@ -1383,10 +1384,101 @@ span.ingridient-plus {
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
+    opacity: 0.7;
 }
 
 .profile-top-details .right {
     padding: 10px;
     background: #F6F6F6;
     border-radius: 100%;
+}
+
+.profile-top-details .right img {
+    width: 24px;
+}
+
+.profile-details {
+    box-shadow: 0px 16.60098648071289px 33.20197296142578px 0px #E0E0ECCC;
+    padding: 40px 60px;
+    border-radius: 61px;
+}
+
+.profile-details h4 {
+    font-family: Montserrat;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 34px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2E4765;
+}
+
+.single-detail {
+    padding: 20px 0;
+    border-bottom: 1px solid #2E476512;
+}
+
+.single-detail:last-child {
+    border-bottom: none;
+}
+
+.single-detail a {
+    text-decoration: none;
+}
+
+.single-detail span {
+    font-family: Montserrat;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2E4765;
+    text-decoration: none;
+    padding-left: 10px;
+    opacity: 0.7;
+    position: relative;
+    top: 3px;
+}
+
+.single-detail img {
+    height: 24px;
+}
+
+.profile-recipes {
+    box-shadow: 0px 16.60098648071289px 33.20197296142578px 0px #E0E0ECCC;
+    border-radius: 61px;
+    padding: 60px 0;
+}
+
+.profile-recipes .top-nav {
+    display: flex;
+    width: 100%;
+    border-bottom: 0.8px solid rgba(3, 2, 41, 0.1);
+    padding-bottom: 40px;
+}
+
+.profile-recipes .top-nav .single-btn {
+    width: 50%;
+}
+
+.profile-recipes .top-nav .single-btn p {
+    font-family: Montserrat;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #2E4765;
+    width: 250px;
+    height: 54px;
+    border-radius: 32px;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-recipes .top-nav .single-btn p.active {
+    background: #E2EFFF;
 }

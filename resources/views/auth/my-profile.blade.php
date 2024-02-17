@@ -37,22 +37,22 @@
                         <h4>O meni</h4>
                         <div class="single-detail">
                             <img src="{{ asset('images/birthdate.svg') }}" alt="birthdate">
-                            {{ Auth::user()->birthdate }}
+                            <span>{{ Auth::user()->birthdate }}</span>
                         </div>
                         <div class="single-detail">
                             <img src="{{ asset('images/city.svg') }}" alt="city">
-                            {{ Auth::user()->city }}
+                            <span>{{ Auth::user()->city }}</span>
                         </div>
                         <div class="single-detail">
                             <a href="{{ Auth::user()->fb }}">
                                 <img src="{{ asset('images/fb-profile.svg') }}" alt="fb">
-                                Facebook profil
+                                <span>Facebook profil</span>
                             </a>
                         </div>
                         <div class="single-detail">
                             <a href="{{ Auth::user()->ig }}">
                                 <img src="{{ asset('images/ig-profile.svg') }}" alt="ig">
-                                Instagram profil
+                                <span>Instagram profil</span>
                             </a>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                     <div class="profile-recipes">
                         <div class="top-nav">
                             <div class="single-btn">
-                                <p>Objavljeni recepti</p>
+                                <p class="active">Objavljeni recepti</p>
                             </div>
                             <div class="single-btn">
                                 <p>Sačuvani recepti</p>

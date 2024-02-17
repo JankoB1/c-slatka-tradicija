@@ -34,4 +34,5 @@ Route::get('/get-all-products', [ProductController::class, 'getAllProducts'])->n
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/profil', [UserController::class, 'showProfile'])->name('show-profile');
+    Route::get('/edit-profil', [UserController::class, 'showEditProfile'])->name('show-edit-profile');
 });
