@@ -42,7 +42,6 @@ class RecipeController extends Controller
 
     public function create() {
         $categories = $this->categoryService->getAllCategories();
-        //$subcategories = $this->categoryService->getSubCategories();
         $ingredients = $this->ingredientService->getIngredientsC();
 
         return view('recipes.create', [

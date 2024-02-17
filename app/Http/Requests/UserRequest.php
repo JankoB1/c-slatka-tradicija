@@ -24,7 +24,6 @@ class UserRequest extends FormRequest
         return [
             'username' => 'required',
             'email' => 'required',
-            'password' => 'required',
         ];
     }
 }

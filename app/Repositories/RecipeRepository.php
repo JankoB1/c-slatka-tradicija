@@ -5,6 +5,7 @@ namespace App\Repositories;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use App\Models\Recipe;
@@ -18,9 +19,11 @@ class RecipeRepository
         try {
             $request->validated();
             $slug = Str::slug($request->title);
+            $user = Auth::user();
 
             $recipe = Recipe::create([
                 'category_id'=>$request->category,
+                'user_id'=> $user->id,
                 'title'=>$request->title,
                 'slug'=>$slug,
                 'difficulty' => $request->difficulty,
@@ -40,6 +43,27 @@ class RecipeRepository
         }
     }
 
+    public function likeRecipe(RecipeRequest $request, $recipeId, bool $action)
+    {
+        $user = Auth::user();
+        $recipe = Recipe::findOrFail($recipeId);
+        $user->recipes_liked()->syncWithoutDetaching([$recipe->id => ['like' => $action]]);
+        Log::info("User with ID: $user->id liked recipe with ID: $recipe->id");
+        return response()->json(['message' => 'Recipe liked successfully']);
+    }
+
+    public function saveRecipe(RecipeRequest $request, $recipeId, bool $action)
+    {
+        $user = Auth::user();
+        $recipe = Recipe::findOrFail($recipeId);
+        $user->recipes_liked()->syncWithoutDetaching([$recipe->id => ['save' => $action]]);
+        Log::info("User with ID: $user->id saved recipe with ID: $recipe->id");
+        return response()->json(['message' => 'Recipe saved successfully']);
+    }
+
+
+
+
     public function getRecipeBySlug($slug) {
         try {
             return Recipe::where('slug', '=', $slug)->get()->first();
@@ -48,16 +72,6 @@ class RecipeRepository
             return null;
         }
     }
-
-    public function getRecipeByCategory($category_id) {
-        try {
-            return Recipe::where('category_id', '=', $category_id)->get();
-        } catch (QueryException $exception) {
-            Log::error('Can\'t retrieve recipe by category: ' . $exception->getMessage());
-            return null;
-        }
-    }
-
 }
 
 // 'slug' => Str::slug('title', '-')
