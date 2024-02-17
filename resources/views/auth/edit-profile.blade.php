@@ -26,7 +26,9 @@
                             <p>{{ Auth::user()->email }}</p>
                         </div>
                         <div class="right">
-                            <img src="{{ asset('images/settings-icon.svg') }}" alt="settings">
+                            <a href="{{ route('show-edit-profile') }}">
+                                <img src="{{ asset('images/settings-icon.svg') }}" alt="settings">
+                            </a>
                         </div>
                     </div>
                 </div>

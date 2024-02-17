@@ -33,16 +33,14 @@ save1.addEventListener('click', function() {
 save2.addEventListener('click', function() {
     let name = document.querySelector('input[name="name"]').value;
     let surname = document.querySelector('input[name="name"]').value;
-    let city = document.querySelector('input#city').value;
-    let fb = document.querySelector('input#fb').value;
-    let ig = document.querySelector('input#ig').value;
+    let phone = document.querySelector('input#phone').value;
+    let email = document.querySelector('input#email').value;
 
     let data = {
-        about: about,
-        birthdate: birthdate,
-        city: city,
-        fb: fb,
-        ig: ig
+        name: name,
+        surname: surname,
+        phone: phone,
+        email: email,
     }
 
     jQuery.ajax({
