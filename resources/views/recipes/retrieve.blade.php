@@ -18,7 +18,7 @@
             </div>
             <div>
                 <img src="#" alt="">
-                <p>Sačuvaj u knjižicu recepata</p>
+                <p class="add-to-book">Sačuvaj u knjižicu recepata</p>
             </div>
             <div>
                 <img src="#" alt="">
