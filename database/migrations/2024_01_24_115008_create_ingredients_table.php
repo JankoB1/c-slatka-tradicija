@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('recipe_id');
             $table->string('title');
             $table->foreignId('product_id')->nullable();
-            $table->unsignedBigInteger('group')->nullable();
+            $table->unsignedBigInteger('group')->nullable()->default(null);
             $table->timestamps();
         });
     }
