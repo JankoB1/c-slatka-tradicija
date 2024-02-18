@@ -35,9 +35,7 @@ class RecipeController extends Controller
         $this->ingredientGroupService = new IngredientGroupService();
     }
 
-    public function index(Request $request) {
-        $data = $request->session()->all();
-        dd($data);
+    public function index() {
         return view('homepage');
     }
 
