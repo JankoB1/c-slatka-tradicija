@@ -84,15 +84,21 @@ class RecipeRepository
     }
 
     public function saveToSession(Request $request) {
-        $recipe_id = $request->input('recipe_id');
-        $saved_recipes = $request->session()->get('saved_recipes', []);
+        $recipe_id = $request->recipe_id;
+        $recipes = $request->session()->get('recipes', []);
+        $key = array_search($recipe_id, $recipes);
 
-        if (!in_array($recipe_id, $saved_recipes)) {
-            $savedRecipes[] = $recipe_id;
-            $request->session()->put('saved_recipes', $savedRecipes);
+        if ($key !== false) {
+            unset($recipes[$key]);
+        } else {
+            $recipes[] = $recipe_id;
         }
 
+        $request->session()->put('recipes', $recipes);
+        $request->session()->save();
 
+        $data = $request->session()->all();
+        dd($data);
     }
 }
 
