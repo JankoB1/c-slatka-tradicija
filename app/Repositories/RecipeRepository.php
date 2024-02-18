@@ -74,7 +74,6 @@ class RecipeRepository
             ]);
     }
 
-
     public function getRecipeBySlug($slug) {
         try {
             return Recipe::where('slug', '=', $slug)->get()->first();
