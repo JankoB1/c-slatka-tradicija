@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\UserRecipe;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Request;
@@ -55,20 +56,22 @@ class RecipeRepository
 
     }
 
-    public function likeRecipe(RecipeRequest $request, $recipeId, bool $action)
+    public function likeRecipe(Request $request)
     {
         $user = Auth::user();
-        $user->recipes_liked()->syncWithoutDetaching([$recipeId => ['like' => $action]]);
-        Log::info("User with ID: $user->id liked recipe with ID: $recipeId");
-        return response()->json(['message' => 'Recipe liked successfully']);
+        return UserRecipe::updateOrCreate(
+            ['user_id' => $user->id, 'recipe_id' => $request->recipe_id],
+            ['like' => $request->action,
+            ]);
     }
 
-    public function saveRecipe(RecipeRequest $request, $recipeId, bool $action)
+    public function saveRecipe(Request $request)
     {
         $user = Auth::user();
-        $user->recipes_liked()->syncWithoutDetaching([$recipeId => ['save' => $action]]);
-        Log::info("User with ID: $user->id saved recipe with ID: $recipeId");
-        return response()->json(['message' => 'Recipe saved successfully']);
+        return UserRecipe::updateOrCreate(
+            ['user_id' => $user->id, 'recipe_id' => $request->recipe_id],
+            ['save' => $request->action,
+            ]);
     }
 
 

@@ -1537,6 +1537,33 @@ span.ingridient-plus {
     padding-right: 0;
 }
 
-section#recipe-actions {
-    padding-top: 300px;
+#recipe-gallery {
+    height: 80vh;
+}
+
+.recipe-actions-inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.recipe-actions-inner div {
+    border: 1px solid #2E476566;
+    border-radius: 32px;
+    display: flex;
+    height: 58px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.recipe-actions-inner p {
+    font-family: Montserrat;
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2E4765;
+    width: 100%;
+    margin-bottom: 0;
 }

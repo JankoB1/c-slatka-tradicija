@@ -8,7 +8,6 @@
 
     <section id="recipe-actions">
         <div class="recipe-actions-inner container-space">
-            <p class="like">Like</p>
             <div>
                 <img src="#" alt="">
                 <p>Podeli</p>

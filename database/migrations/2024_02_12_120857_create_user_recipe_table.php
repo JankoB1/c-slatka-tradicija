@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_recipe', function (Blueprint $table) {
+        Schema::create('user_recipes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('recipe_id');
             // if true like, if false save, if null not liked nor saved
-            $table->boolean('like')->default(null);
-            $table->boolean('save')->default(null);
+            $table->boolean('like')->nullable()->default(null);
+            $table->boolean('save')->nullable()->default(null);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_recipe');
+        Schema::dropIfExists('user_recipes');
     }
 };
