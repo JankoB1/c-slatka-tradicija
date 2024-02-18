@@ -10,6 +10,10 @@
         <div class="recipe-actions-inner container-space">
             <div>
                 <img src="#" alt="">
+                <p class="like">Like</p>
+            </div>
+            <div>
+                <img src="#" alt="">
                 <p>Podeli</p>
             </div>
             <div>

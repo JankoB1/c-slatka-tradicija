@@ -3,7 +3,7 @@ let saveBtn = document.querySelector('.save');
 
 likeBtn.addEventListener('click', function() {
     let data = {
-        action: false,
+        action: true,
         recipe_id: parseInt(document.querySelector('#recipe-gallery').dataset.recipeId)
     };
 
@@ -23,7 +23,7 @@ likeBtn.addEventListener('click', function() {
 
 saveBtn.addEventListener('click', function() {
     let data = {
-        action: false,
+        action: true,
         recipe_id: parseInt(document.querySelector('#recipe-gallery').dataset.recipeId)
     };
 
