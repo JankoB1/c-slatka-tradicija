@@ -36,4 +36,9 @@ class RecipeService
     {
         return $this->recipeRepository->saveRecipe($request);
     }
+
+    public function saveToSession(Request $request)
+    {
+        $this->recipeRepository->saveToSession($request);
+    }
 }

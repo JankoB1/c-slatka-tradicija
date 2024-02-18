@@ -82,6 +82,18 @@ class RecipeRepository
             return null;
         }
     }
+
+    public function saveToSession(Request $request) {
+        $recipe_id = $request->input('recipe_id');
+        $saved_recipes = $request->session()->get('saved_recipes', []);
+
+        if (!in_array($recipe_id, $saved_recipes)) {
+            $savedRecipes[] = $recipe_id;
+            $request->session()->put('saved_recipes', $savedRecipes);
+        }
+
+
+    }
 }
 
 // 'slug' => Str::slug('title', '-')
