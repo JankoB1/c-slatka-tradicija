@@ -143,7 +143,8 @@
                                 <p>Fotografije su obavezan element recepta, a možeš da ih dodaš maksimalno 10.</p>
                                 <p>Obavezno je okačiti fotografiju finalnog proizvoda, a ostatak je tvoj izbor. Možeš prikazati neki deo procesa, fotografije C proizvoda ili nekog alata.</p>
                                 <label for="images">Upload Images (up to 10)</label>
-                                <input type="file" name="images[]" multiple accept="images/*">
+                                <p class="add-image">Dodaj sliku</p>
+{{--                                <input type="file" name="images[]" multiple accept="images/*">--}}
                             </div>
                             <div class="col-md-7">
                                 <button class="submit-recipe" type="button">Pošalji recept</button>

@@ -18,6 +18,7 @@ let subcategory = document.querySelector('select[name="subcategory"]');
 let products = [];
 let productsIngredients = document.querySelector('.products-ingredients');
 let ingredientsSection = document.querySelector('.ingredients-section');
+let addImageBtn = document.querySelector('.add-image');
 
 jQuery.ajax({
     headers: {
@@ -330,3 +331,30 @@ function searchProducts(target) {
         productsIngredients.classList.remove('active');
     }
 }
+
+addImageBtn.addEventListener('click', function() {
+    let addImageInput = document.createElement('input');
+    addImageInput.type = 'file';
+    addImageInput.style.display = 'none';
+    addImageInput.addEventListener('change', function() {
+        // Create FormData object
+        let formData = new FormData();
+        formData.append('image', addImageInput.files[0]); // Assuming you only want to upload one image
+
+        // Send FormData via Ajax
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'recipes/add-image'); // Replace 'your-backend-url' with your Laravel backend URL
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    console.log('Image uploaded successfully');
+                } else {
+                    console.error('Error uploading image');
+                }
+            }
+        };
+        xhr.send(formData);
+    });
+    document.querySelector('.create-recipe-step[data-step="4"]').appendChild(addImageInput);
+    addImageInput.click();
+});

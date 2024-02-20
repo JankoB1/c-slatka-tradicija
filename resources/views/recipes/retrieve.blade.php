@@ -3,6 +3,6 @@
 @section('title', 'Svi recepti')
 
 @section('content')
-    
+
 @endsection
 
