@@ -112,4 +112,8 @@ class RecipeController extends Controller
     public function showRecipeBook() {
         return view('recipes-book');
     }
+
+    public function saveToSession(Request $request) {
+        $this->recipeService->saveToSession($request);
+    }
 }
