@@ -19,7 +19,11 @@ class ImageController
     {
         $image_path = $request->file('image')->store('upload', 'public');
         return $image_path;
+    }
+
+    public function addImage(Request $request)
+    {
         $recipe_id = $request->recipe_id;
-        return $this->imageService->addImage($image, $recipe_id);
+
     }
 }

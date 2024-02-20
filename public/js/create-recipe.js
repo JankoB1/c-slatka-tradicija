@@ -344,7 +344,7 @@ addImageBtn.addEventListener('click', function() {
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
             },
-            url: window.origin + '/recipes/add-image',
+            url: window.origin + '/recipes/upload-image',
             data: formData,
             processData: false, // Important: prevents jQuery from automatically processing the FormData object
             contentType: false, // Important: prevents jQuery from automatically setting the content type
