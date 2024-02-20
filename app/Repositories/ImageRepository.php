@@ -39,8 +39,8 @@ class ImageRepository
             $croppedImage = imagecrop($imageResource, [
                 'x' => $xOffset,
                 'y' => 0,
-                'width' => $originalWidth, // Use the full width for cropping
-                'height' => $originalHeight, // Use the full height for cropping
+                'width' => $originalWidth,
+                'height' => $originalHeight,
             ]);
 
             $imf = imagecreatetruecolor($newWidth, $newHeight);
