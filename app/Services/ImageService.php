@@ -15,6 +15,10 @@ class ImageService
     }
 
     public function saveMaskImage(Request $request) {
-        $this->imageRepository->saveMaskImage($request->imageData, $request->xOffset, $request->imageName, 1);
+        $this->imageRepository->saveMaskImage(
+            $request->imageData,
+            $request->xOffset,
+            $request->imageName,
+            1);
     }
 }

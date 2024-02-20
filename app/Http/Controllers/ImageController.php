@@ -17,8 +17,7 @@ class ImageController
 
     public function uploadImage(Request $request)
     {
-        $image_path = $request->file('image')->store('upload', 'public');
-        return $image_path;
+        return $request->file('image')->store('upload', 'public');
     }
 
     public function addImage(Request $request)
