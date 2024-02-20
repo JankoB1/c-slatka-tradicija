@@ -337,23 +337,26 @@ addImageBtn.addEventListener('click', function() {
     addImageInput.type = 'file';
     addImageInput.style.display = 'none';
     addImageInput.addEventListener('change', function() {
-        // Create FormData object
         let formData = new FormData();
-        formData.append('image', addImageInput.files[0]); // Assuming you only want to upload one image
+        formData.append('image', addImageInput.files[0]);
 
-        // Send FormData via Ajax
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', 'recipes/add-image'); // Replace 'your-backend-url' with your Laravel backend URL
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    console.log('Image uploaded successfully');
-                } else {
-                    console.error('Error uploading image');
-                }
+        jQuery.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            },
+            url: window.origin + '/recipes/add-image',
+            data: formData,
+            processData: false, // Important: prevents jQuery from automatically processing the FormData object
+            contentType: false, // Important: prevents jQuery from automatically setting the content type
+            method: 'POST',
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error uploading image:', error);
             }
-        };
-        xhr.send(formData);
+        });
+
     });
     document.querySelector('.create-recipe-step[data-step="4"]').appendChild(addImageInput);
     addImageInput.click();
