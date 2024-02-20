@@ -350,7 +350,23 @@ addImageBtn.addEventListener('click', function() {
             contentType: false, // Important: prevents jQuery from automatically setting the content type
             method: 'POST',
             success: function(response) {
-                console.log(response);
+                let imagePath = window.origin + '/storage/' + response;
+                let newImg = document.createElement('div');
+                newImg.classList.add('single-img');
+                newImg.style.backgroundImage = 'url("' + imagePath + '")';
+                document.querySelector('.images').appendChild(newImg);
+                domtoimage.toPng(document.querySelector('.single-img'), { quality: 0.99, height: 356,  width: 734 })
+                    .then(dUrl => {
+                        domtoimage.toPng(document.querySelector('.single-img'), { quality: 0.99, height: 356,  width: 734 })
+                            .then(dataUrl => {
+                                let imageElement = new Image();
+                                imageElement.src = dataUrl;
+                                let currentTimeSeconds = Math.floor(Date.now() / 1000);
+                                let imageName = currentTimeSeconds + '.png';
+                                console.log(imageName)
+                                saveMaskImage(dataUrl, 0, imageName);
+                            })
+                    })
             },
             error: function(xhr, status, error) {
                 console.error('Error uploading image:', error);
@@ -361,3 +377,18 @@ addImageBtn.addEventListener('click', function() {
     document.querySelector('.create-recipe-step[data-step="4"]').appendChild(addImageInput);
     addImageInput.click();
 });
+
+function saveMaskImage(dataUrl, xOffset, imageName) {
+    jQuery.ajax({
+        url: window.location.origin + '/recipes/add-image', method: 'post', headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        }, data: {
+            'imageData': dataUrl,
+            'xOffset': xOffset,
+            'imageName': imageName
+        },  success: function (result) {
+            document.querySelector('form #image_name').value = imageName;
+            localStorage.setItem('savedCard', window.origin + '/images/final/' + imageName);
+        }
+    });
+}

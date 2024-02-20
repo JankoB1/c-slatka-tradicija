@@ -1556,6 +1556,13 @@ span.ingridient-plus {
     padding: 0 30px;
 }
 
+.images .single-img {
+    width: 734px;
+    height: 356px;
+    background-size: 130%;
+    background-position: center center;
+}
+
 .recipe-actions-inner p {
     font-family: Montserrat;
     font-size: 21px;
