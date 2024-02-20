@@ -17,9 +17,8 @@ class ImageController
 
     public function uploadImage(Request $request)
     {
-        $image = $request->file('image');
-        $image_path = $request->file('image')->store('images', 'public');
-        return Storage::append("public_path() . /recipe_images/image", $image);
+        $image_path = $request->file('image')->store('upload', 'public');
+        return $image_path;
         $recipe_id = $request->recipe_id;
         return $this->imageService->addImage($image, $recipe_id);
     }

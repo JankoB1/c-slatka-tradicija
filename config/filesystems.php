@@ -54,14 +54,7 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
-        ],
-
-        'recipe_images_disk' => [
-            'driver' => 'local',
-            'root'   => public_path() . '/recipe_images/',
-            'throw' => true,
         ]
-
     ],
 
     /*

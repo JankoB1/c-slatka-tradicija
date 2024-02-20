@@ -16,7 +16,7 @@ Route::prefix('recipes')->group(function() {
     Route::post('/store', [RecipeController::class, 'store'])->name('recipes.store');
     Route::get('/{slug}', [RecipeController::class, 'retrieveSingleRecipe']);
     Route::post('/add-recipes-book', [RecipeController::class, 'saveToSession']);
-    Route::post('/upload-image', [ImageController::class, 'uploadImage']);
+    Route::post('/add-image', [ImageController::class, 'uploadImage']);
 });
 
 Route::prefix('categories')->group(function() {
