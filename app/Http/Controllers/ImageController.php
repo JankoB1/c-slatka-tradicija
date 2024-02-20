@@ -23,7 +23,6 @@ class ImageController
 
     public function addImage(Request $request)
     {
-        $recipe_id = $request->recipe_id;
-
+        $this->imageService->saveMaskImage($request);
     }
 }
