@@ -6,6 +6,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CategoryController;
 
 Route::get('/', [RecipeController::class, 'index'])->name('show-homepage');
@@ -15,6 +16,7 @@ Route::prefix('recipes')->group(function() {
     Route::post('/store', [RecipeController::class, 'store'])->name('recipes.store');
     Route::get('/{slug}', [RecipeController::class, 'retrieveSingleRecipe']);
     Route::post('/add-recipes-book', [RecipeController::class, 'saveToSession']);
+    Route::post('/add-image', [ImageController::class, 'addImage']);
 });
 
 Route::prefix('categories')->group(function() {

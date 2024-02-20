@@ -10,10 +10,11 @@ class ImageRepository
 {
     public function addImage($path, $recipe_id) {
         try {
-            RecipeImages::create([
+            return RecipeImages::create([
                 'path' => $path,
                 'recipe_id' => $recipe_id,
-            ]);
+            ])->path;
+
         }
         catch (QueryException $exception) {
                 Log::error('Can\'t upload image: ' . $exception->getMessage());

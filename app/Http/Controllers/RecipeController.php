@@ -65,28 +65,8 @@ class RecipeController extends Controller
         try {
 
             $recipe = $this->recipeService->addRecipe($request);
-
-            $type = gettype($request->file('images'));
-            Log::info("Image type is $type");
-//            dd($recipe);
-            $recipe_id = $recipe->id;
-            Log::info('Recipe id is: ' . $recipe_id);
-            $this->ingredientService->addIngredients($request, $recipe_id);
-            $this->stepRepository->addSteps($request, $recipe_id);
-
-            /*
-            foreach( $request->file('images') as $image)
-            {
-                Storage::append("public_path() . /recipe_images/image", $image);
-                $this->imageService->addImage($image, $recipe_id);
-            }
-            */
-            /*
-            foreach ($request->file('images') as $image) {
-                $path = $image->store('recipe_images', 'public');
-                $this->imageService->addImage($path, $recipe_id);
-            }
-            */
+            $this->ingredientService->addIngredients($request, $recipe->id);
+            $this->stepRepository->addSteps($request, $recipe->id);
             DB::commit();
             return redirect()->route('recipes.retrieve')->with('success', 'Recipe created successfully');
 
