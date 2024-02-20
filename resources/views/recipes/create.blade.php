@@ -2,6 +2,14 @@
 
 @section('title', 'Create a New Recipe')
 
+@section('scriptsTop')
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+@endsection
+
 @section('content')
     <section id="create-recipe-hero">
 
@@ -144,6 +152,9 @@
                                 <p>Obavezno je okačiti fotografiju finalnog proizvoda, a ostatak je tvoj izbor. Možeš prikazati neki deo procesa, fotografije C proizvoda ili nekog alata.</p>
                                 <label for="images">Upload Images (up to 10)</label>
                                 <p class="add-image">Dodaj sliku</p>
+                                <div class="images">
+
+                                </div>
 {{--                                <input type="file" name="images[]" multiple accept="images/*">--}}
                             </div>
                             <div class="col-md-7">
