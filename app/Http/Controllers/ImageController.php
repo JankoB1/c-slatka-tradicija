@@ -15,10 +15,11 @@ class ImageController
         $this->imageService = new ImageService();
     }
 
-    public function addImage(Request $request)
+    public function uploadImage(Request $request)
     {
-        $image = $request->image;
-        Storage::append("public_path() . /recipe_images/image", $image);
+        $image = $request->file('image');
+        $image_path = $request->file('image')->store('images', 'public');
+        return Storage::append("public_path() . /recipe_images/image", $image);
         $recipe_id = $request->recipe_id;
         return $this->imageService->addImage($image, $recipe_id);
     }
