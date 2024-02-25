@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Recipe extends Model
 {
+    use HasFactory;
     protected $guarded = [];
 
     public function images() : HasMany
@@ -32,5 +33,9 @@ class Recipe extends Model
         return $this->hasMany(Ingredient::class, 'recipe_id');
     }
 
-    use HasFactory;
+    public function steps() : HasMany
+    {
+        return $this->hasMany(Step::class, 'recipe_id');
+    }
+
 }

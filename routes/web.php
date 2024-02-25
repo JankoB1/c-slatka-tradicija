@@ -10,11 +10,14 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CategoryController;
 
 Route::get('/', [RecipeController::class, 'index'])->name('show-homepage');
+Route::get('/o-nama', [RecipeController::class, 'showAbout'])->name('show-about');
+Route::get('/recepti/{slug}', [RecipeController::class, 'showRecipeCategory'])->name('show-recipe-category');
+Route::get('/recepti/{category}/{slug}', [RecipeController::class, 'retrieveSingleRecipe'])->name('show-single-recipe');
+Route::get('/recepti', [RecipeController::class, 'showAllCategories'])->name('show-all-recipes');
 
 Route::prefix('recipes')->group(function() {
     Route::get('/', [RecipeController::class, 'retrieve'])->name('recipes.retrieve');
     Route::post('/store', [RecipeController::class, 'store'])->name('recipes.store');
-    Route::get('/{slug}', [RecipeController::class, 'retrieveSingleRecipe']);
     Route::post('/add-recipes-book', [RecipeController::class, 'saveToSession']);
     Route::post('/add-image', [ImageController::class, 'uploadImage']);
 });

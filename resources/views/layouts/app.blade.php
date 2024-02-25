@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @yield('styles')
@@ -30,9 +31,9 @@
             <img src="{{ asset('images/logo-c.png') }}" alt="c logo">
         </a>
         <ul>
-            <li><a href="#">O nama</a></li>
+            <li><a href="{{ route('show-about') }}">O nama</a></li>
             <li><a href="{{ route('show-all-categories') }}">Proizvodi</a></li>
-            <li><a href="{{ route('recipes.retrieve') }}">Recepti</a></li>
+            <li><a href="{{ route('show-all-recipes') }}">Recepti</a></li>
             <li><a href="#">Priče iz C sveta</a></li>
             <li><a href="#">Nagradni konkursi</a></li>
             <li><a href="{{ route('show-recipe-book') }}">Moja knjižica recepata</a></li>

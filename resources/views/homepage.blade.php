@@ -75,11 +75,28 @@
             <p>Izaberi kategoriju, pogledaj recepte koji smo izdvojili<br>za tebe i upusti se u kulinarsku avanturu</p>
             <div class="categories-banners row">
                 <div class="col-md-6">
-                    <a href="#">
-                        <div class="single-category-banner">
-                            <p>Torte</p>
+                    <div class="single-category-banner">
+                        <p>Torte</p>
+                    </div>
+                    <div class="single-category-subcategories">
+                        <div class="arrow-col">
+                            <img src="{{ asset('images/up-arrow.svg') }}" alt="up-arrow">
                         </div>
-                    </a>
+                        <div class="single-subcategories">
+                            <div class="single-subcategory">
+                                <div class="subcategory-img"></div>
+                                <p class="subcategory-title">Čokoladne torte</p>
+                            </div>
+                            <div class="single-subcategory">
+                                <div class="subcategory-img"></div>
+                                <p class="subcategory-title">Čokoladne torte</p>
+                            </div>
+                            <div class="single-subcategory">
+                                <div class="subcategory-img"></div>
+                                <p class="subcategory-title">Čokoladne torte</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <a href="#">
@@ -129,4 +146,5 @@
 
 @section('scriptsBottom')
     <script type="text/javascript" src="{{ asset('js/homepage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/categories-filter.js') }}"></script>
 @endsection

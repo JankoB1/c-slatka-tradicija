@@ -4,7 +4,7 @@ let addToBook = document.querySelector('.add-to-book');
 
 likeBtn.addEventListener('click', function() {
     let data = {
-        action: true,
+        action: !this.classList.contains('active'),
         recipe_id: parseInt(document.querySelector('#recipe-gallery').dataset.recipeId)
     };
 
@@ -17,14 +17,14 @@ likeBtn.addEventListener('click', function() {
         contentType: 'application/json',
         method: 'POST',
         success: function(response) {
-            console.log(response);
+            likeBtn.classList.toggle('active');
         }
     });
 });
 
 saveBtn.addEventListener('click', function() {
     let data = {
-        action: true,
+        action: !this.classList.contains('active'),
         recipe_id: parseInt(document.querySelector('#recipe-gallery').dataset.recipeId)
     };
 
@@ -37,7 +37,7 @@ saveBtn.addEventListener('click', function() {
         contentType: 'application/json',
         method: 'POST',
         success: function(response) {
-            console.log(response);
+            saveBtn.classList.toggle('active');
         }
     });
 });

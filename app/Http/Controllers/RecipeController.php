@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Step;
 use App\Repositories\StepRepository;
 use App\Services\CategoryService;
 use App\Services\ImageService;
 use App\Services\IngredientGroupService;
 use App\Services\IngredientService;
+use App\Services\StepGroupService;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Services\RecipeService;
 use App\Models\Recipe;
@@ -25,6 +27,7 @@ class RecipeController extends Controller
     protected IngredientService $ingredientService;
     protected StepRepository $stepRepository;
     protected IngredientGroupService $ingredientGroupService;
+    protected StepGroupService $stepGroupService;
 
     public function __construct() {
         $this->recipeService = new RecipeService();
@@ -33,10 +36,15 @@ class RecipeController extends Controller
         $this->ingredientService = new IngredientService();
         $this->stepRepository = new StepRepository();
         $this->ingredientGroupService = new IngredientGroupService();
+        $this->stepGroupService = new StepGroupService();
     }
 
     public function index() {
         return view('homepage');
+    }
+
+    public function showAbout() {
+        return view('about');
     }
 
     public function retrieve() {
@@ -44,10 +52,11 @@ class RecipeController extends Controller
         return view('recipes.retrieve', ['recipes' => $recipes]);
     }
 
-    public function retrieveSingleRecipe(string $slug) {
+    public function retrieveSingleRecipe(string $category, string $slug) {
         $recipe = $this->recipeService->getRecipeBySlug($slug);
         $ingredientGroups = $this->ingredientGroupService->getGroupsByRecipeId($recipe->id);
-        return view('recipes.show', compact('recipe', 'ingredientGroups'));
+        $stepGroups = $this->stepGroupService->getGroupsByRecipeId($recipe->id);
+        return view('recipes.show', compact('recipe', 'ingredientGroups', 'stepGroups'));
     }
 
     public function create() {
@@ -95,5 +104,15 @@ class RecipeController extends Controller
 
     public function saveToSession(Request $request) {
         $this->recipeService->saveToSession($request);
+    }
+
+    public function showRecipeCategory($slug) {
+        $category = Category::where('slug', '=', $slug)->get()->first();
+        $recipes = $category->recipes()->paginate(1);
+        return view('recipes.category', compact('category', 'recipes'));
+    }
+
+    public function showAllCategories() {
+        return view('recipes.recipes');
     }
 }
