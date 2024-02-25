@@ -30,32 +30,39 @@ class IngredientRepository
     }
 
     public function addIngredients(Request $request, int $recipe_id) {
-        $all_ingredients = $request->input('ingredients');
-        $groups = $all_ingredients['ingredientGroups'];
-        $ingredients_without_group = $all_ingredients['ingredients'];
+        try {
+            $all_ingredients = $request->input('ingredients');
+            $groups = $all_ingredients['ingredientGroups'];
+            $ingredients_without_group = $all_ingredients['ingredients'];
 
-        foreach ($groups as $group) {
-            $ingredient_group = IngredientGroup::create([
-                'name' => $group['name'],
-            ]);
-            foreach($group['ingredients'] as $item) {
+            foreach ($groups as $group) {
+                $ingredient_group = IngredientGroup::create([
+                    'name' => $group['name'],
+                ]);
+                foreach($group['ingredients'] as $item) {
+                    Ingredient::create([
+                        'recipe_id' => $recipe_id,
+                        'product_id' => $item['product'],
+                        'title' => $item['title'],
+                        'group' => $ingredient_group->id,
+                    ]);
+                }
+            }
+
+            foreach($ingredients_without_group as $item) {
                 Ingredient::create([
                     'recipe_id' => $recipe_id,
                     'product_id' => $item['product'],
                     'title' => $item['title'],
-                    'group' => $ingredient_group->id,
+                    'group' => null,
                 ]);
             }
         }
-
-        foreach($ingredients_without_group as $item) {
-            Ingredient::create([
-                'recipe_id' => $recipe_id,
-                'product_id' => $item['product'],
-                'title' => $item['title'],
-                'group' => null,
-            ]);
+        catch (QueryException $exception) {
+            Log::error('Can\'t add ingredients: ' . $exception->getMessage());
+            return null;
         }
+
 
 
     }

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\ImageRepository;
+use Illuminate\Http\Request;
 
 class ImageService
 {
@@ -13,7 +14,11 @@ class ImageService
         $this->imageRepository = new ImageRepository();
     }
 
-    public function addImage($path, $recipe_id) {
-        return $this->imageRepository->addImage($path, $recipe_id);
+    public function saveMaskImage(Request $request) {
+        $this->imageRepository->saveMaskImage(
+            $request->imageData,
+            $request->xOffset,
+            $request->imageName,
+            1);
     }
 }

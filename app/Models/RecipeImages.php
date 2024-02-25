@@ -10,9 +10,7 @@ class RecipeImages extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'path',
-        'recipe_id',];
+    protected $guarded = [];
 
     public function recipe() : BelongsTo {
         return $this->belongsTo(Recipe::class, 'recipe_id');

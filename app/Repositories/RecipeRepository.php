@@ -43,11 +43,10 @@ class RecipeRepository
     {
         $slug = Str::slug($title);
         if ($increment > 0) {
-            $slug .= '-' . $increment; // Append numeric suffix if needed
+            $slug .= '-' . $increment;
         }
-        $existingSlug = Recipe::where('slug', $slug)->exists(); // Checking if slug already exists
+        $existingSlug = Recipe::where('slug', $slug)->exists();
         if ($existingSlug) {
-            // If slug already exists, recursively call the function with an incremented counter
             return $this->createSlug($title, $increment + 1);
         }
         return $slug;

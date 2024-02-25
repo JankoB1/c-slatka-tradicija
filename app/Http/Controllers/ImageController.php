@@ -17,9 +17,11 @@ class ImageController
 
     public function uploadImage(Request $request)
     {
-        $image_path = $request->file('image')->store('upload', 'public');
-        return $image_path;
-        $recipe_id = $request->recipe_id;
-        return $this->imageService->addImage($image, $recipe_id);
+        return $request->file('image')->store('upload', 'public');
+    }
+
+    public function addImage(Request $request)
+    {
+        $this->imageService->saveMaskImage($request);
     }
 }
