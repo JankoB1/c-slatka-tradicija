@@ -114,8 +114,8 @@
                                 </div>
 
                                 <div class="add-ingredients-btns">
-                                    <button class="add-group-ingredient" type="button">Dodaj grupu sastojaka</button>
-                                    <button class="add-ingredient" type="button">Dodaj sastojak</button>
+                                    <button class="add-group-ingredient" type="button"><img src="{{ asset('images/add-group.svg') }}" alt="add group">Dodaj grupu sastojaka</button>
+                                    <button class="add-ingredient" type="button"><img src="{{ asset('images/plus.svg') }}" alt="plus">Dodaj sastojak</button>
                                 </div>
                             </div>
                         </div>
@@ -137,8 +137,8 @@
                                 </div>
 
                                 <div class="add-steps-btns">
-                                    <button class="add-group-step" type="button">Dodaj grupu koraka</button>
-                                    <button class="add-single-step" type="button">Dodaj korak</button>
+                                    <button class="add-group-step" type="button"><img src="{{ asset('images/add-group.svg') }}" alt="add group">Dodaj grupu koraka</button>
+                                    <button class="add-single-step" type="button"><img src="{{ asset('images/plus.svg') }}" alt="plus">Dodaj korak</button>
                                 </div>
                             </div>
                         </div>
@@ -151,13 +151,18 @@
                                 <p>Fotografije su obavezan element recepta, a možeš da ih dodaš maksimalno 10.</p>
                                 <p>Obavezno je okačiti fotografiju finalnog proizvoda, a ostatak je tvoj izbor. Možeš prikazati neki deo procesa, fotografije C proizvoda ili nekog alata.</p>
                                 <label for="images">Upload Images (up to 10)</label>
-                                <p class="add-image">Dodaj sliku</p>
+{{--                                <p class="add-image">Dodaj sliku</p>--}}
                                 <div class="images">
 
                                 </div>
 {{--                                <input type="file" name="images[]" multiple accept="images/*">--}}
                             </div>
                             <div class="col-md-7">
+                                <div class="add-image-container add-image">
+                                    <img src="{{ asset('images/add-image-icon.png') }}" alt="add image">
+                                    <h3>Dodaj fotografiju</h3>
+                                    <p>Formati: PNG, JPG, JPEG, WEBP</p>
+                                </div>
                                 <button class="submit-recipe" type="button">Pošalji recept</button>
                             </div>
                         </div>
@@ -165,7 +170,6 @@
 
                     <div class="row">
                         <div class="col-md-7 offset-md-5">
-                            <button type="button" class="add-step">Dodaj naredni korak u pripremi</button>
                             <button type="button" class="continue">Dalje</button>
                         </div>
                     </div>

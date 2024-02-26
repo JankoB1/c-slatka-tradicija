@@ -69,8 +69,19 @@
                                 <p>Sačuvani recepti</p>
                             </div>
                         </div>
-                        <div class="profile-recipes-content">
+                        <div class="profile-recipes-content row active">
+                            @foreach(Auth::user()->recipes as $recipe)
+                                <div class="col-md-4">
+                                    <div class="single-recipe-preview">
+                                        <div class="recipe-preview-img">
 
+                                        </div>
+                                        <p>{{ $recipe->title }}</p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="profile-recipes-content profile-recipes-content-saved">
                         </div>
                     </div>
                 </div>
@@ -78,4 +89,8 @@
         </div>
     </section>
 
+@endsection
+
+@section('scriptsBottom')
+    <script type="text/javascript" src="{{ asset('js/my-profile.js') }}"></script>
 @endsection

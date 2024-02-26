@@ -31,19 +31,19 @@ jQuery.ajax({
     }
 });
 
-const srSteps = [
-    'Prvi',
-    'Drugi',
-    'Treći',
-    'Četvrti',
-    'Peti',
-    'Šesti',
-    'Sedmi',
-    'Osmi',
-    'Deveti',
-    'Deseti',
-    'Jedanaesti'
-];
+// const srSteps = [
+//     'Prvi',
+//     'Drugi',
+//     'Treći',
+//     'Četvrti',
+//     'Peti',
+//     'Šesti',
+//     'Sedmi',
+//     'Osmi',
+//     'Deveti',
+//     'Deseti',
+//     'Jedanaesti'
+// ];
 
 const subcategories = [
     [
@@ -179,6 +179,8 @@ addGroupStep.addEventListener('click', function() {
     groupName.name = 'step_group_name';
     groupName.placeholder = 'Naziv grupe koraka'
     newGroupCont.appendChild(groupName);
+    let newRowStep = document.createElement('div');
+    newRowStep.classList.add('row');
     let newStep = document.createElement('input');
     newStep.type = 'text';
     newStep.name = 'single_step';
