@@ -97,6 +97,11 @@ class RecipeRepository
         }
     }
 
+    public function getRecipeByCategoryIdOld(int $categoryId) {
+        return DB::select('SELECT * FROM recipes WHERE category_id = :categoryId',
+            ['categoryId' => $categoryId]);
+    }
+
     public function getRecipeByProductId($product_id) {
         try {
             return DB::table('recipes')

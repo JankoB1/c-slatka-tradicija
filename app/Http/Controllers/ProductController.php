@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Repositories\RecipeRepository;
 use App\Services\ProductService;
 use App\Services\RecipeService;
 use Illuminate\Http\Request;
@@ -13,10 +14,12 @@ class ProductController extends Controller
 
     protected ProductService $productService;
     protected RecipeService $recipeService;
+    protected RecipeRepository $recipeRepository;
 
     public function __construct() {
         $this->productService = new ProductService();
         $this->recipeService = new RecipeService();
+        $this->recipeRepository = new RecipeRepository();
     }
 
     public function showAllCategories() {
@@ -26,7 +29,8 @@ class ProductController extends Controller
     public function showSingleCategory($slug) {
         $category = ProductCategory::where('slug', '=', $slug)->get()->first();
         $products = $category->products;
-        return view('products.single-category', compact('category', 'products'));
+        $recipes = $this->recipeRepository->getRecipeByProductIdOld($category->id);
+        return view('products.single-category', compact('category', 'products', 'recipes'));
     }
 
     public function showSingleProduct($slug) {
