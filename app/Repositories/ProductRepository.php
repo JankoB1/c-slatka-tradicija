@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 
 class ProductRepository
@@ -21,6 +22,11 @@ class ProductRepository
     }
 
     public function getProductsOld(string $recipeId) {
+        $products = DB::table('products')
+            ->join('tin_receptproizvod', 'products.id', '=', 'tin_receptproizvod.product_id')
+            ->where('tin_receptproizvod.recipe_id', $recipeId)
+            ->select('products.*')
+            ->get();
 
     }
 
