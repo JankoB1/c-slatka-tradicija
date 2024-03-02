@@ -58,6 +58,7 @@
     </section>
 
     <section id="homepage-banner">
+        <img class="mobile" src="{{ asset('images/homepage-banner-mobile.png') }}" alt="homepage banner mobile">
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
@@ -108,7 +109,7 @@
                 <div class="col-md-6">
                     <a href="#">
                         <div class="single-category-banner">
-                            <p>Hleb i<br>peciva</p>
+                            <p>Hleb i <br>peciva</p>
                         </div>
                     </a>
                 </div>
@@ -131,6 +132,7 @@
     </section>
 
     <section id="homepage-banner2">
+        <img class="mobile" src="{{ asset('images/homepage-banner2-mobile.png') }}" alt="homepage banner2">
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">

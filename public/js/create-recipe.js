@@ -19,6 +19,7 @@ let products = [];
 let productsIngredients = document.querySelector('.products-ingredients');
 let ingredientsSection = document.querySelector('.ingredients-section');
 let addImageBtn = document.querySelector('.add-image');
+let smallSteps = document.querySelectorAll('.single-small-step');
 
 jQuery.ajax({
     headers: {
@@ -30,6 +31,22 @@ jQuery.ajax({
         products = response;
     }
 });
+
+const imageControls = `<div class="row image-controls-row">
+    <div class="col-md-4">
+        <img src="${window.origin + '/images/change-img.png'}" alt="change img">
+        <img src="${window.origin + '/images/delete-img.png'}" alt="delete img">
+    </div>
+    <div class="col-md-4" style="display: flex; justify-content: center;">
+        <img class="plus-img" src="${window.origin + '/images/zoom-plus-img.png'}" alt="zoom img">
+        <img class="minus-img" src="${window.origin + '/images/zoom-minus-img.png'}" alt="zoom img">
+        <img src="${window.origin + '/images/left-img.png'}" alt="left img">
+        <img src="${window.origin + '/images/right-img.png'}" alt="right img">
+    </div>
+    <div class="col-md-4">
+        <button type="button">Završeno</button>
+    </div>
+</div>`;
 
 // const srSteps = [
 //     'Prvi',
@@ -126,11 +143,8 @@ const newIngredientHtmlNoAdd = `<div class="row ingredients-cont">
 continueBtn.addEventListener('click', function() {
     steps[currentStep-1].classList.remove('active');
     steps[currentStep].classList.add('active');
-    if(currentStep === 2) {
-        this.parentElement.classList.add('two-button');
-    } else {
-        this.parentElement.classList.remove('two-button');
-    }
+    smallSteps[currentStep-1].classList.add('passed');
+    smallSteps[currentStep].classList.add('current');
     currentStep++;
 });
 
@@ -356,7 +370,34 @@ addImageBtn.addEventListener('click', function() {
                 let newImg = document.createElement('div');
                 newImg.classList.add('single-img');
                 newImg.style.backgroundImage = 'url("' + imagePath + '")';
-                document.querySelector('.images').appendChild(newImg);
+                let newDiv = document.createElement('div');
+                newDiv.classList.add('single-image-div');
+                newDiv.appendChild(newImg)
+                let newImagesRow = document.createElement('div');
+                newImagesRow.innerHTML = imageControls;
+                newDiv.appendChild(newImagesRow);
+                document.querySelector('.images').appendChild(newDiv);
+
+                let plusImg = newImagesRow.querySelector('.plus-img');
+                plusImg.addEventListener('click', function() {
+                    let backgroundSize = newImg.style.backgroundSize;
+                    if(backgroundSize === '') {
+                        newImg.style.backgroundSize = '110%';
+                    } else {
+                        newImg.style.backgroundSize = parseInt(backgroundSize.slice(0, -1)) + 10 + '%';
+                    }
+                });
+
+                let minusImg = newImagesRow.querySelector('.minus-img');
+                minusImg.addEventListener('click', function() {
+                    let backgroundSize = newImg.style.backgroundSize;
+                    if(backgroundSize === '') {
+                        newImg.style.backgroundSize = '90%';
+                    } else {
+                        newImg.style.backgroundSize = parseInt(backgroundSize.slice(0, -1)) - 10 + '%';
+                    }
+                });
+
                 domtoimage.toPng(document.querySelector('.single-img'), { quality: 0.99, height: 356,  width: 734 })
                     .then(dUrl => {
                         domtoimage.toPng(document.querySelector('.single-img'), { quality: 0.99, height: 356,  width: 734 })

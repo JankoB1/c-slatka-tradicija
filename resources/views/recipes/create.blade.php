@@ -34,6 +34,37 @@
                 @csrf
 
                 <div class="form-section">
+                    <div class="small-steps">
+                        <div class="line-t"></div>
+                        <div class="single-small-step current">
+                            <div class="circle">
+                                <img src="{{ asset('images/circle-checked.png') }}" alt="check">
+                                <span>01</span>
+                            </div>
+                            <p>Recept</p>
+                        </div>
+                        <div class="single-small-step">
+                            <div class="circle">
+                                <img src="{{ asset('images/circle-checked.png') }}" alt="check">
+                                <span>02</span>
+                            </div>
+                            <p>Sastojci</p>
+                        </div>
+                        <div class="single-small-step">
+                            <div class="circle">
+                                <img src="{{ asset('images/circle-checked.png') }}" alt="check">
+                                <span>03</span>
+                            </div>
+                            <p>Kako se priprema</p>
+                        </div>
+                        <div class="single-small-step">
+                            <div class="circle">
+                                <img src="{{ asset('images/circle-checked.png') }}" alt="check">
+                                <span>04</span>
+                            </div>
+                            <p>Dodaj fotografije</p>
+                        </div>
+                    </div>
 
                     <div class="create-recipe-step active" data-step="1">
                         <div class="row">
@@ -152,12 +183,12 @@
                                 <p>Obavezno je okačiti fotografiju finalnog proizvoda, a ostatak je tvoj izbor. Možeš prikazati neki deo procesa, fotografije C proizvoda ili nekog alata.</p>
                                 <label for="images">Upload Images (up to 10)</label>
 {{--                                <p class="add-image">Dodaj sliku</p>--}}
-                                <div class="images">
-
-                                </div>
 {{--                                <input type="file" name="images[]" multiple accept="images/*">--}}
                             </div>
                             <div class="col-md-7">
+                                <div class="images">
+
+                                </div>
                                 <div class="add-image-container add-image">
                                     <img src="{{ asset('images/add-image-icon.png') }}" alt="add image">
                                     <h3>Dodaj fotografiju</h3>
