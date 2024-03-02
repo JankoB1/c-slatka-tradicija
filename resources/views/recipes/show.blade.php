@@ -5,6 +5,15 @@
 @section('content')
 
     <section data-recipe-id="{{ $recipe->id }}" id="recipe-gallery">
+        <div class="swiper single-recipe-gallery">
+            <div class="swiper-wrapper">
+                @foreach($recipe->images as $image)
+                    <div class="single-recipe-gallery-img" style="background-image: url('{{ asset('storage/upload/' . $image->path) }}')">
+
+                    </div>
+                @endforeach
+            </div>
+        </div>
         <div class="like-cont like">
             <img src="{{ asset('images/like.svg') }}" alt="like">
             <p>Like</p>

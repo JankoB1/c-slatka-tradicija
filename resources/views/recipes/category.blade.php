@@ -2,9 +2,6 @@
 
 @section('content')
     <section id="recipes-category-banner">
-        <div class="swiper single-recipe-gallery">
-            <div class="swiper-wrapper"></div>
-        </div>
     </section>
 
     <section id="recipes-category-content">

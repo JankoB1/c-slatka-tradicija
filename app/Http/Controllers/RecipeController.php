@@ -78,7 +78,6 @@ class RecipeController extends Controller
     public function store(Request $request) {
         DB::beginTransaction();
         try {
-
             $recipe = $this->recipeService->addRecipe($request);
             $this->ingredientService->addIngredients($request, $recipe->id);
             $this->stepRepository->addSteps($request, $recipe->id);
