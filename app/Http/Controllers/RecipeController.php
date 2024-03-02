@@ -52,7 +52,7 @@ class RecipeController extends Controller
         return view('recipes.retrieve', ['recipes' => $recipes]);
     }
 
-    public function retrieveSingleRecipe(string $slug) {
+    public function retrieveSingleRecipe(string $category, string $slug) {
         $recipe = $this->recipeService->getRecipeBySlug($slug);
 
         if($recipe->old == 1) {

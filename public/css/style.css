@@ -2102,6 +2102,13 @@ input[name="step_group_name"] {
     display: block;
 }
 
+.old-recipe-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+}
+
 @media only screen and (max-width: 768px) {
     #main-header {
         display: none;

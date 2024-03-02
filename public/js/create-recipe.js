@@ -65,32 +65,32 @@ const imageControls = `<div class="row image-controls-row">
 
 const subcategories = [
     [
-        {'Čokoladne torte': 6},
-        {'Voćne torte': 7},
-        {'Kremaste torte': 8}
+        {'Čokoladne torte': 25},
+        {'Voćne torte': 26},
+        {'Kremaste torte': 27}
     ],
     [
-        {'Sitni kolači': 9},
-        {'Voćni kolači': 10},
-        {'Čokoladni kolači': 11},
-        {'Kremasti kolači': 12},
-        {'Oblande': 13},
-        {'Biskvitni kolači': 14}
+        {'Sitni kolači': 28},
+        {'Voćni kolači': 29},
+        {'Čokoladni kolači': 30},
+        {'Kremasti kolači': 31},
+        {'Oblande': 21},
+        {'Biskvitni kolači': 33}
     ],
     [
-        {'Hleb i pogače': 15},
-        {'Slatka peciva': 16},
-        {'Slana peciva': 17},
-        {'Predjela': 18}
+        {'Hleb i pogače': 34},
+        {'Slatka peciva': 35},
+        {'Slana peciva': 36},
+        {'Predjela': 37}
     ],
     [
-        {'Slatka zimnica': 19},
-        {'Kisela zimnica': 20}
+        {'Slatka zimnica': 38},
+        {'Kisela zimnica': 39}
     ],
     [
-        {'Sladoled': 21},
-        {'Voćne salate i kupovi': 22},
-        {'Deserti u čaši': 23}
+        {'Sladoled': 41},
+        {'Voćne salate i kupovi': 42},
+        {'Deserti u čaši': 43}
     ]
 ];
 
