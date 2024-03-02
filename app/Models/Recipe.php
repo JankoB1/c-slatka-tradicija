@@ -19,9 +19,9 @@ class Recipe extends Model
         return $this->hasMany(RecipeImages::class, 'recipe_id');
     }
 
-    public function user() : BelongsTo
+    public function user_recipe() : BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function recipes_liked() : BelongsToMany

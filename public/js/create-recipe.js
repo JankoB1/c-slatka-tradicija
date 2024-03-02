@@ -218,6 +218,10 @@ addGroupStep.addEventListener('click', function() {
 addIngredient.addEventListener('click', function() {
     let newRow = document.createElement('div');
     newRow.innerHTML = newIngredientHtmlNoAdd;
+    let ingredientName = newRow.querySelector('input[name="ingredient_name"]');
+    ingredientName.addEventListener('input', function() {
+        searchProducts(this);
+    });
     singleIngredientsInner.appendChild(newRow);
 });
 
@@ -258,10 +262,10 @@ createRecipeBtn.addEventListener('click', function(e) {
             let name = single.querySelector('input[name="ingredient_name"]').value;
             let qty = single.querySelector('input[name="ingredient_quantity"]').value;
             let measure = single.querySelector('input[name="ingredient_measure"]').value;
-            let product = single.querySelector('input[type="hidden"]').value;
+            let product = single.querySelector('input[name="ingredient_name"]').dataset.productId;
             ingredients.push({
                 title: name + ' ' + qty + ' ' + measure,
-                product: product === ''? null: product
+                product: product === null? null: product
             });
         });
         let group = {
@@ -275,10 +279,10 @@ createRecipeBtn.addEventListener('click', function(e) {
         let name = single.querySelector('input[name="ingredient_name"]').value;
         let qty = single.querySelector('input[name="ingredient_quantity"]').value;
         let measure = single.querySelector('input[name="ingredient_measure"]').value;
-        let product = single.querySelector('input[type="hidden"]').value;
+        let product = single.querySelector('input[name="ingredient_name"]').dataset.productId;
         independentIngredientsParsed.push({
             title: name + ' ' + qty + ' ' + measure,
-            product: product === ''? null: product
+            product: product === null? null: product
         });
     });
 
@@ -346,13 +350,25 @@ createRecipeBtn.addEventListener('click', function(e) {
 });
 
 function searchProducts(target) {
+    productsIngredients.innerHTML = '';
     let searched = products.filter((p) => {
        return p.name.toLowerCase().includes(target.value.toLowerCase());
     });
     if(searched.length > 0) {
         productsIngredients.classList.add('active');
         let top = target.getBoundingClientRect().top - ingredientsSection.getBoundingClientRect().top + 65;
-        productsIngredients.style.top = top + 'px';
+        productsIngredients.style.top = top + 10 + 'px';
+        searched.forEach((product) => {
+            let newProduct = document.createElement('p');
+            newProduct.dataset.productId = product.id;
+            newProduct.innerText = product.name;
+            newProduct.addEventListener('click', function() {
+                productsIngredients.classList.remove('active');
+                target.value = product.name;
+                target.dataset.productId = product.id;
+            });
+            productsIngredients.appendChild(newProduct);
+        });
     } else {
         productsIngredients.classList.remove('active');
     }

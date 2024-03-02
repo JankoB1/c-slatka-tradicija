@@ -100,7 +100,16 @@
                         novi ima
                     @elseif($recipe->old_recipe == 1 && $products != null)
                         <h4>Naši proizvodi</h4>
-                        stari ima
+                        <div class="row recipe-products">
+                            @foreach($products as $product)
+                                <div class="col-md-4">
+                                    <a href="{{ route('show-single-product', ['slug' => $product->slug]) }}">
+                                        <img src="{{ asset('storage/upload/proizvod/' . $product->image_path) }}" alt="">
+                                        <p>{{ $product->name }}</p>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
                     @endif
                 </div>
                 <div class="col-md-9">
@@ -121,6 +130,20 @@
                             @endif
                         @endforeach
                     @endif
+
+                    @guest()
+                        s
+                    @elseauth()
+                        <h4>Autor</h4>
+                        @if($recipe->old_recipe == 0)
+                            <p>{{ $recipe->user_recipe->name }} {{ $recipe->user_recipe->surname }}</p>
+                        @else
+
+                        @endif
+                    @endguest
+                    <p class="recipe-date">
+                        Recept dodat:
+                    </p>
                 </div>
             </div>
         </div>
