@@ -181,7 +181,7 @@
                                 <img src="{{ asset('images/lamp.svg') }}" alt="lamp">
                                 <p>Fotografije su obavezan element recepta, a možeš da ih dodaš maksimalno 10.</p>
                                 <p>Obavezno je okačiti fotografiju finalnog proizvoda, a ostatak je tvoj izbor. Možeš prikazati neki deo procesa, fotografije C proizvoda ili nekog alata.</p>
-                                <label for="images">Upload Images (up to 10)</label>
+{{--                                <label for="images">Upload Images (up to 10)</label>--}}
 {{--                                <p class="add-image">Dodaj sliku</p>--}}
 {{--                                <input type="file" name="images[]" multiple accept="images/*">--}}
                             </div>
