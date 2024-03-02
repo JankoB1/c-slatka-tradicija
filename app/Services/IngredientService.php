@@ -22,4 +22,8 @@ class IngredientService
     public function addIngredients(Request $request, int $recipe_id) {
         $this->ingredientRepository->addIngredients($request, $recipe_id);
     }
+
+    public function getIngredientsOld($recipeId) {
+        return $this->ingredientRepository->getIngredientsOld($recipeId);
+    }
 }

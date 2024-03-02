@@ -27,6 +27,8 @@ class RecipeRepository
                 'preparation_time' => $request->preparationTime,
                 'portion_number' => $request->portionNum,
                 'description' => $request->description,
+                'active' => 'F',
+                'old_recipe' => 0
             ]);
 
             $recipe_id = $recipe->id;

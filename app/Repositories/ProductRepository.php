@@ -20,6 +20,10 @@ class ProductRepository
         }
     }
 
+    public function getProductsOld(string $recipeId) {
+
+    }
+
     public function getAllProducts() {
         try {
             return Product::all();
