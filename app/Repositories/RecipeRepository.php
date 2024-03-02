@@ -6,6 +6,7 @@ use App\Models\UserRecipe;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use App\Models\Recipe;
@@ -78,6 +79,35 @@ class RecipeRepository
             return Recipe::where('slug', '=', $slug)->get()->first();
         } catch (QueryException $exception) {
             Log::error('Can\'t retrieve recipe by slug: ' . $exception->getMessage());
+            return null;
+        }
+    }
+
+    public function getRecipeByProductIdOld($product_id) {
+        try {
+            return DB::table('recipes')
+                ->join('tin_receptproizvod', 'recipes.id', '=', 'tin_receptproizvod.recipe_id')
+                ->where('tin_receptproizvod.product_id', $product_id)
+                ->select('recipes.*')
+                ->take(4)
+                ->get();
+        } catch(QueryException $exception) {
+            Log::error('Can\'t retrieve recipe by product_id: ' . $exception->getMessage());
+            return null;
+        }
+    }
+
+    public function getRecipeByProductId($product_id) {
+        try {
+            return DB::table('recipes')
+                ->join('ingredients', 'recipes.id', '=', 'ingredients.recipe_id')
+                ->where('ingredients.product_id', $product_id)
+                ->select('recipes.*')
+                ->distinct()
+                ->take(4)
+                ->get();
+        } catch(QueryException $exception) {
+            Log::error('Can\'t retrieve recipe by product_id: ' . $exception->getMessage());
             return null;
         }
     }

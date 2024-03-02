@@ -22,6 +22,13 @@ class ImageService
             1);
     }
 
+    public function addImage(Request $request)
+    {
+        foreach($request->input('imagesFinal') as $image) {
+            $this->addImage($image, $request->input('recipe_id'));
+        }
+    }
+
     public function removeImage(Request $request) {
         foreach($request->input('imagesToDelete') as $image) {
             $this->imageRepository->removeImage($image);

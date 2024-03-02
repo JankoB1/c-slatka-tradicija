@@ -37,6 +37,16 @@ class RecipeService
         return $this->recipeRepository->saveRecipe($request);
     }
 
+    public function getRecipesByProductIdOld(int $product_id) {
+        return $this->recipeRepository->getRecipeByProductIdOld($product_id);
+    }
+
+    public function getRecipesByProductId(int $product_id) {
+        return $this->recipeRepository->getRecipeByProductId($product_id);
+    }
+
+
+
     public function saveToSession(Request $request)
     {
         $this->recipeRepository->saveToSession($request);

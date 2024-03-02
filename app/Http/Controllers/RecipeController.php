@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Step;
+use App\Repositories\ProductRepository;
 use App\Repositories\StepRepository;
 use App\Services\CategoryService;
 use App\Services\ImageService;
@@ -26,6 +27,7 @@ class RecipeController extends Controller
     protected ImageService $imageService;
     protected IngredientService $ingredientService;
     protected StepRepository $stepRepository;
+    protected ProductRepository $productRepository;
     protected IngredientGroupService $ingredientGroupService;
     protected StepGroupService $stepGroupService;
 
@@ -37,6 +39,7 @@ class RecipeController extends Controller
         $this->stepRepository = new StepRepository();
         $this->ingredientGroupService = new IngredientGroupService();
         $this->stepGroupService = new StepGroupService();
+        $this->productRepository = new ProductRepository();
     }
 
     public function index() {
@@ -54,11 +57,12 @@ class RecipeController extends Controller
 
     public function retrieveSingleRecipe(string $category, string $slug) {
         $recipe = $this->recipeService->getRecipeBySlug($slug);
-
-        if($recipe->old == 1) {
+        if($recipe->old_recipe == 1) {
             $ingredients = $this->ingredientService->getIngredientsOld($recipe->id);
             $steps = $recipe->description;
-            return view('recipes.show', compact('recipe', 'ingredients', 'steps'));
+            $products = $this->productRepository->getProductsOld($recipe->id);
+            return view('recipes.show', compact('recipe', 'ingredients', 'steps', 'products'));
+
         }
         $ingredientGroups = $this->ingredientGroupService->getGroupsByRecipeId($recipe->id);
         $stepGroups = $this->stepGroupService->getGroupsByRecipeId($recipe->id);
@@ -81,7 +85,7 @@ class RecipeController extends Controller
             $recipe = $this->recipeService->addRecipe($request);
             $this->ingredientService->addIngredients($request, $recipe->id);
             $this->stepRepository->addSteps($request, $recipe->id);
-            $this->imageService->saveMaskImage($request);
+            $this->imageService->addImage($request);
             $this->imageService->removeImage($request);
             DB::commit();
             return redirect()->route('recipes.retrieve')->with('success', 'Recipe created successfully');

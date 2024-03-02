@@ -57,9 +57,6 @@ class ImageRepository
             imagedestroy($imageResource);
             imagedestroy($croppedImage);
             imagedestroy($imf);
-
-            $this->addImage($imageName, $recipe_id);
-
         }
         catch (QueryException $exception) {
             Log::error('Can\'t upload image: ' . $exception->getMessage());
