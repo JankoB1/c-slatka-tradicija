@@ -8,6 +8,7 @@ use App\Models\IngredientGroup;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class IngredientRepository
 {
@@ -20,13 +21,9 @@ class IngredientRepository
         }
     }
 
-    public function getIngredientsAll() {
-        try {
-            return Category::all();
-        } catch (QueryException $exception) {
-            Log::error('Can\'t retrieve ingredients: ' . $exception->getMessage());
-            return null;
-        }
+    public function getIngredientsOld($recipeId) {
+        return DB::select('SELECT title, type FROM tin_receptsastojak WHERE recipe_id = :recipeId',
+            ['recipeId' => $recipeId]);
     }
 
     public function addIngredients(Request $request, int $recipe_id) {
@@ -62,7 +59,6 @@ class IngredientRepository
             Log::error('Can\'t add ingredients: ' . $exception->getMessage());
             return null;
         }
-
 
 
     }

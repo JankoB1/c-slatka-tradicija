@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Log;
 class IngredientGroupRepository
 {
 
-    public function getGroupsByRecipeId($recipeId) {
+    public function getGroupsByRecipeId($recipeId)
+    {
         try {
             $ingredients = IngredientGroup::join('ingredients', 'ingredient_groups.id', '=', 'ingredients.group')
                 ->where('ingredients.recipe_id', '=', $recipeId)
