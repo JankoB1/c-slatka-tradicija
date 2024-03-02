@@ -22,7 +22,7 @@ class ProductRepository
     }
 
     public function getProductsOld(string $recipeId) {
-        $products = DB::table('products')
+         return DB::table('products')
             ->join('tin_receptproizvod', 'products.id', '=', 'tin_receptproizvod.product_id')
             ->where('tin_receptproizvod.recipe_id', $recipeId)
             ->select('products.*')

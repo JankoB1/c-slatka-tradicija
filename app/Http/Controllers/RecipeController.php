@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Step;
+use App\Repositories\ProductRepository;
 use App\Repositories\StepRepository;
 use App\Services\CategoryService;
 use App\Services\ImageService;
@@ -26,6 +27,7 @@ class RecipeController extends Controller
     protected ImageService $imageService;
     protected IngredientService $ingredientService;
     protected StepRepository $stepRepository;
+    protected ProductRepository $productRepository;
     protected IngredientGroupService $ingredientGroupService;
     protected StepGroupService $stepGroupService;
 
@@ -37,6 +39,7 @@ class RecipeController extends Controller
         $this->stepRepository = new StepRepository();
         $this->ingredientGroupService = new IngredientGroupService();
         $this->stepGroupService = new StepGroupService();
+        $this->productRepository = new ProductRepository();
     }
 
     public function index() {
@@ -52,14 +55,18 @@ class RecipeController extends Controller
         return view('recipes.retrieve', ['recipes' => $recipes]);
     }
 
-    public function retrieveSingleRecipe(string $slug) {
+    public function retrieveSingleRecipe(string $category, string $slug) {
         $recipe = $this->recipeService->getRecipeBySlug($slug);
-
-        if($recipe->old == 1) {
+        if($recipe->old_recipe == 1) {
             $ingredients = $this->ingredientService->getIngredientsOld($recipe->id);
             $steps = $recipe->description;
+            $products = $this->productRepository->getProductsOld($recipe->id);
+            dd($products);
             return view('recipes.show', compact('recipe', 'ingredients', 'steps'));
+
         }
+
+        dd($products);
         $ingredientGroups = $this->ingredientGroupService->getGroupsByRecipeId($recipe->id);
         $stepGroups = $this->stepGroupService->getGroupsByRecipeId($recipe->id);
         return view('recipes.show', compact('recipe', 'ingredientGroups', 'stepGroups'));
