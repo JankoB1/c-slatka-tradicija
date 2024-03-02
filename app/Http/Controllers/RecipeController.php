@@ -61,12 +61,9 @@ class RecipeController extends Controller
             $ingredients = $this->ingredientService->getIngredientsOld($recipe->id);
             $steps = $recipe->description;
             $products = $this->productRepository->getProductsOld($recipe->id);
-            dd($products);
-            return view('recipes.show', compact('recipe', 'ingredients', 'steps'));
+            return view('recipes.show', compact('recipe', 'ingredients', 'steps', 'products'));
 
         }
-
-        dd($products);
         $ingredientGroups = $this->ingredientGroupService->getGroupsByRecipeId($recipe->id);
         $stepGroups = $this->stepGroupService->getGroupsByRecipeId($recipe->id);
         return view('recipes.show', compact('recipe', 'ingredientGroups', 'stepGroups'));
