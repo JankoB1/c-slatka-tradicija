@@ -59,10 +59,8 @@ class RecipeController extends Controller
         $recipe = $this->recipeService->getRecipeBySlug($slug);
         if($recipe->old_recipe == 1) {
             $ingredients = $this->ingredientService->getIngredientsOld($recipe->id);
-            $steps = $recipe->description;
             $products = $this->productRepository->getProductsOld($recipe->id);
-            return view('recipes.show', compact('recipe', 'ingredients', 'steps', 'products'));
-
+            return view('recipes.show', compact('recipe', 'ingredients', 'products'));
         }
         $ingredientGroups = $this->ingredientGroupService->getGroupsByRecipeId($recipe->id);
         $stepGroups = $this->stepGroupService->getGroupsByRecipeId($recipe->id);
@@ -85,7 +83,7 @@ class RecipeController extends Controller
             $recipe = $this->recipeService->addRecipe($request);
             $this->ingredientService->addIngredients($request, $recipe->id);
             $this->stepRepository->addSteps($request, $recipe->id);
-            $this->imageService->addImage($request);
+            $this->imageService->addImage($request, $recipe->id);
             $this->imageService->removeImage($request);
             DB::commit();
             return redirect()->route('recipes.retrieve')->with('success', 'Recipe created successfully');

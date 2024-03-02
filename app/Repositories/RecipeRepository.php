@@ -20,7 +20,7 @@ class RecipeRepository
 
             $user = Auth::user();
             $recipe = Recipe::create([
-                'category_id'=>$request->cat,
+                'category_id'=>$request->subCat,
                 'user_id'=> $user->id,
                 'title'=>$request->title,
                 'slug'=>$this->createSlug($request->title),

@@ -2102,11 +2102,16 @@ input[name="step_group_name"] {
     display: block;
 }
 
-.old-recipe-img {
+.old-recipe-img, .single-recipe-gallery-img {
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center center;
+}
+
+.single-recipe-gallery {
+    width: 100%;
+    height: 100%;
 }
 
 @media only screen and (max-width: 768px) {

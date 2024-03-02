@@ -22,10 +22,10 @@ class ImageService
             1);
     }
 
-    public function addImage(Request $request)
+    public function addImage(Request $request, $recipe_id)
     {
         foreach($request->input('imagesFinal') as $image) {
-            $this->addImage($image, $request->input('recipe_id'));
+            $this->imageRepository->addImage($image, $recipe_id);
         }
     }
 
