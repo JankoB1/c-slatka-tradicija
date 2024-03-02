@@ -21,4 +21,10 @@ class ImageService
             $request->imageName,
             1);
     }
+
+    public function removeImage(Request $request) {
+        foreach($request->input('imagesToDelete') as $image) {
+            $this->imageRepository->removeImage($image);
+        }
+    }
 }
