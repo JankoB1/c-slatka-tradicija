@@ -21,13 +21,22 @@ class ProductRepository
         }
     }
 
-    public function getProductsOld(string $recipeId) {
+    public function getProductsOld(int $recipeId) {
          return DB::table('products')
             ->join('tin_receptproizvod', 'products.id', '=', 'tin_receptproizvod.product_id')
             ->where('tin_receptproizvod.recipe_id', $recipeId)
             ->select('products.*')
             ->get();
 
+    }
+
+    public function getProductByRecipeId(int $recipeId) {
+        return DB::table('products')
+            ->join('ingredients', 'products.id', '=', 'ingredients.product_id')
+            ->where('ingredients.recipe_id', $recipeId)
+            ->select('products.*')
+            ->distinct()
+            ->get();
     }
 
     public function getAllProducts() {
