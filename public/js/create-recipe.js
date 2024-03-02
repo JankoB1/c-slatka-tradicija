@@ -36,10 +36,9 @@ jQuery.ajax({
 
 const imageControls = `<div class="row image-controls-row">
     <div class="col-md-4">
-        <img src="${window.origin + '/images/change-img.png'}" alt="change img">
-        <img src="${window.origin + '/images/delete-img.png'}" alt="delete img">
+        <img class="delete-img" src="${window.origin + '/images/delete-img.png'}" alt="delete img">
     </div>
-    <div class="col-md-4" style="display: flex; justify-content: center;">
+    <div class="col-md-4" style="display: flex; justify-content: center; column-gap: 10px;">
         <img class="plus-img" src="${window.origin + '/images/zoom-plus-img.png'}" alt="zoom img">
         <img class="minus-img" src="${window.origin + '/images/zoom-minus-img.png'}" alt="zoom img">
         <img src="${window.origin + '/images/left-img.png'}" alt="left img">
@@ -410,6 +409,12 @@ addImageBtn.addEventListener('click', function() {
                     }
                 });
 
+                let deleteImg = newImagesRow.querySelector('.delete-img');
+                deleteImg.addEventListener('click', function() {
+                    newImagesRow.parentElement.remove();
+
+                });
+
                 let doneBtn = newImagesRow.querySelector('button');
                 doneBtn.addEventListener('click', function() {
                     domtoimage.toPng(newDiv.querySelector('.single-img'), { quality: 0.99, height: 356,  width: 734 })
@@ -423,7 +428,8 @@ addImageBtn.addEventListener('click', function() {
                                     saveMaskImage(dataUrl, 0, imageName);
                                     imagesUploaded.push(imageName);
                                     imagesFinal.push(imageName);
-                                })
+                                    newImagesRow.classList.add('done');
+                                });
                         });
                 });
 
@@ -447,8 +453,6 @@ function saveMaskImage(dataUrl, xOffset, imageName) {
             'xOffset': xOffset,
             'imageName': imageName
         },  success: function (result) {
-            document.querySelector('form #image_name').value = imageName;
-            localStorage.setItem('savedCard', window.origin + '/images/final/' + imageName);
         }
     });
 }

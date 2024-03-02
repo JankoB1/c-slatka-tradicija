@@ -1926,7 +1926,7 @@ input[name="ingredient_group_name"] {
     margin-bottom: 20px;
 }
 
-.create-recipe-step[data-step="2"] .row {
+.create-recipe-step[data-step="2"] .row, .create-recipe-step[data-step="3"] .row {
     margin-bottom: 10px;
 }
 
@@ -1950,6 +1950,7 @@ input[name="step_group_name"] {
 .create-recipe-step[data-step="3"] .col-md-7 input {
     margin-top: 10px;
     width: 92%;
+    margin-bottom: 10px;
 }
 
 .single-step-group span.ingridient-plus {
@@ -1958,9 +1959,9 @@ input[name="step_group_name"] {
     top: 77px;
 }
 
-.single-steps-inner {
-    margin-bottom: 30px;
-}
+/*.single-steps-inner {*/
+/*    margin-bottom: 30px;*/
+/*}*/
 
 .add-image-container {
     border: 1px solid #2E4765;
@@ -2089,6 +2090,14 @@ input[name="step_group_name"] {
 
 .image-controls-row img {
     cursor: pointer;
+}
+
+.done .image-controls-row img, .done .image-controls-row button {
+    display: none;
+}
+
+.done .image-controls-row img.delete-img {
+    display: block;
 }
 
 @media only screen and (max-width: 768px) {
