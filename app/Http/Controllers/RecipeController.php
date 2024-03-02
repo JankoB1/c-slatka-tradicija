@@ -76,6 +76,7 @@ class RecipeController extends Controller
             $recipe = $this->recipeService->addRecipe($request);
             $this->ingredientService->addIngredients($request, $recipe->id);
             $this->stepRepository->addSteps($request, $recipe->id);
+            $this->imageService->removeImage($request);
             DB::commit();
             return redirect()->route('recipes.retrieve')->with('success', 'Recipe created successfully');
 

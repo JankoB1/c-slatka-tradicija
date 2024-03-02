@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\RecipeImages;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class ImageRepository
 {
@@ -65,6 +66,11 @@ class ImageRepository
             return null;
         }
 
+    }
+
+    public function removeImage(string $imagePath)
+    {
+        Storage::disk('public')->delete($imagePath);
     }
 
     public function getImageByPath($path) {
