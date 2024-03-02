@@ -78,7 +78,6 @@ class RecipeController extends Controller
     public function store(Request $request) {
         DB::beginTransaction();
         try {
-
             $recipe = $this->recipeService->addRecipe($request);
             $this->ingredientService->addIngredients($request, $recipe->id);
             $this->stepRepository->addSteps($request, $recipe->id);
@@ -86,7 +85,6 @@ class RecipeController extends Controller
             $this->imageService->removeImage($request);
             DB::commit();
             return redirect()->route('recipes.retrieve')->with('success', 'Recipe created successfully');
-
         }
         catch (Exception $exception) {
             Log::error('Can\'t upload image: ' . $exception->getMessage());
@@ -116,7 +114,7 @@ class RecipeController extends Controller
 
     public function showRecipeCategory($slug) {
         $category = Category::where('slug', '=', $slug)->get()->first();
-        $recipes = $category->recipes()->paginate(1);
+        $recipes = $category->recipes()->paginate(21);
         return view('recipes.category', compact('category', 'recipes'));
     }
 

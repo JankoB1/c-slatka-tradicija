@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <section id="recipes-category-banner"></section>
+    <section id="recipes-category-banner">
+    </section>
 
     <section id="recipes-category-content">
         <div class="recipes-category-content container-space">
@@ -12,9 +13,15 @@
                     <div class="col-md-4">
                         <a class="single-recipe-link" href="{{ route('show-single-recipe', ['slug' => $recipe->slug, 'category' => $category->slug]) }}">
                             <div class="single-recipe-preview">
-                                <div class="recipe-preview-img">
+                                @if(isset($recipe->images[0]))
+                                    <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $recipe->images[0]->path) }}')">
 
-                                </div>
+                                    </div>
+                                @else
+                                    <div class="recipe-preview-img">
+
+                                    </div>
+                                @endif
                                 <p>{{ $recipe->title }}</p>
                             </div>
                         </a>
