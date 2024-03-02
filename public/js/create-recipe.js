@@ -20,6 +20,8 @@ let productsIngredients = document.querySelector('.products-ingredients');
 let ingredientsSection = document.querySelector('.ingredients-section');
 let addImageBtn = document.querySelector('.add-image');
 let smallSteps = document.querySelectorAll('.single-small-step');
+let imagesUploaded = [];
+let imagesFinal = [];
 
 jQuery.ajax({
     headers: {
@@ -309,6 +311,13 @@ createRecipeBtn.addEventListener('click', function(e) {
         steps: independentStepsParsed
     }
 
+    let imagesToDelete = [];
+    imagesUploaded.forEach((image) => {
+        if(!imagesFinal.includes(image)) {
+            imagesToDelete.push(image);
+        }
+    });
+
     let data = {
         title: title,
         cat: cat,
@@ -318,7 +327,9 @@ createRecipeBtn.addEventListener('click', function(e) {
         portionNum: portionNum,
         description: description,
         ingredients: ingredients,
-        steps: stepsForm
+        steps: stepsForm,
+        imagesFinal: imagesFinal,
+        imagesToDelete: imagesToDelete
     }
 
     jQuery.ajax({
@@ -366,6 +377,7 @@ addImageBtn.addEventListener('click', function() {
             contentType: false, // Important: prevents jQuery from automatically setting the content type
             method: 'POST',
             success: function(response) {
+                imagesUploaded.push(response);
                 let imagePath = window.origin + '/storage/' + response;
                 let newImg = document.createElement('div');
                 newImg.classList.add('single-img');
@@ -398,18 +410,23 @@ addImageBtn.addEventListener('click', function() {
                     }
                 });
 
-                domtoimage.toPng(document.querySelector('.single-img'), { quality: 0.99, height: 356,  width: 734 })
-                    .then(dUrl => {
-                        domtoimage.toPng(document.querySelector('.single-img'), { quality: 0.99, height: 356,  width: 734 })
-                            .then(dataUrl => {
-                                let imageElement = new Image();
-                                imageElement.src = dataUrl;
-                                let currentTimeSeconds = Math.floor(Date.now() / 1000);
-                                let imageName = currentTimeSeconds + '.png';
-                                console.log(imageName)
-                                saveMaskImage(dataUrl, 0, imageName);
-                            })
-                    })
+                let doneBtn = newImagesRow.querySelector('button');
+                doneBtn.addEventListener('click', function() {
+                    domtoimage.toPng(newDiv.querySelector('.single-img'), { quality: 0.99, height: 356,  width: 734 })
+                        .then(dUrl => {
+                            domtoimage.toPng(newDiv.querySelector('.single-img'), { quality: 0.99, height: 356,  width: 734 })
+                                .then(dataUrl => {
+                                    let imageElement = new Image();
+                                    imageElement.src = dataUrl;
+                                    let currentTimeSeconds = Math.floor(Date.now() / 1000);
+                                    let imageName = currentTimeSeconds + '.png';
+                                    saveMaskImage(dataUrl, 0, imageName);
+                                    imagesUploaded.push(imageName);
+                                    imagesFinal.push(imageName);
+                                })
+                        });
+                });
+
             },
             error: function(xhr, status, error) {
                 console.error('Error uploading image:', error);
