@@ -18,6 +18,12 @@ likeBtn.addEventListener('click', function() {
         method: 'POST',
         success: function(response) {
             likeBtn.classList.toggle('active');
+            let num = likeBtn.querySelector('p');
+            if(data.action) {
+                num.innerText = parseInt(num.innerText.trim()) + 1;
+            } else {
+                num.innerText = parseInt(num.innerText.trim()) - 1;
+            }
         }
     });
 });

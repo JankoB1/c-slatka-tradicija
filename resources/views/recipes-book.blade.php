@@ -63,7 +63,7 @@
                 <div class="col-md-6">
                     <p>AKTIVNI NAGRADNI KONKURS</p>
                     <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
-                    <a href="#">Nagradni konkursi</a>
+                    <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
                 </div>
             </div>
         </div>

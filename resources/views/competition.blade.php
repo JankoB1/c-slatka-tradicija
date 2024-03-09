@@ -11,24 +11,35 @@
 @endsection
 
 @section('content')
-    <section id="create-recipe-hero">
+    <section id="create-recipe-hero" class="create-recipe-competition">
 
     </section>
 
-    <section id="recipe-form">
-        <div class="recipe-form-inner">
+    <section id="competition-text">
+        <div class="competition-text-inner container-space">
+            <h1>Nagradni konkursi</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec velit a orci <br>malesuada fermentum id a massa. Cras interdum porttitor sapien ac congue. </p>
+        </div>
+    </section>
+
+    <div id="competition-send-recipe">
+        <div class="competition-send-recipe-inner container-space">
             <div class="row">
-                <div class="col-md-7">
-                    <h1>Podeli tvoje omiljene recepte i budi deo naše slatke tradicije!</h1>
-                    <h2>Kako da objaviš recept?</h2>
-                    <p>Jednostavno je! Unesi informacije u formu u nastavku, dodaj fotografije i pošalji recept.</p>
-                    <p>Uživaj u procesu i ne zaboravi - svaki recept mora sadržati barem jedan proizvod iz našeg asortimana.</p>
+                <div class="col-md-6">
+                    <h2>Pošaljite recept</h2>
+                    <h4>Učestvuj u konkursu Torte i kolači sa Eskimko sladoledom</h4>
+                    <p>Uslov za učešće u konkursu jeste slanje recepata za poslastice sa šlagom i šlag kremom, koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo vas da imate u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici Dodaj recept na ovom web sajtu učestvovati u konkursu. Konkurs traje do 31. januara 2024. godine.
+
+                        <br><br>Opšte uslove i pravila konkursa možete pogledati na strani Uslovi i pravila konkursa Poslastice sa šlagom i šlag kremom.  Odabrane recepte sa prethodnih konkursa možete pogledati na strani Odabrani recepti.</p>
                 </div>
-                <div class="col-md-5">
-                    <img src="{{ asset('images/create-recipe-bowl.png') }}" alt="bowl" class="bowl">
+                <div class="col-md-6">
+                    <img src="{{ asset('images/competition-cookies.png') }}" alt="competition cookies">
                 </div>
             </div>
         </div>
+    </div>
+
+    <section id="recipe-form" class="recipe-form-competition">
         <div class="form-inner">
             <form action="{{ route('recipes.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -181,9 +192,9 @@
                                 <img src="{{ asset('images/lamp.svg') }}" alt="lamp">
                                 <p>Fotografije su obavezan element recepta, a možeš da ih dodaš maksimalno 10.</p>
                                 <p>Obavezno je okačiti fotografiju finalnog proizvoda, a ostatak je tvoj izbor. Možeš prikazati neki deo procesa, fotografije C proizvoda ili nekog alata.</p>
-{{--                                <label for="images">Upload Images (up to 10)</label>--}}
-{{--                                <p class="add-image">Dodaj sliku</p>--}}
-{{--                                <input type="file" name="images[]" multiple accept="images/*">--}}
+                                {{--                                <label for="images">Upload Images (up to 10)</label>--}}
+                                {{--                                <p class="add-image">Dodaj sliku</p>--}}
+                                {{--                                <input type="file" name="images[]" multiple accept="images/*">--}}
                             </div>
                             <div class="col-md-7">
                                 <div class="images">
@@ -201,7 +212,11 @@
 
                     <div class="row">
                         <div class="col-md-7 offset-md-5">
-                            <button type="button" class="continue">Dalje</button>
+                            @auth()
+                                <button type="button" class="continue">Dalje</button>
+                            @else
+                                <button type="button" class="continue not-auth" data-bs-toggle="modal" data-bs-target="#login-popup">Dalje</button>
+                            @endauth
                         </div>
                     </div>
 
@@ -211,17 +226,25 @@
         </div>
     </section>
 
-    <section id="homepage-banner2">
-        <div class="homepage-banner-inner container-space">
-            <div class="row">
-                <div class="col-md-6">
-                    <p>AKTIVNI NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
-                    <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
+    @guest()
+        <div class="modal fade" id="login-popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-7">
+                                <p>Da biste pristupili ovoj stranici, potrebno je da budete prijavljeni na našem web sajtu.</p>
+                                <p>Bez brige, ukoliko nemate profil, proces je kratak i vrlo brzo ćete moći da nastavite sa korišćenjem sajta.</p>
+                                <a href="{{ route('login') }}">Prijavi se</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    @endguest
 
 @endsection
 

@@ -37,7 +37,7 @@
             <div class="single-category-inner">
                 <h2>Griz</h2>
                 <p>Za stare i mlade, za one koji vole ukuse detinjstva. Griz možete koristiti kao dodatak jelima, poslasticama ili pripremiti kao samostalan obrok. Dečak sa pakovanja je dobro poznat svima i generacijama unazad je deo našeg detinjstva.</p>
-                <a href="{{ route('show-single-category', ['slug' => 'griz']) }}">Pogledaj više</a>
+                <a href="{{ route('show-single-product', ['slug' => 'psenicni-griz-400g']) }}">Pogledaj više</a>
             </div>
         </div>
     </section>
@@ -47,7 +47,7 @@
             <div class="single-category-inner">
                 <h2>Oblande</h2>
                 <p>Domaći kolač koji se već godinama priprema na čitav niz načina. Bez obzira da ih pripremate za svakodnevnu konzumaciju, slavu ili drugi praznik uspeh i užitak su zagarantovani.</p>
-                <a href="{{ route('show-single-category', ['slug' => 'oblande']) }}">Pogledaj više</a>
+                <a href="{{ route('show-single-product', ['slug' => 'oblande']) }}">Pogledaj više</a>
             </div>
         </div>
     </section>
@@ -78,7 +78,7 @@
                 <div class="col-md-6">
                     <p>AKTIVNI NAGRADNI KONKURS</p>
                     <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
-                    <a href="#">Nagradni konkursi</a>
+                    <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
                 </div>
             </div>
         </div>

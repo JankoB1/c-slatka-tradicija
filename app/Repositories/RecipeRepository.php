@@ -87,8 +87,9 @@ class RecipeRepository
         try {
             return DB::table('recipes')
                 ->join('tin_receptproizvod', 'recipes.id', '=', 'tin_receptproizvod.recipe_id')
+                ->join('categories', 'categories.id', '=', 'recipes.category_id')
                 ->where('tin_receptproizvod.product_id', $product_id)
-                ->select('recipes.*')
+                ->select('recipes.title as recipe_title', 'recipes.slug as recipe_slug', 'categories.slug as category_slug', 'recipes.image_old as image')
                 ->take(4)
                 ->get();
         } catch(QueryException $exception) {
@@ -134,6 +135,52 @@ class RecipeRepository
         $data = $request->session()->all();
         dd($data);
     }
-}
 
-// 'slug' => Str::slug('title', '-')
+    public function getRecipeLikes($id) {
+        try {
+            return UserRecipe::where('recipe_id', '=', $id)
+                ->where('like', '=', 1)
+                ->get();
+        } catch (QueryException $exception) {
+            Log::error('Can\'t retrieve recipe likes: ' . $exception->getMessage());
+            return null;
+        }
+    }
+
+    public function getUserLiked($recipe_id, $user_id) {
+        try {
+            return UserRecipe::where('recipe_id', '=', $recipe_id)
+                ->where('user_id', '=', $user_id)
+                ->where('like', '=', 1)
+                ->get()
+                ->first();
+        } catch (QueryException $exception) {
+            Log::error('Can\'t retrieve user liked: ' . $exception->getMessage());
+            return null;
+        }
+    }
+
+    public function getUserSaved($user_id) {
+        try {
+            return UserRecipe::where('user_id', '=', $user_id)
+                ->where('save', '=', 1)
+                ->get();
+        } catch (QueryException $exception) {
+            Log::error('Can\'t retrieve user liked: ' . $exception->getMessage());
+            return null;
+        }
+    }
+
+    public function getUserSavedSingle($user_id, $recipe_id) {
+        try {
+            return UserRecipe::where('user_id', '=', $user_id)
+                ->where('recipe_id', '=', $recipe_id)
+                ->where('save', '=', 1)
+                ->get()
+                ->first();
+        } catch (QueryException $exception) {
+            Log::error('Can\'t retrieve user save single: ' . $exception->getMessage());
+            return null;
+        }
+    }
+}

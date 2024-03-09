@@ -32,10 +32,69 @@
         </a>
         <ul>
             <li><a href="{{ route('show-about') }}">O nama</a></li>
-            <li><a href="{{ route('show-all-categories') }}">Proizvodi</a></li>
-            <li><a href="{{ route('show-all-recipes') }}">Recepti</a></li>
+            <li>
+                <a href="{{ route('show-all-categories') }}">Proizvodi</a>
+                <ul>
+                    <li><a href="{{ route('show-single-category', ['slug' => 'dodaci-za-kolace']) }}">Dodaci za kolače</a></li>
+                    <li><a href="{{ route('show-single-category', ['slug' => 'puding']) }}">Puding</a></li>
+                    <li><a href="{{ route('show-single-category', ['slug' => 'slag-kremovi']) }}">Šlag i šlag krem</a></li>
+                    <li><a href="{{ route('show-single-product', ['slug' => 'psenicni-griz-400g']) }}">Griz</a></li>
+                    <li><a href="{{ route('show-single-product', ['slug' => 'oblande']) }}">Oblande</a></li>
+                    <li><a href="{{ route('show-single-category', ['slug' => 'eskimko']) }}">Eskimko</a></li>
+                    <li><a href="{{ route('show-single-category', ['slug' => 'zimnica']) }}">Zimnica</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="{{ route('show-all-recipes') }}">Recepti</a>
+                <ul>
+                    <li>
+                        <a href="#" class="has-dropdown">Recepti za kolače <img src="{{ asset('images/menu-arrow.svg') }}" alt=""></a>
+                        <div class="menu-dropdown">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'sitni-kolaci']) }}">Sitni kolači</a>
+                            <a href="{{ route('show-recipe-category', ['slug' => 'vocni-kolaci']) }}">Voćni kolači</a>
+                            <a href="{{ route('show-recipe-category', ['slug' => 'cokoladni-kolaci']) }}">Čokoladni kolači</a>
+                            <a href="{{ route('show-recipe-category', ['slug' => 'kremasti-kolaci']) }}">Kremasti kolači</a>
+                            <a href="{{ route('show-recipe-category', ['slug' => 'biskvitni-kolaci']) }}">Biskvitni kolači</a>
+                            <a href="{{ route('show-recipe-category', ['slug' => 'oblande']) }}">Oblande</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="has-dropdown">Recepti za torte <img src="{{ asset('images/menu-arrow.svg') }}" alt=""></a>
+                        <div class="menu-dropdown">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'cokoladne-torte']) }}">Čokoladne torte</a>
+                            <a href="{{ route('show-recipe-category', ['slug' => 'vocne-torte']) }}">Voćne torte</a>
+                            <a href="{{ route('show-recipe-category', ['slug' => 'kremaste-torte']) }}">Kremaste torte</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="has-dropdown">Recepti za hleb i peciva <img src="{{ asset('images/menu-arrow.svg') }}" alt=""></a>
+                        <div class="menu-dropdown">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'hleb-i-pogace']) }}">Hleb i pogače</a>
+                            <a href="{{ route('show-recipe-category', ['slug' => 'slatka-peciva']) }}">Slatka peciva</a>
+                            <a href="{{ route('show-recipe-category', ['slug' => 'slana-peciva']) }}">Slana peciva</a>
+                            <a href="{{ route('show-recipe-category', ['slug' => 'predjela']) }}">Predjela</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="has-dropdown">Recepti za zimnicu <img src="{{ asset('images/menu-arrow.svg') }}" alt=""></a>
+                        <div class="menu-dropdown">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'slatka-zimnica']) }}">Slatka zimnica</a>
+                            <a href="{{ route('show-recipe-category', ['slug' => 'kisela-zimnica']) }}">Kisela zimnica</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#" class="has-dropdown">Recepti za deserte <img src="{{ asset('images/menu-arrow.svg') }}" alt=""></a>
+                        <div class="menu-dropdown">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'sladoled']) }}">Sladoled</a>
+                            <a href="{{ route('show-recipe-category', ['slug' => 'vocne-salate-i-kupovi']) }}">Voćne salate i kupovi</a>
+                            <a href="{{ route('show-recipe-category', ['slug' => 'deserti-u-casi']) }}">Deserti u čaši</a>
+                        </div>
+                    </li>
+                    <li><a href="{{ route('show-recipe-category', ['slug' => 'ostali-recepti']) }}">Ostali recepti</a></li>
+                </ul>
+            </li>
             <li><a href="#">Priče iz C sveta</a></li>
-            <li><a href="#">Nagradni konkursi</a></li>
+            <li><a href="{{ route('show-competition') }}">Nagradni konkursi</a></li>
             <li><a href="{{ route('show-recipe-book') }}">Moja knjižica recepata</a></li>
         </ul>
         <div class="header-buttons">
@@ -60,11 +119,11 @@
                     <p class="hello">Zdravo, {{ Auth::user()->name }}</p>
                     <a href="{{ route('show-profile') }}" class="my-profile-link">Moj profil</a>
                     <div class="list">
-                        <a href="#" class="single-list-item">
+                        <a href="{{ route('show-profile') }}" class="single-list-item">
                             <p>Objavljeni recepti</p>
                             <img src="{{ asset('images/or-icon.svg') }}" alt="">
                         </a>
-                        <a href="#" class="single-list-item">
+                        <a href="{{ route('show-profile') }}?saved" class="single-list-item">
                             <p>Sačuvani recepti</p>
                             <img src="{{ asset('images/sr-icon.svg') }}" alt="">
                         </a>
@@ -113,6 +172,15 @@
     if(avatarImg) {
         avatarImg.addEventListener('click', function() {
             document.querySelector('.user-popup').classList.toggle('active');
+        });
+    }
+</script>
+<script>
+    let triggers = document.querySelectorAll('.has-dropdown');
+    let dropdowns = document.querySelectorAll('.menu-dropdown');
+    for(let i = 0; i < triggers.length; i++) {
+        triggers[i].addEventListener('click', function() {
+            dropdowns[i].classList.toggle('active');
         });
     }
 </script>

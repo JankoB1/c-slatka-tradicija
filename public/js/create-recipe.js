@@ -35,16 +35,18 @@ jQuery.ajax({
 });
 
 const imageControls = `<div class="row image-controls-row">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <img class="delete-img" src="${window.origin + '/images/delete-img.png'}" alt="delete img">
     </div>
-    <div class="col-md-4" style="display: flex; justify-content: center; column-gap: 10px;">
+    <div class="col-md-6" style="display: flex; justify-content: center; column-gap: 10px;">
         <img class="plus-img" src="${window.origin + '/images/zoom-plus-img.png'}" alt="zoom img">
         <img class="minus-img" src="${window.origin + '/images/zoom-minus-img.png'}" alt="zoom img">
-        <img src="${window.origin + '/images/left-img.png'}" alt="left img">
-        <img src="${window.origin + '/images/right-img.png'}" alt="right img">
+        <img class="left-img" src="${window.origin + '/images/left-img.png'}" alt="left img">
+        <img class="right-img" src="${window.origin + '/images/right-img.png'}" alt="right img">
+        <img class="top-img" src="${window.origin + '/images/left-img.png'}" alt="top img">
+        <img class="bottom-img" src="${window.origin + '/images/left-img.png'}" alt="bottom img">
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <button type="button">Završeno</button>
     </div>
 </div>`;
@@ -112,10 +114,20 @@ const newIngredientHtml = `<div class="row ingredients-cont">
                                     <div class="col-md-6">
                                         <div class="row">
                                             <div class="col-md-5">
-                                                <input type="text" name="ingredient_quantity" placeholder="Količina (izaberi)">
+                                                <input type="text" name="ingredient_quantity" placeholder="Količina">
                                             </div>
                                             <div class="col-md-5">
-                                                <input type="text" name="ingredient_measure" placeholder="Jedinica mere (izaberi)">
+                                                <select name="ingredient_measure">
+                                                    <option value="">Jedinica mere (izaberi)</option>
+                                                    <option value="g">g</option>
+                                                    <option value="kg">kg</option>
+                                                    <option value="ml">ml</option>
+                                                    <option value="malo">malo</option>
+                                                    <option value="prstohvat">prstohvat</option>
+                                                    <option value="kašika">kašika</option>
+                                                    <option value="kesica">kesica</option>
+                                                    <option value="čaša">čaša</option>
+                                                </select>
                                             </div>
                                             <div class="col-md-2">
                                                 <span class="ingridient-plus"><img src="${window.origin + '/images/ingridient-plus.svg'}" alt="dodaj sastojak"></span>
@@ -132,16 +144,40 @@ const newIngredientHtmlNoAdd = `<div class="row ingredients-cont">
                                     <div class="col-md-6">
                                         <div class="row">
                                             <div class="col-md-5">
-                                                <input type="text" name="ingredient_quantity" placeholder="Količina (izaberi)">
+                                                <input type="text" name="ingredient_quantity" placeholder="Količina">
                                             </div>
                                             <div class="col-md-5">
-                                                <input type="text" name="ingredient_measure" placeholder="Jedinica mere (izaberi)">
+                                                <select name="ingredient_measure">
+                                                    <option value="">Jedinica mere (izaberi)</option>
+                                                    <option value="g">g</option>
+                                                    <option value="kg">kg</option>
+                                                    <option value="ml">ml</option>
+                                                    <option value="malo">malo</option>
+                                                    <option value="prstohvat">prstohvat</option>
+                                                    <option value="kašika">kašika</option>
+                                                    <option value="kesica">kesica</option>
+                                                    <option value="čaša">čaša</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                 </div>`;
 
 continueBtn.addEventListener('click', function() {
+    if(currentStep === 1) {
+        if(!validateFirstStep()) {
+            return;
+        }
+    } else if(currentStep === 2) {
+        if(!validateSecondStep()) {
+            return;
+        }
+    } else if(currentStep === 3) {
+        this.classList.add('hidden');
+        if(!validateThirdStep()) {
+            return;
+        }
+    }
     steps[currentStep-1].classList.remove('active');
     steps[currentStep].classList.add('active');
     smallSteps[currentStep-1].classList.add('passed');
@@ -261,7 +297,7 @@ createRecipeBtn.addEventListener('click', function(e) {
         groupIngredients.forEach((single) => {
             let name = single.querySelector('input[name="ingredient_name"]').value;
             let qty = single.querySelector('input[name="ingredient_quantity"]').value;
-            let measure = single.querySelector('input[name="ingredient_measure"]').value;
+            let measure = single.querySelector('select[name="ingredient_measure"]').value;
             let product = single.querySelector('input[name="ingredient_name"]').dataset.productId;
             ingredients.push({
                 title: name + ' ' + qty + ' ' + measure,
@@ -278,7 +314,7 @@ createRecipeBtn.addEventListener('click', function(e) {
     independentIngredients.forEach((single) => {
         let name = single.querySelector('input[name="ingredient_name"]').value;
         let qty = single.querySelector('input[name="ingredient_quantity"]').value;
-        let measure = single.querySelector('input[name="ingredient_measure"]').value;
+        let measure = single.querySelector('select[name="ingredient_measure"]').value;
         let product = single.querySelector('input[name="ingredient_name"]').dataset.productId;
         independentIngredientsParsed.push({
             title: name + ' ' + qty + ' ' + measure,
@@ -344,7 +380,7 @@ createRecipeBtn.addEventListener('click', function(e) {
         contentType: 'application/json',
         method: 'POST',
         success: function(response) {
-            console.log(response);
+            window.location.href = window.origin + '/recepti/' + response.category_slug + '/' + response.recipe_slug;
         }
     });
 });
@@ -431,6 +467,46 @@ addImageBtn.addEventListener('click', function() {
 
                 });
 
+                let leftImg = newImagesRow.querySelector('.left-img');
+                leftImg.addEventListener('click', function() {
+                    let backgroundPositionX = newImg.style.backgroundPositionX;
+                    if(backgroundPositionX === '') {
+                        newImg.style.backgroundPositionX = '-20px';
+                    } else {
+                        newImg.style.backgroundPositionX = parseInt(backgroundPositionX.slice(0, -2)) - 20 + 'px';
+                    }
+                });
+
+                let rightImg = newImagesRow.querySelector('.right-img');
+                rightImg.addEventListener('click', function() {
+                    let backgroundPositionX = newImg.style.backgroundPositionX;
+                    if(backgroundPositionX === '') {
+                        newImg.style.backgroundPositionX = '20px';
+                    } else {
+                        newImg.style.backgroundPositionX = parseInt(backgroundPositionX.slice(0, -2)) + 20 + 'px';
+                    }
+                });
+
+                let topImg = newImagesRow.querySelector('.top-img');
+                topImg.addEventListener('click', function() {
+                    let backgroundPositionY = newImg.style.backgroundPositionY;
+                    if(backgroundPositionY === '') {
+                        newImg.style.backgroundPositionY = '-20px';
+                    } else {
+                        newImg.style.backgroundPositionY = parseInt(backgroundPositionY.slice(0, -2)) - 20 + 'px';
+                    }
+                });
+
+                let bottomImg = newImagesRow.querySelector('.bottom-img');
+                bottomImg.addEventListener('click', function() {
+                    let backgroundPositionY = newImg.style.backgroundPositionY;
+                    if(backgroundPositionY === '') {
+                        newImg.style.backgroundPositionY = '+20px';
+                    } else {
+                        newImg.style.backgroundPositionY = parseInt(backgroundPositionY.slice(0, -2)) + 20 + 'px';
+                    }
+                });
+
                 let doneBtn = newImagesRow.querySelector('button');
                 doneBtn.addEventListener('click', function() {
                     domtoimage.toPng(newDiv.querySelector('.single-img'), { quality: 0.99, height: 356,  width: 734 })
@@ -471,4 +547,83 @@ function saveMaskImage(dataUrl, xOffset, imageName) {
         },  success: function (result) {
         }
     });
+}
+
+function validateFirstStep() {
+    let title = document.querySelector('input[name="title"]').value;
+    let category = document.querySelector('select[name="category"]').value;
+    let subCategory = document.querySelector('select[name="subcategory"]').value;
+    let difficulty = document.querySelector('select[name="difficulty"]').value;
+    let preparationTime = document.querySelector('select[name="preparation_time"]').value;
+    let portionNumber = document.querySelector('input[name="portion_number"]').value;
+    if(title === '' || category === '' || subCategory === '' || difficulty === '' || preparationTime === '' || portionNumber === '') {
+        return false;
+    }
+    return true;
+}
+
+function validateSecondStep() {
+    let ingredientGroups = document.querySelectorAll('.single-ingredient-group');
+    let independentIngredients = document.querySelectorAll('.single-ingredients-inner .ingredients-cont');
+    let result = true;
+
+    ingredientGroups.forEach((singleGroup) => {
+        let groupName = singleGroup.querySelector('input[name="ingredient_group_name"]').value;
+        if(groupName === '') {
+            result = false;
+            return;
+        }
+        let groupIngredients = singleGroup.querySelectorAll('.ingredients-cont');
+        groupIngredients.forEach((single) => {
+            let name = single.querySelector('input[name="ingredient_name"]').value;
+            let qty = single.querySelector('input[name="ingredient_quantity"]').value;
+            let measure = single.querySelector('select[name="ingredient_measure"]').value;
+            if(name === '' || qty === '' || measure === '') {
+                result = false;
+                return;
+            }
+        });
+    });
+
+    independentIngredients.forEach((single) => {
+        let name = single.querySelector('input[name="ingredient_name"]').value;
+        let qty = single.querySelector('input[name="ingredient_quantity"]').value;
+        let measure = single.querySelector('select[name="ingredient_measure"]').value;
+        if(name === '' || qty === '' || measure === '') {
+            result = false;
+            return;
+        }
+    });
+
+    return result;
+}
+
+function validateThirdStep() {
+    let stepGroups = document.querySelectorAll('.single-step-group');
+    let independentSteps = document.querySelectorAll('.single-steps-inner input[name="single_step"]');
+    let result = true;
+
+    stepGroups.forEach((singleGroup) => {
+        let groupName = singleGroup.querySelector('input[name="step_group_name"]').value;
+        let groupSteps = singleGroup.querySelectorAll('input[name="single_step"]');
+        if(groupName === '') {
+            result = false;
+            return;
+        }
+        groupSteps.forEach((single) => {
+            if(single.value === '') {
+                result = false;
+                return;
+            }
+        });
+    });
+
+    independentSteps.forEach((single) => {
+        if(single.value === '') {
+            result = false;
+            return;
+        }
+    });
+
+    return result;
 }

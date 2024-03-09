@@ -37,7 +37,6 @@ class ProductController extends Controller
         $product = Product::where('slug', '=', $slug)->get()->first();
         $products = $product->productCategory->products;
         $recipes = $this->recipeService->getRecipesByProductIdOld($product->id);
-//        dd($recipes);
         return view('products.single-product', compact('product', 'products', 'recipes'));
     }
 

@@ -45,10 +45,24 @@ class RecipeService
         return $this->recipeRepository->getRecipeByProductId($product_id);
     }
 
-
+    public function getRecipeLikes($id) {
+        return $this->recipeRepository->getRecipeLikes($id);
+    }
 
     public function saveToSession(Request $request)
     {
         $this->recipeRepository->saveToSession($request);
+    }
+
+    public function getUserLiked($recipe_id, $user_id) {
+        return $this->recipeRepository->getUserLiked($recipe_id, $user_id);
+    }
+
+    public function getUserSaved($user_id) {
+        return $this->recipeRepository->getUserSaved($user_id);
+    }
+
+    public function getUserSavedSingle($user_id, $recipe_id) {
+        return $this->recipeRepository->getUserSavedSingle($user_id, $recipe_id);
     }
 }

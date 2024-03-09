@@ -24,6 +24,11 @@ class Recipe extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function category() : BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
     public function recipes_liked() : BelongsToMany
     {
         return $this->belongsToMany(User::class);

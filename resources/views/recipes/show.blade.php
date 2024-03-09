@@ -30,9 +30,9 @@
 
             </div>
         @endif
-        <div class="like-cont like">
+        <div class="like-cont like {{ $user_data['like'] != null? 'active': '' }}">
             <img src="{{ asset('images/like.svg') }}" alt="like">
-            <p>Like</p>
+            <p>{{ count($likes) }}</p>
         </div>
     </section>
 
@@ -46,7 +46,7 @@
                 <img src="{{ asset('images/book.svg') }}" alt="save">
                 <p>Sačuvaj u knjižicu recepata</p>
             </div>
-            <div class="save">
+            <div class="save {{ $user_data['save'] != null? 'active': '' }}">
                 <img src="{{ asset('images/save.svg') }}" alt="save">
                 <p>Sačuvaj na profilu</p>
             </div>
@@ -68,9 +68,11 @@
                     <div class="single-info">
                         <p><strong>Težina pripreme:</strong><br>{{ $recipe->difficulty }}</p>
                     </div>
-                    <div class="single-info">
-                        <p><strong>Broj porcija:</strong><br>{{ $recipe->portion_number }}</p>
-                    </div>
+                    @if($recipe->old_recipe == 0)
+                        <div class="single-info">
+                            <p><strong>Broj porcija:</strong><br>{{ $recipe->portion_number }}</p>
+                        </div>
+                    @endif
                     <h4>Sastojci</h4>
                     <div class="single-info">
                         @if($recipe->old_recipe == 0)
@@ -115,7 +117,7 @@
                 <div class="col-md-9">
                     <h1>{{ $recipe->title }}</h1>
                     <h4>Opis recepta</h4>
-                    <p>{{ $recipe->description }}</p>
+                    <p>{!! $recipe->description !!}</p>
                     @if($recipe->old_recipe == 0)
                         <h4>Kako se priprema?</h4>
                         @foreach($stepGroups as $key => $items)
@@ -132,7 +134,7 @@
                     @endif
 
                     @guest()
-                        s
+
                     @elseauth()
                         <h4>Autor</h4>
                         @if($recipe->old_recipe == 0)

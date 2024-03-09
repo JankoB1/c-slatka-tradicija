@@ -14,3 +14,10 @@ navBtns.forEach((btn, i) => {
         profileRecipesContent[i].classList.add('active');
     });
 });
+
+const queryString = window.location.search;
+const params = new URLSearchParams(queryString);
+const saved = params.get('saved');
+if(saved !== null) {
+    navBtns[1].click();
+}

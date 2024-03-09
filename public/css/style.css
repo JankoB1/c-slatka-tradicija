@@ -301,7 +301,7 @@ body {
 }
 
 #homepage-banner, #homepage-banner2 {
-    background-image: url("../images/homepage-banner-1.png");
+    background-image: url("../images/01.png");
     background-size: cover;
     padding: 94px 0;
 }
@@ -311,7 +311,7 @@ body {
     font: normal normal 600 44px/64px Montserrat;
     letter-spacing: 0px;
     color: #FFFFFF;
-    text-shadow: 0px 1px 24px #000000;
+    /*text-shadow: 0px 1px 24px #000000;*/
     margin-bottom: 30px;
 }
 
@@ -320,7 +320,7 @@ body {
     font: normal normal 500 20px/32px Montserrat;
     letter-spacing: 0px;
     color: #FFFFFF;
-    text-shadow: 0px 1px 34px #000000;
+    /*text-shadow: 0px 1px 34px #000000;*/
     margin-bottom: 60px;
 }
 
@@ -1522,6 +1522,7 @@ span.ingridient-plus {
     margin: 0 auto;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .profile-recipes .top-nav .single-btn p.active {
@@ -1598,6 +1599,10 @@ span.ingridient-plus {
     background: white;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+}
+
+.like-cont {
+    z-index: 10;
 }
 
 .recipe-actions-inner div.active, .like-cont.active {
@@ -1710,6 +1715,10 @@ span.ingridient-plus {
 
 .profile-recipes-content.active {
     display: flex !important;
+}
+
+.single-recipe-preview {
+    margin-bottom: 20px;
 }
 
 .single-recipe-preview p {
@@ -2164,6 +2173,349 @@ input[name="step_group_name"] {
     text-decoration: none;
 }
 
+#featured-recipes a {
+    text-decoration: none;
+}
+
+#main-header ul li {
+    position: relative;
+}
+
+#main-header ul ul {
+    position: absolute;
+    top: 50px;
+    box-shadow: 0px 0px 11.476249694824219px 0px #00000026;
+    width: 330px;
+    border-radius: 21px;
+    display: block;
+    background: white;
+    padding: 20px 0;
+    z-index: 10;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#main-header ul li:hover ul {
+    opacity: 1;
+    visibility: visible;
+}
+
+#main-header ul ul li {
+    padding: 0;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+#main-header ul ul a {
+    transition: all 0.2s ease-in-out;
+    padding: 10px 50px;
+}
+
+#main-header ul ul a:hover {
+    background: #F5CC45;
+}
+
+#main-header ul ul li a {
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+.continue.hidden {
+    display: none;
+}
+
+.top-img {
+    transform: rotate(90deg);
+}
+
+.bottom-img {
+    transform: rotate(-90deg);
+}
+
+#create-recipe-hero.create-recipe-competition {
+    background-image: url('../images/competition-hero.png');
+    background-position: center;
+}
+
+#competition-text {
+    padding: 120px 0 100px;
+}
+
+#competition-text h1 {
+    font-family: Montserrat;
+    font-size: 74px;
+    font-weight: 700;
+    line-height: 90px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #56924C;
+}
+
+#competition-text p {
+    font-family: Montserrat;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 42px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #2E4765;
+}
+
+#competition-send-recipe {
+    background: #FFFCF2;
+    padding: 175px 0;
+}
+
+#competition-send-recipe h2 {
+    text-align: left;
+}
+
+#competition-send-recipe h4 {
+    font-family: Montserrat;
+    font-size: 41px;
+    font-weight: 600;
+    line-height: 51px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: #2E4765;
+    margin-bottom: 30px;
+}
+
+#competition-send-recipe p {
+    font-family: Montserrat;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #2E4765;
+}
+
+#competition-send-recipe img {
+    width: 90%;
+    margin-left: auto;
+    display: block;
+}
+
+#recipe-form.recipe-form-competition {
+    padding-top: 0;
+}
+
+.continue.not-auth {
+    opacity: 0.4;
+}
+
+#login-popup .col-md-5 {
+    background-image: url('../images/login-popup.png');
+    background-size: cover;
+    background-position: center center;
+    border-radius: 32px 0 0 32px;
+}
+
+#login-popup .modal-body {
+    padding: 0;
+}
+
+#login-popup button.btn-close {
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    z-index: 10;
+    opacity: 0.4 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+#login-popup .row {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#login-popup .col-md-7 {
+    padding: 110px 100px;
+}
+
+#login-popup p {
+    font-family: Montserrat;
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 37px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2E4765;
+    margin-bottom: 50px;
+}
+
+#login-popup a {
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #2E4765;
+    width: 100%;
+    background: #F5CC45;
+    border-radius: 50px;
+    height: 56px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-popup .modal-dialog {
+    max-width: 1000px;
+}
+
+#login-popup .modal-content {
+    border-radius: 32px;
+}
+
+.edit-profile-container .row:last-child {
+    border-bottom: none;
+}
+
+#main-header ul ul ul {
+    position: relative !important;
+    top: 0;
+    box-shadow: none;
+    left: -50px !important;
+}
+
+#contact-content {
+    padding: 110px 0 130px;
+}
+
+#contact-content h1 {
+    font-family: Montserrat;
+    font-size: 74px;
+    font-weight: 700;
+    line-height: 46px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #56924C;
+    margin-bottom: 80px;
+}
+
+#create-recipe-hero.contact-hero {
+    background-image: url("../images/contact-hero.png");
+    background-position: center center;
+}
+
+#create-recipe-hero.contact-hero.impressum-hero {
+    background-image: url("../images/impressum-hero.png");
+}
+
+#contact-content h4 {
+    font-family: Montserrat;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2E4765;
+    margin-bottom: 40px;
+}
+
+#contact-content p, #contact-content a {
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2E4765;
+    text-decoration: none;
+}
+
+.contact-blurb img {
+    width: 24px;
+    padding-top: 2px;
+}
+
+.contact-blurb {
+    display: flex;
+    align-items: flex-start;
+    column-gap: 13px;
+}
+
+#contact-form {
+    box-shadow: 0px 16.60098648071289px 33.20197296142578px 0px #E0E0ECCC;
+    border-radius: 60px;
+    padding: 60px;
+}
+
+#contact-form input, #contact-form textarea {
+    border: 1px solid #2E4765;
+    width: 100%;
+    height: 64px;
+    border-radius: 32px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2E4765;
+    padding: 10px 25px;
+    margin-bottom: 20px;
+}
+
+#contact-form textarea {
+    height: auto;
+}
+
+#contact-form button {
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: white;
+    height: 64px;
+    border-radius: 32px;
+    background: #56924C;
+    width: 100%;
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+
+.menu-dropdown {
+    transition: all 0.3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.menu-dropdown.active {
+    max-height: 400px;
+    opacity: 1;
+    visibility: visible;
+}
+
+#main-header ul img {
+    width: 20px !important;
+    position: absolute;
+    right: 50px;
+    top: 20px;
+}
+
+.profile-recipes a {
+    text-decoration: none;
+}
+
 @media only screen and (max-width: 768px) {
     #main-header {
         display: none;
@@ -2367,5 +2719,114 @@ input[name="step_group_name"] {
 
     .recipe-main-inner.container-space .col-md-9 {
         padding: 0;
+    }
+
+    #recipe-form {
+        padding: 30px 5%;
+    }
+
+    #recipe-form h1, .recipe-form-inner h2 {
+        font-size: 28px;
+        line-height: 41px;
+        text-align: center;
+    }
+
+    .recipe-form-inner p {
+        text-align: justify;
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    #recipe-form .bowl {
+        display: none;
+    }
+
+    .small-steps .circle {
+        font-size: 12px;
+        box-shadow: 0 0 1px 9px white;
+    }
+
+    .small-steps p {
+        font-size: 9px;
+        line-height: 11px;
+        margin-top: 5px;
+    }
+
+    .single-small-step {
+        width: 65px;
+    }
+
+    .form-inner {
+        margin-top: 0;
+    }
+
+    .form-section {
+        padding-top: 0;
+    }
+
+    .small-steps {
+        margin: 30px 0;
+    }
+
+    .form-section .col-md-5 p {
+        font-size: 14px;
+        line-height: 24px;
+        margin-bottom: 40px;
+    }
+
+    .form-section .col-md-7 .row {
+        margin-bottom: 0;
+    }
+
+    .form-section .col-md-7 input, .form-section .col-md-7 select, .form-section .col-md-7 textarea, .edit-profile-container .col-md-7 input, .edit-profile-container .col-md-7 textarea {
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    .continue {
+        font-size: 16px;
+        margin-top: 0;
+    }
+
+    .add-ingredients-btns, .add-steps-btns {
+        flex-wrap: wrap;
+    }
+
+    .add-ingredients-btns button, .add-steps-btns button {
+        width: 100%;
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+
+    .add-ingredients-btns button, .add-steps-btns button {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        padding: 0 25px;
+    }
+
+    .create-recipe-step .col-md-7 .col-md-5 {
+        padding-left: calc(var(--bs-gutter-x) * 0.5) !important;
+    }
+
+    .products-ingredients {
+        width: 92%;
+        z-index: 10;
+    }
+
+    .recipe-main-inner.container-space .col-md-3 {
+        padding: 0;
+    }
+
+    .recipe-main-inner h4 {
+        font-size: 22px;
+        line-height: 50px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .recipe-main-inner p, .recipe-main-inner a {
+        font-size: 18px;
+        line-height: 28px;
+        text-align: center;
     }
 }

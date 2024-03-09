@@ -2,7 +2,7 @@ let save1 = document.querySelector('.save-1');
 let save2 = document.querySelector('.save-2');
 
 save1.addEventListener('click', function() {
-    let about = document.querySelector('textarea#about').value;
+    let about = document.querySelector('textarea').value;
     let birthdate = document.querySelector('input#birthdate').value;
     let city = document.querySelector('input#city').value;
     let fb = document.querySelector('input#fb').value;
@@ -25,14 +25,14 @@ save1.addEventListener('click', function() {
         contentType: 'application/json',
         method: 'POST',
         success: function(response) {
-            console.log(response);
+            location.reload();
         }
     });
 });
 
 save2.addEventListener('click', function() {
     let name = document.querySelector('input[name="name"]').value;
-    let surname = document.querySelector('input[name="name"]').value;
+    let surname = document.querySelector('input[name="surname"]').value;
     let phone = document.querySelector('input#phone').value;
     let email = document.querySelector('input#email').value;
 
@@ -52,7 +52,7 @@ save2.addEventListener('click', function() {
         contentType: 'application/json',
         method: 'POST',
         success: function(response) {
-            console.log(response);
+            location.reload();
         }
     });
 });

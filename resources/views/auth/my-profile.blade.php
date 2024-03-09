@@ -5,7 +5,7 @@
     <section id="top-profile">
         <div class="container-space">
             <h1>Učestvuj u konkursu<br>Torte i kolači sa<br>Eskimko sladoledom</h1>
-            <a href="#">Nagradni konkurs</a>
+            <a href="{{ route('show-competition') }}">Nagradni konkurs</a>
         </div>
     </section>
 
@@ -73,15 +73,41 @@
                             @foreach(Auth::user()->recipes as $recipe)
                                 <div class="col-md-4">
                                     <div class="single-recipe-preview">
-                                        <div class="recipe-preview-img">
+                                        <a href="{{ route('show-single-recipe', ['category' => $recipe->category->slug, 'slug' => $recipe->slug]) }}">
+                                            @if($recipe->old_recipe == 1)
+                                                <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $recipe->image_old) }}');">
 
-                                        </div>
-                                        <p>{{ $recipe->title }}</p>
+                                                </div>
+                                            @else
+                                                <div class="recipe-preview-img" style="background-image: url('{{ isset($recipe->images[0]) ? asset('storage/upload/' . $recipe->images[0]->path): '' }}');">
+
+                                                </div>
+                                            @endif
+                                            <p>{{ $recipe->title }}</p>
+                                        </a>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
-                        <div class="profile-recipes-content profile-recipes-content-saved">
+                        <div class="profile-recipes-content profile-recipes-content-saved row">
+                            @foreach($savedRecipes as $saved)
+                                <div class="col-md-4">
+                                    <div class="single-recipe-preview">
+                                        <a href="{{ route('show-single-recipe', ['category' => $saved->recipe->category->slug, 'slug' => $saved->recipe->slug]) }}">
+                                            @if($saved->recipe->old_recipe == 1)
+                                                <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $saved->recipe->image_old) }}');">
+
+                                                </div>
+                                            @else
+                                                <div class="recipe-preview-img" style="background-image: url('{{ isset($saved->recipe->images[0]) ? asset('storage/upload/' . $saved->recipe->images[0]->path): '' }}');">
+
+                                                </div>
+                                            @endif
+                                            <p>{{ $saved->recipe->title }}</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

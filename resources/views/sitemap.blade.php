@@ -59,7 +59,7 @@
                 <a href="#">Priče iz C sveta</a>
             </div>
             <div class="single-link">
-                <a href="#">Nagradni konkursi</a>
+                <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
             </div>
             <div class="single-link">
                 <a href="#">Moja knjižica recepata</a>
@@ -91,7 +91,7 @@
                 <div class="col-md-6">
                     <p>AKTIVNI NAGRADNI KONKURS</p>
                     <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
-                    <a href="#">Nagradni konkursi</a>
+                    <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
                 </div>
             </div>
         </div>

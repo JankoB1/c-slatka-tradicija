@@ -5,7 +5,7 @@
     <section id="top-profile">
         <div class="container-space">
             <h1>Učestvuj u konkursu<br>Torte i kolači sa<br>Eskimko sladoledom</h1>
-            <a href="#">Nagradni konkurs</a>
+            <a href="{{ route('show-competition') }}">Nagradni konkurs</a>
         </div>
     </section>
 
@@ -41,7 +41,7 @@
                         <p>Napiši nešto o sebi</p>
                     </div>
                     <div class="col-md-7">
-                        <textarea name="about" id="about" cols="30" rows="10" placeholder="Unesi tekst"></textarea>
+                        <textarea name="about" cols="30" rows="10">{{ Auth::user()->about }}</textarea>
                     </div>
                 </div>
                 <div class="row">
@@ -50,7 +50,7 @@
                         <p>Koji je tvoj datum rođenja</p>
                     </div>
                     <div class="col-md-7">
-                        <input type="date" name="birthdate" id="birthdate">
+                        <input type="date" name="birthdate" id="birthdate" value="{{ Auth::user()->birthdate }}">
                     </div>
                 </div>
                 <div class="row">
@@ -59,7 +59,7 @@
                         <p>U kom gradu živiš?</p>
                     </div>
                     <div class="col-md-7">
-                        <input type="text" name="city" id="city" placeholder="Unesi tekst">
+                        <input type="text" name="city" id="city" value="{{ Auth::user()->city }}">
                     </div>
                 </div>
                 <div class="row">
@@ -68,7 +68,7 @@
                         <p>Link do tvog Facebook profila</p>
                     </div>
                     <div class="col-md-7">
-                        <input type="url" name="fb" id="fb" placeholder="Unesi link">
+                        <input type="url" name="fb" id="fb" value="{{ Auth::user()->fb }}">
                     </div>
                 </div>
                 <div class="row">
@@ -77,7 +77,7 @@
                         <p>Link do tvog Instagram profila</p>
                     </div>
                     <div class="col-md-7">
-                        <input type="url" name="ig" id="ig" placeholder="Unesi link">
+                        <input type="url" name="ig" id="ig" value="{{ Auth::user()->ig }}">
                     </div>
                     <button type="button" class="profile-save save-1">Sačuvaj izmene</button>
                 </div>
@@ -92,10 +92,10 @@
                         <div class="col-md-7">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="text" name="name" placeholder="Ime primaoca">
+                                    <input type="text" name="name" value="{{ Auth::user()->name }}">
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" name="surname" placeholder="Prezime primaoca">
+                                    <input type="text" name="surname" value="{{ Auth::user()->surname }}">
                                 </div>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                             <p>Kontakt telefon primaoca</p>
                         </div>
                         <div class="col-md-7">
-                            <input type="text" name="phone" placeholder="Unesi broj telefona" id="phone">
+                            <input type="text" name="phone" value="{{ Auth::user()->phone }}" id="phone">
                         </div>
                     </div>
                     <div class="row">
@@ -115,7 +115,7 @@
                             <p>Email adresa primaoca</p>
                         </div>
                         <div class="col-md-7">
-                            <input type="email" name="email" placeholder="Email adresa primaoca" id="email">
+                            <input type="email" name="email" value="{{ Auth::user()->email }}" id="email">
                         </div>
                         <button type="button" class="profile-save save-2">Sačuvaj izmene</button>
                     </div>

@@ -15,6 +15,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use App\Services\RecipeService;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -43,7 +44,9 @@ class RecipeController extends Controller
     }
 
     public function index() {
-        return view('homepage');
+        $recipes = $this->recipeService->getRecipesByProductIdOld(1);
+        $recipes2 = $this->recipeService->getRecipesByProductIdOld(3);
+        return view('homepage', compact('recipes', 'recipes2'));
     }
 
     public function showAbout() {
@@ -57,15 +60,25 @@ class RecipeController extends Controller
 
     public function retrieveSingleRecipe(string $category, string $slug) {
         $recipe = $this->recipeService->getRecipeBySlug($slug);
+        $likes = $this->recipeService->getRecipeLikes($recipe->id);
+        $user_data = [
+            'like' => null,
+            'save' => null
+        ];
+        if(Auth::user()) {
+            $user_data['like'] = $this->recipeService->getUserLiked($recipe->id, Auth::user()->id);
+            $user_data['save'] = $this->recipeService->getUserSavedSingle(Auth::user()->id, $recipe->id);
+        }
+        // dd($user_data);
         if($recipe->old_recipe == 1) {
             $ingredients = $this->ingredientService->getIngredientsOld($recipe->id);
             $products = $this->productRepository->getProductsOld($recipe->id);
-            return view('recipes.show', compact('recipe', 'ingredients', 'products'));
+            return view('recipes.show', compact('recipe', 'ingredients', 'products', 'likes', 'user_data'));
         }
         $ingredientGroups = $this->ingredientGroupService->getGroupsByRecipeId($recipe->id);
         $stepGroups = $this->stepGroupService->getGroupsByRecipeId($recipe->id);
         $products = $this->productRepository->getProductByRecipeId($recipe->id);
-        return view('recipes.show', compact('recipe', 'ingredientGroups', 'stepGroups', 'products'));
+        return view('recipes.show', compact('recipe', 'ingredientGroups', 'stepGroups', 'products', 'likes', 'user_data'));
     }
 
     public function create() {
@@ -86,13 +99,17 @@ class RecipeController extends Controller
             $this->stepRepository->addSteps($request, $recipe->id);
             $this->imageService->addImage($request, $recipe->id);
             $this->imageService->removeImage($request);
+            $data = [
+                'recipe_slug' => $recipe->slug,
+                'category_slug' => $recipe->category->slug
+            ];
             DB::commit();
-            return redirect()->route('recipes.retrieve')->with('success', 'Recipe created successfully');
+            return response($data);
         }
         catch (Exception $exception) {
             Log::error('Can\'t upload image: ' . $exception->getMessage());
             DB::rollBack();
-            return redirect()->back()->with('error', 'Failed to create recipe. Please try again.');
+            return response('Error');
         }
     }
 
@@ -123,5 +140,17 @@ class RecipeController extends Controller
 
     public function showAllCategories() {
         return view('recipes.recipes');
+    }
+
+    public function showCompetition() {
+        return view('competition');
+    }
+
+    public function showContact() {
+        return view('contact');
+    }
+
+    public function showImpressum() {
+        return view('impressum');
     }
 }

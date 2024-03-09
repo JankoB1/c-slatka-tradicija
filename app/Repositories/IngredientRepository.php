@@ -39,7 +39,7 @@ class IngredientRepository
                 foreach($group['ingredients'] as $item) {
                     Ingredient::create([
                         'recipe_id' => $recipe_id,
-                        'product_id' => $item['product'],
+                        'product_id' => isset($item['product'])? $item['product']: null,
                         'title' => $item['title'],
                         'group' => $ingredient_group->id,
                     ]);
@@ -49,7 +49,7 @@ class IngredientRepository
             foreach($ingredients_without_group as $item) {
                 Ingredient::create([
                     'recipe_id' => $recipe_id,
-                    'product_id' => $item['product'],
+                    'product_id' => isset($item['product'])? $item['product']: null,
                     'title' => $item['title'],
                     'group' => null,
                 ]);

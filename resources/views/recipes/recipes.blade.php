@@ -64,4 +64,17 @@
         </div>
     </section>
 
+    <section id="homepage-banner">
+        <img class="mobile" src="{{ asset('images/homepage-banner-mobile.png') }}" alt="homepage banner mobile">
+        <div class="homepage-banner-inner container-space">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Tvoj sladak začin <br>još od 1976. godine</h3>
+                    <p>Kada se najbliži okupe i sa osmesima uživaju u najlepšim trenucima uz omiljene ukuse, tada je jasno zašto decenijama duga tradicija čini C proizvode neizostavnim delom svake trpeze.</p>
+                    <a href="{{ route('show-all-categories') }}">Proizvodi</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
 @endsection

@@ -31,28 +31,44 @@
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="featured-recipe-single mini">
-                                <div class="featured-image-cont" style="background-image: url('{{ asset('images/f1.png') }}');"></div>
-                                <p>Torta sa borovnicama</p>
-                            </div>
+                            @if(isset($recipes[0]))
+                                <a href="{{ route('show-single-recipe', ['category' => $recipes[0]->category_slug, 'slug' => $recipes[0]->recipe_slug]) }}">
+                                    <div class="featured-recipe-single mini">
+                                        <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[0]->image) }}');"></div>
+                                        <p>{{ $recipes[0]->recipe_title }}</p>
+                                    </div>
+                                </a>
+                            @endif
                         </div>
                         <div class="col-md-6">
-                            <div class="featured-recipe-single mini">
-                                <div class="featured-image-cont" style="background-image: url('{{ asset('images/f2.png') }}');"></div>
-                                <p>Torta sa borovnicama</p>
-                            </div>
+                            @if(isset($recipes[1]))
+                                <a href="{{ route('show-single-recipe', ['category' => $recipes[1]->category_slug, 'slug' => $recipes[1]->recipe_slug]) }}">
+                                    <div class="featured-recipe-single mini">
+                                        <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[1]->image) }}');"></div>
+                                        <p>{{ $recipes[1]->recipe_title }}</p>
+                                    </div>
+                                </a>
+                            @endif
                         </div>
                     </div>
-                    <div class="featured-recipe-single">
-                        <div class="featured-image-cont" style="background-image: url('{{ asset('images/f4.png') }}');"></div>
-                        <p>Torta sa borovnicama</p>
-                    </div>
+                    @if(isset($recipes[2]))
+                        <a href="{{ route('show-single-recipe', ['category' => $recipes[2]->category_slug, 'slug' => $recipes[2]->recipe_slug]) }}">
+                            <div class="featured-recipe-single">
+                                <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[2]->image) }}');"></div>
+                                <p>{{ $recipes[2]->recipe_title }}</p>
+                            </div>
+                        </a>
+                    @endif
                 </div>
                 <div class="col-md-6">
-                    <div class="featured-recipe-single big">
-                        <div class="featured-image-cont" style="background-image: url('{{ asset('images/f3.png') }}');"></div>
-                        <p>Torta sa borovnicama</p>
-                    </div>
+                    @if(isset($recipes[3]))
+                        <a href="{{ route('show-single-recipe', ['category' => $recipes[3]->category_slug, 'slug' => $recipes[3]->recipe_slug]) }}">
+                            <div class="featured-recipe-single big">
+                                <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[3]->image) }}');"></div>
+                                <p>{{ $recipes[3]->recipe_title }}</p>
+                            </div>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -64,7 +80,7 @@
             <p>Bez brige! Naša C Slatka tradicija porodica nudi širok izbora proizvoda, a brza i jednostavna priprema olakšaće svako upuštanje u novu kulinarsku avanturu. </p>
             <div class="category-products">
                 @foreach($products as $singleProduct)
-                    @if($singleProduct->id != $product->id)
+                    @if($singleProduct->id != $product->id && $singleProduct->active == 'T')
                         <div class="single-product">
                             <a href="{{ route('show-single-product', ['slug' => $singleProduct->slug]) }}">
                                 <img src="{{ asset('images/' . $singleProduct->image_path) }}" alt="">

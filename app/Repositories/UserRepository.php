@@ -14,7 +14,6 @@ class UserRepository
         try {
             $user = Auth::user();
             $user->about = $request->about;
-            $user->admin = $request->admin;
             $user->birthdate = $request->birthdate;
             $user->city = $request->city;
             $user->fb = $request->fb;
