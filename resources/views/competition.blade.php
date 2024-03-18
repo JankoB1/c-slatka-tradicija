@@ -33,7 +33,8 @@
                         <br><br>Opšte uslove i pravila konkursa možete pogledati na strani Uslovi i pravila konkursa Poslastice sa šlagom i šlag kremom.  Odabrane recepte sa prethodnih konkursa možete pogledati na strani Odabrani recepti.</p>
                 </div>
                 <div class="col-md-6">
-                    <img src="{{ asset('images/competition-cookies.png') }}" alt="competition cookies">
+                    <img class="desktop" src="{{ asset('images/competition-cookies.png') }}" alt="competition cookies">
+                    <img src="{{ asset('images/competition-m.png') }}" alt="" class="mobile">
                 </div>
             </div>
         </div>
@@ -223,6 +224,19 @@
                 </div>
             </form>
 
+        </div>
+    </section>
+
+    <section id="homepage-banner2">
+        <img class="mobile" src="{{ asset('images/homepage-banner2-mobile.png') }}" alt="homepage banner2">
+        <div class="homepage-banner-inner container-space">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>AKTIVNI NAGRADNI KONKURS</p>
+                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
+                    <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
+                </div>
+            </div>
         </div>
     </section>
 

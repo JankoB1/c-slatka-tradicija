@@ -3,10 +3,11 @@
 @section('content')
     <section id="recipes-category-banner"></section>
 
-    <section id="action">
+    <section id="action" class="recipes-action">
         <div class="action-inner container-space">
             <h2>Recepti</h2>
             <p>Slatku tradiciju zajedno stvaramo. Zato su na našem sajtu najbolji recepti dostupni svima. Odlučite se za proverene bakine recepte koje voli cela porodica ili isprobajte brze i jednostavne nove recepte. Uz praktične savete naših domaćica priprema poslastica postaje pravo uživanje. Budite i vi deo tradicije koja inspiriše. Upotpunite naš kuvar svojim originalnim receptom i podelite svoje kulinarske tajne za pripremu omiljenih deserata.</p>
+            <a href="{{ route('recipes.create') }}" class="mobile-send-cta mobile">Pošaljite recept</a>
             <div class="categories-banners row">
                 <div class="col-md-6">
                     <div class="single-category-banner">

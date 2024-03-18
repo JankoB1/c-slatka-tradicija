@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create a New Recipe')
+@section('title', 'Napravi novi recept')
 
 @section('scriptsTop')
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -81,7 +81,7 @@
                                         <select name="category">
                                             <option selected value="">Kategorija recepta (izaberi)</option>
                                             <option value="0">Torte</option>
-                                            <option value="1">Kolaci</option>
+                                            <option value="1">Kolači</option>
                                             <option value="2">Hleb i peciva</option>
                                             <option value="3">Zimnica</option>
                                             <option value="4">Deserti</option>
@@ -201,7 +201,11 @@
 
                     <div class="row">
                         <div class="col-md-7 offset-md-5">
-                            <button type="button" class="continue">Dalje</button>
+                            @auth()
+                                <button type="button" class="continue">Dalje</button>
+                            @else
+                                <button type="button" class="continue not-auth" data-bs-toggle="modal" data-bs-target="#login-popup">Dalje</button>
+                            @endauth
                         </div>
                     </div>
 
@@ -212,6 +216,7 @@
     </section>
 
     <section id="homepage-banner2">
+        <img class="mobile" src="{{ asset('images/homepage-banner2-mobile.png') }}" alt="homepage banner2">
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
@@ -222,6 +227,44 @@
             </div>
         </div>
     </section>
+
+    @guest()
+        <div class="modal fade" id="login-popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-7">
+                                <p>Da biste pristupili ovoj stranici, potrebno je da budete prijavljeni na našem web sajtu.</p>
+                                <p>Bez brige, ukoliko nemate profil, proces je kratak i vrlo brzo ćete moći da nastavite sa korišćenjem sajta.</p>
+                                <a href="{{ route('login') }}">Prijavi se</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endguest
+
+    @auth()
+        <div class="modal fade" id="loading-popup" tabindex="-1" aria-labelledby="loadingPopupLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-7">
+                                <p>Vaš recept se priprema!</p>
+                                <img src="{{ asset('images/loading.png') }}" alt="loading" class="loading-spinner">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endauth
 
 @endsection
 

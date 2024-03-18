@@ -65,20 +65,22 @@ class RecipeController extends Controller
             'like' => null,
             'save' => null
         ];
+        $recipes = $this->recipeService->getRecipesByProductIdOld(1);
+        $recipes2 = $this->recipeService->getRecipesByProductIdOld(3);
+
         if(Auth::user()) {
             $user_data['like'] = $this->recipeService->getUserLiked($recipe->id, Auth::user()->id);
             $user_data['save'] = $this->recipeService->getUserSavedSingle(Auth::user()->id, $recipe->id);
         }
-        // dd($user_data);
         if($recipe->old_recipe == 1) {
             $ingredients = $this->ingredientService->getIngredientsOld($recipe->id);
             $products = $this->productRepository->getProductsOld($recipe->id);
-            return view('recipes.show', compact('recipe', 'ingredients', 'products', 'likes', 'user_data'));
+            return view('recipes.show', compact('recipe', 'ingredients', 'products', 'likes', 'user_data', 'recipes', 'recipes2'));
         }
         $ingredientGroups = $this->ingredientGroupService->getGroupsByRecipeId($recipe->id);
         $stepGroups = $this->stepGroupService->getGroupsByRecipeId($recipe->id);
         $products = $this->productRepository->getProductByRecipeId($recipe->id);
-        return view('recipes.show', compact('recipe', 'ingredientGroups', 'stepGroups', 'products', 'likes', 'user_data'));
+        return view('recipes.show', compact('recipe', 'ingredientGroups', 'stepGroups', 'products', 'likes', 'user_data', 'recipes', 'recipes2'));
     }
 
     public function create() {
@@ -134,7 +136,7 @@ class RecipeController extends Controller
 
     public function showRecipeCategory($slug) {
         $category = Category::where('slug', '=', $slug)->get()->first();
-        $recipes = $category->recipes()->paginate(21);
+        $recipes = $category->recipes()->orderBy('created_at', 'desc')->paginate(21);
         return view('recipes.category', compact('category', 'recipes'));
     }
 
@@ -152,5 +154,18 @@ class RecipeController extends Controller
 
     public function showImpressum() {
         return view('impressum');
+    }
+
+    public function getRecipesByIds(Request $request) {
+        $recipes = Recipe::whereIn('id', $request->recipes)->get();
+        return response()->json($recipes);
+    }
+
+    public function showPrivacyNote() {
+        return view('privacy-note');
+    }
+
+    public function showPrivacyPolicy() {
+        return view('privacy-policy');
     }
 }
