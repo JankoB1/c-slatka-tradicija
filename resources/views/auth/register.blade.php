@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <section id="homepage-banner2">
-        <img class="mobile" src="{{ asset('images/homepage-banner2-mobile.png') }}" alt="homepage banner2">
+    <section id="homepage-banner2" class="login-hero">
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <p>AKTIVNI NAGRADNI KONKURS</p>
+                    <p class="desktop">AKTIVNI NAGRADNI KONKURS</p>
                     <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
                     <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
                 </div>

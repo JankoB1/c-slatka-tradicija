@@ -4130,5 +4130,65 @@ img.loading-spinner {
         top: 35px;
         transform: translateY(-50%);
     }
+
+    #contact-form {
+        padding: 30px 25px;
+    }
+
+    #contact-content {
+        padding: 40px 0;
+    }
+
+    #contact-content h1, #login-content h1 {
+        font-size: 28px;
+        line-height: 41px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    #contact-content h4 {
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+
+    #create-recipe-hero.contact-hero.impressum-hero {
+        background-image: url("../images/impressum-hero-mobile.png");
+    }
+
+    #create-recipe-hero.contact-hero {
+        background-image: url("../images/contact-hero-mobile.png");
+    }
+
+    #privacy-note-hero {
+        background-image: url("../images/pnote-hero-mobile.png");
+    }
+
+    #privacy-policy-hero {
+        background-image: url("../images/ppolicy-hero-mobile.png");
+    }
+
+    .login-form {
+        padding: 30px 20px;
+    }
+
+    #homepage-banner2.login-hero {
+        background-image: url("../images/login-register-mobile-hero.png");
+        padding-bottom: 50vh;
+    }
+
+    #homepage-banner2.login-hero h3 {
+        padding-top: 80px;
+        color: #2E4765;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #login-content {
+        padding: 30px 0;
+    }
+
+    #login-content h2, #login-content h3 {
+        margin-bottom: 20px;
+    }
 }
 
