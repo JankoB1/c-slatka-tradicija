@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
@@ -37,6 +38,12 @@ Route::get('/posaljite-recept', [RecipeController::class, 'create'])->name('reci
 Route::get('/mapa-sajta', [SiteController::class, 'showSitemap'])->name('show-sitemap');
 Route::get('/knjiga-recepata', [RecipeController::class, 'showRecipeBook'])->name('show-recipe-book');
 
+Route::get('/predstavljamo/{id}', [PostController::class, 'showSinglePost'])->name('show-single-post');
+Route::get('/predstavljamo', [PostController::class, 'showPosts'])->name('show-posts');
+
+Route::get('/pravna-napomena', [RecipeController::class, 'showPrivacyNote'])->name('show-privacy-note');
+Route::get('/politika-zastite-podataka', [RecipeController::class, 'showPrivacyPolicy'])->name('show-privacy-policy');
+
 Auth::routes();
 
 Route::get('/logout', [LoginController::class, 'logout']);
@@ -49,4 +56,10 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/izmeni-profil', [UserController::class, 'editDetails'])->name('edit-details');
     Route::post('/handle-like', [RecipeController::class, 'likeRecipe'])->name('handle-like');
     Route::post('/handle-save', [RecipeController::class, 'saveRecipe'])->name('handle-save');
+    Route::get('/dodaj-post', [PostController::class, 'showAddPost'])->name('show-add-post');
+    Route::post('/upload-mce', [ImageController::class, 'uploadImageMce'])->name('upload-image-mce');
+    Route::post('/add-post', [PostController::class, 'addPost'])->name('add-post');
 });
+
+Route::get('/pdf', [\App\Http\Controllers\PdfController::class, 'generatePdf'])->name('pdf');
+Route::get('/get-recipes-by-ids', [RecipeController::class, 'getRecipesByIds'])->name('get-recipes-by-ids');

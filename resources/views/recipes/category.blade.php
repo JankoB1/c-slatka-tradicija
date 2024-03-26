@@ -8,6 +8,7 @@
         <div class="recipes-category-content container-space">
             <a href="{{ route('show-all-recipes') }}" class="all-categories-link"><img src="{{ asset('images/left-arrow.svg') }}" alt="left arrow">Sve kategorije recepata</a>
             <h1>{{ $category->name }}</h1>
+            <a href="{{ route('recipes.create') }}" class="mobile-send-cta mobile">Pošaljite recept</a>
             <div class="row">
                 @foreach($recipes as $recipe)
                     <div class="col-md-4">

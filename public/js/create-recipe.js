@@ -34,6 +34,15 @@ jQuery.ajax({
     }
 });
 
+let loginPopup = document.querySelector('#login-popup');
+if(loginPopup) {
+    document.querySelector('.create-recipe-step .col-md-7').addEventListener('click', function(e) {
+        e.preventDefault();
+        let modal = new bootstrap.Modal(loginPopup);
+        modal.show();
+    });
+}
+
 const imageControls = `<div class="row image-controls-row">
     <div class="col-md-3">
         <img class="delete-img" src="${window.origin + '/images/delete-img.png'}" alt="delete img">
@@ -173,10 +182,10 @@ continueBtn.addEventListener('click', function() {
             return;
         }
     } else if(currentStep === 3) {
-        this.classList.add('hidden');
         if(!validateThirdStep()) {
             return;
         }
+        this.classList.add('hidden');
     }
     steps[currentStep-1].classList.remove('active');
     steps[currentStep].classList.add('active');
@@ -269,120 +278,161 @@ addStep.addEventListener('click', function() {
     singleStepsInner.appendChild(newStep);
 });
 
+function processImages(imageDivs) {
+    let promises = [];
+
+    imageDivs.forEach((imageDiv, i) => {
+        let promise = new Promise((resolve, reject) => {
+            domtoimage.toPng(imageDiv.querySelector('.single-img'), { quality: 0.99, height: 356,  width: 734 })
+                .then(dataUrl => {
+                    let currentTimeSeconds = Math.floor(Date.now() / 1000);
+                    let imageName = currentTimeSeconds + i + '.png';
+                    saveMaskImage(dataUrl, 0, imageName)
+                        .then(() => {
+                            imagesUploaded.push(imageName);
+                            imagesFinal.push(imageName);
+                            resolve(); // Resolve the promise when the AJAX request is completed
+                        })
+                        .catch(reject); // Reject the promise if there's an error
+                })
+                .catch(reject); // Reject the promise if there's an error
+        });
+
+        promises.push(promise);
+    });
+
+    return Promise.all(promises);
+}
+
 createRecipeBtn.addEventListener('click', function(e) {
     e.preventDefault();
+    let loadingPopup = document.querySelector('#loading-popup');
+    let loadingModal = new bootstrap.Modal(loadingPopup);
+    loadingModal.show();
 
-    let title = document.querySelector('form input[name="title"]').value;
-    let cat = category.value;
-    let subCat = subcategory.value;
-    let difficulty = document.querySelector('form select[name="difficulty"]').value;
-    let preparationTime = document.querySelector('form select[name="preparation_time"]').value;
-    let portionNum = document.querySelector('form input[name="portion_number"]').value;
-    let description = document.querySelector('textarea[name="description"]').value;
+    let imageDivs = document.querySelectorAll('.single-image-div');
+    processImages(imageDivs)
+        .then(() => {
+            let title = document.querySelector('form input[name="title"]').value;
+            let cat = category.value;
+            let subCat = subcategory.value;
+            let difficulty = document.querySelector('form select[name="difficulty"]').value;
+            let preparationTime = document.querySelector('form select[name="preparation_time"]').value;
+            let portionNum = document.querySelector('form input[name="portion_number"]').value;
+            let description = document.querySelector('textarea[name="description"]').value;
 
-    let ingredientGroups = document.querySelectorAll('.single-ingredient-group');
-    let independentIngredients = document.querySelectorAll('.single-ingredients-inner .ingredients-cont');
-    let ingredientGroupsParsed = [];
-    let independentIngredientsParsed = [];
+            let ingredientGroups = document.querySelectorAll('.single-ingredient-group');
+            let independentIngredients = document.querySelectorAll('.single-ingredients-inner .ingredients-cont');
+            let ingredientGroupsParsed = [];
+            let independentIngredientsParsed = [];
 
-    let stepGroups = document.querySelectorAll('.single-step-group');
-    let independentSteps = document.querySelectorAll('.single-steps-inner input[name="single_step"]');
-    let stepGroupsParsed = [];
-    let independentStepsParsed = [];
+            let stepGroups = document.querySelectorAll('.single-step-group');
+            let independentSteps = document.querySelectorAll('.single-steps-inner input[name="single_step"]');
+            let stepGroupsParsed = [];
+            let independentStepsParsed = [];
 
-    ingredientGroups.forEach((singleGroup) => {
-        let groupName = singleGroup.querySelector('input[name="ingredient_group_name"]').value;
-        let groupIngredients = singleGroup.querySelectorAll('.ingredients-cont');
-        let ingredients = [];
-        groupIngredients.forEach((single) => {
-            let name = single.querySelector('input[name="ingredient_name"]').value;
-            let qty = single.querySelector('input[name="ingredient_quantity"]').value;
-            let measure = single.querySelector('select[name="ingredient_measure"]').value;
-            let product = single.querySelector('input[name="ingredient_name"]').dataset.productId;
-            ingredients.push({
-                title: name + ' ' + qty + ' ' + measure,
-                product: product === null? null: product
+            ingredientGroups.forEach((singleGroup) => {
+                let groupName = singleGroup.querySelector('input[name="ingredient_group_name"]').value;
+                let groupIngredients = singleGroup.querySelectorAll('.ingredients-cont');
+                let ingredients = [];
+                groupIngredients.forEach((single) => {
+                    let name = single.querySelector('input[name="ingredient_name"]').value;
+                    let qty = single.querySelector('input[name="ingredient_quantity"]').value;
+                    let measure = single.querySelector('select[name="ingredient_measure"]').value;
+                    let product = single.querySelector('input[name="ingredient_name"]').dataset.productId;
+                    ingredients.push({
+                        title: name + ' ' + qty + ' ' + measure,
+                        product: product === null? null: product
+                    });
+                });
+                let group = {
+                    name: groupName,
+                    ingredients: ingredients
+                }
+                ingredientGroupsParsed.push(group);
             });
+
+            independentIngredients.forEach((single) => {
+                let name = single.querySelector('input[name="ingredient_name"]').value;
+                let qty = single.querySelector('input[name="ingredient_quantity"]').value;
+                let measure = single.querySelector('select[name="ingredient_measure"]').value;
+                let product = single.querySelector('input[name="ingredient_name"]').dataset.productId;
+                independentIngredientsParsed.push({
+                    title: name + ' ' + qty + ' ' + measure,
+                    product: product === null? null: product
+                });
+            });
+
+            stepGroups.forEach((singleGroup) => {
+                let groupName = singleGroup.querySelector('input[name="step_group_name"]').value;
+                let groupSteps = singleGroup.querySelectorAll('input[name="single_step"]');
+                let gSteps = [];
+                groupSteps.forEach((single) => {
+                    gSteps.push(single.value);
+                });
+                let group = {
+                    name: groupName,
+                    steps: gSteps
+                }
+                stepGroupsParsed.push(group);
+            });
+
+            independentSteps.forEach((single) => {
+                independentStepsParsed.push(single.value);
+            });
+
+            let ingredients = {
+                ingredientGroups: ingredientGroupsParsed,
+                ingredients: independentIngredientsParsed
+            }
+
+            let stepsForm = {
+                stepGroups: stepGroupsParsed,
+                steps: independentStepsParsed
+            }
+
+            let imagesToDelete = [];
+            imagesUploaded.forEach((image) => {
+                if(!imagesFinal.includes(image)) {
+                    imagesToDelete.push(image);
+                }
+            });
+
+            let data = {
+                title: title,
+                cat: cat,
+                subCat: subCat,
+                difficulty: difficulty,
+                preparationTime: preparationTime,
+                portionNum: portionNum,
+                description: description,
+                ingredients: ingredients,
+                steps: stepsForm,
+                imagesFinal: imagesFinal,
+                imagesToDelete: imagesToDelete
+            }
+
+            jQuery.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                },
+                url: window.origin + '/recipes/store',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                method: 'POST',
+                success: function(response) {
+                    window.location.href = window.origin + '/recepti/' + response.category_slug + '/' + response.recipe_slug;
+                }
+            });
+
+            console.log('All images processed successfully');
+            console.log('Uploaded images:', imagesUploaded);
+            console.log('Final images:', imagesFinal);
+        })
+        .catch(error => {
+            // Handle errors if any of the Promises are rejected
+            console.error('Error processing images:', error);
         });
-        let group = {
-            name: groupName,
-            ingredients: ingredients
-        }
-        ingredientGroupsParsed.push(group);
-    });
-
-    independentIngredients.forEach((single) => {
-        let name = single.querySelector('input[name="ingredient_name"]').value;
-        let qty = single.querySelector('input[name="ingredient_quantity"]').value;
-        let measure = single.querySelector('select[name="ingredient_measure"]').value;
-        let product = single.querySelector('input[name="ingredient_name"]').dataset.productId;
-        independentIngredientsParsed.push({
-            title: name + ' ' + qty + ' ' + measure,
-            product: product === null? null: product
-        });
-    });
-
-    stepGroups.forEach((singleGroup) => {
-        let groupName = singleGroup.querySelector('input[name="step_group_name"]').value;
-        let groupSteps = singleGroup.querySelectorAll('input[name="single_step"]');
-        let gSteps = [];
-        groupSteps.forEach((single) => {
-            gSteps.push(single.value);
-        });
-        let group = {
-            name: groupName,
-            steps: gSteps
-        }
-        stepGroupsParsed.push(group);
-    });
-
-    independentSteps.forEach((single) => {
-        independentStepsParsed.push(single.value);
-    });
-
-    let ingredients = {
-        ingredientGroups: ingredientGroupsParsed,
-        ingredients: independentIngredientsParsed
-    }
-
-    let stepsForm = {
-        stepGroups: stepGroupsParsed,
-        steps: independentStepsParsed
-    }
-
-    let imagesToDelete = [];
-    imagesUploaded.forEach((image) => {
-        if(!imagesFinal.includes(image)) {
-            imagesToDelete.push(image);
-        }
-    });
-
-    let data = {
-        title: title,
-        cat: cat,
-        subCat: subCat,
-        difficulty: difficulty,
-        preparationTime: preparationTime,
-        portionNum: portionNum,
-        description: description,
-        ingredients: ingredients,
-        steps: stepsForm,
-        imagesFinal: imagesFinal,
-        imagesToDelete: imagesToDelete
-    }
-
-    jQuery.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-        },
-        url: window.origin + '/recipes/store',
-        data: JSON.stringify(data),
-        contentType: 'application/json',
-        method: 'POST',
-        success: function(response) {
-            window.location.href = window.origin + '/recepti/' + response.category_slug + '/' + response.recipe_slug;
-        }
-    });
 });
 
 function searchProducts(target) {
@@ -424,8 +474,8 @@ addImageBtn.addEventListener('click', function() {
             },
             url: window.origin + '/recipes/upload-image',
             data: formData,
-            processData: false, // Important: prevents jQuery from automatically processing the FormData object
-            contentType: false, // Important: prevents jQuery from automatically setting the content type
+            processData: false,
+            contentType: false,
             method: 'POST',
             success: function(response) {
                 imagesUploaded.push(response);
@@ -509,20 +559,7 @@ addImageBtn.addEventListener('click', function() {
 
                 let doneBtn = newImagesRow.querySelector('button');
                 doneBtn.addEventListener('click', function() {
-                    domtoimage.toPng(newDiv.querySelector('.single-img'), { quality: 0.99, height: 356,  width: 734 })
-                        .then(dUrl => {
-                            domtoimage.toPng(newDiv.querySelector('.single-img'), { quality: 0.99, height: 356,  width: 734 })
-                                .then(dataUrl => {
-                                    let imageElement = new Image();
-                                    imageElement.src = dataUrl;
-                                    let currentTimeSeconds = Math.floor(Date.now() / 1000);
-                                    let imageName = currentTimeSeconds + '.png';
-                                    saveMaskImage(dataUrl, 0, imageName);
-                                    imagesUploaded.push(imageName);
-                                    imagesFinal.push(imageName);
-                                    newImagesRow.classList.add('done');
-                                });
-                        });
+                    newImagesRow.classList.add('done');
                 });
 
             },
@@ -537,15 +574,27 @@ addImageBtn.addEventListener('click', function() {
 });
 
 function saveMaskImage(dataUrl, xOffset, imageName) {
-    jQuery.ajax({
-        url: window.location.origin + '/recipes/add-image', method: 'post', headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-        }, data: {
-            'imageData': dataUrl,
-            'xOffset': xOffset,
-            'imageName': imageName
-        },  success: function (result) {
-        }
+    return new Promise((resolve, reject) => {
+        jQuery.ajax({
+            url: window.location.origin + '/recipes/add-image',
+            method: 'post',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            },
+            data: {
+                'imageData': dataUrl,
+                'xOffset': xOffset,
+                'imageName': imageName
+            },
+            success: function (result) {
+                // Resolve the promise when the AJAX request is successful
+                resolve(result);
+            },
+            error: function (error) {
+                // Reject the promise if there's an error
+                reject(error);
+            }
+        });
     });
 }
 
@@ -556,7 +605,24 @@ function validateFirstStep() {
     let difficulty = document.querySelector('select[name="difficulty"]').value;
     let preparationTime = document.querySelector('select[name="preparation_time"]').value;
     let portionNumber = document.querySelector('input[name="portion_number"]').value;
-    if(title === '' || category === '' || subCategory === '' || difficulty === '' || preparationTime === '' || portionNumber === '') {
+    if(category === '') {
+        document.querySelector('input[name="title"]').focus();
+        return false;
+    }
+    if(subCategory === '') {
+        document.querySelector('select[name="category"]').focus();
+        return false;
+    }
+    if(difficulty === '') {
+        document.querySelector('select[name="subcategory"]').focus();
+        return false;
+    }
+    if(preparationTime === '') {
+        document.querySelector('select[name="preparation_time"]').focus();
+        return false;
+    }
+    if(portionNumber === '') {
+        document.querySelector('input[name="portion_number"]').focus();
         return false;
     }
     return true;
@@ -570,6 +636,7 @@ function validateSecondStep() {
     ingredientGroups.forEach((singleGroup) => {
         let groupName = singleGroup.querySelector('input[name="ingredient_group_name"]').value;
         if(groupName === '') {
+            singleGroup.querySelector('input[name="ingredient_group_name"]').focus();
             result = false;
             return;
         }
@@ -577,8 +644,13 @@ function validateSecondStep() {
         groupIngredients.forEach((single) => {
             let name = single.querySelector('input[name="ingredient_name"]').value;
             let qty = single.querySelector('input[name="ingredient_quantity"]').value;
-            let measure = single.querySelector('select[name="ingredient_measure"]').value;
-            if(name === '' || qty === '' || measure === '') {
+            if(name === '') {
+                single.querySelector('input[name="ingredient_name"]').focus();
+                result = false;
+                return;
+            }
+            if(qty === '') {
+                single.querySelector('input[name="ingredient_quantity"]').focus();
                 result = false;
                 return;
             }
@@ -588,8 +660,13 @@ function validateSecondStep() {
     independentIngredients.forEach((single) => {
         let name = single.querySelector('input[name="ingredient_name"]').value;
         let qty = single.querySelector('input[name="ingredient_quantity"]').value;
-        let measure = single.querySelector('select[name="ingredient_measure"]').value;
-        if(name === '' || qty === '' || measure === '') {
+        if(name === '') {
+            single.querySelector('input[name="ingredient_name"]').focus();
+            result = false;
+            return;
+        }
+        if(qty === '') {
+            single.querySelector('input[name="ingredient_quantity"]').focus();
             result = false;
             return;
         }
@@ -607,11 +684,13 @@ function validateThirdStep() {
         let groupName = singleGroup.querySelector('input[name="step_group_name"]').value;
         let groupSteps = singleGroup.querySelectorAll('input[name="single_step"]');
         if(groupName === '') {
+            singleGroup.querySelector('input[name="step_group_name"]').focus();
             result = false;
             return;
         }
         groupSteps.forEach((single) => {
             if(single.value === '') {
+                single.focus();
                 result = false;
                 return;
             }
@@ -620,6 +699,7 @@ function validateThirdStep() {
 
     independentSteps.forEach((single) => {
         if(single.value === '') {
+            single.focus();
             result = false;
             return;
         }

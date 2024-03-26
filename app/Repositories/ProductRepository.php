@@ -40,7 +40,7 @@ class ProductRepository
 
     public function getAllProducts() {
         try {
-            return Product::all();
+            return Product::where('active', '=', 'T')->get();
         } catch (QueryException $exception) {
             Log::error('Can\'t retrieve products: ' . $exception->getMessage());
             return null;

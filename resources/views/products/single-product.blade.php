@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h1>{{ $product->name }}</h1>
-                    <p>{{ $product->description }}</p>
+                    <p>{!! $product->description !!}</p>
                 </div>
                 <div class="col-md-6">
                     <img src="{{ asset('images/' . $product->image_path) }}" alt="{{ $product->name }}">
@@ -15,15 +15,47 @@
         </div>
     </section>
 
-    <section id="single-product-guide">
-        <div class="single-product-guide-inner container-space">
-            <h2>Uputstvo za pripremu</h2>
-            <p>{{ $product->product_guide }}</p>
-            <a href="#">Nutritivne vrednosti</a>
-        </div>
-    </section>
+    @if($product->productCategory->slug != 'zimnica')
+        <section id="single-product-guide" class="{{ $product->productCategory->slug }}">
+            <div class="single-product-guide-inner container-space">
+                <h2>Uputstvo za pripremu</h2>
+                <p>{{ $product->product_guide }}</p>
+                <h3>Nutritivne vrednosti <img src="{{ asset('images/arrow-up-nt.svg') }}" alt="arrow-up"></h3>
+            </div>
+            <div class="nutrition-table">
+                <div class="single-nutrition">
+                    <p>Energija</p>
+                    <p>{{ $product->energy }}</p>
+                </div>
+                <div class="single-nutrition">
+                    <p>Masti</p>
+                    <p>{{ $product->fats }}</p>
+                </div>
+                <div class="single-nutrition">
+                    <p>Od kojih zasićene masne kiseline</p>
+                    <p></p>
+                </div>
+                <div class="single-nutrition">
+                    <p>Ugljeni hidrati</p>
+                    <p>{{ $product->saturated_fats }}</p>
+                </div>
+                <div class="single-nutrition">
+                    <p>Od kojih šećeri</p>
+                    <p>{{ $product->carbonhydrates }}</p>
+                </div>
+                <div class="single-nutrition">
+                    <p>Proteini</p>
+                    <p>{{ $product->proteins }}</p>
+                </div>
+                <div class="single-nutrition">
+                    <p>So</p>
+                    <p>{{ $product->salts }}</p>
+                </div>
+            </div>
+        </section>
+    @endif
 
-    <section id="featured-recipes">
+    <section id="featured-recipes" class="{{ $product->productCategory->slug == 'zimnica'? 'zimnica': '' }}">
         <div class="featured-recipes-inner container-space">
             <h2>Vreme je za akciju</h2>
             <p>Pogledaj recepte koje smo izdvojili za tebe, a u kojima je korišćen neki od proizvoda iz ove kategorije.</p>
@@ -74,7 +106,7 @@
         </div>
     </section>
 
-    <section id="single-category-products">
+    <section id="single-category-products" class="{{ $product->productCategory->slug }}">
         <div class="single-category-products-inner container-space">
             <h2>Potrebno ti je još inspiracije</h2>
             <p>Bez brige! Naša C Slatka tradicija porodica nudi širok izbora proizvoda, a brza i jednostavna priprema olakšaće svako upuštanje u novu kulinarsku avanturu. </p>
@@ -92,4 +124,26 @@
             </div>
         </div>
     </section>
+
+    <section id="homepage-banner2">
+        <img class="mobile" src="{{ asset('images/homepage-banner2-mobile.png') }}" alt="homepage banner2">
+        <div class="homepage-banner-inner container-space">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>AKTIVNI NAGRADNI KONKURS</p>
+                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
+                    <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+
+@section('scriptsBottom')
+    <script>
+        document.querySelector('.single-product-guide-inner h3').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nutrition-table').classList.toggle('active');
+        });
+    </script>
 @endsection

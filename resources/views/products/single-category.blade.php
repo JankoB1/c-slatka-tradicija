@@ -12,7 +12,7 @@
         </div>
     </section>
 
-    <section id="single-category-products">
+    <section id="single-category-products" class="{{ $category->slug }}">
         <div class="single-category-products-inner container-space">
             <h2>Svi proizvodi</h2>
             <p>Pogledajte sve proizvode u okviru ove kategorije i pronađite inspiraciju za naredni recept koji ćete pripremati.</p>
@@ -83,6 +83,7 @@
     </section>
 
     <section id="homepage-banner2">
+        <img class="mobile" src="{{ asset('images/homepage-banner2-mobile.png') }}" alt="homepage banner2">
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">

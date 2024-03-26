@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Repositories\RecipeRepository;
+use App\Services\PostService;
 use App\Services\ProductService;
 use App\Services\RecipeService;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class ProductController extends Controller
         $this->productService = new ProductService();
         $this->recipeService = new RecipeService();
         $this->recipeRepository = new RecipeRepository();
+        $this->postService = new PostService();
     }
 
     public function showAllCategories() {

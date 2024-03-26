@@ -26,6 +26,15 @@
     font-style: normal;
 }
 
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -38,7 +47,7 @@ body {
 }
 
 #main-header {
-    padding: 11px 7.5%;
+    padding: 11px 10.5%;
     position: fixed;
     top: 0;
     left: 0;
@@ -63,7 +72,7 @@ body {
 #main-header ul a {
     text-decoration: none;
     text-align: center;
-    font: normal normal 600 16px/19px Montserrat;
+    font: normal normal 600 13px/16px Montserrat;
     letter-spacing: 0px;
     color: #2E4765;
 }
@@ -78,12 +87,12 @@ body {
     column-gap: 20px;
 }
 
-.add-recipe, .search-cont button, .login-btn {
+.add-recipe, .search-cont button, .login-btn, .download-book {
     background: #F5CC45;
     height: 50px;
     width: 160px;
     text-align: center;
-    font: normal normal 500 15px/19px Montserrat;
+    font: normal normal 500 12px/16px Montserrat;
     letter-spacing: 0;
     color: #2E4765;
     display: flex;
@@ -113,16 +122,16 @@ body {
 }
 
 #main-banner .main-banner-inner {
-    padding: 30vh 10% 22vh;
+    padding: 30vh 13% 22vh;
 }
 
 .container-space {
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 13%;
+    padding-right: 13%;
 }
 
 #main-banner .main-banner-inner h1 {
-    font: normal normal 700 74px/90px Montserrat;
+    font: normal normal 700 60px/72px Montserrat;
     letter-spacing: 0px;
     color: #2E4765;
     margin-bottom: 40px;
@@ -141,7 +150,7 @@ body {
     border: none;
     outline: none;
     border-radius: 26px;
-    font: normal normal normal 15px/19px Montserrat;
+    font: normal normal normal 12px/16px Montserrat;
     letter-spacing: 0px;
     color: #2E4765;
     height: 50px;
@@ -161,7 +170,7 @@ body {
 
 .title-row h2 {
     text-align: left;
-    font: normal normal 600 40px/49px Montserrat;
+    font: normal normal 600 32px/40px Montserrat;
     letter-spacing: 0;
     color: #2E4765;
     position: relative;
@@ -175,7 +184,7 @@ body {
     border-radius: 500px;
     width: 160px;
     height: 40px;
-    font: normal normal 500 14px/18px Montserrat;
+    font: normal normal 500 12px/15px Montserrat;
     letter-spacing: 0px;
     color: #2E4765;
     text-align: center;
@@ -200,8 +209,8 @@ body {
 }
 
 .featured-recipes-inner {
-    padding-top: 70px;
-    padding-bottom: 80px;
+    padding-top: 90px;
+    padding-bottom: 100px;
 }
 
 .single-recipe {
@@ -252,14 +261,14 @@ body {
 
 .recipe-title h3 {
     text-align: left;
-    font: normal normal 600 20px/24px Proxima Nova;
+    font: normal normal 600 16px/19px Proxima Nova;
     letter-spacing: 0px;
     color: #2E4765;
 }
 
 .recipe-details span {
     text-align: left;
-    font: normal normal normal 18px/22px Proxima Nova;
+    font: normal normal normal 15px/18px Proxima Nova;
     letter-spacing: 0px;
     color: #2E4765;
     padding-left: 10px;
@@ -277,7 +286,7 @@ body {
     height: 50px;
     border-radius: 500px;
     text-align: center;
-    font: normal normal 500 16px/19px Montserrat;
+    font: normal normal 500 13px/16px Montserrat;
     letter-spacing: 0px;
     color: #2E4765;
     padding: 14px 40px 0;
@@ -308,7 +317,7 @@ body {
 
 #homepage-banner h3, #homepage-banner2 h3 {
     text-align: left;
-    font: normal normal 600 44px/64px Montserrat;
+    font: normal normal 600 36px/51px Montserrat;
     letter-spacing: 0px;
     color: #FFFFFF;
     /*text-shadow: 0px 1px 24px #000000;*/
@@ -317,7 +326,7 @@ body {
 
 #homepage-banner p, #homepage-banner2 p {
     text-align: left;
-    font: normal normal 500 20px/32px Montserrat;
+    font: normal normal 500 16px/26px Montserrat;
     letter-spacing: 0px;
     color: #FFFFFF;
     /*text-shadow: 0px 1px 34px #000000;*/
@@ -327,26 +336,28 @@ body {
 #homepage-banner a, #homepage-banner2 a {
     background: #F5CC45 0% 0% no-repeat padding-box;
     border-radius: 26px;
-    width: 240px;
+    width: 170px;
     height: 50px;
-    font: normal normal 500 15px/19px Montserrat;
+    font: normal normal 500 12px/16px Montserrat;
     letter-spacing: 0px;
     color: #2E4765;
     text-align: center;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
-    padding-top: 14px;
+    padding-top: 0;
 }
 
 #action h2 {
     text-align: center;
-    font: normal normal 600 54px/94px Montserrat;
+    font: normal normal 600 45px/76px Montserrat;
     letter-spacing: 0px;
 }
 
 #action p {
     text-align: center;
-    font: normal normal 500 24px/40px Montserrat;
+    font: normal normal 500 19px/32px Montserrat;
     letter-spacing: 0px;
     color: #2E4765;
 }
@@ -396,7 +407,7 @@ body {
 
 .single-category-banner span {
     text-align: left;
-    font: normal normal normal 17px/21px Proxima Nova;
+    font: normal normal normal 14px/17px Proxima Nova;
     letter-spacing: 0px;
     color: #F5CC45;
 }
@@ -460,7 +471,7 @@ footer ul li a {
     color: #2E4765;
     text-align: center;
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 13px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -477,40 +488,40 @@ footer p {
     color: #2E4765;
     text-align: center;
     font-family: Montserrat;
-    font-size: 14px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 400;
-    line-height: 26px; /* 185.714% */
+    line-height: 21px; /* 185.714% */
 }
 
 #create-recipe-hero {
     background-image: url("../images/recepti-hero.png");
     background-size: cover;
     position: relative;
-    height: 90vh;
+    height: 50vh;
 }
 
 #create-recipe-hero h1 {
     color: #FFF;
     font-family: Montserrat;
-    font-size: 74px;
+    font-size: 60px;
     font-style: normal;
     font-weight: 700;
-    line-height: 100px; /* 135.135% */
+    line-height: 80px; /* 135.135% */
 }
 
 #recipe-form {
-    padding: 70px 10% 78px;
+    padding: 70px 13% 78px;
     position: relative;
 }
 
 .recipe-form-inner h2 {
     color: #F5CC45;
     font-family: Montserrat;
-    font-size: 54px;
+    font-size: 44px;
     font-style: normal;
     font-weight: 700;
-    line-height: 94px; /* 174.074% */
+    line-height: 76px; /* 174.074% */
     margin: 30px 0;
 }
 
@@ -520,7 +531,7 @@ footer p {
     font-size: 24px;
     font-style: normal;
     font-weight: 500;
-    line-height: 40px; /* 166.667% */
+    line-height: 32px; /* 166.667% */
 }
 
 .recipe-form-inner p a{
@@ -553,17 +564,17 @@ footer p {
 .form-section .col-md-5 p {
     color: #2E4765;
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 13px;
     font-style: normal;
     font-weight: 500;
-    line-height: 24px; /* 150% */
+    line-height: 19px; /* 150% */
 }
 
 .edit-profile-container .col-md-5 p {
     font-family: Montserrat;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
-    line-height: 24px;
+    line-height: 19px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
@@ -579,7 +590,7 @@ footer p {
     padding: 15px 30px;
     color: #2E4765;
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 13px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -595,7 +606,7 @@ footer p {
     opacity: 0.75;
     color: #2E4765;
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 13px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -610,7 +621,7 @@ footer p {
 .form-section .col-md-7 .checkbox-username label {
     color: #2E4765;
     font-family: Montserrat;
-    font-size: 14px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -633,7 +644,7 @@ footer p {
     color: #FFF;
     text-align: center;
     font-family: Montserrat;
-    font-size: 18px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -659,9 +670,9 @@ footer p {
 
 .single-category-section h2 {
     font-family: Montserrat;
-    font-size: 54px;
+    font-size: 44px;
     font-weight: 700;
-    line-height: 74px;
+    line-height: 60px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
@@ -669,9 +680,9 @@ footer p {
 
 .single-category-section p {
     font-family: Montserrat;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
-    line-height: 40px;
+    line-height: 32px;
     letter-spacing: -0.02em;
     text-align: justify;
     color: #2E4765;
@@ -680,9 +691,9 @@ footer p {
 
 .single-category-section a {
     font-family: Montserrat;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 500;
-    line-height: 18px;
+    line-height: 15px;
     letter-spacing: 0em;
     text-align: left;
     color: white;
@@ -730,9 +741,9 @@ footer p {
 
 #main-banner a {
     font-family: Montserrat;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 500;
-    line-height: 21px;
+    line-height: 17px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -749,15 +760,15 @@ footer p {
 .featured-recipe-single .featured-image-cont {
     background-size: cover;
     background-position: center center;
-    height: 400px;
+    height: 307px;
     border-radius: 31px 31px 0 0;
 }
 
 .featured-recipe-single p {
     font-family: Montserrat;
-    font-size: 35px;
+    font-size: 28px;
     font-weight: 600;
-    line-height: 43px;
+    line-height: 35px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -769,27 +780,27 @@ footer p {
 
 .featured-recipe-single.mini p {
     font-family: Montserrat;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 600;
-    line-height: 21px;
+    line-height: 17px;
     letter-spacing: 0em;
     text-align: center;
     padding: 30px 0;
 }
 
 .featured-recipe-single.mini .featured-image-cont {
-    height: 200px;
+    height: 160px;
 }
 
 .featured-recipe-single.big .featured-image-cont {
-    height: 700px
+    height: 560px
 }
 
 .container-space h2 {
     font-family: Montserrat;
-    font-size: 58px;
+    font-size: 47px;
     font-weight: 700;
-    line-height: 100px;
+    line-height: 80px;
     letter-spacing: 0em;
     text-align: center;
     color: #56924C;
@@ -798,9 +809,9 @@ footer p {
 #featured-recipes .featured-recipes-inner > p,
 #recipe-book-content .recipe-book-content-inner > p {
     font-family: Montserrat;
-    font-size: 26px;
+    font-size: 21px;
     font-weight: 500;
-    line-height: 43px;
+    line-height: 35px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -824,15 +835,23 @@ footer p {
     width: 20%;
 }
 
+.puding .category-products .single-product {
+    width: 33%;
+}
+
 .category-products .single-product img {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
+    height: 330px;
+    display: block;
+    margin: 0 auto;
 }
 
 .category-products p {
     font-family: Montserrat;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
-    line-height: 30px;
+    line-height: 24px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -856,9 +875,9 @@ footer p {
 
 .single-category-products-inner > p {
     font-family: Montserrat;
-    font-size: 24px;
+    font-size: 19px;
     font-weight: 500;
-    line-height: 40px;
+    line-height: 32px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -868,9 +887,9 @@ footer p {
 
 #single-category-meta h1 {
     font-family: Montserrat;
-    font-size: 74px;
+    font-size: 60px;
     font-weight: 700;
-    line-height: 90px;
+    line-height: 72px;
     letter-spacing: 0em;
     text-align: center;
     color: #56924C;
@@ -882,9 +901,9 @@ footer p {
 
 #single-category-meta p {
     font-family: Montserrat;
-    font-size: 24px;
+    font-size: 19px;
     font-weight: 600;
-    line-height: 51px;
+    line-height: 41px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -897,9 +916,9 @@ footer p {
 
 #single-product-main h1 {
     font-family: Montserrat;
-    font-size: 64px;
+    font-size: 52px;
     font-weight: 700;
-    line-height: 94px;
+    line-height: 76px;
     letter-spacing: 0em;
     text-align: left;
     color: #56924C;
@@ -907,9 +926,9 @@ footer p {
 
 #single-product-main p {
     font-family: Montserrat;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 500;
-    line-height: 40px;
+    line-height: 32px;
     letter-spacing: -0.04em;
     text-align: left;
     color: #2d3748;
@@ -928,9 +947,9 @@ footer p {
 
 #single-product-guide p {
     font-family: Montserrat;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 500;
-    line-height: 40px;
+    line-height: 32px;
     letter-spacing: -0.02em;
     text-align: center;
     color: #2E4765;
@@ -938,9 +957,9 @@ footer p {
 
 #single-product-guide a, .recipe-book-content-inner > a {
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 600;
-    line-height: 20px;
+    line-height: 16px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -967,9 +986,9 @@ footer p {
 
 #recipe-form h1 {
     font-family: Montserrat;
-    font-size: 74px;
+    font-size: 60px;
     font-weight: 700;
-    line-height: 102px;
+    line-height: 81px;
     letter-spacing: 0em;
     text-align: left;
     color: #56924C;
@@ -994,9 +1013,9 @@ footer p {
 
 .continue, .add-step {
     font-family: Montserrat;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 700;
-    line-height: 22px;
+    line-height: 18px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -1053,7 +1072,7 @@ span.ingridient-plus {
     display: flex;
 }
 
-#sitemap-hero {
+#sitemap-hero, #posts-hero, #single-post-hero {
     background-image: url("../images/mapa-sajta-hero.png");
     background-size: cover;
     background-position: center center;
@@ -1080,9 +1099,9 @@ span.ingridient-plus {
 
 .single-link a, .single-link p {
     font-family: Montserrat;
-    font-size: 36px;
+    font-size: 29px;
     font-weight: 600;
-    line-height: 100px;
+    line-height: 80px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -1126,17 +1145,21 @@ span.ingridient-plus {
 }
 
 #recipe-book-content .col-md-6 img {
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
+    display: block;
 }
 
 #recipe-book-content .col-md-6 p {
     font-family: Montserrat;
-    font-size: 24px;
+    font-size: 19px;
     font-weight: 600;
-    line-height: 51px;
+    line-height: 41px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
+    width: 80%;
+    margin: 0 auto;
 }
 
 #login-content {
@@ -1145,9 +1168,9 @@ span.ingridient-plus {
 
 #login-content h1 {
     font-family: Montserrat;
-    font-size: 68px;
+    font-size: 55px;
     font-weight: 700;
-    line-height: 73px;
+    line-height: 60px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
@@ -1156,9 +1179,9 @@ span.ingridient-plus {
 
 #login-content h2 {
     font-family: Montserrat;
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 700;
-    line-height: 33px;
+    line-height: 27px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
@@ -1172,9 +1195,9 @@ span.ingridient-plus {
 
 #login-content h3 {
     font-family: Montserrat;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
-    line-height: 40px;
+    line-height: 32px;
     letter-spacing: -0.02em;
     text-align: left;
     color: #2E4765;
@@ -1184,9 +1207,9 @@ span.ingridient-plus {
 
 #login-content p {
     font-family: Montserrat;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
-    line-height: 40px;
+    line-height: 32px;
     letter-spacing: -0.02em;
     text-align: left;
     color: #2E4765;
@@ -1251,9 +1274,9 @@ span.ingridient-plus {
 
 .products-ingredients p {
     font-family: Montserrat;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 500;
-    line-height: 24px;
+    line-height: 19px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
@@ -1287,7 +1310,7 @@ span.ingridient-plus {
     position: relative;
 }
 
-.user-popup {
+.user-popup, .books-popup {
     position: absolute;
     width: 510px;
     top: 100px;
@@ -1298,15 +1321,39 @@ span.ingridient-plus {
     border-radius: 32px;
 }
 
-.user-popup.active {
+.user-popup.active, .books-popup.active {
     display: block;
+}
+
+.books-popup {
+    width: 300px;
+    right: -80px;
+    top: 50px;
+    padding: 20px 40px 20px;
+}
+
+.download-book {
+    margin-bottom: 5px !important;
+    width: 100%;
+    cursor: pointer;
+}
+
+.books-popup p {
+    position: relative;
+}
+
+.books-popup i {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    cursor: pointer;
 }
 
 .user-popup p.email {
     font-family: Montserrat;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
-    line-height: 17px;
+    line-height: 14px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -1320,9 +1367,9 @@ span.ingridient-plus {
 
 .user-popup p.hello {
     font-family: Montserrat;
-    font-size: 24px;
+    font-size: 19px;
     font-weight: 700;
-    line-height: 46px;
+    line-height: 37px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -1332,9 +1379,9 @@ span.ingridient-plus {
 
 .user-popup .my-profile-link {
     font-family: Montserrat;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 500;
-    line-height: 22px;
+    line-height: 18px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -1368,9 +1415,9 @@ span.ingridient-plus {
 
 .user-popup .list a p {
     font-family: Montserrat;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 500;
-    line-height: 22px;
+    line-height: 18px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
@@ -1387,9 +1434,9 @@ span.ingridient-plus {
 
 #top-profile h1 {
     font-family: Montserrat;
-    font-size: 74px;
+    font-size: 60px;
     font-weight: 700;
-    line-height: 90px;
+    line-height: 72px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
@@ -1423,9 +1470,9 @@ span.ingridient-plus {
 
 .profile-top-details p {
     font-family: Montserrat;
-    font-size: 23px;
+    font-size: 18px;
     font-weight: 500;
-    line-height: 28px;
+    line-height: 23px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
@@ -1450,9 +1497,9 @@ span.ingridient-plus {
 
 .profile-details h4 {
     font-family: Montserrat;
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 700;
-    line-height: 34px;
+    line-height: 28px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
@@ -1473,9 +1520,9 @@ span.ingridient-plus {
 
 .single-detail span {
     font-family: Montserrat;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 400;
-    line-height: 27px;
+    line-height: 22px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
@@ -1509,9 +1556,9 @@ span.ingridient-plus {
 
 .profile-recipes .top-nav .single-btn p {
     font-family: Montserrat;
-    font-size: 21px;
+    font-size: 17px;
     font-weight: 600;
-    line-height: 26px;
+    line-height: 21px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -1531,9 +1578,9 @@ span.ingridient-plus {
 
 .edit-profile-container h3 {
     font-family: Montserrat;
-    font-size: 50px;
+    font-size: 40px;
     font-weight: 700;
-    line-height: 61px;
+    line-height: 50px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
@@ -1556,9 +1603,9 @@ span.ingridient-plus {
     align-items: center;
     justify-content: center;
     font-family: Montserrat;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
-    line-height: 22px;
+    line-height: 18px;
     letter-spacing: 0em;
     text-align: center;
     box-shadow: none;
@@ -1579,7 +1626,7 @@ span.ingridient-plus {
 
 .like-cont {
     position: absolute;
-    right: 10%;
+    right: 13%;
     bottom: 45px;
 }
 
@@ -1592,7 +1639,7 @@ span.ingridient-plus {
     border: 1px solid #2E476566;
     border-radius: 32px;
     display: flex;
-    height: 58px;
+    height: 46px;
     justify-content: center;
     align-items: center;
     padding: 0 30px;
@@ -1629,9 +1676,9 @@ span.ingridient-plus {
 
 .recipe-actions-inner p, .like-cont p {
     font-family: Montserrat;
-    font-size: 21px;
+    font-size: 17px;
     font-weight: 500;
-    line-height: 26px;
+    line-height: 21px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
@@ -1642,24 +1689,24 @@ span.ingridient-plus {
 
 .recipe-main-inner h4 {
     font-family: Montserrat;
-    font-size: 38px;
+    font-size: 31px;
     font-weight: 700;
-    line-height: 50px;
+    line-height: 40px;
     letter-spacing: 0em;
     text-align: left;
     color: #56924C;
-    margin-bottom: 40px;
+    margin-bottom: 35px;
 }
 
 .recipe-main-inner h1 {
     font-family: Montserrat;
-    font-size: 64px;
+    font-size: 51px;
     font-weight: 700;
-    line-height: 80px;
+    line-height: 64px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
-    margin-bottom: 54px;
+    margin-bottom: 45px;
 }
 
 #recipe-main {
@@ -1668,9 +1715,9 @@ span.ingridient-plus {
 
 .recipe-main-inner p, .recipe-main-inner a {
     font-family: Montserrat;
-    font-size: 24px;
+    font-size: 19px;
     font-weight: 500;
-    line-height: 40px;
+    line-height: 32px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
@@ -1682,9 +1729,9 @@ span.ingridient-plus {
 
 .recipe-main-inner h5 {
     font-family: Montserrat;
-    font-size: 28px;
+    font-size: 23px;
     font-weight: 600;
-    line-height: 40px;
+    line-height: 32px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
@@ -1729,19 +1776,19 @@ span.ingridient-plus {
     font-family: Montserrat;
     font-size: 15px;
     font-weight: 600;
-    line-height: 18px;
+    line-height: 15px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
     width: 100%;
     margin-bottom: 0;
-    padding: 20px;
+    padding: 30px 20px;
     border-radius: 0 0 15px 15px;
 }
 
 .single-recipe-preview .recipe-preview-img {
     width: 100%;
-    height: 180px;
+    height: 220px;
     border-radius: 15px 15px 0 0;
     background-size: cover;
     background-position: center center;
@@ -1777,9 +1824,9 @@ span.ingridient-plus {
 
 #about p {
     font-family: Montserrat;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 500;
-    line-height: 51px;
+    line-height: 41px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -1801,6 +1848,78 @@ span.ingridient-plus {
     background-position: center center;
     background-size: cover;
     border-radius: 20px 0 0 20px;
+}
+
+.single-subcategory .subcategory-img.si-1 {
+    background-image: url("../images/Recepti-za-torte-cokoladne-torte.jpg");
+}
+
+.single-subcategory .subcategory-img.si-2 {
+    background-image: url("../images/Recepti-za-torte-vocne-torte.jpg");
+}
+
+.single-subcategory .subcategory-img.si-3 {
+    background-image: url("../images/Recepti-za-torte-kremaste-torte.jpg");
+}
+
+.single-subcategory .subcategory-img.si-4 {
+    background-image: url("../images/Recepti-za-kolace-sitni-kolaci.jpg");
+}
+
+.single-subcategory .subcategory-img.si-5 {
+    background-image: url("../images/Recepti-za-kolace-vocni-kolaci.jpg");
+}
+
+.single-subcategory .subcategory-img.si-6 {
+    background-image: url("../images/Recepti-za-kolace-cokoladni-kolaci.jpg");
+}
+
+.single-subcategory .subcategory-img.si-7 {
+    background-image: url("../images/Recepti-za-kolace-kremasti-kolaci.jpg");
+}
+
+.single-subcategory .subcategory-img.si-8 {
+    background-image: url("../images/Recepti-za-kolace-oblande.jpg");
+}
+
+.single-subcategory .subcategory-img.si-9 {
+    background-image: url("../images/Recepti-za-kolace-biskvitni-kolaci.jpg");
+}
+
+.single-subcategory .subcategory-img.si-10 {
+    background-image: url("../images/Recepti-za-hleb-i-peciva-hleb-i-pogace.jpg");
+}
+
+.single-subcategory .subcategory-img.si-11 {
+    background-image: url("../images/Recepti-za-hleb-i-peciva-slatka-peciva.jpg");
+}
+
+.single-subcategory .subcategory-img.si-12 {
+    background-image: url("../images/Recepti-za-hleb-i-peciva-slana-peciva.jpg");
+}
+
+.single-subcategory .subcategory-img.si-13 {
+    background-image: url("../images/Recepti-za-hleb-i-peciva-predjela.jpg");
+}
+
+.single-subcategory .subcategory-img.si-14 {
+    background-image: url("../images/Recepti-za-zimnicu-slatka-zimnica.jpg");
+}
+
+.single-subcategory .subcategory-img.si-15 {
+    background-image: url("../images/Recepti-za-zimnicu-kisela-zimnica.jpg");
+}
+
+.single-subcategory .subcategory-img.si-16 {
+    background-image: url("../images/Recepti-za-dezert-sladoledi.jpg");
+}
+
+.single-subcategory .subcategory-img.si-17 {
+    background-image: url("../images/Recepti-za-dezert-vocne-salate-i-kupovi.jpg");
+}
+
+.single-subcategory .subcategory-img.si-18 {
+    background-image: url("../images/Recepti-za-dezert-dezerti-u-casi.jpg");
 }
 
 .single-category-subcategories {
@@ -1836,9 +1955,9 @@ span.ingridient-plus {
 
 .single-subcategory p {
     font-family: Montserrat;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600 !important;
-    line-height: 30px;
+    line-height: 24px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -1869,12 +1988,12 @@ span.ingridient-plus {
     width: 360px;
     height: 53px;
     display: flex;
-    margin: 110px auto 60px;
+    margin: 70px auto 40px;
     color: #2E4765;
     font-family: Montserrat;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 600;
-    line-height: 21px;
+    line-height: 17px;
     letter-spacing: 0em;
     text-align: center;
     align-items: center;
@@ -1891,15 +2010,19 @@ span.ingridient-plus {
     top: 16px;
 }
 
+#recipes-category-content {
+    padding-bottom: 140px;
+}
+
 #recipes-category-content h1 {
     font-family: Montserrat;
-    font-size: 74px;
+    font-size: 60px;
     font-weight: 700;
-    line-height: 90px;
+    line-height: 72px;
     letter-spacing: 0em;
     text-align: center;
     color: #56924C;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
 }
 
 .page-item span, .page-item a {
@@ -1907,9 +2030,9 @@ span.ingridient-plus {
     height: 40px;
     border: 1.26px solid #F1F1F1;
     font-family: Open Sans;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 600;
-    line-height: 22px;
+    line-height: 18px;
     letter-spacing: 0em;
     text-align: center;
     border-radius: 100% !important;
@@ -1927,7 +2050,7 @@ span.ingridient-plus {
 
 .pagination {
     justify-content: center;
-    margin-top: 130px;
+    margin-top: 40px;
 }
 
 .single-recipe-link {
@@ -1944,9 +2067,9 @@ span.ingridient-plus {
     height: 61px;
     width: 48%;
     font-family: Montserrat;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 500;
-    line-height: 22px;
+    line-height: 18px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -2020,9 +2143,9 @@ input[name="step_group_name"] {
 
 .add-image-container h3 {
     font-family: Montserrat;
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 500;
-    line-height: 42px;
+    line-height: 34px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -2030,9 +2153,9 @@ input[name="step_group_name"] {
 
 .add-image-container p {
     font-family: Montserrat;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 400;
-    line-height: 26px;
+    line-height: 21px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -2043,15 +2166,15 @@ input[name="step_group_name"] {
     justify-content: space-between;
     width: fit-content;
     column-gap: 20px;
-    margin: 70px auto 130px;
+    margin: 70px auto 80px;
     position: relative;
 }
 
 .line-t {
     position: absolute;
     top: 20px;
-    width: 80%;
-    left: 10%;
+    width: 74%;
+    left: 13%;
     height: 2.67px;
     background: #B7C1CE;
 }
@@ -2066,9 +2189,9 @@ input[name="step_group_name"] {
     display: flex;
     margin: 0 auto;
     font-family: Montserrat;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 500;
-    line-height: 21px;
+    line-height: 17px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -2080,9 +2203,9 @@ input[name="step_group_name"] {
 
 .small-steps p {
     font-family: Montserrat;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 500;
-    line-height: 21px;
+    line-height: 17px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -2102,7 +2225,7 @@ input[name="step_group_name"] {
 }
 
 .mobile {
-    display: none;
+    display: none !important;
 }
 
 .single-small-step {
@@ -2115,9 +2238,9 @@ input[name="step_group_name"] {
     height: 44px;
     width: 135px;
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 500;
-    line-height: 20px;
+    line-height: 16px;
     letter-spacing: 0em;
     text-align: center;
     color: white;
@@ -2218,9 +2341,9 @@ input[name="step_group_name"] {
 
 #main-header ul ul li a {
     font-family: Montserrat;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
-    line-height: 29px;
+    line-height: 23px;
     letter-spacing: 0em;
     text-align: left;
     display: block;
@@ -2246,14 +2369,14 @@ input[name="step_group_name"] {
 }
 
 #competition-text {
-    padding: 120px 0 100px;
+    padding: 90px 0 70px;
 }
 
 #competition-text h1 {
     font-family: Montserrat;
-    font-size: 74px;
+    font-size: 60px;
     font-weight: 700;
-    line-height: 90px;
+    line-height: 72px;
     letter-spacing: 0em;
     text-align: center;
     color: #56924C;
@@ -2261,9 +2384,9 @@ input[name="step_group_name"] {
 
 #competition-text p {
     font-family: Montserrat;
-    font-size: 26px;
+    font-size: 21px;
     font-weight: 600;
-    line-height: 42px;
+    line-height: 34px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -2271,7 +2394,7 @@ input[name="step_group_name"] {
 
 #competition-send-recipe {
     background: #FFFCF2;
-    padding: 175px 0;
+    padding: 145px 0;
 }
 
 #competition-send-recipe h2 {
@@ -2280,9 +2403,9 @@ input[name="step_group_name"] {
 
 #competition-send-recipe h4 {
     font-family: Montserrat;
-    font-size: 41px;
+    font-size: 33px;
     font-weight: 600;
-    line-height: 51px;
+    line-height: 41px;
     letter-spacing: -0.02em;
     text-align: left;
     color: #2E4765;
@@ -2291,9 +2414,9 @@ input[name="step_group_name"] {
 
 #competition-send-recipe p {
     font-family: Montserrat;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 500;
-    line-height: 40px;
+    line-height: 32px;
     letter-spacing: 0.02em;
     text-align: left;
     color: #2E4765;
@@ -2313,18 +2436,18 @@ input[name="step_group_name"] {
     opacity: 0.4;
 }
 
-#login-popup .col-md-5 {
+#login-popup .col-md-5, #loading-popup .col-md-5 {
     background-image: url('../images/login-popup.png');
     background-size: cover;
     background-position: center center;
     border-radius: 32px 0 0 32px;
 }
 
-#login-popup .modal-body {
+#login-popup .modal-body, #loading-popup .modal-body {
     padding: 0;
 }
 
-#login-popup button.btn-close {
+#login-popup button.btn-close, #loading-popup button.btn-close {
     position: absolute;
     right: 50px;
     top: 50px;
@@ -2334,31 +2457,40 @@ input[name="step_group_name"] {
     box-shadow: none !important;
 }
 
-#login-popup .row {
+#login-popup .row, #loading-popup .row {
     margin: 0 !important;
     padding: 0 !important;
 }
 
-#login-popup .col-md-7 {
+#login-popup .col-md-7, #loading-popup .col-md-7 {
     padding: 110px 100px;
 }
 
-#login-popup p {
+#login-popup p, #loading-popup p {
     font-family: Montserrat;
-    font-size: 23px;
+    font-size: 18px;
     font-weight: 600;
-    line-height: 37px;
+    line-height: 30px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
     margin-bottom: 50px;
 }
 
+#loading-popup p {
+    text-align: center;
+    font-size: 32px;
+}
+
+#loading-popup .col-md-7 {
+    padding: 110px 30px;
+}
+
 #login-popup a {
     font-family: Montserrat;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
-    line-height: 24px;
+    line-height: 19px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -2372,11 +2504,11 @@ input[name="step_group_name"] {
     align-items: center;
 }
 
-#login-popup .modal-dialog {
+#login-popup .modal-dialog, #loading-popup .modal-dialog {
     max-width: 1000px;
 }
 
-#login-popup .modal-content {
+#login-popup .modal-content, #loading-popup .modal-content {
     border-radius: 32px;
 }
 
@@ -2397,7 +2529,7 @@ input[name="step_group_name"] {
 
 #contact-content h1 {
     font-family: Montserrat;
-    font-size: 74px;
+    font-size: 60px;
     font-weight: 700;
     line-height: 46px;
     letter-spacing: 0em;
@@ -2417,7 +2549,7 @@ input[name="step_group_name"] {
 
 #contact-content h4 {
     font-family: Montserrat;
-    font-size: 32px;
+    font-size: 26px;
     font-weight: 700;
     line-height: 26px;
     letter-spacing: 0em;
@@ -2428,7 +2560,7 @@ input[name="step_group_name"] {
 
 #contact-content p, #contact-content a {
     font-family: Montserrat;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 500;
     line-height: 26px;
     letter-spacing: 0em;
@@ -2460,9 +2592,9 @@ input[name="step_group_name"] {
     height: 64px;
     border-radius: 32px;
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 400;
-    line-height: 26px;
+    line-height: 21px;
     letter-spacing: 0em;
     text-align: left;
     color: #2E4765;
@@ -2476,9 +2608,9 @@ input[name="step_group_name"] {
 
 #contact-form button {
     font-family: Montserrat;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
-    line-height: 22px;
+    line-height: 18px;
     letter-spacing: 0em;
     text-align: center;
     color: white;
@@ -2516,13 +2648,421 @@ input[name="step_group_name"] {
     text-decoration: none;
 }
 
-@media only screen and (max-width: 768px) {
+#add-post {
+    padding-top: 40vh;
+}
+
+#posts-hero {
+    background-image: url("../images/price-hero.png");
+}
+
+#posts-list h1 {
+    font-family: Montserrat;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 72px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #56924C;
+    padding-top: 110px;
+    padding-bottom: 30px;
+}
+
+#posts-list p {
+    font-family: Montserrat;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 34px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #2E4765;
+}
+
+#posts-list {
+    padding-bottom: 110px;
+}
+
+#post-content {
+    padding: 110px 0;
+}
+
+#post-content h1 {
+    font-family: Montserrat;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 72px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #56924C;
+    padding-bottom: 50px;
+}
+
+#post-content p, #post-content p a {
+    font-family: Montserrat;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 41px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2E4765;
+}
+
+.featured-recipes {
+    background: #FFFCF2 !important;
+}
+
+.recipe-main-inner {
+    padding-bottom: 80px;
+}
+
+.dodaci-za-kolace {
+    background-color: #FFF8E2 !important;
+}
+
+.puding {
+    background-color: #FFFCF2 !important;
+}
+
+.slag-kremovi {
+    background-color: #FFF2FB !important;
+}
+
+.griz {
+    background-color: #F4FBFF !important;
+}
+
+.oblande {
+    background-color: #FFFCF2 !important;
+}
+
+.eskimko {
+    background-color: #F4FBFF !important;
+}
+
+.zimnica {
+    background-color: #FFFCF2 !important;
+}
+
+span.num {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: #F5CC45;
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 7px;
+    display: none;
+    cursor: pointer;
+}
+
+span.num.active {
+    display: flex;
+}
+
+.posts-row {
+    margin-top: 90px !important;
+}
+
+.main-info {
+    margin-bottom: 25px !important;
+}
+
+.mb-low {
+    margin-bottom: 25px !important;
+}
+
+.ing-header {
+    margin-top: 50px !important;
+    margin-bottom: 30px !important;
+}
+
+.info-ings {
+    margin-bottom: 50px !important;
+}
+
+.info-ings p {
+    margin-bottom: 5px !important;
+}
+
+.author-h {
+    margin-top: 40px !important;
+    margin-bottom: 30px !important;
+}
+
+.author-name {
+    font-family: Montserrat;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2E4765;
+}
+
+.single-nutrition p {
+    font-family: Montserrat;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 0;
+    color: #2E4765;
+}
+
+.single-nutrition {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20%;
+    border-bottom: 1px solid #2E4765;
+}
+
+.nutrition-table .single-nutrition:last-child {
+    border-bottom: 0;
+}
+
+.nutrition-table {
+    transition: all 0.3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 0;
+}
+
+.nutrition-table.active {
+    max-height: 1000px;
+    opacity: 1;
+    margin-top: 50px;
+}
+
+.single-product-guide-inner h3 {
+    font-family: Montserrat;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 76px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #2E4765;
+    margin: 70px 0 0;
+    cursor: pointer;
+}
+
+.single-product-guide-inner h3 img {
+    transition: all 0.3s ease-in-out;
+    transform: rotate(180deg);
+}
+
+.single-product-guide-inner h3.active img {
+    transform: rotate(0deg);
+}
+
+#privacy-note-hero, #privacy-policy-hero {
+    background-image: url("../images/privact-note-hero.png");
+    background-position: center center;
+    background-size: cover;
+    height: 50vh;
+}
+
+#privacy-policy-hero {
+    background-image: url("../images/privacy-policy-hero.png");
+}
+
+#privacy-note-content {
+    padding: 90px 0;
+}
+
+#privacy-note-content h1 {
+    font-family: Montserrat;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 72px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #56924C;
+    margin-bottom: 60px;
+}
+
+#privacy-note-content p {
+    font-family: Montserrat;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 41px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2E4765;
+}
+
+#privacy-note-content h2 {
+    font-family: Montserrat;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 80px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin: 70px 0 30px;
+}
+
+#privacy-note-content h4 {
+    font-family: Montserrat;
+    font-size: 29px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2E4765;
+    margin: 50px 0;
+}
+
+#privacy-note-content .privacy-policy-inner p {
+    font-weight: 500;
+}
+
+#privacy-note-content h6 {
+    font-family: Montserrat;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2E4765;
+    margin: 40px 0 35px;
+}
+
+#privacy-note-content h3 {
+    font-family: Montserrat;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #56924C;
+    margin-bottom: 70px;
+}
+
+#privacy-note-content .pp-dot {
+    font-family: Poppins;
+    font-size: 51px;
+    font-weight: 600;
+    line-height: 37px;
+    letter-spacing: 0.08em;
+    text-align: center;
+    color: #56924C;
+    margin: 60px 0 80px;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    content: '' !important;
+    background-image: url("../images/slider-right.png");
+    width: 40px;
+    height: 40px;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.swiper-button-prev:after {
+    background-image: url("../images/slider-left.png");
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    margin-top: 50px;
+}
+
+.tags a {
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #2E4765;
+    height: 48px;
+    border-radius: 500px;
+    border: 1px solid #2E4765;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.books-img {
+    width: 100%;
+    margin: 80px 0;
+}
+
+#action.action-books {
+    background: #EAEDF07A;
+    margin-top: 100px;
+}
+
+#action.action-books .single-category-banner p {
+    line-height: 41px;
+    margin-top: 70px;
+    font-size: 32px;
+}
+
+#action.action-books .col-md-6 .single-category-banner {
+    background-image: url("../images/books-c1.png");
+}
+
+#action.action-books .col-md-6:nth-child(2) .single-category-banner {
+    background-image: url("../images/books-c2.png");
+}
+
+#action.action-books .col-md-6:nth-child(3) .single-category-banner {
+    background-image: url("../images/books-c3.png");
+}
+
+#action.action-books .col-md-6:nth-child(4) .single-category-banner {
+    background-image: url("../images/books-c4.png");
+}
+
+img.loading-spinner {
+    display: block;
+    margin: 0 auto;
+    animation: rotate 2s linear infinite;
+}
+
+.recipe-book-content-inner {
+    padding-top: 80px;
+}
+
+#main-header ul ul li a.has-dropdown img {
+    transform: rotate(0deg);
+    transition: all 0.3s ease-in-out;
+}
+
+#main-header ul ul li a.has-dropdown.active img {
+    transform: rotate(180deg);
+}
+
+@media only screen and (max-width: 1507px) {
     #main-header {
+        padding: 11px 6.5%;
+    }
+
+    #main-header nav ul {
+        column-gap: 25px;
+    }
+
+    span.num {
+        right: -7px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #main-header, .desktop {
         display: none;
     }
 
     .mobile {
-        display: block;
+        display: block !important;
     }
 
     .container-space {
@@ -2566,8 +3106,8 @@ input[name="step_group_name"] {
     }
 
     .container-space h2 {
-        font-size: 22px;
-        line-height: 38px;
+        font-size: 30px;
+        line-height: 41px;
     }
 
     #action h2 {
@@ -2685,6 +3225,7 @@ input[name="step_group_name"] {
     .all-categories-link {
         width: 100%;
         font-size: 12px;
+        margin: 30px auto 20px;
     }
 
     #recipes-category-content h1 {
@@ -2704,7 +3245,7 @@ input[name="step_group_name"] {
     }
 
     .recipe-actions-inner div, .like-cont {
-        padding: 0 10px;
+        padding: 0 20px;
         height: 30px;
         margin-bottom: 10px;
     }
@@ -2714,7 +3255,7 @@ input[name="step_group_name"] {
     }
 
     #recipe-main {
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
     .recipe-main-inner.container-space .col-md-9 {
@@ -2819,7 +3360,7 @@ input[name="step_group_name"] {
 
     .recipe-main-inner h4 {
         font-size: 22px;
-        line-height: 50px;
+        line-height: 30px;
         margin-bottom: 15px;
         text-align: center;
     }
@@ -2829,4 +3370,825 @@ input[name="step_group_name"] {
         line-height: 28px;
         text-align: center;
     }
+
+    .arrow-col {
+        width: 40px;
+    }
+
+    .single-subcategories {
+        width: calc(100% - 40px) !important;
+    }
+
+    .arrow-col img {
+        width: 30px;
+        height: 30px;
+        padding: 6px;
+    }
+
+    .single-subcategory .subcategory-img {
+        height: 80px;
+    }
+
+    p.subcategory-title {
+        margin-bottom: 0 !important;
+    }
+
+    .mobile-actions a img {
+        width: 70px;
+    }
+
+    .mobile-actions {
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+        padding: 12px 23px;
+    }
+
+    #main-header-mobile, .main-header-mobile-inner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+    }
+
+    .main-header-mobile-inner {
+        height: 100vh;
+        transition: all 0.3s ease-in-out;
+        top: 120vh;
+    }
+
+    .main-header-mobile-inner.active {
+        top: 0;
+    }
+
+    .main-header-mobile-inner .top-row a img {
+        width: 70px;
+    }
+
+    .main-header-mobile-inner .top-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 30px;
+    }
+
+    .main-header-mobile-inner .top-row i {
+        color: #7A92AE;
+        font-size: 24px;
+        position: relative;
+        top: 10px;
+    }
+
+    .btns-box {
+        margin: 40px 21px;
+        border-radius: 28px;
+        box-shadow: 0px 9.415440559387207px 18.830881118774414px 0px #E0E0ECCC;
+        padding: 21px;
+        display: flex;
+        row-gap: 15px;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .btns-box > a {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 47px;
+        border-radius: 50px;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0em;
+        text-align: center;
+        color: white;
+        background: #2E4765;
+        text-decoration: none;
+    }
+
+    .btns-box > a:last-child {
+        background: #F5CC45;
+        color: #2E4765;
+    }
+
+    .single-mobile-link {
+        padding: 15px 30px;
+        border-bottom: 1px solid #ECECEC;
+    }
+
+    .mobile-main-links .single-mobile-link:last-child {
+        border-bottom: none;
+    }
+
+    .single-mobile-link a {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #2E4765;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+    }
+
+    .single-mobile-link img {
+        position: absolute;
+        right: 30px;
+    }
+
+    .mobile-main-links {
+        position: relative;
+    }
+
+    .login-form {
+        width: 100%;
+    }
+
+    .user-info-mobile-row {
+        display: flex;
+        align-items: center;
+        column-gap: 15px;
+    }
+
+    .user-info-mobile-row img, .user-info-mobile-row p {
+        margin: 0 !important;
+    }
+
+    .user-info-mobile-row img:last-child {
+        position: absolute;
+        right: 50px;
+    }
+
+    .user-info-mobile-row p {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #2E4765;
+    }
+
+    .user-popup-mobile, .books-popup-mobile {
+        position: fixed;
+        height: 100vh;
+        top: 110vh;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+        backdrop-filter: blur(3px);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .user-popup-mobile.active, .books-popup-mobile.active {
+        top: 0;
+    }
+
+    .books-popup-mobile-inner {
+        position: absolute;
+        bottom: -30px;
+        background: white;
+        width: 100%;
+        padding: 40px 0 70px;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .books-popup-mobile-inner h3 {
+        font-family: Montserrat;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 27px;
+        letter-spacing: 0em;
+        text-align: center;
+        margin-bottom: 30px;
+        margin-top: 20px;
+        color: #2E4765;
+    }
+
+    .books-popup-mobile-inner p {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #2E4765;
+        padding: 15px 30px;
+        border-top: 1px solid #ECECEC;
+        position: relative;
+        margin-bottom: 0;
+    }
+
+    .books-popup-mobile-inner i {
+        position: absolute;
+        right: 30px;
+        color: #7A92AE;
+        font-size: 19px;
+        line-height: 19px;
+    }
+
+    .books-popup-mobile-inner button {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 20px;
+        letter-spacing: 0em;
+        text-align: center;
+        color: #2E4765;
+        background: #F5CC45;
+        width: 270px;
+        height: 47px;
+        display: flex;
+        margin: 30px auto 0;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50px;
+        box-shadow: none;
+        outline: none;
+        border: none;
+    }
+
+    .user-popup {
+        width: 100%;
+        top: unset;
+        bottom: 0;
+        background: white;
+    }
+
+    .user-popup .avatar-img-popup {
+        width: 74px;
+    }
+
+    p.hello2 {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: center;
+        color: #2E4765;
+        margin-bottom: 5px;
+        margin-top: 10px;
+    }
+
+    .user-popup-box {
+        box-shadow: 0px 9.415440559387207px 18.830881118774414px 0px #E0E0ECCC;
+        margin: 0 21px 21px 21px;
+        padding: 23px;
+        border-radius: 28px;
+        position: relative;
+    }
+
+    .user-popup .my-profile-link {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .user-popup .list a p {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #2d3748;
+    }
+
+    .user-popup-box i {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        color: #7A92AE;
+        font-size: 24px;
+    }
+
+    .about-inner.container-space {
+        padding: 0;
+    }
+
+    .about-inner.container-space p {
+        padding: 0 5%;
+    }
+
+    .about-inner .about-mobile {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .about-inner .about-mobile:last-child {
+        margin-bottom: 0;
+        margin-top: 30px;
+    }
+
+    #about {
+        padding-bottom: 0;
+    }
+
+    #recipes-category-banner {
+        background-image: url("../images/recipes-mobile.png");
+    }
+
+    #action.recipes-action p {
+        text-align: justify;
+    }
+
+    #action.recipes-action {
+        padding-top: 30px;
+    }
+
+    #action h2 {
+        margin-bottom: 30px;
+    }
+
+    .mobile-send-cta, .mobile-see-more-products {
+        background: #F5CC45;
+        width: 220px;
+        height: 53px;
+        font-family: Montserrat;
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 21px;
+        letter-spacing: 0em;
+        text-align: center;
+        margin: 0 auto 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #2E4765;
+        border-radius: 50px;
+        text-decoration: none;
+    }
+
+    .mobile-see-more-products {
+        background: #E2EFFF;
+        margin-bottom: 0;
+        margin-top: 5px;
+    }
+
+    #recipes-category-content h1 {
+        margin-bottom: 25px;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+        row-gap: 15px;
+    }
+
+    #recipes-category-content {
+        padding-bottom: 40px;
+    }
+
+    #recipe-gallery {
+        margin-bottom: 30px;
+    }
+
+    .recipe-main-inner h1 {
+        font-size: 28px;
+        line-height: 41px;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .single-info.mb-low p {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+    }
+
+    .recipe-main-inner h5 {
+        margin-top: 20px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .recipe-products p {
+        font-size: 9px;
+        line-height: 11px;
+    }
+
+    .recipe-main-inner.container-space .col-md-3 {
+        border-right-width: 0;
+        border-bottom: 1px solid #2E4765;
+        padding-bottom: 40px;
+        margin-bottom: 40px;
+    }
+
+    #posts-hero {
+        background-image: url("../images/pricem.png");
+    }
+
+    #posts-list h1, #post-content h1, #single-category-meta h1,
+    #single-product-main h1, #competition-text h1 {
+        padding: 30px 0 20px;
+        font-size: 28px;
+        line-height: 41px;
+    }
+
+    #posts-list p, #post-content p, #post-content p a, #single-category-meta p,
+    #single-product-main p, #competition-text p, #competition-send-recipe p {
+        font-size: 16px;
+        line-height: 26px;
+        text-align: justify;
+    }
+
+    #single-product-main h1 {
+        text-align: center;
+    }
+
+    #post-content p, #post-content p a, #competition-text p {
+        font-weight: 500;
+    }
+
+    .posts-row {
+        margin-top: 20px;
+    }
+
+    #posts-list .posts-row p {
+        font-weight: 600;
+        text-align: center;
+    }
+
+    #posts-list {
+        padding-bottom: 30px;
+    }
+
+    #post-content {
+        padding: 0 0 30px 0;
+    }
+
+    .single-category-section {
+        background: none !important;
+        height: auto !important;
+    }
+
+    .single-category-section img {
+        width: 100%;
+    }
+
+    .single-category-section .container {
+        padding: 0;
+    }
+
+    .single-category-section .single-category-inner {
+        padding: 30px 5%;
+    }
+
+    .single-category-section h2 {
+        font-family: Montserrat;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 41px;
+        letter-spacing: 0em;
+        text-align: center;
+    }
+
+    .single-category-section p, .single-category-products-inner > p {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 26px;
+        letter-spacing: -0.05em;
+        text-align: justify;
+    }
+
+    .single-category-products-inner > p {
+        text-align: center;
+    }
+
+    .single-category-section a {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #single-category-meta h1 {
+        margin-bottom: 0;
+    }
+
+    #single-category-meta {
+        padding: 0 0 20px 0;
+    }
+
+    #single-category-meta p {
+        font-weight: 500;
+    }
+
+    .category-products .single-product {
+        width: 50%;
+    }
+
+    .category-products .single-product img {
+        height: 200px;
+    }
+
+    .single-product p {
+        margin-top: 6px;
+        margin-bottom: 16px;
+        font-size: 10px;
+    }
+
+    #single-product-main {
+        height: auto;
+    }
+
+    .single-product-main-inner.container-space .col-md-6:first-child {
+        order: 2;
+    }
+
+    .single-product-main-inner.container-space .col-md-6:last-child {
+        order: 1;
+    }
+
+    .single-product-main-inner.container-space img {
+        width: 80% !important;
+        margin: 0 auto !important;
+    }
+
+    #single-product-main {
+        padding-top: 90px;
+        padding-bottom: 30px;
+    }
+
+    #main-header-mobile, .main-header-mobile-inner {
+        z-index: 10000;
+    }
+
+    #competition-text {
+        padding: 0 0 20px;
+    }
+
+    #competition-send-recipe {
+        padding: 30px 0;
+    }
+
+    #competition-send-recipe h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #competition-send-recipe h4 {
+        font-family: Montserrat;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 26px;
+        letter-spacing: -0.04em;
+        text-align: justify;
+        margin-bottom: 15px;
+    }
+
+    #competition-send-recipe img.desktop {
+        display: none;
+    }
+
+    #competition-send-recipe img {
+        width: 100%;
+    }
+
+    .dropdown-mobile {
+        position: absolute;
+        z-index: 10;
+        background: white;
+        left: 100vw;
+        top: 0;
+        transition: all 0.3s ease-in-out;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    .dropdown-mobile.active {
+        left: 0;
+    }
+
+    .single-mobile-link-back {
+        text-align: center !important;
+    }
+
+    .single-mobile-link-back img {
+        right: unset;
+        left: 30px;
+        transform: rotate(180deg);
+    }
+
+    .recipe-book-content-inner {
+        padding-top: 40px;
+    }
+
+    .recipe-book-content-inner p {
+        text-align: justify !important;
+        font-weight: 500 !important;
+    }
+
+    .recipe-book-content-inner > a {
+        width: 201px;
+        font-weight: 600 !important;
+        margin: 40px auto;
+    }
+
+    #recipe-book-content .row.desktop {
+        display: none;
+    }
+
+    .rb-mobile {
+        width: 100%;
+    }
+
+    #recipe-book-mobile p {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 26px;
+        letter-spacing: -0.05em;
+        text-align: justify;
+        color: #2E4765;
+        padding: 30px 5%;
+        margin-bottom: 0;
+    }
+
+    #action.action-books {
+        margin-top: 0;
+        padding-bottom: 30px;
+    }
+
+    .books-img {
+        margin: 0 0 30px 0;
+    }
+
+    #action.action-books .single-category-banner p {
+        margin-top: 0;
+    }
+
+    #action.action-books .categories-banners .col-md-6 .single-category-banner {
+        padding: 40px;
+    }
+
+    #privacy-note-content {
+        padding: 40px 0;
+    }
+
+    #privacy-note-content h1 {
+        font-size: 28px;
+        line-height: 41px;
+        margin-bottom: 20px;
+    }
+
+    #privacy-note-content p {
+        text-align: justify;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    #privacy-note-content .pp-dot {
+        display: none;
+    }
+
+    #privacy-note-content h2 {
+        font-size: 24px;
+        line-height: 41px;
+        margin: 30px 0 20px;
+    }
+
+    #privacy-note-content h4 {
+        font-size: 16px;
+        text-align: center;
+        line-height: 26px;
+        margin: 30px 0;
+    }
+
+    #privacy-note-content h3 {
+        font-size: 24px;
+        line-height: 41px;
+        margin-bottom: 30px;
+    }
+
+    #privacy-note-content h6 {
+        margin: 20px 0 15px;
+    }
+
+    .single-link a, .single-link p {
+        font-size: 17px;
+        line-height: 21px;
+        margin: 25px 0;
+    }
+
+    .dropdown-trigger img {
+        width: 13px;
+    }
+
+    .single-product-guide-inner h3 {
+        font-size: 24px;
+        line-height: 40px;
+    }
+
+    .single-product-guide-inner h3 img {
+        width: 20px;
+    }
+
+    #single-product-guide p {
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    .single-nutrition {
+        padding: 10px 10%;
+    }
+
+    .nutrition-table.active {
+        margin-top: 20px;
+    }
+
+    .right-mob {
+        display: flex;
+        justify-content: right;
+    }
+
+    .books-mob {
+        width: 25px;
+        height: 25px;
+        background: #E2EFFF;
+        border-radius: 100%;
+        text-align: center;
+        position: relative;
+    }
+
+    span.num {
+        color: white;
+        font-size: 8px;
+        top: -3px;
+        right: -3px;
+        width: 15px;
+        height: 15px;
+        background: #F95A2C;
+    }
+
+    .books-popup-mobile-inner > i {
+        right: unset;
+        left: 50%;
+        top: 35px;
+        transform: translateY(-50%);
+    }
+
+    #contact-form {
+        padding: 30px 25px;
+    }
+
+    #contact-content {
+        padding: 40px 0;
+    }
+
+    #contact-content h1, #login-content h1 {
+        font-size: 28px;
+        line-height: 41px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    #contact-content h4 {
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+
+    #create-recipe-hero.contact-hero.impressum-hero {
+        background-image: url("../images/impressum-hero-mobile.png");
+    }
+
+    #create-recipe-hero.contact-hero {
+        background-image: url("../images/contact-hero-mobile.png");
+    }
+
+    #privacy-note-hero {
+        background-image: url("../images/pnote-hero-mobile.png");
+    }
+
+    #privacy-policy-hero {
+        background-image: url("../images/ppolicy-hero-mobile.png");
+    }
+
+    .login-form {
+        padding: 30px 20px;
+    }
+
+    #homepage-banner2.login-hero {
+        background-image: url("../images/login-register-mobile-hero.png");
+        padding-bottom: 50vh;
+    }
+
+    #homepage-banner2.login-hero h3 {
+        padding-top: 80px;
+        color: #2E4765;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    #login-content {
+        padding: 30px 0;
+    }
+
+    #login-content h2, #login-content h3 {
+        margin-bottom: 20px;
+    }
 }
+
