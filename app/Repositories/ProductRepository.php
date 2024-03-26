@@ -27,7 +27,6 @@ class ProductRepository
             ->where('tin_receptproizvod.recipe_id', $recipeId)
             ->select('products.*')
             ->get();
-
     }
 
     public function getProductByRecipeId(int $recipeId) {
