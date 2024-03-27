@@ -183,4 +183,15 @@ class RecipeRepository
             return null;
         }
     }
+
+    public function softDelete($user_id)
+    {
+        try {
+            $recipe = Recipe::find($user_id);
+            $recipe->delete();
+        } catch (QueryException $exception) {
+            Log::error('Can\'t soft delete recipe. ' . $exception->getMessage());
+            return null;
+        }
+    }
 }

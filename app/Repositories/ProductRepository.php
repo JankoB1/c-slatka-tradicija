@@ -28,7 +28,6 @@ class ProductRepository
              ->where('products.active', '=', 'T')
              ->select('products.*')
             ->get();
-
     }
 
     public function getProductByRecipeId(int $recipeId) {

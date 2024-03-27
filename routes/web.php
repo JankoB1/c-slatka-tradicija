@@ -25,6 +25,7 @@ Route::prefix('recipes')->group(function() {
     Route::post('/add-recipes-book', [RecipeController::class, 'saveToSession']);
     Route::post('/upload-image', [ImageController::class, 'uploadImage']);
     Route::post('/add-image', [ImageController::class, 'addImage']);
+    Route::delete('/remove-recipe', [RecipeController::class, 'softDelete'])->name('recipes.delete');
 });
 
 Route::prefix('categories')->group(function() {

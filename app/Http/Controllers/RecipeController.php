@@ -183,4 +183,8 @@ class RecipeController extends Controller
     public function showPrivacyPolicy() {
         return view('privacy-policy');
     }
+
+    public function softDelete($user_id) {
+        $this->recipeService->softDelete($user_id);
+    }
 }
