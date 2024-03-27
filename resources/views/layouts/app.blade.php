@@ -39,7 +39,7 @@
                 <ul>
                     <li><a href="{{ route('show-single-category', ['slug' => 'dodaci-za-kolace']) }}">Dodaci za kolače</a></li>
                     <li><a href="{{ route('show-single-category', ['slug' => 'puding']) }}">Puding</a></li>
-                    <li><a href="{{ route('show-single-category', ['slug' => 'slag-kremovi']) }}">Šlag i šlag krem</a></li>
+                    <li><a href="{{ route('show-single-category', ['slug' => 'slag-kremovi']) }}">Šlag i Šlag krem</a></li>
                     <li><a href="{{ route('show-single-product', ['slug' => 'psenicni-griz-400g']) }}">Griz</a></li>
                     <li><a href="{{ route('show-single-product', ['slug' => 'oblande']) }}">Oblande</a></li>
                     <li><a href="{{ route('show-single-category', ['slug' => 'eskimko']) }}">Eskimko</a></li>
@@ -245,7 +245,7 @@
                         <a href="{{ route('show-single-category', ['slug' => 'puding']) }}">Puding <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
                     </div>
                     <div class="single-mobile-link">
-                        <a href="{{ route('show-single-category', ['slug' => 'slag-kremovi']) }}">Šlag i šlag krem <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
+                        <a href="{{ route('show-single-category', ['slug' => 'slag-kremovi']) }}">Šlag i Šlag krem <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
                     </div>
                     <div class="single-mobile-link">
                         <a href="{{ route('show-single-product', ['slug' => 'psenicni-griz-400g']) }}">Griz <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>

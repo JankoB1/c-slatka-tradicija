@@ -122,12 +122,12 @@ const newIngredientHtml = `<div class="row ingredients-cont">
                                     </div>
                                     <div class="col-md-6">
                                         <div class="row">
-                                            <div class="col-md-5">
+                                            <div class="col-md-4">
                                                 <input type="text" name="ingredient_quantity" placeholder="Količina">
                                             </div>
-                                            <div class="col-md-5">
+                                            <div class="col-md-6">
                                                 <select name="ingredient_measure">
-                                                    <option value="">Jedinica mere (izaberi)</option>
+                                                    <option value="">Jedinica mere</option>
                                                     <option value="g">g</option>
                                                     <option value="kg">kg</option>
                                                     <option value="ml">ml</option>
@@ -152,12 +152,12 @@ const newIngredientHtmlNoAdd = `<div class="row ingredients-cont">
                                     </div>
                                     <div class="col-md-6">
                                         <div class="row">
-                                            <div class="col-md-5">
+                                            <div class="col-md-4">
                                                 <input type="text" name="ingredient_quantity" placeholder="Količina">
                                             </div>
-                                            <div class="col-md-5">
+                                            <div class="col-md-6">
                                                 <select name="ingredient_measure">
-                                                    <option value="">Jedinica mere (izaberi)</option>
+                                                    <option value="">Jedinica mere</option>
                                                     <option value="g">g</option>
                                                     <option value="kg">kg</option>
                                                     <option value="ml">ml</option>
@@ -167,6 +167,9 @@ const newIngredientHtmlNoAdd = `<div class="row ingredients-cont">
                                                     <option value="kesica">kesica</option>
                                                     <option value="čaša">čaša</option>
                                                 </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <i class="fa-solid fa-minus"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -206,16 +209,30 @@ continueBtn.addEventListener('click', function() {
 addGroupIngredient.addEventListener('click', function() {
     let newGroupCont = document.createElement('div');
     newGroupCont.classList.add('single-ingredient-group');
+    newGroupCont.classList.add('row');
+    let newGroupContCol = document.createElement('div');
+    newGroupContCol.classList.add('col-11');
+    let newGroupContColDel = document.createElement('div');
+    newGroupContColDel.classList.add('col-1');
+    let deleteIcon = document.createElement('i');
+    deleteIcon.classList.add('fa-solid');
+    deleteIcon.classList.add('fa-minus');
+    newGroupContColDel.appendChild(deleteIcon);
     let groupName = document.createElement('input');
     groupName.type = 'text';
     groupName.name = 'ingredient_group_name';
-    groupName.placeholder = 'Naziv grupe sastojaka'
-    newGroupCont.appendChild(groupName);
+    groupName.placeholder = 'Naziv grupe sastojaka';
+    newGroupContCol.appendChild(groupName);
+    newGroupCont.appendChild(newGroupContCol);
+    newGroupCont.appendChild(newGroupContColDel);
     let newIngredient = document.createElement('div');
     newIngredient.innerHTML = newIngredientHtml;
     let inEl = newIngredient.querySelector('input[name="ingredient_name"]');
     inEl.addEventListener('input', function() {
         searchProducts(this);
+    });
+    deleteIcon.addEventListener('click', function() {
+        this.parentElement.parentElement.remove();
     });
     newGroupCont.appendChild(newIngredient);
     let addIngredientInGroup = newIngredient.querySelector('span');
@@ -225,6 +242,10 @@ addGroupIngredient.addEventListener('click', function() {
         let ingredientName = newGroupIngredient.querySelector('input[name="ingredient_name"]');
         ingredientName.addEventListener('input', function() {
             searchProducts(this);
+        });
+        let deleteSingleIngredient = newGroupIngredient.querySelector('i');
+        deleteSingleIngredient.addEventListener('click', function() {
+            this.parentElement.parentElement.parentElement.parentElement.remove();
         });
         newGroupCont.appendChild(newGroupIngredient);
     });
@@ -237,7 +258,7 @@ addGroupStep.addEventListener('click', function() {
     let groupName = document.createElement('input');
     groupName.type = 'text';
     groupName.name = 'step_group_name';
-    groupName.placeholder = 'Naziv grupe koraka'
+    groupName.placeholder = 'Naziv koraka'
     newGroupCont.appendChild(groupName);
     let newRowStep = document.createElement('div');
     newRowStep.classList.add('row');
@@ -246,17 +267,13 @@ addGroupStep.addEventListener('click', function() {
     newStep.name = 'single_step';
     newStep.placeholder = 'Opiši korak';
     newGroupCont.appendChild(newStep);
-    let addNewStepBtn = document.createElement('span');
-    addNewStepBtn.classList.add('ingridient-plus');
-    addNewStepBtn.innerHTML = `<img src="${window.origin + '/images/ingridient-plus.svg'}" alt="dodaj sastojak">`;
-    addNewStepBtn.addEventListener('click', function() {
-        let newStepInGroup = document.createElement('input');
-        newStepInGroup.type = 'text';
-        newStepInGroup.name = 'single_step';
-        newStepInGroup.placeholder = 'Opiši korak';
-        newGroupCont.appendChild(newStepInGroup);
+    let deleteStep = document.createElement('i');
+    deleteStep.classList.add('fa-solid');
+    deleteStep.classList.add('fa-minus');
+    newGroupCont.appendChild(deleteStep);
+    deleteStep.addEventListener('click', function() {
+        this.parentElement.remove();
     });
-    newGroupCont.appendChild(addNewStepBtn);
     stepsInner.appendChild(newGroupCont);
 });
 
@@ -267,16 +284,20 @@ addIngredient.addEventListener('click', function() {
     ingredientName.addEventListener('input', function() {
         searchProducts(this);
     });
+    let deleteSingleIngredient = newRow.querySelector('i');
+    deleteSingleIngredient.addEventListener('click', function() {
+        this.parentElement.parentElement.parentElement.parentElement.remove();
+    });
     singleIngredientsInner.appendChild(newRow);
 });
 
-addStep.addEventListener('click', function() {
-    let newStep = document.createElement('input');
-    newStep.type = 'text';
-    newStep.name = 'single_step';
-    newStep.placeholder = 'Opiši korak';
-    singleStepsInner.appendChild(newStep);
-});
+// addStep.addEventListener('click', function() {
+//     let newStep = document.createElement('input');
+//     newStep.type = 'text';
+//     newStep.name = 'single_step';
+//     newStep.placeholder = 'Opiši korak';
+//     singleStepsInner.appendChild(newStep);
+// });
 
 function processImages(imageDivs) {
     let promises = [];
@@ -447,10 +468,10 @@ function searchProducts(target) {
         searched.forEach((product) => {
             let newProduct = document.createElement('p');
             newProduct.dataset.productId = product.id;
-            newProduct.innerText = product.name;
+            newProduct.innerText = 'C ' + product.name;
             newProduct.addEventListener('click', function() {
                 productsIngredients.classList.remove('active');
-                target.value = product.name;
+                target.value = 'C ' + product.name;
                 target.dataset.productId = product.id;
             });
             productsIngredients.appendChild(newProduct);
@@ -483,6 +504,8 @@ addImageBtn.addEventListener('click', function() {
                 let newImg = document.createElement('div');
                 newImg.classList.add('single-img');
                 newImg.style.backgroundImage = 'url("' + imagePath + '")';
+                let newImgGrid = document.createElement('div');
+                newImg.appendChild(newImgGrid);
                 let newDiv = document.createElement('div');
                 newDiv.classList.add('single-image-div');
                 newDiv.appendChild(newImg)

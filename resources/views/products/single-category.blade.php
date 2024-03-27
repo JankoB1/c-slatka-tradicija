@@ -12,7 +12,7 @@
         </div>
     </section>
 
-    <section id="single-category-products" class="{{ $category->slug }}">
+    <section id="single-category-products">
         <div class="single-category-products-inner container-space">
             <h2>Svi proizvodi</h2>
             <p>Pogledajte sve proizvode u okviru ove kategorije i pronađite inspiraciju za naredni recept koji ćete pripremati.</p>
@@ -34,7 +34,7 @@
     <section id="featured-recipes">
         <div class="featured-recipes-inner container-space">
             <h2>Vreme je za akciju</h2>
-            <p>Pogledaj recepte koje smo izdvojili za tebe, a u kojima je korišćen neki od proizvoda iz ove kategorije.</p>
+            <p>Izaberi kategoriju, pogledaj recepte koji smo izdvojili za tebe i upusti se u kulinarsku avanturu!</p>
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">

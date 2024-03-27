@@ -15,11 +15,11 @@
         </div>
     </section>
 
-    @if($product->productCategory->slug != 'zimnica')
-        <section id="single-product-guide" class="{{ $product->productCategory->slug }}">
+    @if($product->productCategory->slug != 'zimnica' && $product->product_guide != '')
+        <section id="single-product-guide">
             <div class="single-product-guide-inner container-space">
                 <h2>Uputstvo za pripremu</h2>
-                <p>{{ $product->product_guide }}</p>
+                <p>{!! $product->product_guide !!}</p>
                 <h3>Nutritivne vrednosti <img src="{{ asset('images/arrow-up-nt.svg') }}" alt="arrow-up"></h3>
             </div>
             <div class="nutrition-table">
@@ -106,7 +106,7 @@
         </div>
     </section>
 
-    <section id="single-category-products" class="{{ $product->productCategory->slug }}">
+    <section id="single-category-products">
         <div class="single-category-products-inner container-space">
             <h2>Potrebno ti je još inspiracije</h2>
             <p>Bez brige! Naša C Slatka tradicija porodica nudi širok izbora proizvoda, a brza i jednostavna priprema olakšaće svako upuštanje u novu kulinarsku avanturu. </p>

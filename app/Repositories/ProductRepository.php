@@ -25,7 +25,8 @@ class ProductRepository
          return DB::table('products')
             ->join('tin_receptproizvod', 'products.id', '=', 'tin_receptproizvod.product_id')
             ->where('tin_receptproizvod.recipe_id', $recipeId)
-            ->select('products.*')
+             ->where('products.active', '=', 'T')
+             ->select('products.*')
             ->get();
 
     }
@@ -34,6 +35,7 @@ class ProductRepository
         return DB::table('products')
             ->join('ingredients', 'products.id', '=', 'ingredients.product_id')
             ->where('ingredients.recipe_id', $recipeId)
+            ->where('products.active', '=', 'T')
             ->select('products.*')
             ->distinct()
             ->get();

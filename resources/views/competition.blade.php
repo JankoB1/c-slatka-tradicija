@@ -18,7 +18,7 @@
     <section id="competition-text">
         <div class="competition-text-inner container-space">
             <h1>Nagradni konkursi</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec velit a orci <br>malesuada fermentum id a massa. Cras interdum porttitor sapien ac congue. </p>
+            <p>Pozivamo sve ljubitelje poslastica da se pridruže našem nagradnom konkursu! Podelite svoje omiljene recepte sa nama i i budite deo slatke tradicije. Radujemo se vašim originalnim receptima. Učetvujte u nagrađivanju i osvojite sjajne poklone.</p>
         </div>
     </section>
 
@@ -180,8 +180,8 @@
                                 </div>
 
                                 <div class="add-steps-btns">
-                                    <button class="add-group-step" type="button"><img src="{{ asset('images/add-group.svg') }}" alt="add group">Dodaj grupu koraka</button>
-                                    <button class="add-single-step" type="button"><img src="{{ asset('images/plus.svg') }}" alt="plus">Dodaj korak</button>
+                                    <button class="add-group-step" type="button"><img src="{{ asset('images/add-group.svg') }}" alt="add group">Dodaj korak</button>
+                                    {{--                                    <button class="add-single-step" type="button"><img src="{{ asset('images/plus.svg') }}" alt="plus">Dodaj korak</button>--}}
                                 </div>
                             </div>
                         </div>
@@ -259,6 +259,24 @@
             </div>
         </div>
     @endguest
+
+    @auth()
+        <div class="modal fade" id="loading-popup" tabindex="-1" aria-labelledby="loadingPopupLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-7">
+                                <p>Vaš recept se priprema!</p>
+                                <img src="{{ asset('images/loading.png') }}" alt="loading" class="loading-spinner">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endauth
 
 @endsection
 

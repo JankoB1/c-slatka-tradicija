@@ -11,9 +11,7 @@
             <h1>O nama</h1>
             <p>Porodične vrednosti su ono što život čini lepšim. Kada se najbliži okupe i sa osmesima uživaju u najlepšim trenucima uz omiljene ukuse, tada je jasno zašto decenijama duga tradicija čini C Slatka tradicija proizvode neizostavnim delom svake trpeze.</p>
             <div class="about-images desktop">
-                <img src="{{ asset('images/about1.png') }}" alt="about">
-                <img src="{{ asset('images/about2.png') }}" alt="about">
-                <img src="{{ asset('images/about3.png') }}" alt="about">
+                <img src="{{ asset('images/about-3-imgs-min.png') }}" alt="o nama" class="about-img3">
             </div>
             <img src="{{ asset('images/aboutm1.png') }}" alt="about" class="mobile about-mobile">
             <p>Naši proizvodi su generacijama unazad neizostavni saveznici u kuhinji. Za kolače, torte i domaća peciva, za posebna slavlja ili svakodnevna uživanja zajedno kreiramo ukuse kojima se cela porodica raduje.
@@ -26,7 +24,7 @@
     <section id="action" class="about-action">
         <div class="action-inner container-space">
             <h2>Vreme je za akciju</h2>
-            <p>Izaberi kategoriju, pogledaj recepte koji smo izdvojili<br>za tebe i upusti se u kulinarsku avanturu</p>
+            <p>Izaberi kategoriju, pogledaj recepte koji smo izdvojili za tebe i upusti se u kulinarsku avanturu!</p>
             <div class="categories-banners row">
                 <div class="col-md-6">
                     <div class="single-category-banner">

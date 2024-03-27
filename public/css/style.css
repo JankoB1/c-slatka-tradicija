@@ -351,7 +351,6 @@ body {
 
 #action h2 {
     text-align: center;
-    font: normal normal 600 45px/76px Montserrat;
     letter-spacing: 0px;
 }
 
@@ -363,7 +362,11 @@ body {
 }
 
 .categories-banners {
-    padding-top: 55px;
+    padding-top: 70px;
+}
+
+.action-inner > p {
+    margin-bottom: 0;
 }
 
 .categories-banners .col-md-6 {
@@ -390,7 +393,7 @@ body {
 }
 
 .categories-banners .col-md-6:nth-child(4) .single-category-banner {
-    background-image: url("../images/zimnica-feat.png");
+    background-image: url("../images/category-banner-4.png");
 }
 
 .categories-banners .col-md-6:nth-child(5) .single-category-banner {
@@ -422,7 +425,7 @@ body {
 }
 
 #action {
-    padding: 72px 0 90px;
+    padding: 90px 0 90px;
     background: white;
 }
 
@@ -587,7 +590,7 @@ footer p {
     border: 1px solid #2E4765;
     background: #FFF;
     height: 64px;
-    padding: 15px 30px;
+    padding: 15px 10px;
     color: #2E4765;
     font-family: Montserrat;
     font-size: 13px;
@@ -595,6 +598,10 @@ footer p {
     font-weight: 400;
     line-height: normal;
     width: 100%;
+}
+
+.form-section .col-md-4 {
+    padding: 0 !important;
 }
 
 .form-section .col-md-7 textarea, .edit-profile-container .col-md-7 textarea {
@@ -658,8 +665,9 @@ footer p {
     height: 100vh;
     display: flex;
     align-items: center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .single-category-section.cookies {
@@ -716,27 +724,27 @@ footer p {
 }
 
 .single-category-section.puding {
-    background: url("../images/puding.png");
+    background-image: url("../images/puding.png");
 }
 
 .single-category-section.slag {
-    background: url("../images/slag.png");
+    background-image: url("../images/slag.png");
 }
 
 .single-category-section.griz {
-    background: url("../images/griz.png");
+    background-image: url("../images/griz.png");
 }
 
 .single-category-section.oblande {
-    background: url("../images/oblande.png");
+    background-image: url("../images/oblande.png");
 }
 
 .single-category-section.eskimko {
-    background: url("../images/eskimko.png");
+    background-image: url("../images/eskimko.png");
 }
 
 .single-category-section.zimnica {
-    background: url("../images/zimnica.png");
+    background-image: url("../images/zimnica.png");
 }
 
 #main-banner a {
@@ -842,7 +850,7 @@ footer p {
 .category-products .single-product img {
     width: auto;
     max-width: 100%;
-    height: 330px;
+    max-height: 270px;
     display: block;
     margin: 0 auto;
 }
@@ -855,7 +863,8 @@ footer p {
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-bottom: 36px;
 }
 
 .category-products a {
@@ -935,7 +944,8 @@ footer p {
 }
 
 #single-product-main img {
-    width: 410px;
+    width: auto;
+    max-height: 50vh;
     margin: 0 auto;
     display: block;
 }
@@ -1052,7 +1062,11 @@ footer p {
     margin-top: 30px;
 }
 
-span.ingridient-plus {
+.add-group-step {
+    width: 100% !important;
+}
+
+span.ingridient-plus, i.fa-minus {
     display: flex;
     height: 50px;
     width: 50px;
@@ -1062,6 +1076,10 @@ span.ingridient-plus {
     cursor: pointer;
     align-items: center;
     justify-content: center;
+}
+
+.row.recipe-products .col-4 {
+    padding: 0 3px;
 }
 
 .create-recipe-step[data-step="2"] .ingredients-cont .ingridient-plus {
@@ -1427,7 +1445,7 @@ span.ingridient-plus {
 
 #top-profile {
     background: #fff8e1;
-    height: 90vh;
+    height: 70vh;
     display: flex;
     align-items: center;
 }
@@ -1739,11 +1757,11 @@ span.ingridient-plus {
 
 .recipe-main-inner.container-space .col-md-3 {
     border-right: 1px solid #2E4765;
-    padding-right: 80px;
+    padding-right: 60px;
 }
 
 .recipe-main-inner.container-space .col-md-9 {
-    padding-left: 100px;
+    padding-left: 80px;
 }
 
 .recipe-actions-inner img, .like-cont img {
@@ -1805,18 +1823,22 @@ span.ingridient-plus {
 .about-images {
     display: flex;
     column-gap: 50px;
-    margin: 50px 0;
+    margin: 70px 0 70px;
 }
 
 #about {
-    padding: 8vh 0 5vh;
+    padding: 90px 0;
+}
+
+.about-images img {
+    width: 100%;
 }
 
 #about h1 {
     font-family: Montserrat;
-    font-size: 74px;
+    font-size: 47px;
     font-weight: 700;
-    line-height: 90px;
+    line-height: 80px;
     letter-spacing: 0em;
     text-align: center;
     color: #56924C;
@@ -2114,11 +2136,11 @@ input[name="step_group_name"] {
 
 .create-recipe-step[data-step="3"] .col-md-7 input {
     margin-top: 10px;
-    width: 92%;
+    width: 87%;
     margin-bottom: 10px;
 }
 
-.single-step-group span.ingridient-plus {
+.single-step-group span.ingridient-plus, .single-step-group i {
     position: absolute;
     right: 0;
     top: 77px;
@@ -2374,9 +2396,9 @@ input[name="step_group_name"] {
 
 #competition-text h1 {
     font-family: Montserrat;
-    font-size: 60px;
+    font-size: 47px;
     font-weight: 700;
-    line-height: 72px;
+    line-height: 80px;
     letter-spacing: 0em;
     text-align: center;
     color: #56924C;
@@ -2658,14 +2680,13 @@ input[name="step_group_name"] {
 
 #posts-list h1 {
     font-family: Montserrat;
-    font-size: 60px;
+    font-size: 47px;
     font-weight: 700;
-    line-height: 72px;
+    line-height: 80px;
     letter-spacing: 0em;
     text-align: center;
     color: #56924C;
-    padding-top: 110px;
-    padding-bottom: 30px;
+    padding-top: 90px;
 }
 
 #posts-list p {
@@ -2762,7 +2783,7 @@ span.num.active {
 }
 
 .posts-row {
-    margin-top: 90px !important;
+    margin-top: 70px !important;
 }
 
 .main-info {
@@ -2839,9 +2860,9 @@ span.num.active {
 
 .single-product-guide-inner h3 {
     font-family: Montserrat;
-    font-size: 46px;
+    font-size: 36px;
     font-weight: 700;
-    line-height: 76px;
+    line-height: 56px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -2852,6 +2873,7 @@ span.num.active {
 .single-product-guide-inner h3 img {
     transition: all 0.3s ease-in-out;
     transform: rotate(180deg);
+    width: 25px;
 }
 
 .single-product-guide-inner h3.active img {
@@ -3030,7 +3052,7 @@ img.loading-spinner {
 }
 
 .recipe-book-content-inner {
-    padding-top: 80px;
+    padding-top: 90px;
 }
 
 #main-header ul ul li a.has-dropdown img {

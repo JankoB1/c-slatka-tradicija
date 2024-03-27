@@ -7,7 +7,7 @@
     <section id="recipe-book-content">
         <div class="recipe-book-content-inner container-space">
             <h2>Moja knjižica recepata</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec velit a orci malesuada fermentum id a massa. Cras interdum porttitor sapien ac congue.</p>
+            <p>Izaberite recepte koji vam se najviše dopadaju, napravite svoju knjižicu recepata i preuzmite je potpuno besplatno.</p>
             <a href="#">Pogledaj sve recepte</a>
             <img class="books-img desktop" src="{{ asset('images/books-image.png') }}" alt="books">
             <img src="{{ asset('images/book-mobile-icons.png') }}" alt="books" class="books-img mobile">
