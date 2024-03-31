@@ -184,11 +184,14 @@ class RecipeRepository
         }
     }
 
-    public function softDelete($user_id)
+    public function softDelete($recipe_id)
     {
         try {
-            $recipe = Recipe::find($user_id);
+            $recipe = Recipe::find($recipe_id);
+            $recipe_likes = UserRecipe::where('recipe_id', '=', $recipe_id);
             $recipe->delete();
+            $recipe_likes->delete();
+            return redirect()->route('show-all-recipes');
         } catch (QueryException $exception) {
             Log::error('Can\'t soft delete recipe. ' . $exception->getMessage());
             return null;

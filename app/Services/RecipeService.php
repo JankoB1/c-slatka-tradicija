@@ -66,7 +66,7 @@ class RecipeService
         return $this->recipeRepository->getUserSavedSingle($user_id, $recipe_id);
     }
 
-    public function softDelete($user_id) {
-        return $this->recipeRepository->softDelete($user_id);
+    public function softDelete($recipe_id) {
+        return $this->recipeRepository->softDelete($recipe_id);
     }
 }

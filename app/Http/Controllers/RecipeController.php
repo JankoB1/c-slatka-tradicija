@@ -60,6 +60,9 @@ class RecipeController extends Controller
 
     public function retrieveSingleRecipe(string $category, string $slug) {
         $recipe = $this->recipeService->getRecipeBySlug($slug);
+        if ($recipe == null)
+            return redirect()->route('show-all-recipes');
+
         $likes = $this->recipeService->getRecipeLikes($recipe->id);
         $user_data = [
             'like' => null,
@@ -169,7 +172,8 @@ class RecipeController extends Controller
         return view('privacy-policy');
     }
 
-    public function softDelete($user_id) {
-        $this->recipeService->softDelete($user_id);
+    public function softDelete($recipe_id) {
+        Log::info('nesto se desilo');
+        $this->recipeService->softDelete($recipe_id);
     }
 }
