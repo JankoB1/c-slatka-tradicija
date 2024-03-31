@@ -4,8 +4,6 @@
 
     <section id="top-profile">
         <div class="container-space">
-            <h1>Učestvuj u konkursu<br>Torte i kolači sa<br>Eskimko sladoledom</h1>
-            <a href="{{ route('show-competition') }}">Nagradni konkurs</a>
         </div>
     </section>
 

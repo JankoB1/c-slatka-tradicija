@@ -31,7 +31,7 @@ class ProductController extends Controller
     public function showSingleCategory($slug) {
         $category = ProductCategory::where('slug', '=', $slug)->get()->first();
         $products = $category->products;
-        $recipes = $this->recipeRepository->getRecipeByProductIdOld($category->id);
+        $recipes = $this->recipeRepository->getRecipeByProductIdOld($products[0]->id);
         return view('products.single-category', compact('category', 'products', 'recipes'));
     }
 
@@ -39,6 +39,11 @@ class ProductController extends Controller
         $product = Product::where('slug', '=', $slug)->get()->first();
         $products = $product->productCategory->products;
         $recipes = $this->recipeService->getRecipesByProductIdOld($product->id);
+        if($product->productCategory->id == 5) {
+            $products = ProductCategory::where('slug', '=', 'slag-kremovi')->get()->first()->products;
+        } else if($product->productCategory->id == 4) {
+            $products = ProductCategory::where('slug', '=', 'puding')->get()->first()->products;
+        }
         return view('products.single-product', compact('product', 'products', 'recipes'));
     }
 

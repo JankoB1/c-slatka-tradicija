@@ -5,6 +5,7 @@ let recipeBooks = localStorage.getItem('recipeBooks');
 let recipeId = parseInt(document.querySelector('#recipe-gallery').dataset.recipeId);
 let print = document.querySelector('.print');
 let share = document.querySelector('.share');
+let loginPopup = document.querySelector('#login-popup');
 
 recipeBooks = recipeBooks ? JSON.parse(recipeBooks) : [];
 let index = recipeBooks.indexOf(recipeId);
@@ -12,49 +13,59 @@ if (index !== -1) {
     addToBook.classList.add('active');
 }
 likeBtn.addEventListener('click', function() {
-    let data = {
-        action: !this.classList.contains('active'),
-        recipe_id: recipeId
-    };
+    if(loginPopup) {
+        let modal = new bootstrap.Modal(loginPopup);
+        modal.show();
+    } else {
+        let data = {
+            action: !this.classList.contains('active'),
+            recipe_id: recipeId
+        };
 
-    jQuery.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-        },
-        url: window.origin + '/handle-like',
-        data: JSON.stringify(data),
-        contentType: 'application/json',
-        method: 'POST',
-        success: function(response) {
-            likeBtn.classList.toggle('active');
-            let num = likeBtn.querySelector('p');
-            if(data.action) {
-                num.innerText = parseInt(num.innerText.trim()) + 1;
-            } else {
-                num.innerText = parseInt(num.innerText.trim()) - 1;
+        jQuery.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            },
+            url: window.origin + '/handle-like',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            method: 'POST',
+            success: function(response) {
+                likeBtn.classList.toggle('active');
+                let num = likeBtn.querySelector('p');
+                if(data.action) {
+                    num.innerText = parseInt(num.innerText.trim()) + 1;
+                } else {
+                    num.innerText = parseInt(num.innerText.trim()) - 1;
+                }
             }
-        }
-    });
+        });
+    }
 });
 
 saveBtn.addEventListener('click', function() {
-    let data = {
-        action: !this.classList.contains('active'),
-        recipe_id: recipeId
-    };
+    if(loginPopup) {
+        let modal = new bootstrap.Modal(loginPopup);
+        modal.show();
+    } else {
+        let data = {
+            action: !this.classList.contains('active'),
+            recipe_id: recipeId
+        };
 
-    jQuery.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-        },
-        url: window.origin + '/handle-save',
-        data: JSON.stringify(data),
-        contentType: 'application/json',
-        method: 'POST',
-        success: function(response) {
-            saveBtn.classList.toggle('active');
-        }
-    });
+        jQuery.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            },
+            url: window.origin + '/handle-save',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            method: 'POST',
+            success: function(response) {
+                saveBtn.classList.toggle('active');
+            }
+        });
+    }
 });
 
 addToBook.addEventListener('click', function() {
@@ -109,6 +120,8 @@ print.addEventListener('click', function() {
 });
 
 share.addEventListener('click', function() {
+
+    // https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemo.c-slatkatradicija.mystableserver.com/recepti/cokoladne-torte/torta-ruska-salata%2F&src=sdkpreparse
     // let customTitle = '';
     let imageUrl = encodeURIComponent(window.location.href);
     let shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${imageUrl}`;

@@ -44,8 +44,16 @@ class RecipeController extends Controller
     }
 
     public function index() {
-        $recipes = $this->recipeService->getRecipesByProductIdOld(1);
-        $recipes2 = $this->recipeService->getRecipesByProductIdOld(3);
+        $recipes = Recipe::where('id', '=', 6933)
+            ->orWhere('id', '=', 5275)
+            ->orWhere('id', '=', 10103)
+            ->orWhere('id', '=', 9421)
+            ->get();
+
+        $recipes2 = Recipe::where('id', '=', 9747)
+            ->orWhere('id', '=', 10060)
+            ->get();
+
         return view('homepage', compact('recipes', 'recipes2'));
     }
 
@@ -68,8 +76,15 @@ class RecipeController extends Controller
             'like' => null,
             'save' => null
         ];
-        $recipes = $this->recipeService->getRecipesByProductIdOld(1);
-        $recipes2 = $this->recipeService->getRecipesByProductIdOld(3);
+        $recipes = Recipe::where('id', '=', 6933)
+            ->orWhere('id', '=', 5275)
+            ->orWhere('id', '=', 10103)
+            ->orWhere('id', '=', 9421)
+            ->get();
+
+        $recipes2 = Recipe::where('id', '=', 9747)
+            ->orWhere('id', '=', 10060)
+            ->get();
 
         if(Auth::user()) {
             $user_data['like'] = $this->recipeService->getUserLiked($recipe->id, Auth::user()->id);
@@ -139,7 +154,7 @@ class RecipeController extends Controller
 
     public function showRecipeCategory($slug) {
         $category = Category::where('slug', '=', $slug)->get()->first();
-        $recipes = $category->recipes()->orderBy('created_at', 'desc')->paginate(21);
+        $recipes = $category->recipes()->where('active', '=', 'T')->orderBy('created_at', 'desc')->paginate(21);
         return view('recipes.category', compact('category', 'recipes'));
     }
 

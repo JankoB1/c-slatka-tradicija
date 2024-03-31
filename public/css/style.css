@@ -1,3 +1,9 @@
+@media print {
+    div {
+        break-inside: avoid;
+    }
+}
+
 @font-face {
     font-family: 'Proxima Nova';
     src: url('../fonts/ProximaNova-Regular.otf') format('opentype');
@@ -310,8 +316,9 @@ body {
 }
 
 #homepage-banner, #homepage-banner2 {
-    background-image: url("../images/01.png");
+    background-image: url("../images/home-banner-finalf.png");
     background-size: cover;
+    background-position: right;
     padding: 94px 0;
 }
 
@@ -351,7 +358,6 @@ body {
 
 #action h2 {
     text-align: center;
-    font: normal normal 600 45px/76px Montserrat;
     letter-spacing: 0px;
 }
 
@@ -363,7 +369,11 @@ body {
 }
 
 .categories-banners {
-    padding-top: 55px;
+    padding-top: 70px;
+}
+
+.action-inner > p {
+    margin-bottom: 0;
 }
 
 .categories-banners .col-md-6 {
@@ -390,7 +400,7 @@ body {
 }
 
 .categories-banners .col-md-6:nth-child(4) .single-category-banner {
-    background-image: url("../images/zimnica-feat.png");
+    background-image: url("../images/category-banner-4.png");
 }
 
 .categories-banners .col-md-6:nth-child(5) .single-category-banner {
@@ -422,7 +432,7 @@ body {
 }
 
 #action {
-    padding: 72px 0 90px;
+    padding: 90px 0 90px;
     background: white;
 }
 
@@ -587,7 +597,7 @@ footer p {
     border: 1px solid #2E4765;
     background: #FFF;
     height: 64px;
-    padding: 15px 30px;
+    padding: 15px 10px;
     color: #2E4765;
     font-family: Montserrat;
     font-size: 13px;
@@ -595,6 +605,11 @@ footer p {
     font-weight: 400;
     line-height: normal;
     width: 100%;
+    text-align: center;
+}
+
+.form-section .col-md-4 {
+    padding: 0 !important;
 }
 
 .form-section .col-md-7 textarea, .edit-profile-container .col-md-7 textarea {
@@ -610,6 +625,7 @@ footer p {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    text-align: center;
 }
 
 .form-section .col-md-7 input[type="checkbox"] {
@@ -658,8 +674,9 @@ footer p {
     height: 100vh;
     display: flex;
     align-items: center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .single-category-section.cookies {
@@ -716,27 +733,27 @@ footer p {
 }
 
 .single-category-section.puding {
-    background: url("../images/puding.png");
+    background-image: url("../images/puding.png");
 }
 
 .single-category-section.slag {
-    background: url("../images/slag.png");
+    background-image: url("../images/slag.png");
 }
 
 .single-category-section.griz {
-    background: url("../images/griz.png");
+    background-image: url("../images/griz.png");
 }
 
 .single-category-section.oblande {
-    background: url("../images/oblande.png");
+    background-image: url("../images/oblande.png");
 }
 
 .single-category-section.eskimko {
-    background: url("../images/eskimko.png");
+    background-image: url("../images/eskimko.png");
 }
 
 .single-category-section.zimnica {
-    background: url("../images/zimnica.png");
+    background-image: url("../images/zimnica.png");
 }
 
 #main-banner a {
@@ -766,9 +783,9 @@ footer p {
 
 .featured-recipe-single p {
     font-family: Montserrat;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 600;
-    line-height: 35px;
+    line-height: 30px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -836,13 +853,13 @@ footer p {
 }
 
 .puding .category-products .single-product {
-    width: 33%;
+    width: 26%;
 }
 
 .category-products .single-product img {
     width: auto;
     max-width: 100%;
-    height: 330px;
+    max-height: 270px;
     display: block;
     margin: 0 auto;
 }
@@ -855,7 +872,8 @@ footer p {
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-bottom: 36px;
 }
 
 .category-products a {
@@ -870,7 +888,11 @@ footer p {
 
 #single-category-products {
     background: #FFFCF2;
-    padding: 7vh 0;
+    padding: 90px 0;
+}
+
+.single-ingredient-group.row {
+    margin-bottom: 30px !important;
 }
 
 .single-category-products-inner > p {
@@ -882,21 +904,21 @@ footer p {
     text-align: center;
     color: #2E4765;
     max-width: 840px;
-    margin: 0 auto 40px;
+    margin: 0 auto 70px;
 }
 
 #single-category-meta h1 {
     font-family: Montserrat;
-    font-size: 60px;
+    font-size: 47px;
     font-weight: 700;
-    line-height: 72px;
+    line-height: 80px;
     letter-spacing: 0em;
     text-align: center;
     color: #56924C;
 }
 
 #single-category-meta {
-    padding: 7vh 0;
+    padding: 90px 0 70px;
 }
 
 #single-category-meta p {
@@ -910,8 +932,9 @@ footer p {
 }
 
 #single-product-main {
-    height: 90vh;
+    min-height: 90vh;
     padding-top: 25vh;
+    padding-bottom: 5vh;
 }
 
 #single-product-main h1 {
@@ -935,7 +958,8 @@ footer p {
 }
 
 #single-product-main img {
-    width: 410px;
+    width: auto;
+    max-height: 50vh;
     margin: 0 auto;
     display: block;
 }
@@ -1052,7 +1076,11 @@ footer p {
     margin-top: 30px;
 }
 
-span.ingridient-plus {
+.add-group-step {
+    width: 100% !important;
+}
+
+span.ingridient-plus, i.fa-minus {
     display: flex;
     height: 50px;
     width: 50px;
@@ -1062,6 +1090,10 @@ span.ingridient-plus {
     cursor: pointer;
     align-items: center;
     justify-content: center;
+}
+
+.row.recipe-products .col-4 {
+    padding: 0 3px;
 }
 
 .create-recipe-step[data-step="2"] .ingredients-cont .ingridient-plus {
@@ -1427,7 +1459,7 @@ span.ingridient-plus {
 
 #top-profile {
     background: #fff8e1;
-    height: 90vh;
+    height: 40vh;
     display: flex;
     align-items: center;
 }
@@ -1739,11 +1771,11 @@ span.ingridient-plus {
 
 .recipe-main-inner.container-space .col-md-3 {
     border-right: 1px solid #2E4765;
-    padding-right: 80px;
+    padding-right: 60px;
 }
 
 .recipe-main-inner.container-space .col-md-9 {
-    padding-left: 100px;
+    padding-left: 80px;
 }
 
 .recipe-actions-inner img, .like-cont img {
@@ -1805,18 +1837,22 @@ span.ingridient-plus {
 .about-images {
     display: flex;
     column-gap: 50px;
-    margin: 50px 0;
+    margin: 70px 0 70px;
 }
 
 #about {
-    padding: 8vh 0 5vh;
+    padding: 90px 0;
+}
+
+.about-images img {
+    width: 100%;
 }
 
 #about h1 {
     font-family: Montserrat;
-    font-size: 74px;
+    font-size: 47px;
     font-weight: 700;
-    line-height: 90px;
+    line-height: 80px;
     letter-spacing: 0em;
     text-align: center;
     color: #56924C;
@@ -2114,11 +2150,11 @@ input[name="step_group_name"] {
 
 .create-recipe-step[data-step="3"] .col-md-7 input {
     margin-top: 10px;
-    width: 92%;
+    width: 87%;
     margin-bottom: 10px;
 }
 
-.single-step-group span.ingridient-plus {
+.single-step-group span.ingridient-plus, .single-step-group i {
     position: absolute;
     right: 0;
     top: 77px;
@@ -2372,11 +2408,24 @@ input[name="step_group_name"] {
     padding: 90px 0 70px;
 }
 
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+    background-color: #F5CC45 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    color: #2E4765 !important;
+    font-weight: 600 !important;
+}
+
+div:where(.swal2-container) h2:where(.swal2-title) {
+    color: #2E4765 !important;
+}
+
 #competition-text h1 {
     font-family: Montserrat;
-    font-size: 60px;
+    font-size: 47px;
     font-weight: 700;
-    line-height: 72px;
+    line-height: 80px;
     letter-spacing: 0em;
     text-align: center;
     color: #56924C;
@@ -2658,14 +2707,13 @@ input[name="step_group_name"] {
 
 #posts-list h1 {
     font-family: Montserrat;
-    font-size: 60px;
+    font-size: 47px;
     font-weight: 700;
-    line-height: 72px;
+    line-height: 80px;
     letter-spacing: 0em;
     text-align: center;
     color: #56924C;
-    padding-top: 110px;
-    padding-bottom: 30px;
+    padding-top: 90px;
 }
 
 #posts-list p {
@@ -2683,7 +2731,7 @@ input[name="step_group_name"] {
 }
 
 #post-content {
-    padding: 110px 0;
+    padding: 170px 0 110px;
 }
 
 #post-content h1 {
@@ -2697,7 +2745,7 @@ input[name="step_group_name"] {
     padding-bottom: 50px;
 }
 
-#post-content p, #post-content p a {
+#post-content p, #post-content p a, #post-content li {
     font-family: Montserrat;
     font-size: 19px;
     font-weight: 600;
@@ -2762,7 +2810,7 @@ span.num.active {
 }
 
 .posts-row {
-    margin-top: 90px !important;
+    margin-top: 70px !important;
 }
 
 .main-info {
@@ -2839,9 +2887,9 @@ span.num.active {
 
 .single-product-guide-inner h3 {
     font-family: Montserrat;
-    font-size: 46px;
+    font-size: 36px;
     font-weight: 700;
-    line-height: 76px;
+    line-height: 56px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -2852,6 +2900,7 @@ span.num.active {
 .single-product-guide-inner h3 img {
     transition: all 0.3s ease-in-out;
     transform: rotate(180deg);
+    width: 25px;
 }
 
 .single-product-guide-inner h3.active img {
@@ -3030,7 +3079,7 @@ img.loading-spinner {
 }
 
 .recipe-book-content-inner {
-    padding-top: 80px;
+    padding-top: 90px;
 }
 
 #main-header ul ul li a.has-dropdown img {
@@ -3053,6 +3102,10 @@ img.loading-spinner {
 
     span.num {
         right: -7px;
+    }
+
+    #main-header .add-recipe, #main-header .login-btn {
+        width: 110px;
     }
 }
 
@@ -3133,6 +3186,7 @@ img.loading-spinner {
     #homepage-banner, #homepage-banner2 {
         padding-top: 0;
         padding-bottom: 32px;
+        background-position: left;
     }
 
     #homepage-banner img, #homepage-banner2 img {
@@ -3788,7 +3842,7 @@ img.loading-spinner {
         line-height: 41px;
     }
 
-    #posts-list p, #post-content p, #post-content p a, #single-category-meta p,
+    #posts-list p, #post-content p, #post-content p a, #post-content li, #single-category-meta p,
     #single-product-main p, #competition-text p, #competition-send-recipe p {
         font-size: 16px;
         line-height: 26px;
@@ -3799,7 +3853,7 @@ img.loading-spinner {
         text-align: center;
     }
 
-    #post-content p, #post-content p a, #competition-text p {
+    #post-content p, #post-content p a, #post-content li, #competition-text p {
         font-weight: 500;
     }
 

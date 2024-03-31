@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section id="recipes-category-banner">
+    <section id="recipes-category-banner" style="background-image: url('{{ asset('images/' . $category->image) }}')">
     </section>
 
     <section id="recipes-category-content">
