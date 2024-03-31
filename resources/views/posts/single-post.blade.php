@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
 @section('scriptsTop')
-    <section id="single-post-hero" style="background-image: url('{{ asset('storage/upload/' . $post->image) }}');">
-
-    </section>
-
     <section id="post-content">
         <div class="post-content-inner container-space">
             <h1>{{ $post->title }}</h1>

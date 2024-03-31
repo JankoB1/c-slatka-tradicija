@@ -46,7 +46,7 @@ class RecipeController extends Controller
     public function index() {
         $recipes = Recipe::where('id', '=', 6933)
             ->orWhere('id', '=', 5275)
-            ->orWhere('id', '=', 10218)
+            ->orWhere('id', '=', 10103)
             ->orWhere('id', '=', 9421)
             ->get();
 
@@ -75,7 +75,7 @@ class RecipeController extends Controller
         ];
         $recipes = Recipe::where('id', '=', 6933)
             ->orWhere('id', '=', 5275)
-            ->orWhere('id', '=', 10218)
+            ->orWhere('id', '=', 10103)
             ->orWhere('id', '=', 9421)
             ->get();
 
@@ -151,7 +151,7 @@ class RecipeController extends Controller
 
     public function showRecipeCategory($slug) {
         $category = Category::where('slug', '=', $slug)->get()->first();
-        $recipes = $category->recipes()->orderBy('created_at', 'desc')->paginate(21);
+        $recipes = $category->recipes()->where('active', '=', 'T')->orderBy('created_at', 'desc')->paginate(21);
         return view('recipes.category', compact('category', 'recipes'));
     }
 

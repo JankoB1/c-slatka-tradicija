@@ -28,7 +28,7 @@
         <div class="container">
             <img src="{{ asset('images/slag-m.png') }}" alt="" class="mobile product-mobile">
             <div class="single-category-inner">
-                <h2>Šlag & Šlag krem</h2>
+                <h2>Šlag i Šlag krem</h2>
                 <p>Decenijama unazad, tajni saveznik neodoljivih torti, sočnih kolača i laganih voćnih kupova, C Šlag i C Šlag krem svaku poslasticu čine još ukusnijom i potpuno neodoljivom. Mogu se koristiti kao dekoracija na tortama, ali i kao ukusni krem u omiljenim desertima.</p>
                 <a href="{{ route('show-single-category', ['slug' => 'slag-kremovi']) }}">Pogledaj više</a>
             </div>

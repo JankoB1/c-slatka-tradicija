@@ -258,14 +258,14 @@ addGroupStep.addEventListener('click', function() {
     let groupName = document.createElement('input');
     groupName.type = 'text';
     groupName.name = 'step_group_name';
-    groupName.placeholder = 'Naziv koraka'
+    groupName.placeholder = 'Naziv koraka pripreme'
     newGroupCont.appendChild(groupName);
     let newRowStep = document.createElement('div');
     newRowStep.classList.add('row');
     let newStep = document.createElement('input');
     newStep.type = 'text';
     newStep.name = 'single_step';
-    newStep.placeholder = 'Opiši korak';
+    newStep.placeholder = 'Opiši korak pripreme';
     newGroupCont.appendChild(newStep);
     let deleteStep = document.createElement('i');
     deleteStep.classList.add('fa-solid');
@@ -628,24 +628,52 @@ function validateFirstStep() {
     let difficulty = document.querySelector('select[name="difficulty"]').value;
     let preparationTime = document.querySelector('select[name="preparation_time"]').value;
     let portionNumber = document.querySelector('input[name="portion_number"]').value;
-    if(category === '') {
+    if(title === '') {
         document.querySelector('input[name="title"]').focus();
+        Swal.fire({
+            title: 'Naziv recepta je obavezan!',
+            confirmButtonText: 'Nastavi'
+        });
+        return false;
+    }
+    if(category === '') {
+        document.querySelector('input[name="category"]').focus();
+        Swal.fire({
+            title: 'Kategorija recepta je obavezna!',
+            confirmButtonText: 'Nastavi'
+        });
         return false;
     }
     if(subCategory === '') {
-        document.querySelector('select[name="category"]').focus();
+        document.querySelector('select[name="subcategory"]').focus();
+        Swal.fire({
+            title: 'Podkategorija recepta je obavezna!',
+            confirmButtonText: 'Nastavi'
+        });
         return false;
     }
     if(difficulty === '') {
-        document.querySelector('select[name="subcategory"]').focus();
+        document.querySelector('select[name="difficulty"]').focus();
+        Swal.fire({
+            title: 'Težina prirpreme recepta je obavezna!',
+            confirmButtonText: 'Nastavi'
+        });
         return false;
     }
     if(preparationTime === '') {
         document.querySelector('select[name="preparation_time"]').focus();
+        Swal.fire({
+            title: 'Vreme prirpreme recepta je obavezno!',
+            confirmButtonText: 'Nastavi'
+        });
         return false;
     }
     if(portionNumber === '') {
         document.querySelector('input[name="portion_number"]').focus();
+        Swal.fire({
+            title: 'Broj porcija recepta je obavezan!',
+            confirmButtonText: 'Nastavi'
+        });
         return false;
     }
     return true;
@@ -660,6 +688,10 @@ function validateSecondStep() {
         let groupName = singleGroup.querySelector('input[name="ingredient_group_name"]').value;
         if(groupName === '') {
             singleGroup.querySelector('input[name="ingredient_group_name"]').focus();
+            Swal.fire({
+                title: 'Naziv grupe sastojaka je obavezan!',
+                confirmButtonText: 'Nastavi'
+            });
             result = false;
             return;
         }
@@ -669,11 +701,19 @@ function validateSecondStep() {
             let qty = single.querySelector('input[name="ingredient_quantity"]').value;
             if(name === '') {
                 single.querySelector('input[name="ingredient_name"]').focus();
+                Swal.fire({
+                    title: 'Naziv sastojaka je obavezan!',
+                    confirmButtonText: 'Nastavi'
+                });
                 result = false;
                 return;
             }
             if(qty === '') {
                 single.querySelector('input[name="ingredient_quantity"]').focus();
+                Swal.fire({
+                    title: 'Količina sastojaka je obavezna!',
+                    confirmButtonText: 'Nastavi'
+                });
                 result = false;
                 return;
             }
@@ -685,11 +725,19 @@ function validateSecondStep() {
         let qty = single.querySelector('input[name="ingredient_quantity"]').value;
         if(name === '') {
             single.querySelector('input[name="ingredient_name"]').focus();
+            Swal.fire({
+                title: 'Naziv sastojaka je obavezan!',
+                confirmButtonText: 'Nastavi'
+            });
             result = false;
             return;
         }
         if(qty === '') {
             single.querySelector('input[name="ingredient_quantity"]').focus();
+            Swal.fire({
+                title: 'Količina sastojaka je obavezna!',
+                confirmButtonText: 'Nastavi'
+            });
             result = false;
             return;
         }

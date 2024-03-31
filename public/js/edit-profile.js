@@ -34,13 +34,18 @@ save2.addEventListener('click', function() {
     let name = document.querySelector('input[name="name"]').value;
     let surname = document.querySelector('input[name="surname"]').value;
     let phone = document.querySelector('input#phone').value;
-    let email = document.querySelector('input#email').value;
+    let city2 = document.querySelector('input#city_2').value;
+    let address = document.querySelector('input#address').value;
+    let zip = document.querySelector('input#zip').value;
+
 
     let data = {
         name: name,
         surname: surname,
         phone: phone,
-        email: email,
+        city_2: city2,
+        address: address,
+        zip: zip
     }
 
     jQuery.ajax({

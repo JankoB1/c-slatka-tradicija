@@ -1,3 +1,9 @@
+@media print {
+    div {
+        break-inside: avoid;
+    }
+}
+
 @font-face {
     font-family: 'Proxima Nova';
     src: url('../fonts/ProximaNova-Regular.otf') format('opentype');
@@ -310,8 +316,9 @@ body {
 }
 
 #homepage-banner, #homepage-banner2 {
-    background-image: url("../images/01.png");
+    background-image: url("../images/home-banner-finalf.png");
     background-size: cover;
+    background-position: right;
     padding: 94px 0;
 }
 
@@ -598,6 +605,7 @@ footer p {
     font-weight: 400;
     line-height: normal;
     width: 100%;
+    text-align: center;
 }
 
 .form-section .col-md-4 {
@@ -617,6 +625,7 @@ footer p {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    text-align: center;
 }
 
 .form-section .col-md-7 input[type="checkbox"] {
@@ -774,9 +783,9 @@ footer p {
 
 .featured-recipe-single p {
     font-family: Montserrat;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 600;
-    line-height: 35px;
+    line-height: 30px;
     letter-spacing: 0em;
     text-align: center;
     color: #2E4765;
@@ -844,7 +853,7 @@ footer p {
 }
 
 .puding .category-products .single-product {
-    width: 33%;
+    width: 26%;
 }
 
 .category-products .single-product img {
@@ -879,7 +888,11 @@ footer p {
 
 #single-category-products {
     background: #FFFCF2;
-    padding: 7vh 0;
+    padding: 90px 0;
+}
+
+.single-ingredient-group.row {
+    margin-bottom: 30px !important;
 }
 
 .single-category-products-inner > p {
@@ -891,21 +904,21 @@ footer p {
     text-align: center;
     color: #2E4765;
     max-width: 840px;
-    margin: 0 auto 40px;
+    margin: 0 auto 70px;
 }
 
 #single-category-meta h1 {
     font-family: Montserrat;
-    font-size: 60px;
+    font-size: 47px;
     font-weight: 700;
-    line-height: 72px;
+    line-height: 80px;
     letter-spacing: 0em;
     text-align: center;
     color: #56924C;
 }
 
 #single-category-meta {
-    padding: 7vh 0;
+    padding: 90px 0 70px;
 }
 
 #single-category-meta p {
@@ -919,8 +932,9 @@ footer p {
 }
 
 #single-product-main {
-    height: 90vh;
+    min-height: 90vh;
     padding-top: 25vh;
+    padding-bottom: 5vh;
 }
 
 #single-product-main h1 {
@@ -1445,7 +1459,7 @@ span.ingridient-plus, i.fa-minus {
 
 #top-profile {
     background: #fff8e1;
-    height: 70vh;
+    height: 40vh;
     display: flex;
     align-items: center;
 }
@@ -2394,6 +2408,19 @@ input[name="step_group_name"] {
     padding: 90px 0 70px;
 }
 
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+    background-color: #F5CC45 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    color: #2E4765 !important;
+    font-weight: 600 !important;
+}
+
+div:where(.swal2-container) h2:where(.swal2-title) {
+    color: #2E4765 !important;
+}
+
 #competition-text h1 {
     font-family: Montserrat;
     font-size: 47px;
@@ -2704,7 +2731,7 @@ input[name="step_group_name"] {
 }
 
 #post-content {
-    padding: 110px 0;
+    padding: 170px 0 110px;
 }
 
 #post-content h1 {
@@ -2718,7 +2745,7 @@ input[name="step_group_name"] {
     padding-bottom: 50px;
 }
 
-#post-content p, #post-content p a {
+#post-content p, #post-content p a, #post-content li {
     font-family: Montserrat;
     font-size: 19px;
     font-weight: 600;
@@ -3076,6 +3103,10 @@ img.loading-spinner {
     span.num {
         right: -7px;
     }
+
+    #main-header .add-recipe, #main-header .login-btn {
+        width: 110px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -3155,6 +3186,7 @@ img.loading-spinner {
     #homepage-banner, #homepage-banner2 {
         padding-top: 0;
         padding-bottom: 32px;
+        background-position: left;
     }
 
     #homepage-banner img, #homepage-banner2 img {
@@ -3810,7 +3842,7 @@ img.loading-spinner {
         line-height: 41px;
     }
 
-    #posts-list p, #post-content p, #post-content p a, #single-category-meta p,
+    #posts-list p, #post-content p, #post-content p a, #post-content li, #single-category-meta p,
     #single-product-main p, #competition-text p, #competition-send-recipe p {
         font-size: 16px;
         line-height: 26px;
@@ -3821,7 +3853,7 @@ img.loading-spinner {
         text-align: center;
     }
 
-    #post-content p, #post-content p a, #competition-text p {
+    #post-content p, #post-content p a, #post-content li, #competition-text p {
         font-weight: 500;
     }
 

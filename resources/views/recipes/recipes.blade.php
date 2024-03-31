@@ -48,37 +48,37 @@
                             <img src="{{ asset('images/up-arrow.svg') }}" alt="up-arrow">
                         </div>
                         <div class="single-subcategories">
-                            <a href="{{ route('show-recipe-category', ['slug' => 'kremaste-torte']) }}">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'sitni-kolaci']) }}">
                                 <div class="single-subcategory">
                                     <div class="subcategory-img si-4"></div>
                                     <p class="subcategory-title">Sitni kolači</p>
                                 </div>
                             </a>
-                            <a href="{{ route('show-recipe-category', ['slug' => 'kremaste-torte']) }}">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'vocni-kolaci']) }}">
                                 <div class="single-subcategory">
                                     <div class="subcategory-img si-5"></div>
                                     <p class="subcategory-title">Voćni kolači</p>
                                 </div>
                             </a>
-                            <a href="{{ route('show-recipe-category', ['slug' => 'kremaste-torte']) }}">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'cokoladni-kolaci']) }}">
                                 <div class="single-subcategory">
                                     <div class="subcategory-img si-6"></div>
                                     <p class="subcategory-title">Čokoladni kolači</p>
                                 </div>
                             </a>
-                            <a href="{{ route('show-recipe-category', ['slug' => 'kremaste-torte']) }}">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'kremasti-kolaci']) }}">
                                 <div class="single-subcategory">
                                     <div class="subcategory-img si-7"></div>
                                     <p class="subcategory-title">Kremasti kolači</p>
                                 </div>
                             </a>
-                            <a href="{{ route('show-recipe-category', ['slug' => 'kremaste-torte']) }}">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'recepti-za-oblande']) }}">
                                 <div class="single-subcategory">
                                     <div class="subcategory-img si-8"></div>
                                     <p class="subcategory-title">Oblande</p>
                                 </div>
                             </a>
-                            <a href="{{ route('show-recipe-category', ['slug' => 'kremaste-torte']) }}">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'biskvitni-kolaci']) }}">
                                 <div class="single-subcategory">
                                     <div class="subcategory-img si-9"></div>
                                     <p class="subcategory-title">Biskvitni kolači</p>

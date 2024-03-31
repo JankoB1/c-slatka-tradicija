@@ -30,7 +30,7 @@ class PostController extends Controller
     }
 
     public function showPosts() {
-        $posts = Post::paginate(21);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(21);
         return view('posts.posts', compact('posts'));
     }
 

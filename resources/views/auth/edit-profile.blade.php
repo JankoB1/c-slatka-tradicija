@@ -4,8 +4,6 @@
 
     <section id="top-profile">
         <div class="container-space">
-            <h1>Učestvuj u konkursu<br>Torte i kolači sa<br>Eskimko sladoledom</h1>
-            <a href="{{ route('show-competition') }}">Nagradni konkurs</a>
         </div>
     </section>
 
@@ -112,10 +110,28 @@
                     <div class="row">
                         <div class="col-md-5">
                             <img src="{{ asset('images/lamp.svg') }}" alt="lamp">
-                            <p>Email adresa primaoca</p>
+                            <p>Grad primaoca</p>
                         </div>
                         <div class="col-md-7">
-                            <input type="email" name="email" value="{{ Auth::user()->email }}" id="email">
+                            <input type="text" name="city_2" value="{{ Auth::user()->city_2 }}" id="city_2">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img src="{{ asset('images/lamp.svg') }}" alt="lamp">
+                            <p>Adresa primaoca</p>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="text" name="address" value="{{ Auth::user()->address }}" id="address">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img src="{{ asset('images/lamp.svg') }}" alt="lamp">
+                            <p>Poštanski broj primaoca</p>
+                        </div>
+                        <div class="col-md-7">
+                            <input type="text" name="zip" value="{{ Auth::user()->zip }}" id="zip">
                         </div>
                         <button type="button" class="profile-save save-2">Sačuvaj izmene</button>
                     </div>

@@ -37,7 +37,7 @@ Route::get('/nasi-proizvodi/{slug}', [ProductController::class, 'showSingleCateg
 Route::get('/proizvod/{slug}', [ProductController::class, 'showSingleProduct'])->name('show-single-product');
 Route::get('/posaljite-recept', [RecipeController::class, 'create'])->name('recipes.create');
 Route::get('/mapa-sajta', [SiteController::class, 'showSitemap'])->name('show-sitemap');
-Route::get('/knjiga-recepata', [RecipeController::class, 'showRecipeBook'])->name('show-recipe-book');
+Route::get('/moja-knjizica-recepata', [RecipeController::class, 'showRecipeBook'])->name('show-recipe-book');
 
 Route::get('/predstavljamo/{id}', [PostController::class, 'showSinglePost'])->name('show-single-post');
 Route::get('/predstavljamo', [PostController::class, 'showPosts'])->name('show-posts');

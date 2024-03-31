@@ -34,6 +34,9 @@ class UserRepository
             $user->surname = $request->surname;
             $user->phone = $request->phone;
             $user->email_contact = $request->email_contact;
+            $user->city_2 = $request->city_2;
+            $user->address = $request->address;
+            $user->zip = $request->zip;
             $user->save();
             return $user;
         }

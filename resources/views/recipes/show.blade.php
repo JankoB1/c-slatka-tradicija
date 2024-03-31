@@ -144,7 +144,7 @@
                         <h4>Naši proizvodi</h4>
                         <div class="row recipe-products">
                             @foreach($products as $product)
-                                <div class="col">
+                                <div class="col-4">
                                     <a href="{{ route('show-single-product', ['slug' => $product->slug]) }}">
                                         <img src="{{ asset('storage/upload/proizvod/' . $product->image_path) }}" alt="">
                                         <p>{{ $product->name }}</p>
@@ -177,11 +177,14 @@
                     @guest()
 
                     @elseauth()
-                        <h4 class="author-h">Autor</h4>
                         @if($recipe->old_recipe == 0)
+                            <h4 class="author-h">Autor</h4>
                             <p class="author-name">{{ $recipe->user_recipe->name }} {{ $recipe->user_recipe->surname }}</p>
                         @else
-                            <p class="author-name">{{ $recipe->user }}</p>
+                             @if($recipe->user != null)
+                                <h4 class="author-h">Autor</h4>
+                                <p class="author-name">{{ $recipe->user }}</p>
+                            @endif
                         @endif
                     @endguest
 {{--                    <p class="recipe-date">--}}

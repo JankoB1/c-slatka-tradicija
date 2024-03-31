@@ -50,18 +50,18 @@
                 <a href="{{ route('show-all-recipes') }}">Recepti</a>
                 <ul>
                     <li>
-                        <a href="#" class="has-dropdown">Recepti za kolače <img src="{{ asset('images/menu-arrow.svg') }}" alt=""></a>
+                        <a href="#" class="has-dropdown">Kolači <img src="{{ asset('images/menu-arrow.svg') }}" alt=""></a>
                         <div class="menu-dropdown">
                             <a href="{{ route('show-recipe-category', ['slug' => 'sitni-kolaci']) }}">Sitni kolači</a>
                             <a href="{{ route('show-recipe-category', ['slug' => 'vocni-kolaci']) }}">Voćni kolači</a>
                             <a href="{{ route('show-recipe-category', ['slug' => 'cokoladni-kolaci']) }}">Čokoladni kolači</a>
                             <a href="{{ route('show-recipe-category', ['slug' => 'kremasti-kolaci']) }}">Kremasti kolači</a>
                             <a href="{{ route('show-recipe-category', ['slug' => 'biskvitni-kolaci']) }}">Biskvitni kolači</a>
-                            <a href="{{ route('show-recipe-category', ['slug' => 'oblande']) }}">Oblande</a>
+                            <a href="{{ route('show-recipe-category', ['slug' => 'recepti-za-oblande']) }}">Oblande</a>
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="has-dropdown">Recepti za torte <img src="{{ asset('images/menu-arrow.svg') }}" alt=""></a>
+                        <a href="#" class="has-dropdown">Torte <img src="{{ asset('images/menu-arrow.svg') }}" alt=""></a>
                         <div class="menu-dropdown">
                             <a href="{{ route('show-recipe-category', ['slug' => 'cokoladne-torte']) }}">Čokoladne torte</a>
                             <a href="{{ route('show-recipe-category', ['slug' => 'vocne-torte']) }}">Voćne torte</a>
@@ -69,7 +69,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="has-dropdown">Recepti za hleb i peciva <img src="{{ asset('images/menu-arrow.svg') }}" alt=""></a>
+                        <a href="#" class="has-dropdown">Hleb i peciva <img src="{{ asset('images/menu-arrow.svg') }}" alt=""></a>
                         <div class="menu-dropdown">
                             <a href="{{ route('show-recipe-category', ['slug' => 'hleb-i-pogace']) }}">Hleb i pogače</a>
                             <a href="{{ route('show-recipe-category', ['slug' => 'slatka-peciva']) }}">Slatka peciva</a>
@@ -78,14 +78,14 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="has-dropdown">Recepti za zimnicu <img src="{{ asset('images/menu-arrow.svg') }}" alt=""></a>
+                        <a href="#" class="has-dropdown">Zimnica <img src="{{ asset('images/menu-arrow.svg') }}" alt=""></a>
                         <div class="menu-dropdown">
                             <a href="{{ route('show-recipe-category', ['slug' => 'slatka-zimnica']) }}">Slatka zimnica</a>
                             <a href="{{ route('show-recipe-category', ['slug' => 'kisela-zimnica']) }}">Kisela zimnica</a>
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="has-dropdown">Recepti za deserte <img src="{{ asset('images/menu-arrow.svg') }}" alt=""></a>
+                        <a href="#" class="has-dropdown">Deserti <img src="{{ asset('images/menu-arrow.svg') }}" alt=""></a>
                         <div class="menu-dropdown">
                             <a href="{{ route('show-recipe-category', ['slug' => 'sladoled']) }}">Sladoled</a>
                             <a href="{{ route('show-recipe-category', ['slug' => 'vocne-salate-i-kupovi']) }}">Voćne salate i kupovi</a>
@@ -268,10 +268,10 @@
                         <a class="single-mobile-link-back" href="#"><img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"> Recepti</a>
                     </div>
                     <div class="single-mobile-link">
-                        <a class="has-dropdown-mobile" href="#">Recepti za kolače <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
+                        <a class="has-dropdown-mobile" href="#">Kolači <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
                         <div class="dropdown-mobile">
                             <div class="single-mobile-link">
-                                <a class="single-mobile-link-back" href="#"><img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"> Recepti za kolače</a>
+                                <a class="single-mobile-link-back" href="#"><img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"> Kolači</a>
                             </div>
                             <div class="single-mobile-link">
                                 <a href="{{ route('show-recipe-category', ['slug' => 'sitni-kolaci']) }}">Sitni kolači <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
@@ -289,15 +289,15 @@
                                 <a href="{{ route('show-recipe-category', ['slug' => 'biskvitni-kolaci']) }}">Biskvitni kolači <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
                             </div>
                             <div class="single-mobile-link">
-                                <a href="{{ route('show-recipe-category', ['slug' => 'oblande']) }}">Oblande <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
+                                <a href="{{ route('show-recipe-category', ['slug' => 'recepti-za-oblande']) }}">Oblande <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
                             </div>
                         </div>
                     </div>
                     <div class="single-mobile-link">
-                        <a href="#" class="has-dropdown-mobile">Recepti za torte <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
+                        <a href="#" class="has-dropdown-mobile">Torte <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
                         <div class="dropdown-mobile">
                             <div class="single-mobile-link">
-                                <a href="#" class="single-mobile-link-back"><img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"> Recepti za torte</a>
+                                <a href="#" class="single-mobile-link-back"><img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"> Torte</a>
                             </div>
                             <div class="single-mobile-link">
                                 <a href="{{ route('show-recipe-category', ['slug' => 'cokoladne-torte']) }}">Čokoladne torte <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
@@ -311,10 +311,10 @@
                         </div>
                     </div>
                     <div class="single-mobile-link">
-                        <a href="#" class="has-dropdown-mobile">Recepti za hleb i peciva <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
+                        <a href="#" class="has-dropdown-mobile">Hleb i peciva <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
                         <div class="dropdown-mobile">
                             <div class="single-mobile-link">
-                                <a href="#" class="single-mobile-link-back"><img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"> Recepti za hleb i peciva</a>
+                                <a href="#" class="single-mobile-link-back"><img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"> Hleb i peciva</a>
                             </div>
                             <div class="single-mobile-link">
                                 <a href="{{ route('show-recipe-category', ['slug' => 'hleb-i-pogace']) }}">Hleb i pogače <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
@@ -331,10 +331,10 @@
                         </div>
                     </div>
                     <div class="single-mobile-link">
-                        <a href="#" class="has-dropdown-mobile">Recepti za zimnicu <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
+                        <a href="#" class="has-dropdown-mobile">Zimnica <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
                         <div class="dropdown-mobile">
                             <div class="single-mobile-link">
-                                <a href="#" class="single-mobile-link-back"><img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"> Recepti za zimnicu</a>
+                                <a href="#" class="single-mobile-link-back"><img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"> Zimnica</a>
                             </div>
                             <div class="single-mobile-link">
                                 <a href="{{ route('show-recipe-category', ['slug' => 'slatka-zimnica']) }}">Slatka zimnica <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
@@ -345,10 +345,10 @@
                         </div>
                     </div>
                     <div class="single-mobile-link">
-                        <a href="#" class="has-dropdown-mobile">Recepti za deserte <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
+                        <a href="#" class="has-dropdown-mobile">Deserti <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
                         <div class="dropdown-mobile">
                             <div class="single-mobile-link">
-                                <a href="#" class="single-mobile-link-back"><img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"> Recepti za deserte</a>
+                                <a href="#" class="single-mobile-link-back"><img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"> Deserti</a>
                             </div>
                             <div class="single-mobile-link">
                                 <a href="{{ route('show-recipe-category', ['slug' => 'sladoled']) }}">Sladoled <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
@@ -385,13 +385,13 @@
 <footer>
     <img src="{{ asset('images/logo-c.png') }}" alt="logo c" class="logo-footer">
     <div class="socials">
-        <a href="#">
+        <a href="https://www.instagram.com/c.slatka.tradicija/">
             <img src="{{ asset('images/ig.svg') }}" alt="ig">
         </a>
-        <a href="#">
+        <a href="https://www.youtube.com/channel/UCBGzvKLk4aln7Dc899QOdIQ">
             <img src="{{ asset('images/yt.svg') }}" alt="yt">
         </a>
-        <a href="#">
+        <a href="https://www.facebook.com/C.slatka.tradicija/">
             <img src="{{ asset('images/fb.svg') }}" alt="fb">
         </a>
     </div>
@@ -401,7 +401,7 @@
         <li><a href="{{ route('show-impressum') }}">Impressum</a></li>
         <li><a href="{{ route('show-privacy-note') }}">Pravna Napomena</a></li>
         <li><a href="{{ route('show-privacy-policy') }}">Politika Zaštite Podataka</a></li>
-        <li><a href="#">Mapa sajta</a></li>
+        <li><a href="{{ route('show-sitemap') }}">Mapa sajta</a></li>
     </ul>
 
     <p>C Slatka Tradicija © 2024 · Sva prava zadržana.</p>

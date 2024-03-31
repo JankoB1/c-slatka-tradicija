@@ -20,7 +20,9 @@
             <div class="single-product-guide-inner container-space">
                 <h2>Uputstvo za pripremu</h2>
                 <p>{!! $product->product_guide !!}</p>
-                <h3>Nutritivne vrednosti <img src="{{ asset('images/arrow-up-nt.svg') }}" alt="arrow-up"></h3>
+                @if($product->energy != null || $product->fats != null || $product->saturated_fats != null || $product->carbonhydrates != null || $product->salts != null || $product->proteins != null)
+                    <h3>Nutritivne vrednosti <img src="{{ asset('images/arrow-up-nt.svg') }}" alt="arrow-up"></h3>
+                @endif
             </div>
             <div class="nutrition-table">
                 <div class="single-nutrition">
@@ -106,7 +108,7 @@
         </div>
     </section>
 
-    <section id="single-category-products">
+    <section id="single-category-products" class="{{ $product->productCategory->slug == 'griz'? 'puding': '' }}">
         <div class="single-category-products-inner container-space">
             <h2>Potrebno ti je još inspiracije</h2>
             <p>Bez brige! Naša C Slatka tradicija porodica nudi širok izbora proizvoda, a brza i jednostavna priprema olakšaće svako upuštanje u novu kulinarsku avanturu. </p>

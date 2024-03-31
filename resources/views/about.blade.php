@@ -1,9 +1,21 @@
 @extends('layouts.app')
 
+@section('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css" integrity="sha512-pmAAV1X4Nh5jA9m+jcvwJXFQvCBi3T17aZ1KWkqXr7g/O2YMvO8rfaa5ETWDuBvRq6fbDjlw4jHL44jNTScaKg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+@endsection
+
+@section('scriptsTop')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@endsection
+
 @section('content')
 
-    <section id="about-hero">
+    <section id="about-hero" class="mobile">
 
+    </section>
+
+    <section class="desktop">
+        <img src="{{ asset('images/about-hero.png') }}" alt="" style="width: 100%; margin-top: 70px;">
     </section>
 
     <div id="about">
@@ -11,7 +23,20 @@
             <h1>O nama</h1>
             <p>Porodične vrednosti su ono što život čini lepšim. Kada se najbliži okupe i sa osmesima uživaju u najlepšim trenucima uz omiljene ukuse, tada je jasno zašto decenijama duga tradicija čini C Slatka tradicija proizvode neizostavnim delom svake trpeze.</p>
             <div class="about-images desktop">
-                <img src="{{ asset('images/about-3-imgs-min.png') }}" alt="o nama" class="about-img3">
+                <div class="swiper about-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="{{ asset('images/about-3-imgs-min.png') }}" alt="o nama" class="about-img3">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ asset('images/about-3-imgs-min.png') }}" alt="o nama" class="about-img3">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ asset('images/about-3-imgs-min.png') }}" alt="o nama" class="about-img3">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
             </div>
             <img src="{{ asset('images/aboutm1.png') }}" alt="about" class="mobile about-mobile">
             <p>Naši proizvodi su generacijama unazad neizostavni saveznici u kuhinji. Za kolače, torte i domaća peciva, za posebna slavlja ili svakodnevna uživanja zajedno kreiramo ukuse kojima se cela porodica raduje.
@@ -65,37 +90,37 @@
                             <img src="{{ asset('images/up-arrow.svg') }}" alt="up-arrow">
                         </div>
                         <div class="single-subcategories">
-                            <a href="{{ route('show-recipe-category', ['slug' => 'kremaste-torte']) }}">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'sitni-kolaci']) }}">
                                 <div class="single-subcategory">
                                     <div class="subcategory-img si-4"></div>
                                     <p class="subcategory-title">Sitni kolači</p>
                                 </div>
                             </a>
-                            <a href="{{ route('show-recipe-category', ['slug' => 'kremaste-torte']) }}">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'vocni-kolaci']) }}">
                                 <div class="single-subcategory">
                                     <div class="subcategory-img si-5"></div>
                                     <p class="subcategory-title">Voćni kolači</p>
                                 </div>
                             </a>
-                            <a href="{{ route('show-recipe-category', ['slug' => 'kremaste-torte']) }}">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'cokoladni-kolaci']) }}">
                                 <div class="single-subcategory">
                                     <div class="subcategory-img si-6"></div>
                                     <p class="subcategory-title">Čokoladni kolači</p>
                                 </div>
                             </a>
-                            <a href="{{ route('show-recipe-category', ['slug' => 'kremaste-torte']) }}">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'kremasti-kolaci']) }}">
                                 <div class="single-subcategory">
                                     <div class="subcategory-img si-7"></div>
                                     <p class="subcategory-title">Kremasti kolači</p>
                                 </div>
                             </a>
-                            <a href="{{ route('show-recipe-category', ['slug' => 'kremaste-torte']) }}">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'recepti-za-oblande']) }}">
                                 <div class="single-subcategory">
                                     <div class="subcategory-img si-8"></div>
                                     <p class="subcategory-title">Oblande</p>
                                 </div>
                             </a>
-                            <a href="{{ route('show-recipe-category', ['slug' => 'kremaste-torte']) }}">
+                            <a href="{{ route('show-recipe-category', ['slug' => 'biskvitni-kolaci']) }}">
                                 <div class="single-subcategory">
                                     <div class="subcategory-img si-9"></div>
                                     <p class="subcategory-title">Biskvitni kolači</p>
@@ -199,4 +224,20 @@
     </section>
 
 
+@endsection
+
+@section('scriptsBottom')
+    <script type="text/javascript" src="{{ asset('js/categories-filter.js') }}"></script>
+    <script>
+        let aboutSlider = new Swiper('.about-swiper', {
+            autoplay: {
+                delay: 2000,
+            },
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
 @endsection
