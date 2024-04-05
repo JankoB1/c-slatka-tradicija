@@ -19,6 +19,7 @@ Route::get('/nagradni-konkursi', [RecipeController::class, 'showCompetition'])->
 Route::get('/kontakt', [RecipeController::class, 'showContact'])->name('show-contact');
 Route::get('/impressum', [RecipeController::class, 'showImpressum'])->name('show-impressum');
 
+
 Route::prefix('recipes')->group(function() {
     Route::get('/', [RecipeController::class, 'retrieve'])->name('recipes.retrieve');
     Route::post('/store', [RecipeController::class, 'store'])->name('recipes.store');
