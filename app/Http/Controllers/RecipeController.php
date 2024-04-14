@@ -188,7 +188,10 @@ class RecipeController extends Controller
     }
 
     public function softDelete($recipe_id) {
-        Log::info('nesto se desilo');
         $this->recipeService->softDelete($recipe_id);
+    }
+
+    public function searchRecipe($request) {
+        $this->recipeService->searchRecipe($request->keyword);
     }
 }

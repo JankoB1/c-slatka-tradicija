@@ -42,6 +42,11 @@ class RecipeRepository
         }
     }
 
+    public function searchTitle(string $keyword)
+    {
+        return Recipe::where('title', 'like', '%' . $keyword . '%')->get();
+    }
+
     public function createSlug(string $title, int $increment = 0)
     {
         $slug = Str::slug($title);
