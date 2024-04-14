@@ -14,7 +14,8 @@
 @section('content')
 
     <section>
-        <img src="{{ asset('images/competition-hero.png') }}" alt="" style="width: 100%; margin-top: 70px;">
+        <img class="desktop" src="{{ asset('images/competition-hero.jpeg') }}" alt="" style="width: 100%; margin-top: 70px;">
+        <img class="mobile" src="{{ asset('images/competition-hero-m.png') }}" alt="" style="width: 100%; margin-top: 70px;">
     </section>
 
     <section id="competition-text">
@@ -29,14 +30,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <h2>Pošaljite recept</h2>
-                    <h4>Učestvuj u konkursu Torte i kolači sa Eskimko sladoledom</h4>
+                    <h4>Učestvujte u konkursu "Uskršnje torte i kolači"</h4>
                     <p>Uslov za učešće u konkursu jeste slanje recepata za poslastice sa šlagom i šlag kremom, koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo vas da imate u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici Dodaj recept na ovom web sajtu učestvovati u konkursu. Konkurs traje do 31. januara 2024. godine.
 
                         <br><br>Opšte uslove i pravila konkursa možete pogledati na strani Uslovi i pravila konkursa Poslastice sa šlagom i šlag kremom.  Odabrane recepte sa prethodnih konkursa možete pogledati na strani Odabrani recepti.</p>
                 </div>
                 <div class="col-md-6">
                     <img class="desktop" src="{{ asset('images/competitors-final-img-min.jpeg') }}" alt="competition cookies" style="border-radius: 8px;">
-                    <img src="{{ asset('images/competitors-final-img-min.jpeg') }}" alt="" class="mobile" style="border-radius: 8px;">
+                    <img src="{{ asset('images/competi-mob.png') }}" alt="" class="mobile" style="border-radius: 8px;">
                 </div>
             </div>
         </div>
@@ -216,8 +217,9 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-7 offset-md-5">
+                        <div class="col-md-7 offset-md-5 one-btn buttons-cont">
                             @auth()
+                                <button type="button" class="previous">Nazad</button>
                                 <button type="button" class="continue">Dalje</button>
                             @else
                                 <button type="button" class="continue not-auth" data-bs-toggle="modal" data-bs-target="#login-popup">Dalje</button>
@@ -236,9 +238,9 @@
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <p>AKTIVNI NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
-                    <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
+                    <p>NAGRADNI KONKURS</p>
+                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
+                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
                 </div>
             </div>
         </div>
@@ -272,7 +274,7 @@
                         <div class="row">
                             <div class="col-md-5"></div>
                             <div class="col-md-7">
-                                <p>Vaš recept se priprema!</p>
+                                <p>Vaš recept se objavljuje.</p>
                                 <img src="{{ asset('images/loading.png') }}" alt="loading" class="loading-spinner">
                             </div>
                         </div>

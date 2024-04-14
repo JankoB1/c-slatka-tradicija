@@ -15,7 +15,7 @@
     </section>
 
     <section class="desktop">
-        <img src="{{ asset('images/about-hero.png') }}" alt="" style="width: 100%; margin-top: 70px;">
+        <img src="{{ asset('images/o-nama-final-desk.png') }}" alt="" style="width: 100%; margin-top: 70px;">
     </section>
 
     <div id="about">
@@ -26,13 +26,22 @@
                 <div class="swiper about-swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="{{ asset('images/about-3-imgs-min.png') }}" alt="o nama" class="about-img3">
+                            <img src="{{ asset('images/about-slider1.png') }}" alt="o nama" class="about-img3">
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ asset('images/about-3-imgs-min.png') }}" alt="o nama" class="about-img3">
+                            <img src="{{ asset('images/about-slider2.png') }}" alt="o nama" class="about-img3">
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ asset('images/about-3-imgs-min.png') }}" alt="o nama" class="about-img3">
+                            <img src="{{ asset('images/about-slider3.jpeg') }}" alt="o nama" class="about-img3">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ asset('images/about-slider1.png') }}" alt="o nama" class="about-img3">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ asset('images/about-slider2.png') }}" alt="o nama" class="about-img3">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ asset('images/about-slider3.jpeg') }}" alt="o nama" class="about-img3">
                         </div>
                     </div>
                     <div class="swiper-pagination"></div>
@@ -48,8 +57,8 @@
 
     <section id="action" class="about-action">
         <div class="action-inner container-space">
-            <h2>Vreme je za akciju</h2>
-            <p>Izaberi kategoriju, pogledaj recepte koji smo izdvojili za tebe i upusti se u kulinarsku avanturu!</p>
+            <h2>Inspirišite se!</h2>
+            <p>Izaberite kategoriju, pogledajte recepte koje smo izdvojili za vas i upustite se u kulinarsku avanturu.</p>
             <div class="categories-banners row">
                 <div class="col-md-6">
                     <div class="single-category-banner">
@@ -233,6 +242,9 @@
             autoplay: {
                 delay: 2000,
             },
+            centeredSlides: true,
+            slidesPerView: 2,
+            spaceBetween: 60,
             loop: true,
             pagination: {
                 el: ".swiper-pagination",

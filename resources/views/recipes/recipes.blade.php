@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <section id="recipes-category-banner"></section>
+
+    <section>
+        <img class="desktop" src="{{ asset('images/category-single1.png') }}" alt="" style="width: 100%; margin-top: 70px;">
+        <img class="mobile" src="{{ asset('images/recipes-mobile.png') }}" alt="" style="width: 100%; margin-top: 70px;">
+    </section>
 
     <section id="action" class="recipes-action">
         <div class="action-inner container-space">
@@ -186,9 +190,9 @@
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <h3>Tvoj sladak začin <br>još od 1976. godine</h3>
-                    <p>Kada se najbliži okupe i sa osmesima uživaju u najlepšim trenucima uz omiljene ukuse, tada je jasno zašto decenijama duga tradicija čini C proizvode neizostavnim delom svake trpeze.</p>
-                    <a href="{{ route('show-all-categories') }}">Proizvodi</a>
+                    <h3>Vaš omiljeni obrok <br>još od detinjstva</h3>
+                    <p>Za stare i mlade, za one koji vole ukuse detinjstva. Dečak sa pakovanja je dobro poznat svima i generacijama unazad je deo našeg odrastanja.</p>
+                    <a href="{{ route('show-single-product', ['slug' => 'psenicni-griz-200g']) }}">Saznaj više</a>
                 </div>
             </div>
         </div>

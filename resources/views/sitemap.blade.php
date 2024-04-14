@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="single-link">
-                <a href="{{ route('show-posts') }}">Priče iz C sveta</a>
+                <a href="{{ route('show-posts') }}">Blog</a>
             </div>
             <div class="single-link">
                 <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
@@ -111,8 +111,8 @@
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <p>AKTIVNI NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
+                    <p>NAGRADNI KONKURS</p>
+                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
                     <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
                 </div>
             </div>

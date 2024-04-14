@@ -5,9 +5,9 @@
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="desktop">AKTIVNI NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
-                    <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
+                    <p class="desktop">NAGRADNI KONKURS</p>
+                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
+                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
 
                             @error('email')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong>Pogrešni pristupni podaci.</strong>
                             </span>
                             @enderror
 
@@ -39,7 +39,7 @@
 
                             @error('password')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong>Pogrešni pristupni podaci.</strong>
                             </span>
                             @enderror
 
@@ -54,6 +54,9 @@
                             <button type="submit">
                                 {{ __('Prijavi se') }}
                             </button>
+                            <a class="forgot-pw-link" href="{{ route('password.request') }}">
+                                Zaboravljena lozinka
+                            </a>
 
 {{--                            @if (Route::has('password.request'))--}}
 {{--                                <a class="btn btn-link" href="{{ route('password.request') }}">--}}
