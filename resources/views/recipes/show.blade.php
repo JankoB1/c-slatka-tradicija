@@ -98,6 +98,12 @@
         </div>
     </section>
 
+    <form action="{{ route('deleteRecipe', ['recipe_id' => $recipe->id]) }}" method="POST">
+        @csrf
+        @method('delete')
+        <button type="submit" class="btn btn-outline-danger">Delete</button>
+    </form>
+
     <section id="recipe-main">
         <div class="recipe-main-inner container-space">
             <div class="row">

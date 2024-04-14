@@ -14,10 +14,11 @@ Route::get('/', [RecipeController::class, 'index'])->name('show-homepage');
 Route::get('/o-nama', [RecipeController::class, 'showAbout'])->name('show-about');
 Route::get('/recepti/{slug}', [RecipeController::class, 'showRecipeCategory'])->name('show-recipe-category');
 Route::get('/recepti/{category}/{slug}', [RecipeController::class, 'retrieveSingleRecipe'])->name('show-single-recipe');
-Route::get('/recepti', [RecipeController::class, 'showAllCategories'])->name('show-all-recipes');
+Route::get('/recepti', [RecipeController::class, 'showAllCategories'])->name('sgit ');
 Route::get('/nagradni-konkursi', [RecipeController::class, 'showCompetition'])->name('show-competition');
 Route::get('/kontakt', [RecipeController::class, 'showContact'])->name('show-contact');
 Route::get('/impressum', [RecipeController::class, 'showImpressum'])->name('show-impressum');
+
 
 Route::prefix('recipes')->group(function() {
     Route::get('/', [RecipeController::class, 'retrieve'])->name('recipes.retrieve');
@@ -25,7 +26,7 @@ Route::prefix('recipes')->group(function() {
     Route::post('/add-recipes-book', [RecipeController::class, 'saveToSession']);
     Route::post('/upload-image', [ImageController::class, 'uploadImage']);
     Route::post('/add-image', [ImageController::class, 'addImage']);
-    Route::delete('/remove-recipe', [RecipeController::class, 'softDelete'])->name('recipes.delete');
+    Route::delete('/remove-recipe/{recipe_id}', [RecipeController::class, 'softDelete'])->name('deleteRecipe');
 });
 
 Route::prefix('categories')->group(function() {
