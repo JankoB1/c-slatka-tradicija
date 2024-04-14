@@ -7,6 +7,16 @@
                 <div class="col-md-6">
                     <h1>{{ $product->name }}</h1>
                     <p>{!! $product->description !!}</p>
+                    @if($product->neto != null)
+                        <p class="neto-menu-toggle">
+                            Neto težina <img src="{{ asset('images/arrow-neto.png') }}" alt="">
+                        </p>
+                        <div class="neto-dropdown-inner">
+                            @foreach($netoProducts as $netoProduct)
+                                <a href="{{ route('show-single-product', ['slug' => $netoProduct->slug]) }}">{{ $netoProduct->link }}g</a>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
                 <div class="col-md-6">
                     <img src="{{ asset('images/' . $product->image_path) }}" alt="{{ $product->name }}">
@@ -18,7 +28,7 @@
     @if($product->productCategory->slug != 'zimnica' && $product->product_guide != '')
         <section id="single-product-guide">
             <div class="single-product-guide-inner container-space">
-                <h2>Uputstvo za pripremu</h2>
+                <h2 class="preparation-heading">Uputstvo za pripremu</h2>
                 <p>{!! $product->product_guide !!}</p>
                 @if($product->energy != null || $product->fats != null || $product->saturated_fats != null || $product->carbonhydrates != null || $product->salts != null || $product->proteins != null)
                     <h3>Nutritivne vrednosti <img src="{{ asset('images/arrow-up-nt.svg') }}" alt="arrow-up"></h3>
@@ -57,10 +67,10 @@
         </section>
     @endif
 
-    <section id="featured-recipes" class="{{ $product->productCategory->slug == 'zimnica'? 'zimnica': '' }}">
+    <section id="featured-recipes" class="{{ $product->productCategory->slug == 'zimnica' || $product->product_guide == ''? 'zimnica': '' }}">
         <div class="featured-recipes-inner container-space">
-            <h2>Vreme je za akciju</h2>
-            <p>Pogledaj recepte koje smo izdvojili za tebe, a u kojima je korišćen neki od proizvoda iz ove kategorije.</p>
+            <h2>Inspirišite se!</h2>
+            <p>Izaberite kategoriju, pogledajte recepte koje smo izdvojili za vas i upustite se u kulinarsku avanturu.</p>
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">
@@ -108,7 +118,7 @@
         </div>
     </section>
 
-    <section id="single-category-products" class="{{ $product->productCategory->slug == 'griz'? 'puding': '' }}">
+    <section id="single-category-products" class="{{ $product->productCategory->slug == 'griz'? 'puding': '' }} {{ $product->productCategory->slug == 'zimnica' || $product->product_guide == ''? 'white-bg': '' }}">
         <div class="single-category-products-inner container-space">
             <h2>Potrebno ti je još inspiracije</h2>
             <p>Bez brige! Naša C Slatka tradicija porodica nudi širok izbora proizvoda, a brza i jednostavna priprema olakšaće svako upuštanje u novu kulinarsku avanturu. </p>
@@ -132,9 +142,9 @@
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <p>AKTIVNI NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
-                    <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
+                    <p>NAGRADNI KONKURS</p>
+                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
+                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
                 </div>
             </div>
         </div>
@@ -146,6 +156,13 @@
         document.querySelector('.single-product-guide-inner h3').addEventListener('click', function() {
             this.classList.toggle('active');
             document.querySelector('.nutrition-table').classList.toggle('active');
+        });
+    </script>
+
+    <script>
+        document.querySelector('.neto-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.neto-dropdown-inner').classList.toggle('active');
+            this.classList.toggle('active');
         });
     </script>
 @endsection

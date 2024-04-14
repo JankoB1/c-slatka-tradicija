@@ -7,6 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @yield('meta')
+
     <title>C Slatka Tradicija | @yield('title')</title>
 
     <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
@@ -40,7 +42,7 @@
                     <li><a href="{{ route('show-single-category', ['slug' => 'dodaci-za-kolace']) }}">Dodaci za kolače</a></li>
                     <li><a href="{{ route('show-single-category', ['slug' => 'puding']) }}">Puding</a></li>
                     <li><a href="{{ route('show-single-category', ['slug' => 'slag-kremovi']) }}">Šlag i Šlag krem</a></li>
-                    <li><a href="{{ route('show-single-product', ['slug' => 'psenicni-griz-400g']) }}">Griz</a></li>
+                    <li><a href="{{ route('show-single-product', ['slug' => 'psenicni-griz-200g']) }}">Griz</a></li>
                     <li><a href="{{ route('show-single-product', ['slug' => 'oblande']) }}">Oblande</a></li>
                     <li><a href="{{ route('show-single-category', ['slug' => 'eskimko']) }}">Eskimko</a></li>
                     <li><a href="{{ route('show-single-category', ['slug' => 'zimnica']) }}">Zimnica</a></li>
@@ -95,7 +97,7 @@
                     <li><a href="{{ route('show-recipe-category', ['slug' => 'ostali-recepti']) }}">Ostali recepti</a></li>
                 </ul>
             </li>
-            <li><a href="{{ route('show-posts') }}">Priče iz C sveta</a></li>
+            <li><a href="{{ route('show-posts') }}">Blog</a></li>
             <li><a href="{{ route('show-competition') }}">Nagradni konkursi</a></li>
             <li class="book-recipe-link">
                 <a href="{{ route('show-recipe-book') }}">Moja knjižica recepata</a>
@@ -226,7 +228,7 @@
                         </div>
                     </div>
                 @endauth
-            <a href="#">Dodaj recept</a>
+{{--            <a href="{{ route('recipes.create') }}">Dodaj recept</a>--}}
         </div>
         <div class="mobile-main-links">
             <div class="single-mobile-link">
@@ -248,7 +250,7 @@
                         <a href="{{ route('show-single-category', ['slug' => 'slag-kremovi']) }}">Šlag i Šlag krem <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
                     </div>
                     <div class="single-mobile-link">
-                        <a href="{{ route('show-single-product', ['slug' => 'psenicni-griz-400g']) }}">Griz <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
+                        <a href="{{ route('show-single-product', ['slug' => 'psenicni-griz-200g']) }}">Griz <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
                     </div>
                     <div class="single-mobile-link">
                         <a href="{{ route('show-single-product', ['slug' => 'oblande']) }}">Oblande <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
@@ -367,7 +369,7 @@
                 </div>
             </div>
             <div class="single-mobile-link">
-                <a href="{{ route('show-posts') }}">Priče iz C sveta <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
+                <a href="{{ route('show-posts') }}">Blog <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
             </div>
             <div class="single-mobile-link">
                 <a href="{{ route('show-competition') }}">Nagradni konkursi <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
@@ -498,6 +500,16 @@
     document.querySelector('span.num').addEventListener('click', function(e) {
         e.preventDefault();
         if(e.target === this) {
+            booksPopup.parentElement.classList.toggle('active');
+        }
+    });
+
+    bookRecipeLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        let recipeIdsNow = localStorage.getItem('recipeBooks') ? JSON.parse(localStorage.getItem('recipeBooks')) : [];
+        if(recipeIdsNow.length === 0) {
+            window.location.href = window.origin + '/moja-knjizica-recepata';
+        } else {
             booksPopup.parentElement.classList.toggle('active');
         }
     });

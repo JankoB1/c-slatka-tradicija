@@ -203,8 +203,9 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-7 offset-md-5">
+                        <div class="col-md-7 offset-md-5 one-btn buttons-cont">
                             @auth()
+                                <button type="button" class="previous">Nazad</button>
                                 <button type="button" class="continue">Dalje</button>
                             @else
                                 <button type="button" class="continue not-auth" data-bs-toggle="modal" data-bs-target="#login-popup">Dalje</button>
@@ -223,9 +224,9 @@
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <p>AKTIVNI NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
-                    <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
+                    <p>NAGRADNI KONKURS</p>
+                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
+                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
                 </div>
             </div>
         </div>
@@ -259,7 +260,7 @@
                         <div class="row">
                             <div class="col-md-5"></div>
                             <div class="col-md-7">
-                                <p>Vaš recept se priprema!</p>
+                                <p>Vaš recept se objavljuje.</p>
                                 <img src="{{ asset('images/loading.png') }}" alt="loading" class="loading-spinner">
                             </div>
                         </div>

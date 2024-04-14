@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
-@section('title', 'Svi recepti')
+@section('meta')
+    @if($recipe->old_recipe == 0)
+        @if(count($recipe->images) > 0)
+            <meta property="og:image" content="{{ asset('storage/upload/' . $recipe->images[0]->path) }}" />
+        @else
+            <meta property="og:image" content="{{ asset('images/recipe-no-image.png') }}" />
+        @endif
+    @else
+        <meta property="og:image" content="{{ asset('storage/upload/' . $recipe->image_old) }}" />
+    @endif
+    <meta property="og:title" content="{{ $recipe->title }}" />
+@endsection
 
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css" integrity="sha512-pmAAV1X4Nh5jA9m+jcvwJXFQvCBi3T17aZ1KWkqXr7g/O2YMvO8rfaa5ETWDuBvRq6fbDjlw4jHL44jNTScaKg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -36,13 +47,21 @@
         @if($recipe->old_recipe == 0)
             <div class="swiper single-recipe-gallery">
                 <div class="swiper-wrapper">
-                    @foreach($recipe->images as $image)
+                    @if(count($recipe->images) > 0)
+                        @foreach($recipe->images as $image)
+                            <div class="swiper-slide">
+                                <div class="single-recipe-gallery-img" style="background-image: url('{{ asset('storage/upload/' . $image->path) }}')">
+
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
                         <div class="swiper-slide">
-                            <div class="single-recipe-gallery-img" style="background-image: url('{{ asset('storage/upload/' . $image->path) }}')">
+                            <div class="single-recipe-gallery-img" style="background-image: url('{{ asset('images/recipe-no-image.png') }}')">
 
                             </div>
                         </div>
-                    @endforeach
+                    @endif
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -65,7 +84,7 @@
                 <p>Podeli</p>
             </div>
             <div class="add-to-book">
-                <img src="{{ asset('images/book.svg') }}" alt="save">
+                <img style="max-width: 30px" src="{{ asset('images/book.png') }}" alt="save">
                 <p>Sačuvaj u knjižicu recepata</p>
             </div>
             <div class="save {{ $user_data['save'] != null? 'active': '' }}">
@@ -74,7 +93,7 @@
             </div>
             <div class="print">
                 <img src="{{ asset('images/print-f.svg') }}" alt="print">
-                <p>Ištampajte</p>
+                <p>Štampaj</p>
             </div>
         </div>
     </section>
@@ -206,7 +225,7 @@
     <section id="featured-recipes" class="featured-recipes">
         <div class="featured-recipes-inner container-space">
             <h2>Odabrani recepti</h2>
-            <p>Izdvojili smo za vas najpopularnije recepte po izboru C Slatka tradicija tima. Uživajte u pripremi i javite nam utiske!</p>
+            <p>Pogledajte neke od najukusnijih recepata koje su pripremili ljubitelji slatke tradicije. Uživajte u pripremi i javite nam utiske.</p>
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">
@@ -281,9 +300,9 @@
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <p>AKTIVNI NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
-                    <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
+                    <p>NAGRADNI KONKURS</p>
+                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
+                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
                 </div>
             </div>
         </div>

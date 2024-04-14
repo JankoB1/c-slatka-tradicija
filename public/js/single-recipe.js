@@ -120,10 +120,6 @@ print.addEventListener('click', function() {
 });
 
 share.addEventListener('click', function() {
-
-    // https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemo.c-slatkatradicija.mystableserver.com/recepti/cokoladne-torte/torta-ruska-salata%2F&src=sdkpreparse
-    // let customTitle = '';
-    let imageUrl = encodeURIComponent(window.location.href);
-    let shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${imageUrl}`;
-    window.open(shareUrl, '_blank', 'width=600, height=400');
+    let shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&src=sdkpreparse`;
+    window.open(shareUrl, '_blank');
 });

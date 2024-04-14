@@ -37,6 +37,7 @@ class ProductController extends Controller
 
     public function showSingleProduct($slug) {
         $product = Product::where('slug', '=', $slug)->get()->first();
+        $netoProducts = Product::where('neto', '=', $product->neto)->get();
         $products = $product->productCategory->products;
         $recipes = $this->recipeService->getRecipesByProductIdOld($product->id);
         if($product->productCategory->id == 5) {
@@ -44,7 +45,7 @@ class ProductController extends Controller
         } else if($product->productCategory->id == 4) {
             $products = ProductCategory::where('slug', '=', 'puding')->get()->first()->products;
         }
-        return view('products.single-product', compact('product', 'products', 'recipes'));
+        return view('products.single-product', compact('product', 'products', 'recipes', 'netoProducts'));
     }
 
     public function getAllProducts() {

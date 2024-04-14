@@ -84,9 +84,9 @@
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <p>AKTIVNI NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
-                    <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
+                    <p>NAGRADNI KONKURS</p>
+                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
+                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
                 </div>
             </div>
         </div>

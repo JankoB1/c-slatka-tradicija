@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    
+
     <section>
         <img src="{{ asset('images/knjiga-recepata-hero.png') }}" alt="" style="width: 100%; margin-top: 70px;">
     </section>
@@ -42,26 +42,26 @@
     <section id="action" class="action-books">
         <div class="action-inner container-space">
             <h2>C Slatka tradicija knjižice recepata</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Fusce nec velit a orci malesuada fermentum id a massa.</p>
+            <p>Trebaju vam brza resenja? C Slatka tradicija tim vam je pripremio 4 vec spremne knjizice recepata koje mozete preuzeti na svoj uredaj.</p>
             <div class="categories-banners row">
                 <div class="col-md-6">
                     <div class="single-category-banner">
-                        <p>Recepti za<br>slavsku trpezu</p>
+                        <p>Uskršnje <br>poslastice</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="single-category-banner">
-                        <p>Recepti za<br>praznične dane</p>
+                        <p>Tradicionalni <br>recepti</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="single-category-banner">
-                        <p>Recepti za<br>letnje dane</p>
+                        <p>Sitni <br>kolači</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="single-category-banner">
-                        <p>Brzi recepti za<br>"stižu gosti"</p>
+                        <p>Oblande</p>
                     </div>
                 </div>
             </div>
@@ -73,9 +73,9 @@
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <p>AKTIVNI NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
-                    <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
+                    <p>NAGRADNI KONKURS</p>
+                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
+                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
                 </div>
             </div>
         </div>

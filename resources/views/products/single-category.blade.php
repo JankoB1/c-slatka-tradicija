@@ -5,8 +5,12 @@
 
 {{--    </section>--}}
 
-    <section>
+    <section class="desktop">
         <img src="{{ asset('images/' . $category->image_path) }}" alt="" style="width: 100%; margin-top: 100px;">
+    </section>
+
+    <section class="mobile">
+        <img src="{{ asset('images/' . $category->image_path_mob) }}" alt="" style="width: 100%; margin-top: 60px;">
     </section>
 
     <section id="single-category-meta">
@@ -37,8 +41,8 @@
 
     <section id="featured-recipes">
         <div class="featured-recipes-inner container-space">
-            <h2>Vreme je za akciju</h2>
-            <p>Izaberi kategoriju, pogledaj recepte koji smo izdvojili za tebe i upusti se u kulinarsku avanturu!</p>
+            <h2>Inspirišite se!</h2>
+            <p>Izaberite kategoriju, pogledajte recepte koje smo izdvojili za vas i upustite se u kulinarsku avanturu.</p>
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">
@@ -91,9 +95,9 @@
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <p>AKTIVNI NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
-                    <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
+                    <p>NAGRADNI KONKURS</p>
+                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
+                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
                 </div>
             </div>
         </div>

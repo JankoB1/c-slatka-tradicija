@@ -125,6 +125,7 @@ body {
 #main-banner {
     background-image: url("../images/home-hero1.png");
     background-size: cover;
+    background-position: center right;
 }
 
 #main-banner .main-banner-inner {
@@ -134,6 +135,9 @@ body {
 .container-space {
     padding-left: 13%;
     padding-right: 13%;
+    max-width: 2060px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #main-banner .main-banner-inner h1 {
@@ -163,9 +167,9 @@ body {
     padding: 14px 30px;
 }
 
-.search-cont input::placeholder {
-    opacity: 0.75;
-}
+/*.search-cont input::placeholder {*/
+/*    opacity: 0.75;*/
+/*}*/
 
 .title-row {
     display: flex;
@@ -215,7 +219,7 @@ body {
 }
 
 .featured-recipes-inner {
-    padding-top: 90px;
+    padding-top: 60px;
     padding-bottom: 100px;
 }
 
@@ -407,9 +411,9 @@ body {
     background-image: url("../images/category-banner-5.png");
 }
 
-.categories-banners {
-    margin-top: 60px;
-}
+/*.categories-banners {*/
+/*    margin-top: 60px;*/
+/*}*/
 
 .categories-banners a {
     text-decoration: none;
@@ -432,12 +436,12 @@ body {
 }
 
 #action {
-    padding: 90px 0 90px;
+    padding: 60px 0 60px;
     background: white;
 }
 
 #homepage-banner2 {
-    background-image: url("../images/homepage-banner-2.png");
+    background-image: url("../images/homepage-banner-2.jpeg");
     background-position: right;
 }
 
@@ -454,6 +458,14 @@ body {
 #newsletter {
     padding: 78px 0 90px;
     background: #56924C;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    background: #56924C !important;
+}
+
+.about-swiper img, .about-swiper {
+    border-radius: 8px;
 }
 
 #newsletter img {
@@ -618,7 +630,7 @@ footer p {
 
 .form-section .col-md-7 input::placeholder, .form-section .col-md-7 textarea::placeholder,
 .edit-profile-container .col-md-7 input::placeholder, .edit-profile-container .col-md-7 textarea::placeholder {
-    opacity: 0.75;
+    /*opacity: 0.75;*/
     color: #2E4765;
     font-family: Montserrat;
     font-size: 13px;
@@ -725,7 +737,7 @@ footer p {
 }
 
 .single-category-inner {
-    max-width: 650px;
+    max-width: 450px;
 }
 
 .single-category-section:nth-child(even) .single-category-inner {
@@ -888,7 +900,7 @@ footer p {
 
 #single-category-products {
     background: #FFFCF2;
-    padding: 90px 0;
+    padding: 60px 0 40px;
 }
 
 .single-ingredient-group.row {
@@ -918,7 +930,7 @@ footer p {
 }
 
 #single-category-meta {
-    padding: 90px 0 70px;
+    padding: 60px 0 60px;
 }
 
 #single-category-meta p {
@@ -1035,7 +1047,7 @@ footer p {
     display: block;
 }
 
-.continue, .add-step {
+.continue, .add-step, .previous {
     font-family: Montserrat;
     font-size: 15px;
     font-weight: 700;
@@ -1080,7 +1092,7 @@ footer p {
     width: 100% !important;
 }
 
-span.ingridient-plus, i.fa-minus {
+span.ingridient-plus, i.fa-minus, span.ingredient-plus {
     display: flex;
     height: 50px;
     width: 50px;
@@ -1703,6 +1715,8 @@ span.ingridient-plus, i.fa-minus {
     background-position: 50% 50%;
     margin-bottom: 20px;
     background-repeat: no-repeat;
+    position: relative;
+    border: 2px solid #2E4765;
     transition: all 0.3s ease-in-out;
 }
 
@@ -1841,7 +1855,7 @@ span.ingridient-plus, i.fa-minus {
 }
 
 #about {
-    padding: 90px 0;
+    padding: 60px 0;
 }
 
 .about-images img {
@@ -1915,7 +1929,7 @@ span.ingridient-plus, i.fa-minus {
 }
 
 .single-subcategory .subcategory-img.si-8 {
-    background-image: url("../images/Recepti-za-kolace-oblande.jpg");
+    background-image: url("../images/Recepti-za-kolace-oblande.jpeg");
 }
 
 .single-subcategory .subcategory-img.si-9 {
@@ -1927,7 +1941,7 @@ span.ingridient-plus, i.fa-minus {
 }
 
 .single-subcategory .subcategory-img.si-11 {
-    background-image: url("../images/Recepti-za-hleb-i-peciva-slatka-peciva.jpg");
+    background-image: url("../images/Recepti-za-hleb-i-peciva-slatka-peciva.jpeg");
 }
 
 .single-subcategory .subcategory-img.si-12 {
@@ -1955,7 +1969,7 @@ span.ingridient-plus, i.fa-minus {
 }
 
 .single-subcategory .subcategory-img.si-18 {
-    background-image: url("../images/Recepti-za-dezert-dezerti-u-casi.jpg");
+    background-image: url("../images/Recepti-za-dezert-dezerti-u-casi.jpeg");
 }
 
 .single-category-subcategories {
@@ -2119,7 +2133,7 @@ span.ingridient-plus, i.fa-minus {
     column-gap: 15px;
 }
 
-.continue {
+.continue, .previous {
     margin-top: 20px;
 }
 
@@ -2314,7 +2328,10 @@ input[name="step_group_name"] {
 }
 
 .recipe-products img {
-    width: 100%;
+    width: auto;
+    max-height: 80px;
+    margin: 0 auto;
+    display: block;
 }
 
 .recipe-products p {
@@ -2405,7 +2422,7 @@ input[name="step_group_name"] {
 }
 
 #competition-text {
-    padding: 90px 0 70px;
+    padding: 60px 0 60px;
 }
 
 div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
@@ -2713,7 +2730,7 @@ div:where(.swal2-container) h2:where(.swal2-title) {
     letter-spacing: 0em;
     text-align: center;
     color: #56924C;
-    padding-top: 90px;
+    padding-top: 60px;
 }
 
 #posts-list p {
@@ -2897,6 +2914,11 @@ span.num.active {
     cursor: pointer;
 }
 
+h2.preparation-heading {
+    font-size: 36px !important;
+    line-height: 56px !important;
+}
+
 .single-product-guide-inner h3 img {
     transition: all 0.3s ease-in-out;
     transform: rotate(180deg);
@@ -3057,19 +3079,19 @@ span.num.active {
 }
 
 #action.action-books .col-md-6 .single-category-banner {
-    background-image: url("../images/books-c1.png");
+    background-image: url("../images/books-c1.jpeg");
 }
 
 #action.action-books .col-md-6:nth-child(2) .single-category-banner {
-    background-image: url("../images/books-c2.png");
+    background-image: url("../images/books-c2.jpeg");
 }
 
 #action.action-books .col-md-6:nth-child(3) .single-category-banner {
-    background-image: url("../images/books-c3.png");
+    background-image: url("../images/books-c3.jpeg");
 }
 
 #action.action-books .col-md-6:nth-child(4) .single-category-banner {
-    background-image: url("../images/books-c4.png");
+    background-image: url("../images/books-c4.jpeg");
 }
 
 img.loading-spinner {
@@ -3079,7 +3101,7 @@ img.loading-spinner {
 }
 
 .recipe-book-content-inner {
-    padding-top: 90px;
+    padding-top: 60px;
 }
 
 #main-header ul ul li a.has-dropdown img {
@@ -3089,6 +3111,87 @@ img.loading-spinner {
 
 #main-header ul ul li a.has-dropdown.active img {
     transform: rotate(180deg);
+}
+
+.single-img div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/grid-mreza.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.forgot-pw-link {
+    color: #2E4765;
+    margin-top: 15px;
+    display: block;
+}
+
+.one-btn .previous {
+    display: none;
+}
+
+.col-md-7.offset-md-5.buttons-cont {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;
+}
+
+.neto-menu-toggle {
+    background: #2E4765;
+    border-radius: 31px;
+    display: flex;
+    width: 191px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    height: 52px;
+    cursor: pointer;
+    color: white !important;
+    margin-bottom: 0;
+    margin-top: 50px;
+    transition: all 0.3s ease-in-out;
+}
+
+.neto-menu-toggle.active {
+    border-radius: 31px 31px 0 0 !important;
+}
+
+.neto-menu-toggle.active img {
+    transform: rotate(180deg);
+    transition: all 0.3s ease-in-out;
+}
+
+.neto-dropdown-inner {
+    border: 2px solid #2E4765;
+    border-radius: 0 0 31px 31px;
+    width: 191px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 15px 25px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.neto-dropdown-inner.active {
+    opacity: 1;
+    max-height: 300px;
+}
+
+.neto-menu-toggle img {
+    margin-right: 0 !important;
+}
+
+.neto-dropdown-inner a {
+    color: #2E4765 !important;
+}
+
+#single-category-products.white-bg {
+    background: white !important;
 }
 
 @media only screen and (max-width: 1507px) {
@@ -3141,6 +3244,10 @@ img.loading-spinner {
         font-size: 14px;
         line-height: 17px;
         margin: 0 auto;
+    }
+
+    .single-product-main-inner.container-space p.neto-menu-toggle img {
+        width: 15px !important;
     }
 
     #main-banner .main-banner-inner {
@@ -3227,6 +3334,11 @@ img.loading-spinner {
     #action .single-category-banner p {
         font-size: 27px;
         line-height: 27px;
+    }
+
+    a.mobile.mobile-see-more-products {
+        display: flex !important;
+        align-items: center;
     }
 
     #homepage-banner2 {
@@ -3360,7 +3472,7 @@ img.loading-spinner {
     }
 
     .small-steps {
-        margin: 30px 0;
+        margin: 30px auto;
     }
 
     .form-section .col-md-5 p {
@@ -3378,9 +3490,17 @@ img.loading-spinner {
         font-size: 14px;
     }
 
-    .continue {
+    .continue, .previous {
         font-size: 16px;
         margin-top: 0;
+    }
+
+    .finish-btn {
+        margin: 10px auto !important;
+    }
+
+    .submit-recipe {
+        margin-bottom: 15px !important;
     }
 
     .add-ingredients-btns, .add-steps-btns {
@@ -3757,6 +3877,51 @@ img.loading-spinner {
         margin-bottom: 30px;
     }
 
+    .profile-recipes .top-nav .single-btn p {
+        width: 150px;
+        height: 44px;
+        font-size: 12px;
+    }
+
+    .profile-details {
+        margin-bottom: 60px;
+    }
+
+    .profile-img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+    }
+
+    .form-section .col-md-4 {
+        padding-right: calc(var(--bs-gutter-x)* 0.5) !important;
+        padding-left: calc(var(--bs-gutter-x)* 0.5) !important;
+    }
+
+    .row.ingredients-cont {
+        position: relative;
+    }
+
+    .row.ingredients-cont i {
+        position: absolute;
+        top: 0;
+        right: 3px;
+    }
+
+    #single-category-products {
+        padding-top: 40px;
+    }
+
+    .single-category-products-inner > p {
+        margin-bottom: 40px;
+    }
+
+    .profile-top-details {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
     .mobile-send-cta, .mobile-see-more-products {
         background: #F5CC45;
         width: 220px;
@@ -3768,7 +3933,7 @@ img.loading-spinner {
         letter-spacing: 0em;
         text-align: center;
         margin: 0 auto 25px;
-        display: flex;
+        display: flex !important;
         justify-content: center;
         align-items: center;
         color: #2E4765;
@@ -3923,7 +4088,7 @@ img.loading-spinner {
     }
 
     #single-category-meta {
-        padding: 0 0 20px 0;
+        padding: 0 0 30px 0;
     }
 
     #single-category-meta p {
@@ -3931,7 +4096,7 @@ img.loading-spinner {
     }
 
     .category-products .single-product {
-        width: 50%;
+        width: 50% !important;
     }
 
     .category-products .single-product img {
@@ -4244,5 +4409,17 @@ img.loading-spinner {
     #login-content h2, #login-content h3 {
         margin-bottom: 20px;
     }
-}
 
+    #post-content h1 {
+        margin-top: 80px;
+    }
+
+    .post-content-inner.container-space {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .featured-recipe-single .featured-image-cont {
+        height: 270px !important;
+    }
+}

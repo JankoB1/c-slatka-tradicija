@@ -3,15 +3,15 @@
 @section('content')
     <section id="main-banner">
         <div class="main-banner-inner">
-            <h1>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h1>
-            <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
+            <h1>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h1>
+            <a href="{{ route('show-competition') }}">Pošaljite recept</a>
         </div>
     </section>
 
     <section id="featured-recipes">
         <div class="featured-recipes-inner container-space">
             <h2>Odabrani recepti</h2>
-            <p>Izdvojili smo za vas najpopularnije recepte po izboru C Slatka tradicija tima. Uživajte u pripremi i javite nam utiske!</p>
+            <p>Pogledajte neke od najukusnijih recepata koje su pripremili ljubitelji slatke tradicije. Uživajte u pripremi i javite nam utiske.</p>
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">
@@ -86,9 +86,9 @@
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <h3>Tvoj sladak začin <br>još od 1976. godine</h3>
-                    <p>Kada se najbliži okupe i sa osmesima uživaju u najlepšim trenucima uz omiljene ukuse, tada je jasno zašto decenijama duga tradicija čini C proizvode neizostavnim delom svake trpeze.</p>
-                    <a href="{{ route('show-all-categories') }}">Proizvodi</a>
+                    <h3>Vaš omiljeni obrok <br>još od detinjstva</h3>
+                    <p>Za stare i mlade, za one koji vole ukuse detinjstva. Dečak sa pakovanja je dobro poznat svima i generacijama unazad je deo našeg odrastanja.</p>
+                    <a href="{{ route('show-single-product', ['slug' => 'psenicni-griz-200g']) }}">Saznaj više</a>
                 </div>
             </div>
         </div>
@@ -96,8 +96,8 @@
 
     <section id="action">
         <div class="action-inner container-space">
-            <h2>Vreme je za akciju</h2>
-            <p>Izaberi kategoriju, pogledaj recepte koji smo izdvojili za tebe i upusti se u kulinarsku avanturu!</p>
+            <h2>Inspirišite se!</h2>
+            <p>Izaberite kategoriju, pogledajte recepte koje smo izdvojili za vas i upustite se u kulinarsku avanturu.</p>
             <div class="categories-banners row">
                 <div class="col-md-6">
                     <div class="single-category-banner">
@@ -276,9 +276,9 @@
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <p>AKTIVNI NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa<br>pudingom"</h3>
-                    <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
+                    <p>NAGRADNI KONKURS</p>
+                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
+                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
                 </div>
             </div>
         </div>
