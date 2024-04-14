@@ -27,7 +27,7 @@ Route::prefix('recipes')->group(function() {
     Route::post('/upload-image', [ImageController::class, 'uploadImage']);
     Route::post('/add-image', [ImageController::class, 'addImage']);
     Route::delete('/remove-recipe/{recipe_id}', [RecipeController::class, 'softDelete'])->name('deleteRecipe');
-    Route::get('/search', [RecipeController::class, 'searchRecipe'])->name('searchRecipe');
+    Route::get('/search/{keyword}', [RecipeController::class, 'searchRecipe'])->name('searchRecipe');
 });
 
 Route::prefix('categories')->group(function() {
