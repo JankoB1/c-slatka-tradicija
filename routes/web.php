@@ -14,7 +14,7 @@ Route::get('/', [RecipeController::class, 'index'])->name('show-homepage');
 Route::get('/o-nama', [RecipeController::class, 'showAbout'])->name('show-about');
 Route::get('/recepti/{slug}', [RecipeController::class, 'showRecipeCategory'])->name('show-recipe-category');
 Route::get('/recepti/{category}/{slug}', [RecipeController::class, 'retrieveSingleRecipe'])->name('show-single-recipe');
-Route::get('/recepti', [RecipeController::class, 'showAllCategories'])->name('sgit ');
+Route::get('/recepti', [RecipeController::class, 'showAllCategories'])->name('show-all-recipes');
 Route::get('/nagradni-konkursi', [RecipeController::class, 'showCompetition'])->name('show-competition');
 Route::get('/kontakt', [RecipeController::class, 'showContact'])->name('show-contact');
 Route::get('/impressum', [RecipeController::class, 'showImpressum'])->name('show-impressum');
