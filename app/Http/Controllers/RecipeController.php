@@ -191,7 +191,7 @@ class RecipeController extends Controller
         $this->recipeService->softDelete($recipe_id);
     }
 
-    public function searchRecipe($keyword) {
-        return $this->recipeService->searchRecipe($keyword);
+    public function searchRecipe($request) {
+        return $this->recipeService->searchRecipe($request->keyword);
     }
 }

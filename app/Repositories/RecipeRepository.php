@@ -44,8 +44,7 @@ class RecipeRepository
 
     public function searchRecipe(string $keyword)
     {
-        $recipes = Recipe::where('title', 'like', '%' . $keyword . '%')->get();
-        return $recipes;
+        return Recipe::where('title', 'like', '%' . $keyword . '%')->get();
     }
 
     public function createSlug(string $title, int $increment = 0)
