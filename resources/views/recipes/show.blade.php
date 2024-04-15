@@ -73,7 +73,7 @@
         @endif
         <div class="like-cont like {{ $user_data['like'] != null? 'active': '' }}">
             <img src="{{ asset('images/like.svg') }}" alt="like">
-            <p>{{ count($likes) }}</p>
+            <p>{{ $likes == null? '0': count($likes) }}</p>
         </div>
     </section>
 
@@ -91,33 +91,44 @@
                 <img src="{{ asset('images/save.svg') }}" alt="save">
                 <p>Sačuvaj na profilu</p>
             </div>
-            <div class="print">
+            <div class="print" style="display: none;">
                 <img src="{{ asset('images/print-f.svg') }}" alt="print">
                 <p>Štampaj</p>
             </div>
         </div>
     </section>
 
-    <form action="{{ route('deleteRecipe', ['recipe_id' => $recipe->id]) }}" method="POST">
-        @csrf
-        @method('delete')
-        <button type="submit" class="btn btn-outline-danger">Delete</button>
-    </form>
+{{--    <form action="{{ route('deleteRecipe', ['recipe_id' => $recipe->id]) }}" method="POST">--}}
+{{--        @csrf--}}
+{{--        @method('delete')--}}
+{{--        <button type="submit" class="btn btn-outline-danger">Delete</button>--}}
+{{--    </form>--}}
 
     <section id="recipe-main">
         <div class="recipe-main-inner container-space">
             <div class="row">
                 <div class="col-md-3">
-                    <h1 class="mobile">{{ $recipe->title }}</h1>
-                    <h4 class="main-info">Osnovne informacije</h4>
-                    <div class="single-info mb-low">
+                    <div class="single-info mb-low mobile">
                         <p><strong>Vreme pripreme:</strong><br>{{ $recipe->preparation_time }}</p>
                     </div>
-                    <div class="single-info mb-low">
+                    <div class="single-info mb-low mobile">
                         <p><strong>Težina pripreme:</strong><br>{{ $recipe->difficulty }}</p>
                     </div>
                     @if($recipe->old_recipe == 0)
-                        <div class="single-info">
+                        <div class="single-info mobile">
+                            <p><strong>Broj porcija:</strong><br>{{ $recipe->portion_number }}</p>
+                        </div>
+                    @endif
+                    <h1 class="mobile">{{ $recipe->title }}</h1>
+                    <h4 class="main-info desktop">Osnovne informacije</h4>
+                    <div class="single-info mb-low desktop">
+                        <p><strong>Vreme pripreme:</strong><br>{{ $recipe->preparation_time }}</p>
+                    </div>
+                    <div class="single-info mb-low desktop">
+                        <p><strong>Težina pripreme:</strong><br>{{ $recipe->difficulty }}</p>
+                    </div>
+                    @if($recipe->old_recipe == 0)
+                        <div class="single-info desktop">
                             <p><strong>Broj porcija:</strong><br>{{ $recipe->portion_number }}</p>
                         </div>
                     @endif
@@ -153,6 +164,25 @@
                             @endforeach
                         @endif
                     </div>
+                    <div class="mobile">
+                        <h1 class="desktop">{{ $recipe->title }}</h1>
+                        <h4>Opis recepta</h4>
+                        <p>{!! $recipe->description !!}</p>
+                        @if($recipe->old_recipe == 0)
+                            <h4>Kako se priprema?</h4>
+                            @foreach($stepGroups as $key => $items)
+                                <h5>{{ $key }}</h5>
+                                @foreach($items as $item)
+                                    <p>{{ $item['title'] }}</p>
+                                @endforeach
+                            @endforeach
+                            @foreach($recipe->steps as $step)
+                                @if($step->group == null)
+                                    <p>{{ $step->title }}</p>
+                                @endif
+                            @endforeach
+                        @endif
+                    </div>
                     @if($recipe->old_recipe == 0 && count($products) != 0)
                         <h4>Naši proizvodi</h4>
                         <div class="row recipe-products">
@@ -182,19 +212,19 @@
                 </div>
                 <div class="col-md-9">
                     <h1 class="desktop">{{ $recipe->title }}</h1>
-                    <h4>Opis recepta</h4>
-                    <p>{!! $recipe->description !!}</p>
+                    <h4 class="desktop">Opis recepta</h4>
+                    <p class="desktop">{!! $recipe->description !!}</p>
                     @if($recipe->old_recipe == 0)
-                        <h4>Kako se priprema?</h4>
+                        <h4 class="desktop">Kako se priprema?</h4>
                         @foreach($stepGroups as $key => $items)
-                            <h5>{{ $key }}</h5>
+                            <h5 class="desktop">{{ $key }}</h5>
                             @foreach($items as $item)
-                                <p>{{ $item['title'] }}</p>
+                                <p class="desktop">{{ $item['title'] }}</p>
                             @endforeach
                         @endforeach
                         @foreach($recipe->steps as $step)
                             @if($step->group == null)
-                                <p>{{ $step->title }}</p>
+                                <p class="desktop">{{ $step->title }}</p>
                             @endif
                         @endforeach
                     @endif

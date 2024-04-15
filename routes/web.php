@@ -61,6 +61,8 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/dodaj-post', [PostController::class, 'showAddPost'])->name('show-add-post');
     Route::post('/upload-mce', [ImageController::class, 'uploadImageMce'])->name('upload-image-mce');
     Route::post('/add-post', [PostController::class, 'addPost'])->name('add-post');
+    Route::get('/edit/recepti/{id}', [RecipeController::class, 'showEditRecipe'])->name('show-edit-recipe');
+    Route::get('/admin/list', [RecipeController::class, 'showAdminList'])->name('show-admin-list');
 });
 
 Route::get('/pdf', [\App\Http\Controllers\PdfController::class, 'generatePdf'])->name('pdf');

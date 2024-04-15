@@ -32,7 +32,7 @@ class PdfController extends Controller
         $base64 = 'data:image/png;base64,' . base64_encode($data);
         $base641 = 'data:image/png;base64,' . base64_encode($data1);
 
-        $pdfContent .= '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style>@page { margin: 0px; } body { background-image: url("' . $base64 . '"); background-size: cover; background-position: center center; margin: 0; padding: 0; font-family: \'DejaVu Sans\', sans-serif; } td {font-family: \'DejaVu Sans\', sans-serif; vertical-align: top; } h3 { font-size: 24px; color: #56924C; line-height: 32px; text-align: left; margin-bottom: 15px; } p, h5 {font-family: \'DejaVu Sans\', sans-serif; font-size: 16px; color: #2E4765; line-height: 20px; font-weight: 400; margin-bottom: 4px; !important; } h5 {font-size: 18px; font-weight: 700;} p strong {font-family: \'DejaVu Sans\', sans-serif; font-weight: 700; }</style></head><body></body></html>';
+        $pdfContent .= '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style>@page { margin: 0px; } body { background-image: url("' . $base64 . '"); background-size: cover; background-position: center center; margin: 0; padding: 0; font-family: \'DejaVu Sans\', sans-serif; } td {font-family: \'DejaVu Sans\', sans-serif; vertical-align: top; } h3 { font-size: 18px; color: #56924C; line-height: 20px; text-align: left; margin-bottom: 15px; } p, h5 {font-family: \'DejaVu Sans\', sans-serif; font-size: 14px; color: #2E4765; line-height: 17px; font-weight: 400; margin-bottom: 4px; !important; } h5 {font-size: 16px; font-weight: 700;} p strong {font-family: \'DejaVu Sans\', sans-serif; font-weight: 700; }</style></head><body></body></html>';
 
         foreach ($recipeIds as $id) {
             $recipe = Recipe::find($id);
@@ -47,25 +47,25 @@ class PdfController extends Controller
             $pageHtml = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style>@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 400; src: url() format("truetype"); }body.body-bg {background-image: url(' . $base641 . '); background-size: cover; background-position: center center; padding: 100px 40px 60px;font-family: \'DejaVu Sans\', sans-serif;}</style></head>';
             $pageHtml .= '<body class="body-bg">';
             $pageHtml .= '<table style="width: 100%;"><tr>';
-            $pageHtml .= '<td style="width: 30%; border-right: 1px solid #2E4765;"><div><h3>Osnovne informacije</h3><p><strong>Vreme pripreme</strong><br>' . $recipe->preparation_time . '</p><p><strong>Težina pripreme</strong><br>' . $recipe->difficulty . '</p><p><strong>Broj porcija</strong><br>' . $recipe->portion_number . '</p><h3>Sastojci</h3>';
+            $pageHtml .= '<td style="width: 30%; border-right: 1px solid #2E4765;padding-right: 20px;"><div><h3>Osnovne informacije</h3><p><strong>Vreme pripreme</strong><br>' . $recipe->preparation_time . '</p><p><strong>Težina pripreme</strong><br>' . $recipe->difficulty . '</p><p><strong>Broj porcija</strong><br>' . $recipe->portion_number . '</p><h3>Sastojci</h3>';
             if($recipe->old_recipe == 1) {
                 foreach ($ingredients as $ingredient) {
                     if($ingredient->type == 1) {
-                        $pageHtml .= '<p style="word-break: break; padding-right: 30px; margin-top: 0 !important;margin-bottom: 0 !important; font-size: 12px !important; line-height: 14px !important;">' . $ingredient->title . '</p>';
+                        $pageHtml .= '<p style="word-break: break; padding-right: 20px; margin-top: 0 !important;margin-bottom: 0 !important; font-size: 12px !important; line-height: 14px !important;">' . $ingredient->title . '</p>';
                     } else {
-                        $pageHtml .= '<h5 style="margin-top: 0 !important; margin-bottom: 10px !important;">' . $ingredient->title . '</h5>';
+                        $pageHtml .= '<h5 style="margin-top: 15px !important; margin-bottom: 8px !important;">' . $ingredient->title . '</h5>';
                     }
                 }
             } else {
                 foreach ($ingredientGroups as $key => $items) {
-                    $pageHtml .= '<h5>' . $key . '</h5>';
+                    $pageHtml .= '<h5 style="margin-top: 15px !important; margin-bottom: 8px !important;">' . $key . '</h5>';
                     foreach ($items as $item) {
-                        $pageHtml .= '<p>' . $item['title'] . '</p>';
+                        $pageHtml .= '<p style="word-break: break; padding-right: 20px; margin-top: 0 !important;margin-bottom: 0 !important; font-size: 12px !important; line-height: 14px !important;">' . $item['title'] . '</p>';
                     }
                 }
                 foreach ($recipe->ingredients as $ingredient) {
                     if($ingredient->group == null) {
-                        $pageHtml .= '<p>' . $ingredient->title . '</p>';
+                        $pageHtml .= '<p style="word-break: break; padding-right: 20px; margin-top: 0 !important;margin-bottom: 0 !important; font-size: 12px !important; line-height: 14px !important;">' . $ingredient->title . '</p>';
                     }
                 }
             }

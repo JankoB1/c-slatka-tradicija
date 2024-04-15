@@ -235,10 +235,13 @@
                 <a href="{{ route('show-about') }}">O nama <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
             </div>
             <div class="single-mobile-link">
-                <a class="has-dropdown-mobile" href="#">Proizvodi <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
+                <a class="has-dropdown-mobile" href="{{ route('show-all-categories') }}">Proizvodi <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
                 <div class="dropdown-mobile">
                     <div class="single-mobile-link">
                         <a class="single-mobile-link-back" href="#"><img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"> Proizvodi</a>
+                    </div>
+                    <div class="single-mobile-link">
+                        <a href="{{ route('show-all-categories') }}">Svi proizvodi <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
                     </div>
                     <div class="single-mobile-link">
                         <a href="{{ route('show-single-category', ['slug' => 'dodaci-za-kolace']) }}">Dodaci za kolače <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
@@ -270,6 +273,10 @@
                         <a class="single-mobile-link-back" href="#"><img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"> Recepti</a>
                     </div>
                     <div class="single-mobile-link">
+                        <a href="{{ route('show-all-recipes') }}">Svi recepti <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
+                    </div>
+                    <div class="single-mobile-link">
+
                         <a class="has-dropdown-mobile" href="#">Kolači <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
                         <div class="dropdown-mobile">
                             <div class="single-mobile-link">

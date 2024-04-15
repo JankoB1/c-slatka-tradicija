@@ -1047,7 +1047,7 @@ footer p {
     display: block;
 }
 
-.continue, .add-step, .previous {
+.continue, .add-step, .buttons-cont .previous {
     font-family: Montserrat;
     font-size: 15px;
     font-weight: 700;
@@ -2133,7 +2133,7 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
     column-gap: 15px;
 }
 
-.continue, .previous {
+.continue, .buttons-cont .previous {
     margin-top: 20px;
 }
 
@@ -3194,6 +3194,15 @@ img.loading-spinner {
     background: white !important;
 }
 
+#recipes-table_wrapper {
+    width: 80%;
+    margin: 150px auto 100px;
+}
+
+table#recipes-table {
+    width: 100%;
+}
+
 @media only screen and (max-width: 1507px) {
     #main-header {
         padding: 11px 6.5%;
@@ -3490,7 +3499,7 @@ img.loading-spinner {
         font-size: 14px;
     }
 
-    .continue, .previous {
+    .continue, .buttons-cont .previous {
         font-size: 16px;
         margin-top: 0;
     }
@@ -3975,7 +3984,7 @@ img.loading-spinner {
         width: fit-content;
         margin-left: auto;
         margin-right: auto;
-        text-align: left;
+        text-align: center;
     }
 
     .recipe-main-inner h5 {
@@ -3987,6 +3996,14 @@ img.loading-spinner {
     .recipe-products p {
         font-size: 9px;
         line-height: 11px;
+    }
+
+    h4.author-h {
+        margin-top: 0 !important;
+    }
+
+    p.author-name {
+        margin-bottom: 0 !important;
     }
 
     .recipe-main-inner.container-space .col-md-3 {

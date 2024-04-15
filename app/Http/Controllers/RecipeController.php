@@ -101,6 +101,18 @@ class RecipeController extends Controller
         return view('recipes.show', compact('recipe', 'ingredientGroups', 'stepGroups', 'products', 'likes', 'user_data', 'recipes', 'recipes2'));
     }
 
+    public function showEditRecipe($id) {
+        $recipe = Recipe::find($id);
+        if ($recipe == null)
+            return redirect()->route('show-all-recipes');
+
+        $ingredientGroups = $this->ingredientGroupService->getGroupsByRecipeId($recipe->id);
+        $stepGroups = $this->stepGroupService->getGroupsByRecipeId($recipe->id);
+        //$products = $this->productRepository->getProductByRecipeId($recipe->id);
+        //dd($ingredientGroups);
+        return view('auth.edit-recipe', compact('recipe', 'ingredientGroups', 'stepGroups'));
+    }
+
     public function create() {
         $categories = $this->categoryService->getAllCategories();
         $ingredients = $this->ingredientService->getIngredientsC();
@@ -154,7 +166,11 @@ class RecipeController extends Controller
 
     public function showRecipeCategory($slug) {
         $category = Category::where('slug', '=', $slug)->get()->first();
-        $recipes = $category->recipes()->where('active', '=', 'T')->orderBy('created_at', 'desc')->paginate(21);
+        $recipes = $category->recipes()
+            ->where('active', '=', 'T')
+            ->orderByRaw("CASE WHEN image_old = 'c-slatka-tradicija-recepti-1.jpg' THEN 2 WHEN image_old = 'c-slatka-tradicija-recepti-2.jpg' THEN 1 ELSE 0 END")
+            ->orderBy('created_at', 'desc')
+            ->paginate(21);
         return view('recipes.category', compact('category', 'recipes'));
     }
 
@@ -190,5 +206,10 @@ class RecipeController extends Controller
     public function softDelete($recipe_id) {
         Log::info('nesto se desilo');
         $this->recipeService->softDelete($recipe_id);
+    }
+
+    public function showAdminList() {
+        $recipes = Recipe::where('deleted_at', '=', null)->get();
+        return view('auth.admin.list', compact('recipes'));
     }
 }

@@ -11,36 +11,6 @@
 
 @section('content')
 
-    <section>
-        <img class="desktop" src="{{ asset('images/competition-hero.jpeg') }}" alt="" style="width: 100%; margin-top: 70px;">
-        <img class="mobile" src="{{ asset('images/competition-hero-m.png') }}" alt="" style="width: 100%; margin-top: 70px;">
-    </section>
-
-    <section id="competition-text">
-        <div class="competition-text-inner container-space">
-            <h1>Nagradni konkursi</h1>
-            <p>Pozivamo sve ljubitelje poslastica da se pridruže našem nagradnom konkursu! Podelite svoje omiljene recepte sa nama i i budite deo slatke tradicije. Radujemo se vašim originalnim receptima. Učestvujte u nagrađivanju i osvojite sjajne poklone.</p>
-        </div>
-    </section>
-
-    <div id="competition-send-recipe">
-        <div class="competition-send-recipe-inner container-space">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>Pošaljite recept</h2>
-                    <h4>Učestvujte u konkursu "Uskršnje torte i kolači"</h4>
-                    <p>Uslov za učešće u konkursu jeste slanje recepata za Uskršnje torte i kolače, koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo vas da imate u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 30. aprila 2024. godine.
-
-                        <br><br>Opšte uslove i pravila konkursa možete pogledati na strani <a href="{{ route('show-privacy-note') }}">Uslovi i pravila konkursa</a> Uskršnje torte i kolači.  Odabrane recepte sa prethodnih konkursa možete pogledati na strani Odabrani recepti.</p>
-                </div>
-                <div class="col-md-6">
-                    <img class="desktop" src="{{ asset('images/competitors-final-img-min.jpeg') }}" alt="competition cookies" style="border-radius: 8px;">
-                    <img src="{{ asset('images/competi-mob.png') }}" alt="" class="mobile" style="border-radius: 8px;">
-                </div>
-            </div>
-        </div>
-    </div>
-
     <section id="recipe-form" class="recipe-form-competition">
         <div class="form-inner">
             <form action="{{ route('recipes.store') }}" method="post" enctype="multipart/form-data">
@@ -88,11 +58,11 @@
                             <div class="col-md-7">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="text" name="title" placeholder="Naziv recepta">
+                                        <input type="text" name="title" placeholder="Naziv recepta" value="{{ $recipe->title }}">
                                     </div>
                                     <div class="col-md-6">
                                         <select name="category">
-                                            <option selected value="">Kategorija recepta (izaberi)</option>
+                                            <option value="">Kategorija recepta (izaberi)</option>
                                             <option value="0">Torte</option>
                                             <option value="1">Kolači</option>
                                             <option value="2">Hleb i peciva</option>
@@ -109,29 +79,29 @@
                                     </div>
                                     <div class="col-md-6">
                                         <select name="difficulty">
-                                            <option selected value="">Težina pripreme (izaberi)</option>
-                                            <option value="Lako">Lako</option>
-                                            <option value="Srednje">Srednje</option>
-                                            <option value="Teško">Teško</option>
+                                            <option value="">Težina pripreme (izaberi)</option>
+                                            <option {{ $recipe->difficulty == 'Lako'? 'selected': '' }} value="Lako">Lako</option>
+                                            <option {{ $recipe->difficulty == 'Srednje'? 'selected': '' }} value="Srednje">Srednje</option>
+                                            <option {{ $recipe->difficulty == 'Teško'? 'selected': '' }} value="Teško">Teško</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <select name="preparation_time">
-                                            <option selected value="">Vreme pripreme (izaberi)</option>
-                                            <option value="do 30 min">do 30 min</option>
-                                            <option value="30-60 min">30-60 min</option>
-                                            <option value="60+ min">60+ min</option>
+                                            <option value="">Vreme pripreme (izaberi)</option>
+                                            <option {{ $recipe->preparation_time == 'do 30 min'? 'selected': '' }} value="do 30 min">do 30 min</option>
+                                            <option {{ $recipe->preparation_time == '30-60 min'? 'selected': '' }} value="30-60 min">30-60 min</option>
+                                            <option {{ $recipe->preparation_time == '60+ min'? 'selected': '' }} value="60+ min">60+ min</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" name="portion_number" placeholder="Broj porcija">
+                                        <input type="text" name="portion_number" placeholder="Broj porcija" value="{{ $recipe->portion_number }}">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <textarea name="description" id="" cols="30" rows="10" placeholder="Opiši svoj recept"></textarea>
+                                        <textarea name="description" id="" cols="30" rows="10" placeholder="Opiši svoj recept">{{ $recipe->description }}</textarea>
                                     </div>
                                 </div>
                             </div>
