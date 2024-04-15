@@ -166,11 +166,7 @@ class RecipeController extends Controller
 
     public function showRecipeCategory($slug) {
         $category = Category::where('slug', '=', $slug)->get()->first();
-        $recipes = $category->recipes()
-            ->where('active', '=', 'T')
-            ->orderByRaw("CASE WHEN image_old = 'c-slatka-tradicija-recepti-1.jpg' THEN 2 WHEN image_old = 'c-slatka-tradicija-recepti-2.jpg' THEN 1 ELSE 0 END")
-            ->orderBy('created_at', 'desc')
-            ->paginate(21);
+        $recipes = $category->recipes()->where('active', '=', 'T')->orderBy('created_at', 'desc')->paginate(21);
         return view('recipes.category', compact('category', 'recipes'));
     }
 
@@ -204,12 +200,15 @@ class RecipeController extends Controller
     }
 
     public function softDelete($recipe_id) {
-        Log::info('nesto se desilo');
         $this->recipeService->softDelete($recipe_id);
     }
 
     public function showAdminList() {
         $recipes = Recipe::where('deleted_at', '=', null)->get();
         return view('auth.admin.list', compact('recipes'));
+    }
+
+    public function searchRecipe($request) {
+        return $this->recipeService->searchRecipe($request->keyword);
     }
 }

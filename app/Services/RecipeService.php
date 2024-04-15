@@ -26,6 +26,10 @@ class RecipeService
         return $this->recipeRepository->getRecipeBySlug($slug);
     }
 
+    public function searchRecipe($keyword) {
+        return $this->recipeRepository->searchRecipe($keyword);
+    }
+
     public function likeRecipe(Request $request)
     {
         return $this->recipeRepository->likeRecipe($request);
