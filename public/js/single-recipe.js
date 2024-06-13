@@ -1,11 +1,20 @@
 let likeBtn = document.querySelector('.like');
-let saveBtn = document.querySelector('.save');
-let addToBook = document.querySelector('.add-to-book');
 let recipeBooks = localStorage.getItem('recipeBooks');
 let recipeId = parseInt(document.querySelector('#recipe-gallery').dataset.recipeId);
 let print = document.querySelector('.print');
-let share = document.querySelector('.share');
 let loginPopup = document.querySelector('#login-popup');
+
+let share, addToBook, saveBtn;
+
+if(window.innerWidth > 768) {
+    share = document.querySelector('.share');
+    addToBook = document.querySelector('.add-to-book');
+    saveBtn = document.querySelector('.save');
+} else {
+    share = document.querySelector('.mobile .share');
+    addToBook = document.querySelector('.mobile .add-to-book');
+    saveBtn = document.querySelector('.mobile .save');
+}
 
 recipeBooks = recipeBooks ? JSON.parse(recipeBooks) : [];
 let index = recipeBooks.indexOf(recipeId);
@@ -74,7 +83,7 @@ addToBook.addEventListener('click', function() {
         recipeBooks.splice(index, 1);
         addToBook.classList.remove('active');
         document.querySelector('.books-popup p[data-recipe-id="' + recipeId + '"]').remove();
-        document.querySelector('.books-popup-mobile p[data-recipe-id="' + recipeId + '"]').remove();
+        document.querySelector('.books-mobile-inner p[data-recipe-id="' + recipeId + '"]').remove();
     } else {
         recipeBooks.push(recipeId);
         addToBook.classList.add('active');
@@ -93,7 +102,7 @@ addToBook.addEventListener('click', function() {
         let newIClone = document.createElement('i');
         newIClone.classList.add('fa-solid', 'fa-xmark');
         newPClone.appendChild(newIClone);
-        document.querySelector('.books-popup-mobile .books-recipes').appendChild(newPClone);
+        document.querySelector('.books-mobile-inner .books-recipes').appendChild(newPClone);
 
         newI.addEventListener('click', function() {
             addToBook.click();
@@ -110,8 +119,9 @@ addToBook.addEventListener('click', function() {
     if(recipeIds.length !== 0) {
         document.querySelectorAll('span.num')[0].innerText = recipeIds.length;
         document.querySelectorAll('span.num')[0].classList.add('active');
-        document.querySelectorAll('span.num')[1].innerText = recipeIds.length;
-        document.querySelectorAll('span.num')[1].classList.add('active');
+        document.querySelector('.books-mobile-inner').classList.add('active');
+        // document.querySelectorAll('span.num')[1].innerText = recipeIds.length;
+        // document.querySelectorAll('span.num')[1].classList.add('active');
     }
 });
 

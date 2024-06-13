@@ -223,8 +223,8 @@
                         <div class="row">
                             <div class="col-md-5"></div>
                             <div class="col-md-7">
-                                <p>Da biste pristupili ovoj stranici, potrebno je da budete prijavljeni na našem web sajtu.</p>
-                                <p>Bez brige, ukoliko nemate profil, proces je kratak i vrlo brzo ćete moći da nastavite sa korišćenjem sajta.</p>
+                                <p>Za pristup ovoj stranici, potrebna je prijava na našem web sajtu.</p>
+                                <p>Bez brige, ukoliko nemaš profil, proces je kratak i vrlo brzo ćeš moći da nastaviš sa korišćenjem sajta.</p>
                                 <a href="{{ route('login') }}">Prijavi se</a>
                             </div>
                         </div>

@@ -10,7 +10,7 @@
     <section id="posts-list">
         <div class="posts-list-inner container-space">
             <h1>Blog</h1>
-            <p>Male tajne u kuhinji uvek mogu biti od pomoći, bilo da ste početnik ili iskusna domaćica. Naše bake i mame su sve te tajne pažljivo čuvale, a mi ih delimo sa vama. Pronađite tradicionalne savete i trikove koji će vam pomoći da vreme u kuhinji provodite efikasnije. Pročitajte više priča o našoj slatkoj tradiciji, našim običajima i zanimljivosti o našim proizvodima.</p>
+            <p>Male tajne u kuhinji uvek mogu biti od pomoći, bilo da si početnik ili iskusna domaćica. Naše bake i mame su sve te tajne pažljivo čuvale, a mi ih delimo sa tobom. Pronađi tradicionalne savete i trikove koji će ti pomoći da vreme u kuhinji provodite efikasnije. Pročitaj više priča o našoj slatkoj tradiciji, našim običajima i zanimljivosti o našim proizvodima.</p>
             <div class="row posts-row">
                 @foreach($posts as $post)
                     <div class="col-md-4">
@@ -37,8 +37,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
-                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
+                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa <br>Eskimko sladoledom"</h3>
+                    <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>
         </div>

@@ -28,7 +28,7 @@ class RecipeRepository
                 'preparation_time' => $request->preparationTime,
                 'portion_number' => $request->portionNum,
                 'description' => $request->description,
-                'active' => 'F',
+                'active' => 'T',
                 'old_recipe' => 0
             ]);
 
@@ -44,7 +44,12 @@ class RecipeRepository
 
     public function searchRecipe(string $keyword)
     {
-        return Recipe::where('title', 'like', '%' . $keyword . '%')->get();
+        return Recipe::where('title', 'like', '%' . $keyword . '%')
+            ->where('active', '=', 'T')
+            ->orderByRaw("CASE WHEN image_old = 'recipe-no-image.png' THEN 2 WHEN image_old = 'c-slatka-tradicija-recepti-2.jpg' THEN 1 ELSE 0 END")
+            ->orderBy('created_at', 'desc')
+            ->paginate(21)
+            ->appends(['keyword' => $keyword]);
     }
 
     public function createSlug(string $title, int $increment = 0)
@@ -94,7 +99,8 @@ class RecipeRepository
                 ->join('tin_receptproizvod', 'recipes.id', '=', 'tin_receptproizvod.recipe_id')
                 ->join('categories', 'categories.id', '=', 'recipes.category_id')
                 ->where('tin_receptproizvod.product_id', $product_id)
-                ->select('recipes.title as recipe_title', 'recipes.slug as recipe_slug', 'categories.slug as category_slug', 'recipes.image_old as image')
+                ->whereNotIn('recipes.image_old', ['recipe-no-image.png', 'c-slatka-tradicija-recepti-2.jpg'])
+                ->select('recipes.title as recipe_title', 'recipes.slug as recipe_slug', 'categories.slug as category_slug', 'recipes.image_old as image', 'recipes.id as id')
                 ->take(4)
                 ->get();
         } catch(QueryException $exception) {

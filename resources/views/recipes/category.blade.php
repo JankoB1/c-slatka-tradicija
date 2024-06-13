@@ -8,11 +8,11 @@
         <div class="recipes-category-content container-space">
             <a href="{{ route('show-all-recipes') }}" class="all-categories-link"><img src="{{ asset('images/left-arrow.svg') }}" alt="left arrow">Sve kategorije recepata</a>
             <h1>{{ $category->name }}</h1>
-            <a href="{{ route('recipes.create') }}" class="mobile-send-cta mobile">Pošaljite recept</a>
+            <a href="{{ route('recipes.create') }}" class="mobile-send-cta mobile">Pošalji recept</a>
             <div class="row">
                 @foreach($recipes as $recipe)
                     <div class="col-md-4">
-                        <a class="single-recipe-link" href="{{ route('show-single-recipe', ['slug' => $recipe->slug, 'category' => $category->slug]) }}">
+                        <a class="single-recipe-link" href="{{ route('show-single-recipe', ['id' => $recipe->id, 'category' => $category->slug, 'slug' => $recipe->slug]) }}">
                             <div class="single-recipe-preview">
                                 @if(isset($recipe->images[0]) && $recipe->old_recipe == 0)
                                     <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $recipe->images[0]->path) }}')">

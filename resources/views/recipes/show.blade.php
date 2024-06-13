@@ -77,7 +77,7 @@
         </div>
     </section>
 
-    <section id="recipe-actions">
+    <section id="recipe-actions" class="desktop">
         <div class="recipe-actions-inner container-space">
             <div class="share">
                 <img src="{{ asset('images/share.svg') }}" alt="share">
@@ -98,11 +98,11 @@
         </div>
     </section>
 
-{{--    <form action="{{ route('deleteRecipe', ['recipe_id' => $recipe->id]) }}" method="POST">--}}
-{{--        @csrf--}}
-{{--        @method('delete')--}}
-{{--        <button type="submit" class="btn btn-outline-danger">Delete</button>--}}
-{{--    </form>--}}
+    {{--    <form action="{{ route('deleteRecipe', ['recipe_id' => $recipe->id]) }}" method="POST">--}}
+    {{--        @csrf--}}
+    {{--        @method('delete')--}}
+    {{--        <button type="submit" class="btn btn-outline-danger">Delete</button>--}}
+    {{--    </form>--}}
 
     <section id="recipe-main">
         <div class="recipe-main-inner container-space">
@@ -139,18 +139,18 @@
                                 <h5>{{ $key }}</h5>
                                 @foreach($items as $item)
                                     @if($item['product_id'] == null)
-                                        <p>{{ $item['title'] }}</p>
+                                        <p>{{ $item['title'] }} {{ $item['quantity'] }} {{ $item['measure'] }}</p>
                                     @else
-                                        <p><a href="{{ route('show-single-product', ['slug' => \App\Models\Product::find($item['product_id'])->slug]) }}">{{ $item['title'] }}</a></p>
+                                        <p><a href="{{ route('show-single-product', ['slug' => \App\Models\Product::find($item['product_id'])->slug]) }}">{{ $item['title'] }} {{ $item['quantity'] }} {{ $item['measure'] }}</a></p>
                                     @endif
                                 @endforeach
                             @endforeach
                             @foreach($recipe->ingredients as $ingredient)
                                 @if($ingredient->group == null)
                                     @if($ingredient->product_id == null)
-                                        <p>{{ $ingredient->title }}</p>
+                                        <p>{{ $ingredient->title }} {{ $ingredient->quantity }} {{ $ingredient->measure }}</p>
                                     @else
-                                        <p><a href="#">{{ $ingredient->title }}</a></p>
+                                        <p><a href="{{ route('show-single-product', ['slug' => \App\Models\Product::find($ingredient->product_id)->slug]) }}">{{ $ingredient->title }} {{ $ingredient->quantity }} {{ $ingredient->measure }}</a></p>
                                     @endif
                                 @endif
                             @endforeach
@@ -166,7 +166,11 @@
                     </div>
                     <div class="mobile">
                         <h1 class="desktop">{{ $recipe->title }}</h1>
-                        <h4>Opis recepta</h4>
+                        @if($recipe->old_recipe == 0)
+                            <h4>Opis recepta</h4>
+                        @else
+                            <h4>Koraci pripreme</h4>
+                        @endif
                         <p>{!! $recipe->description !!}</p>
                         @if($recipe->old_recipe == 0)
                             <h4>Kako se priprema?</h4>
@@ -189,7 +193,7 @@
                             @foreach($products as $product)
                                 <div class="col-4">
                                     <a href="{{ route('show-single-product', ['slug' => $product->slug]) }}">
-                                        <img src="{{ asset('storage/upload/proizvod/' . $product->image_path) }}" alt="">
+                                        <img src="{{ asset('images/' . $product->image_path) }}" alt="" style="{{ $product->slug == 'oblande'? 'margin: 24px auto; height: 40px;': '' }}">
                                         <p>{{ $product->name }}</p>
                                     </a>
                                 </div>
@@ -201,7 +205,7 @@
                             @foreach($products as $product)
                                 <div class="col-4">
                                     <a href="{{ route('show-single-product', ['slug' => $product->slug]) }}">
-                                        <img src="{{ asset('storage/upload/proizvod/' . $product->image_path) }}" alt="">
+                                        <img src="{{ asset('images/' . $product->image_path) }}" alt="" style="{{ $product->slug == 'oblande'? 'margin: 24px auto; height: 40px;': '' }}">
                                         <p>{{ $product->name }}</p>
                                     </a>
                                 </div>
@@ -212,7 +216,11 @@
                 </div>
                 <div class="col-md-9">
                     <h1 class="desktop">{{ $recipe->title }}</h1>
-                    <h4 class="desktop">Opis recepta</h4>
+                    @if($recipe->old_recipe == 0)
+                        <h4 class="desktop">Opis recepta</h4>
+                    @else
+                        <h4 class="desktop">Koraci pripreme</h4>
+                    @endif
                     <p class="desktop">{!! $recipe->description !!}</p>
                     @if($recipe->old_recipe == 0)
                         <h4 class="desktop">Kako se priprema?</h4>
@@ -234,22 +242,47 @@
                     @elseauth()
                         @if($recipe->old_recipe == 0)
                             <h4 class="author-h">Autor</h4>
-                            <p class="author-name">{{ $recipe->user_recipe->name }} {{ $recipe->user_recipe->surname }}</p>
+                            @if($recipe->user_recipe->name != null)
+                                <p class="author-name">{{ $recipe->user_recipe->name }} {{ $recipe->user_recipe->surname }}</p>
+                            @else
+                                <p class="author-name">{{ $recipe->user_recipe->username }}</p>
+                            @endif
                         @else
-                             @if($recipe->user != null)
+                            @if($recipe->user != null)
                                 <h4 class="author-h">Autor</h4>
                                 <p class="author-name">{{ $recipe->user }}</p>
                             @endif
                         @endif
                     @endguest
-{{--                    <p class="recipe-date">--}}
-{{--                        Recept dodat:--}}
-{{--                    </p>--}}
+                    {{--                    <p class="recipe-date">--}}
+                    {{--                        Recept dodat:--}}
+                    {{--                    </p>--}}
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-3" style="border-right: none;"></div>
                 <div class="col-md-9">
+                    <section id="recipe-actions" class="mobile">
+                        <div class="recipe-actions-inner">
+                            <div class="share">
+                                <img src="{{ asset('images/share.svg') }}" alt="share">
+                                <p>Podeli</p>
+                            </div>
+                            <div class="add-to-book">
+                                <img style="max-width: 30px" src="{{ asset('images/book.png') }}" alt="save">
+                                <p>Sačuvaj u knjižicu recepata</p>
+                            </div>
+                            <div class="save {{ $user_data['save'] != null? 'active': '' }}">
+                                <img src="{{ asset('images/save.svg') }}" alt="save">
+                                <p>Sačuvaj na profilu</p>
+                            </div>
+                            <div class="print" style="display: none;">
+                                <img src="{{ asset('images/print-f.svg') }}" alt="print">
+                                <p>Štampaj</p>
+                            </div>
+                        </div>
+                    </section>
                     <div class="tags">
                         <a href="{{ route('show-recipe-category', ['slug' => $recipe->category->slug]) }}">{{ $recipe->category->name }}</a>
                     </div>
@@ -267,7 +300,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             @if(isset($recipes[0]))
-                                <a href="{{ route('show-single-recipe', ['category' => $recipes[0]->category->slug, 'slug' => $recipes[0]->slug]) }}">
+                                <a href="{{ route('show-single-recipe', ['category' => $recipes[0]->category->slug, 'id' => $recipes[0]->id, 'slug' => $recipes[0]->slug]) }}">
                                     <div class="featured-recipe-single mini">
                                         <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[0]->image_old) }}');"></div>
                                         <p>{{ $recipes[0]->title }}</p>
@@ -277,7 +310,7 @@
                         </div>
                         <div class="col-md-6">
                             @if(isset($recipes[1]))
-                                <a href="{{ route('show-single-recipe', ['category' => $recipes[1]->category->slug, 'slug' => $recipes[1]->slug]) }}">
+                                <a href="{{ route('show-single-recipe', ['category' => $recipes[1]->category->slug, 'id' => $recipes[1]->id, 'slug' => $recipes[1]->slug]) }}">
                                     <div class="featured-recipe-single mini">
                                         <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[1]->image_old) }}');"></div>
                                         <p>{{ $recipes[1]->title }}</p>
@@ -287,7 +320,7 @@
                         </div>
                     </div>
                     @if(isset($recipes[2]))
-                        <a href="{{ route('show-single-recipe', ['category' => $recipes[2]->category->slug, 'slug' => $recipes[2]->slug]) }}">
+                        <a href="{{ route('show-single-recipe', ['category' => $recipes[2]->category->slug, 'id' => $recipes[2]->id, 'slug' => $recipes[2]->slug]) }}">
                             <div class="featured-recipe-single">
                                 <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[2]->image_old) }}');"></div>
                                 <p>{{ $recipes[2]->title }}</p>
@@ -297,7 +330,7 @@
                 </div>
                 <div class="col-md-6">
                     @if(isset($recipes[3]))
-                        <a href="{{ route('show-single-recipe', ['category' => $recipes[3]->category->slug, 'slug' => $recipes[3]->slug]) }}">
+                        <a href="{{ route('show-single-recipe', ['category' => $recipes[3]->category->slug, 'id' => $recipes[3]->id, 'slug' => $recipes[3]->slug]) }}">
                             <div class="featured-recipe-single big">
                                 <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[3]->image_old) }}');"></div>
                                 <p>{{ $recipes[3]->title }}</p>
@@ -309,7 +342,7 @@
             <div class="row">
                 <div class="col-md-6">
                     @if(isset($recipes2[0]))
-                        <a href="{{ route('show-single-recipe', ['category' => $recipes2[0]->category->slug, 'slug' => $recipes2[0]->slug]) }}">
+                        <a href="{{ route('show-single-recipe', ['category' => $recipes2[0]->category->slug, 'id' => $recipes2[0]->id, 'slug' => $recipes2[0]->slug]) }}">
                             <div class="featured-recipe-single">
                                 <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes2[0]->image_old) }}');"></div>
                                 <p>{{ $recipes2[0]->title }}</p>
@@ -319,7 +352,7 @@
                 </div>
                 <div class="col-md-6">
                     @if(isset($recipes2[1]))
-                        <a href="{{ route('show-single-recipe', ['category' => $recipes2[1]->category->slug, 'slug' => $recipes2[1]->slug]) }}">
+                        <a href="{{ route('show-single-recipe', ['category' => $recipes2[1]->category->slug, 'id' => $recipes2[1]->id, 'slug' => $recipes2[1]->slug]) }}">
                             <div class="featured-recipe-single">
                                 <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes2[1]->image_old) }}');"></div>
                                 <p>{{ $recipes2[1]->title }}</p>
@@ -337,8 +370,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
-                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
+                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa <br>Eskimko sladoledom"</h3>
+                    <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>
         </div>

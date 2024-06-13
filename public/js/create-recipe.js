@@ -24,7 +24,7 @@ let smallSteps = document.querySelectorAll('.single-small-step');
 let imagesUploaded = [];
 let imagesFinal = [];
 const smallStepsElement = document.querySelector('.small-steps');
-const scrollPosition = smallStepsElement.getBoundingClientRect().top - 100;
+const scrollPosition = smallStepsElement.getBoundingClientRect().top + window.scrollY - 100;
 
 jQuery.ajax({
     headers: {
@@ -46,11 +46,17 @@ if(loginPopup) {
     });
 }
 
+document.body.addEventListener('click', function (event) {
+    if (!productsIngredients.contains(event.target)) {
+        productsIngredients.classList.remove('active');
+    }
+});
+
 const imageControls = `<div class="row image-controls-row">
     <div class="col-3">
         <img class="delete-img" src="${window.origin + '/images/delete-img.png'}" alt="delete img">
     </div>
-    <div class="col-6" style="display: flex; justify-content: center; column-gap: 10px;">
+    <div class="col-6" style="display: flex; justify-content: center; column-gap: 10px; visibility: hidden;">
         <img class="plus-img" src="${window.origin + '/images/zoom-plus-img.png'}" alt="zoom img">
         <img class="minus-img" src="${window.origin + '/images/zoom-minus-img.png'}" alt="zoom img">
         <img class="left-img" src="${window.origin + '/images/left-img.png'}" alt="left img">
@@ -201,10 +207,13 @@ continueBtn.addEventListener('click', function() {
     if(currentStep === 2) {
         document.querySelector('.buttons-cont').classList.remove('one-btn');
     }
-    window.scrollBy({
+    window.scrollTo({
         top: scrollPosition,
         behavior: 'smooth'
-    })
+    });
+
+    console.log(scrollPosition);
+
 });
 
 previousBtn.addEventListener('click', function() {
@@ -391,8 +400,8 @@ createRecipeBtn.addEventListener('click', function(e) {
     loadingModal.show();
 
     let imageDivs = document.querySelectorAll('.single-image-div');
-    processImages(imageDivs)
-        .then(() => {
+    // processImages(imageDivs)
+    //     .then(() => {
             let title = document.querySelector('form input[name="title"]').value;
             let cat = category.value;
             let subCat = subcategory.value;
@@ -421,7 +430,9 @@ createRecipeBtn.addEventListener('click', function(e) {
                     let measure = single.querySelector('select[name="ingredient_measure"]').value;
                     let product = single.querySelector('input[name="ingredient_name"]').dataset.productId;
                     ingredients.push({
-                        title: name + ' ' + qty + ' ' + measure,
+                        title: name,
+                        quantity: qty,
+                        measure: measure,
                         product: product === null? null: product
                     });
                 });
@@ -438,7 +449,9 @@ createRecipeBtn.addEventListener('click', function(e) {
                 let measure = single.querySelector('select[name="ingredient_measure"]').value;
                 let product = single.querySelector('input[name="ingredient_name"]').dataset.productId;
                 independentIngredientsParsed.push({
-                    title: name + ' ' + qty + ' ' + measure,
+                    title: name,
+                    quantity: qty,
+                    measure: measure,
                     product: product === null? null: product
                 });
             });
@@ -488,8 +501,8 @@ createRecipeBtn.addEventListener('click', function(e) {
                 description: description,
                 ingredients: ingredients,
                 steps: stepsForm,
-                imagesFinal: imagesFinal,
-                imagesToDelete: imagesToDelete
+                imagesFinal: imagesUploaded,
+                imagesToDelete: []
             }
 
             jQuery.ajax({
@@ -501,18 +514,18 @@ createRecipeBtn.addEventListener('click', function(e) {
                 contentType: 'application/json',
                 method: 'POST',
                 success: function(response) {
-                    window.location.href = window.origin + '/recepti/' + response.category_slug + '/' + response.recipe_slug;
+                    window.location.href = window.origin + '/recepti/' + response.category_slug + '/' + response.recipe_slug + '/' + response.recipe_id;
                 }
             });
 
-            console.log('All images processed successfully');
-            console.log('Uploaded images:', imagesUploaded);
-            console.log('Final images:', imagesFinal);
-        })
-        .catch(error => {
-            // Handle errors if any of the Promises are rejected
-            console.error('Error processing images:', error);
-        });
+            // console.log('All images processed successfully');
+            // console.log('Uploaded images:', imagesUploaded);
+            // console.log('Final images:', imagesFinal);
+        // })
+        // .catch(error => {
+        //     // Handle errors if any of the Promises are rejected
+        //     console.error('Error processing images:', error);
+        // });
 });
 
 function searchProducts(target) {
@@ -559,7 +572,7 @@ addImageBtn.addEventListener('click', function() {
             method: 'POST',
             success: function(response) {
                 imagesUploaded.push(response);
-                let imagePath = window.origin + '/storage/' + response;
+                let imagePath = window.origin + '/storage/upload/' + response;
                 let newImg = document.createElement('div');
                 newImg.classList.add('single-img');
                 newImg.style.backgroundImage = 'url("' + imagePath + '")';
@@ -577,9 +590,10 @@ addImageBtn.addEventListener('click', function() {
                 plusImg.addEventListener('click', function() {
                     let backgroundSize = newImg.style.backgroundSize;
                     if(backgroundSize === '') {
-                        newImg.style.backgroundSize = '110%';
+                        newImg.style.backgroundSize = 'auto 120%';
                     } else {
-                        newImg.style.backgroundSize = parseInt(backgroundSize.slice(0, -1)) + 10 + '%';
+                        let num = parseInt(backgroundSize.match(/\d+/)) + 20;
+                        newImg.style.backgroundSize = 'auto ' + num + '%';
                     }
                 });
 
@@ -587,9 +601,10 @@ addImageBtn.addEventListener('click', function() {
                 minusImg.addEventListener('click', function() {
                     let backgroundSize = newImg.style.backgroundSize;
                     if(backgroundSize === '') {
-                        newImg.style.backgroundSize = '90%';
+                        newImg.style.backgroundSize = 'auto 80%';
                     } else {
-                        newImg.style.backgroundSize = parseInt(backgroundSize.slice(0, -1)) - 10 + '%';
+                        let num = parseInt(backgroundSize.match(/\d+/)) - 20;
+                        newImg.style.backgroundSize = 'auto ' + num - 20 + '%';
                     }
                 });
 

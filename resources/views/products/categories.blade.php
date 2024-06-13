@@ -7,7 +7,7 @@
             <img src="{{ asset('images/dodaci-za-kolace-m.png') }}" alt="" class="mobile product-mobile">
             <div class="single-category-inner">
                 <h2>Dodaci za kolače</h2>
-                <p>Dodaci koji su generacijama unazad neizostavni saveznici u kuhinji. Za kolače ili peciva, za posebne trenutke ili svakodnevna uživanja, C Slatka tradicija dodaci za kolače su tajna ukusa kojima se cela porodica raduje. Nastavite slatku tradiciju sa našim dodacima za kolače i torte. Otkrijte tajnu savršenog ukusa.</p>
+                <p>Dodaci koji su generacijama unazad neizostavni saveznici u kuhinji. Za kolače ili peciva, za posebne trenutke ili svakodnevna uživanja, C Slatka tradicija dodaci za kolače su tajna ukusa kojima se cela porodica raduje. Nastavi slatku tradiciju sa našim dodacima za kolače i torte. Otkrij tajnu savršenog ukusa.</p>
                 <a href="{{ route('show-single-category', ['slug' => 'dodaci-za-kolace']) }}">Pogledaj više</a>
             </div>
         </div>
@@ -18,7 +18,7 @@
             <img src="{{ asset('images/puding-m.png') }}" alt="" class="mobile product-mobile">
             <div class="single-category-inner">
                 <h2>Puding</h2>
-                <p>Da li ćete ga spremiti kao samostalnu poslasticu ili dodati u kolače i torte? Svejedno je! Puding će vam vratiti osmeh na lice. Odaberite vaš omiljeni ukus C Slatka tradicija pudinga. U njemu uživa cela porodica, a za njegovu pripremu nije potrebno mnogo vremena.</p>
+                <p>Da li ćeš ga spremiti kao samostalnu poslasticu ili dodati u kolače i torte? Svejedno je! Puding će ti vratiti osmeh na lice. Odaberi tvoj omiljeni ukus C Slatka tradicija pudinga. U njemu uživa cela porodica, a za njegovu pripremu nije potrebno mnogo vremena.</p>
                 <a href="{{ route('show-single-category', ['slug' => 'puding']) }}">Pogledaj više</a>
             </div>
         </div>
@@ -40,7 +40,7 @@
             <img src="{{ asset('images/griz-m.png') }}" alt="" class="mobile product-mobile">
             <div class="single-category-inner">
                 <h2>Griz</h2>
-                <p>Za stare i mlade, za one koji vole ukuse detinjstva. Griz možete koristiti kao dodatak jelima, poslasticama ili pripremiti kao samostalan obrok. Dečak sa pakovanja je dobro poznat svima i generacijama unazad je deo našeg detinjstva.</p>
+                <p>Za stare i mlade, za one koji vole ukuse detinjstva. Griz možeš koristiti kao dodatak jelima, poslasticama ili pripremiti kao samostalan obrok. Dečak sa pakovanja je dobro poznat svima i generacijama unazad je deo našeg detinjstva.</p>
                 <a href="{{ route('show-single-product', ['slug' => 'psenicni-griz-400g']) }}">Pogledaj više</a>
             </div>
         </div>
@@ -51,7 +51,7 @@
             <img src="{{ asset('images/oblande-m.png') }}" alt="" class="mobile product-mobile">
             <div class="single-category-inner">
                 <h2>Oblande</h2>
-                <p>Domaći kolač koji se već godinama priprema na čitav niz načina. Bez obzira da ih pripremate za svakodnevnu konzumaciju, slavu ili drugi praznik uspeh i užitak su zagarantovani.</p>
+                <p>Domaći kolač koji se već godinama priprema na čitav niz načina. Bez obzira da ih pripremaš za svakodnevnu konzumaciju, slavu ili drugi praznik uspeh i užitak su zagarantovani.</p>
                 <a href="{{ route('show-single-product', ['slug' => 'oblande']) }}">Pogledaj više</a>
             </div>
         </div>
@@ -62,7 +62,7 @@
             <img src="{{ asset('images/eskimko-m.png') }}" alt="" class="mobile product-mobile">
             <div class="single-category-inner">
                 <h2>Eskimko</h2>
-                <p><strong>Leden, ukusan i osvežavajući.</strong> Lagana i brza priprema i neodoljivi ukusi, čine da svaki dan bude ledeno sladak. Možete ga koristiti u pripremi omiljenih torti i kolača, ali i uz topinge ili voće po želji servirati najukusniji sladoled.</p>
+                <p><strong>Leden, ukusan i osvežavajući.</strong> Lagana i brza priprema i neodoljivi ukusi, čine da svaki dan bude ledeno sladak. Možeš ga koristiti u pripremi omiljenih torti i kolača, ali i uz topinge ili voće po želji servirati najukusniji sladoled.</p>
                 <a href="{{ route('show-single-category', ['slug' => 'eskimko']) }}">Pogledaj više</a>
             </div>
         </div>
@@ -73,7 +73,7 @@
             <img src="{{ asset('images/zimnica-m.png') }}" alt="" class="mobile product-mobile">
             <div class="single-category-inner">
                 <h2>Zimnica</h2>
-                <p>C Slatka tradicija proizvodi su tu da vam budu desna ruka dok pripremate turšije, kisele salate, sokove, marmelade i pekmeze. Vinobran, limuntus ili konzervans pomoći će vam da omiljene ukuse sačuvate za hladne, zimske dane.</p>
+                <p>C Slatka tradicija proizvodi su tu da ti budu desna ruka dok pripremate turšije, kisele salate, sokove, marmelade i pekmeze. Vinobran, limuntus ili konzervans pomoći će ti da omiljene ukuse sačuvate za hladne, zimske dane.</p>
                 <a href="{{ route('show-single-category', ['slug' => 'zimnica']) }}">Pogledaj više</a>
             </div>
         </div>
@@ -85,8 +85,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
-                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
+                    <h3>Učestvuj u konkursu<br>"Voćne torte i <br>kolači"</h3>
+                    <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>
         </div>

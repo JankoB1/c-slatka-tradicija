@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section id="single-product-main">
+    <section id="single-product-main" class="{{ $product->name == 'Pšenični griz' ? 'griz-hero': '' }}" >
         <div class="single-product-main-inner container-space">
             <div class="row">
                 <div class="col-md-6">
@@ -69,14 +69,14 @@
 
     <section id="featured-recipes" class="{{ $product->productCategory->slug == 'zimnica' || $product->product_guide == ''? 'zimnica': '' }}">
         <div class="featured-recipes-inner container-space">
-            <h2>Inspirišite se!</h2>
-            <p>Izaberite kategoriju, pogledajte recepte koje smo izdvojili za vas i upustite se u kulinarsku avanturu.</p>
+            <h2>Inspiriši se!</h2>
+            <p>Pogledaj recepte koji sadrže ovaj proizvod i upusti se u kulinarsku avanturu.</p>
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-6">
                             @if(isset($recipes[0]))
-                                <a href="{{ route('show-single-recipe', ['category' => $recipes[0]->category_slug, 'slug' => $recipes[0]->recipe_slug]) }}">
+                                <a href="{{ route('show-single-recipe', ['category' => $recipes[0]->category_slug, 'id' => $recipes[0]->id, 'slug' => $recipes[0]->recipe_slug]) }}">
                                     <div class="featured-recipe-single mini">
                                         <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[0]->image) }}');"></div>
                                         <p>{{ $recipes[0]->recipe_title }}</p>
@@ -86,7 +86,7 @@
                         </div>
                         <div class="col-md-6">
                             @if(isset($recipes[1]))
-                                <a href="{{ route('show-single-recipe', ['category' => $recipes[1]->category_slug, 'slug' => $recipes[1]->recipe_slug]) }}">
+                                <a href="{{ route('show-single-recipe', ['category' => $recipes[1]->category_slug, 'id' => $recipes[1]->id, 'slug' => $recipes[1]->recipe_slug]) }}">
                                     <div class="featured-recipe-single mini">
                                         <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[1]->image) }}');"></div>
                                         <p>{{ $recipes[1]->recipe_title }}</p>
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                     @if(isset($recipes[2]))
-                        <a href="{{ route('show-single-recipe', ['category' => $recipes[2]->category_slug, 'slug' => $recipes[2]->recipe_slug]) }}">
+                        <a href="{{ route('show-single-recipe', ['category' => $recipes[2]->category_slug, 'id' => $recipes[2]->id, 'slug' => $recipes[2]->recipe_slug]) }}">
                             <div class="featured-recipe-single">
                                 <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[2]->image) }}');"></div>
                                 <p>{{ $recipes[2]->recipe_title }}</p>
@@ -106,7 +106,7 @@
                 </div>
                 <div class="col-md-6">
                     @if(isset($recipes[3]))
-                        <a href="{{ route('show-single-recipe', ['category' => $recipes[3]->category_slug, 'slug' => $recipes[3]->recipe_slug]) }}">
+                        <a href="{{ route('show-single-recipe', ['category' => $recipes[3]->category_slug, 'id' => $recipes[3]->id, 'slug' => $recipes[3]->recipe_slug]) }}">
                             <div class="featured-recipe-single big">
                                 <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[3]->image) }}');"></div>
                                 <p>{{ $recipes[3]->recipe_title }}</p>
@@ -143,8 +143,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
-                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
+                    <h3>Učestvuj u konkursu<br>"Voćne torte i <br>kolači"</h3>
+                    <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>
         </div>

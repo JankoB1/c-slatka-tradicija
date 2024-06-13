@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'Napravi novi recept')
-
 @section('scriptsTop')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -12,8 +10,10 @@
 @endsection
 
 @section('content')
-    <section id="create-recipe-hero">
-
+    
+    <section>
+        <img class="desktop" src="{{ asset('images/add-recipe-hero.jpeg') }}" alt="" style="width: 100%; margin-top: 70px;">
+        <img class="mobile" src="{{ asset('images/add-recipe-herom.jpeg') }}" alt="" style="width: 100%; margin-top: 70px;">
     </section>
 
     <section id="recipe-form">
@@ -147,8 +147,8 @@
                                 </div>
 
                                 <div class="add-ingredients-btns">
-                                    <button class="add-group-ingredient" type="button"><img src="{{ asset('images/add-group.svg') }}" alt="add group">Dodaj grupu sastojaka</button>
-                                    <button class="add-ingredient" type="button"><img src="{{ asset('images/plus.svg') }}" alt="plus">Dodaj sastojak</button>
+                                    <button style="width: 100% !important;" class="add-group-ingredient" type="button"><img src="{{ asset('images/add-group.svg') }}" alt="add group">Dodaj grupu sastojaka</button>
+                                    <button style="display: none !important;" class="add-ingredient" type="button"><img src="{{ asset('images/plus.svg') }}" alt="plus">Dodaj sastojak</button>
                                 </div>
                             </div>
                         </div>
@@ -225,8 +225,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
-                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
+                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa <br>Eskimko sladoledom"</h3>
+                    <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>
         </div>
@@ -241,8 +241,8 @@
                         <div class="row">
                             <div class="col-md-5"></div>
                             <div class="col-md-7">
-                                <p>Da biste pristupili ovoj stranici, potrebno je da budete prijavljeni na našem web sajtu.</p>
-                                <p>Bez brige, ukoliko nemate profil, proces je kratak i vrlo brzo ćete moći da nastavite sa korišćenjem sajta.</p>
+                                <p>Za pristup ovoj stranici, potrebna je prijava na našem web sajtu.</p>
+                                <p>Bez brige, ukoliko nemaš profil, proces je kratak i vrlo brzo ćeš moći da nastaviš sa korišćenjem sajta.</p>
                                 <a href="{{ route('login') }}">Prijavi se</a>
                             </div>
                         </div>

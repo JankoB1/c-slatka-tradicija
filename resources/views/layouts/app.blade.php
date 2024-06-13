@@ -104,28 +104,41 @@
                 <div class="books-popup">
                     <div class="inner"></div>
                     <p class="download-book">Preuzmi knjižicu recepata</p>
+                    <a href="{{ route('show-recipe-book') }}">Saznaj više</a>
                 </div>
             </li>
             <li><span class="num">1</span></li>
         </ul>
+
         <div class="header-buttons">
+            <img class="search-icon-desktop" src="{{ asset('images/search-mobile.svg') }}" alt="" style="width: 15px;">
+            <div class="search-popup">
+                <i class="fa-solid fa-xmark"></i>
+                <input type="search">
+                <input class="search-submit" type="submit" value="Pretraži">
+            </div>
             @guest()
                 <a href="{{ route('login') }}" class="login-btn">Prijavi se</a>
             @endguest
             <a href="{{ route('recipes.create') }}" class="add-recipe">Dodaj recept</a>
             @auth()
-                @if(Auth::user()->image_id != null)
-                    <img src="{{ asset('images/' . Auth::user()->image_id) }}" alt="avatar" class="avatar-img">
+                @if(Auth::user()->image_path != null)
+                    <div style="background-image: url('{{ asset('storage/' . Auth::user()->image_path) }}');" class="avatar-img"></div>
                 @else
-                    <img src="{{ asset('images/avatar.png') }}" alt="avatar" class="avatar-img">
+                    <div style="background-image: url('{{ asset('images/avatar.png') }}');" class="avatar-img"></div>
                 @endif
+{{--                @if(Auth::user()->image_id != null)--}}
+{{--                    <img src="{{ asset('images/' . Auth::user()->image_id) }}" alt="avatar" class="avatar-img">--}}
+{{--                @else--}}
+{{--                    <img src="{{ asset('images/avatar.png') }}" alt="avatar" class="avatar-img">--}}
+{{--                @endif--}}
 
                 <div class="user-popup">
                     <p class="email">{{ Auth::user()->email }}</p>
-                    @if(Auth::user()->image_id != null)
-                        <img src="{{ asset('images/' . Auth::user()->image_id) }}" alt="avatar" class="avatar-img-popup">
+                    @if(Auth::user()->image_path != null)
+                        <div style="background-image: url('{{ asset('storage/' . Auth::user()->image_path) }}');" class="avatar-img-popup"></div>
                     @else
-                        <img src="{{ asset('images/avatar.png') }}" alt="avatar" class="avatar-img-popup">
+                        <div style="background-image: url('{{ asset('images/avatar.png') }}');" class="avatar-img-popup"></div>
                     @endif
                     <p class="hello">Zdravo, {{ Auth::user()->name }}</p>
                     <a href="{{ route('show-profile') }}" class="my-profile-link">Moj profil</a>
@@ -157,55 +170,29 @@
             <img src="{{ asset('images/logo-c.png') }}" alt="c logo">
         </a>
         <div class="right-mob">
-{{--            <img src="{{ asset('images/search-mobile.svg') }}" alt="search" class="search-mobile">--}}
-            <div class="books-mob">
-                <img src="{{ asset('images/bell.svg') }}" alt="bell" class="bell">
-                <span class="num"></span>
-            </div>
-        </div>
-    </div>
+            <img src="{{ asset('images/search-mobile.svg') }}" alt="search" class="search-mobile">
 
-    <div class="books-popup-mobile">
-        <div class="books-popup-mobile-inner">
-            <i class="fa-solid fa-xmark"></i>
-            <h3>Moja knjižica recepata</h3>
-            <div class="books-recipes">
-
-            </div>
-            <button>Preuzmi knjižicu recepata</button>
-        </div>
-    </div>
-
-    <div class="main-header-mobile-inner">
-        <div class="top-row">
-            <a href="{{ route('show-homepage') }}">
-                <img src="{{ asset('images/logo-c.png') }}" alt="c logo">
-            </a>
-            <i class="fa-solid fa-xmark"></i>
-        </div>
-        <div class="btns-box">
             @guest()
-                <a href="{{ route('login') }}">Prijavi se</a>
+                <a class="mobile-ps" href="{{ route('login') }}">Prijavi se</a>
             @endguest
                 @auth()
                     <div class="user-info-mobile-row">
-                        @if(Auth::user()->image_id != null)
-                            <img src="{{ asset('images/' . Auth::user()->image_id) }}" alt="avatar" class="avatar-img">
+                        @if(Auth::user()->image_path != null)
+                            <div style="background-image: url('{{ asset('storage/' . Auth::user()->image_path) }}');" class="avatar-img"></div>
                         @else
-                            <img src="{{ asset('images/avatar.png') }}" alt="avatar" class="avatar-img">
+                            <div style="background-image: url('{{ asset('images/avatar.png') }}');" class="avatar-img"></div>
                         @endif
-                        <p class="hello">{{ Auth::user()->name }} {{ Auth::user()->name }}</p>
-                        <img src="{{ asset('images/arrow-mobile-bottom.svg') }}" alt="arrow down">
                     </div>
+
 
                     <div class="user-popup-mobile">
                         <div class="user-popup active">
                             <div class="user-popup-box">
                                 <i class="fa-solid fa-xmark"></i>
-                                @if(Auth::user()->image_id != null)
-                                    <img src="{{ asset('images/' . Auth::user()->image_id) }}" alt="avatar" class="avatar-img-popup">
+                                @if(Auth::user()->image_path != null)
+                                    <div style="background-image: url('{{ asset('storage/' . Auth::user()->image_path) }}');" class="avatar-img-popup"></div>
                                 @else
-                                    <img src="{{ asset('images/avatar.png') }}" alt="avatar" class="avatar-img-popup">
+                                    <div style="background-image: url('{{ asset('images/avatar.png') }}');" class="avatar-img-popup"></div>
                                 @endif
                                 <p class="hello2">{{ Auth::user()->name }} {{ Auth::user()->name }}</p>
                                 <p class="email">{{ Auth::user()->email }}</p>
@@ -228,8 +215,87 @@
                         </div>
                     </div>
                 @endauth
-{{--            <a href="{{ route('recipes.create') }}">Dodaj recept</a>--}}
+
+{{--            <div class="books-mob">--}}
+{{--                <img src="{{ asset('images/bell.svg') }}" alt="bell" class="bell">--}}
+{{--                <span class="num"></span>--}}
+{{--            </div>--}}
         </div>
+    </div>
+
+    <div class="search-popup-mobile">
+        <div class="search-popup-mobile-inner">
+            <i class="fa-solid fa-xmark"></i>
+            <input class="mobile-search-input" type="search">
+            <input class="search-submit" type="submit" value="Pretraži">
+        </div>
+    </div>
+
+{{--    <div class="books-popup-mobile">--}}
+{{--        <div class="books-popup-mobile-inner">--}}
+{{--            <i class="fa-solid fa-xmark"></i>--}}
+{{--            <h3>Moja knjižica recepata</h3>--}}
+{{--            <div class="books-recipes">--}}
+
+{{--            </div>--}}
+{{--            <button>Preuzmi knjižicu recepata</button>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+
+    <div class="main-header-mobile-inner">
+        <div class="top-row">
+            <a href="{{ route('show-homepage') }}">
+                <img src="{{ asset('images/logo-c.png') }}" alt="c logo">
+            </a>
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+{{--        <div class="btns-box">--}}
+{{--            @guest()--}}
+{{--                <a href="{{ route('login') }}">Prijavi se</a>--}}
+{{--            @endguest--}}
+{{--                @auth()--}}
+{{--                    <div class="user-info-mobile-row">--}}
+{{--                        @if(Auth::user()->image_path != null)--}}
+{{--                            <div style="background-image: url('{{ asset('storage/' . Auth::user()->image_path) }}');" class="avatar-img"></div>--}}
+{{--                        @else--}}
+{{--                            <div style="background-image: url('{{ asset('images/avatar.png') }}');" class="avatar-img"></div>--}}
+{{--                        @endif--}}
+{{--                        <p class="hello">{{ Auth::user()->name }} {{ Auth::user()->name }}</p>--}}
+{{--                        <img src="{{ asset('images/arrow-mobile-bottom.svg') }}" alt="arrow down">--}}
+{{--                    </div>--}}
+
+{{--                    <div class="user-popup-mobile">--}}
+{{--                        <div class="user-popup active">--}}
+{{--                            <div class="user-popup-box">--}}
+{{--                                <i class="fa-solid fa-xmark"></i>--}}
+{{--                                @if(Auth::user()->image_path != null)--}}
+{{--                                    <div style="background-image: url('{{ asset('storage/' . Auth::user()->image_path) }}');" class="avatar-img-popup"></div>--}}
+{{--                                @else--}}
+{{--                                    <div style="background-image: url('{{ asset('images/avatar.png') }}');" class="avatar-img-popup"></div>--}}
+{{--                                @endif--}}
+{{--                                <p class="hello2">{{ Auth::user()->name }} {{ Auth::user()->name }}</p>--}}
+{{--                                <p class="email">{{ Auth::user()->email }}</p>--}}
+{{--                                <a href="{{ route('show-profile') }}" class="my-profile-link">Moj profil</a>--}}
+{{--                            </div>--}}
+{{--                            <div class="list">--}}
+{{--                                <a href="{{ route('show-profile') }}" class="single-list-item">--}}
+{{--                                    <p>Objavljeni recepti</p>--}}
+{{--                                    <img src="{{ asset('images/or-icon.svg') }}" alt="">--}}
+{{--                                </a>--}}
+{{--                                <a href="{{ route('show-profile') }}?saved" class="single-list-item">--}}
+{{--                                    <p>Sačuvani recepti</p>--}}
+{{--                                    <img src="{{ asset('images/sr-icon.svg') }}" alt="">--}}
+{{--                                </a>--}}
+{{--                                <a href="/logout" class="single-list-item">--}}
+{{--                                    <p>Odjavi se</p>--}}
+{{--                                    <img src="{{ asset('images/os-icon.svg') }}" alt="">--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                @endauth--}}
+{{--            <a href="{{ route('recipes.create') }}">Dodaj recept</a>--}}
+{{--        </div>--}}
         <div class="mobile-main-links">
             <div class="single-mobile-link">
                 <a href="{{ route('show-about') }}">O nama <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
@@ -382,7 +448,22 @@
                 <a href="{{ route('show-competition') }}">Nagradni konkursi <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
             </div>
             <div class="single-mobile-link">
-                <a href="{{ route('show-recipe-book') }}">Moja knjižica recepata <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
+                <a class="has-dropdown-mobile" href="{{ route('show-recipe-book') }}">Moja knjižica recepata <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
+                <div class="dropdown-mobile">
+                    <div class="single-mobile-link">
+                        <a class="single-mobile-link-back" href="#"><img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"> Moja knjižica recepata</a>
+                    </div>
+                    <div class="single-mobile-link">
+                        <a href="{{ route('show-recipe-book') }}">Pogledaj stranicu <img src="{{ asset('images/mobile-link.svg') }}" alt="arrow mobile"></a>
+                    </div>
+                    <div class="books-mobile-inner">
+                        <h3 style="padding-top: 100px;">Moja knjižica recepata</h3>
+                        <div class="books-recipes">
+
+                        </div>
+                        <button>Preuzmi knjižicu recepata</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -424,7 +505,7 @@
         document.querySelector('.main-header-mobile-inner').classList.remove('active');
     });
 
-    document.querySelector('.main-header-mobile-inner .user-info-mobile-row img:last-child').addEventListener('click', function() {
+    document.querySelector('.user-info-mobile-row').addEventListener('click', function() {
         document.querySelector('.user-popup-mobile').classList.add('active');
     });
 
@@ -473,16 +554,17 @@
     if(recipeIds.length !== 0) {
         document.querySelectorAll('span.num')[0].innerText = recipeIds.length;
         document.querySelectorAll('span.num')[0].classList.add('active');
-        document.querySelectorAll('span.num')[1].innerText = recipeIds.length;
-        document.querySelectorAll('span.num')[1].classList.add('active');
+        document.querySelector('.books-mobile-inner').classList.add('active');
+        // document.querySelectorAll('span.num')[1].innerText = recipeIds.length;
+        // document.querySelectorAll('span.num')[1].classList.add('active');
     }
 
     let bookRecipeLink = document.querySelector('.book-recipe-link a');
     let bookRecipeDownload = document.querySelector('.download-book');
     let booksPopup = document.querySelector('.books-popup .inner');
-    let booksMobilePopup = document.querySelector('.books-popup-mobile .books-recipes');
+    let booksMobilePopup = document.querySelector('.books-mobile-inner .books-recipes');
     let booksMobileToggle = document.querySelector('.books-mob');
-    let bookRecipeDownloadMobile = document.querySelector('.books-popup-mobile button');
+    let bookRecipeDownloadMobile = document.querySelector('.books-mobile-inner button');
 
     bookRecipeDownload.addEventListener('click', function(e) {
         e.preventDefault();
@@ -521,15 +603,15 @@
         }
     });
 
-    booksMobileToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        booksMobilePopup.parentElement.parentElement.classList.add('active');
-    });
+    // booksMobileToggle.addEventListener('click', function(e) {
+    //     e.preventDefault();
+    //     booksMobilePopup.parentElement.parentElement.classList.add('active');
+    // });
 
-    document.querySelector('.books-popup-mobile i').addEventListener('click', function(e) {
-        e.preventDefault();
-        booksMobilePopup.parentElement.parentElement.classList.remove('active');
-    });
+    // document.querySelector('.books-popup-mobile i').addEventListener('click', function(e) {
+    //     e.preventDefault();
+    //     booksMobilePopup.parentElement.parentElement.classList.remove('active');
+    // });
 
     jQuery.ajax({
         headers: {
@@ -548,7 +630,7 @@
             });
 
             let xs = document.querySelectorAll('.books-popup p i');
-            let xsMobile = document.querySelectorAll('.books-popup-mobile p i');
+            let xsMobile = document.querySelectorAll('.books-mobile-inner p i');
             xs.forEach((x) => {
                 x.addEventListener('click', function() {
                     let addToBookCheck = document.querySelector('.add-to-book');
@@ -563,7 +645,7 @@
                         document.querySelectorAll('span.num')[0].innerText = recipeIds.length;
                         document.querySelectorAll('span.num')[1].innerText = recipeIds.length;
 
-                        document.querySelector('.books-popup-mobile p[data-recipe-id="' + id + '"]').remove();
+                        document.querySelector('.books-mobile-inner p[data-recipe-id="' + id + '"]').remove();
                     }
                 });
             });
@@ -587,6 +669,42 @@
                 });
             });
         }
+    });
+</script>
+<script>
+    let searchIcon = document.querySelector('img.search-icon-desktop');
+    let searchPopup = document.querySelector('.search-popup');
+    searchIcon.addEventListener('click', function() {
+        searchPopup.classList.toggle('active');
+    });
+
+    let searchClose = document.querySelector('.search-popup i');
+    searchClose.addEventListener('click', function() {
+        searchPopup.classList.remove('active');
+    });
+
+    let searchSubmit = document.querySelector('input.search-submit');
+    let searchField = document.querySelector('.search-popup input');
+    searchSubmit.addEventListener('click', function() {
+        window.location.href = window.origin + '/pretraga?keyword=' + searchField.value;
+    });
+</script>
+<script>
+    let searchIconMobile = document.querySelector('img.search-mobile');
+    let searchPopupMobile = document.querySelector('.search-popup-mobile');
+    searchIconMobile.addEventListener('click', function() {
+        searchPopupMobile.classList.toggle('active');
+    });
+
+    let searchCloseMobile = document.querySelector('.search-popup-mobile i');
+    searchCloseMobile.addEventListener('click', function() {
+        searchPopupMobile.classList.remove('active');
+    });
+
+    let searchSubmitMobile = document.querySelector('.search-popup-mobile input.search-submit');
+    let searchFieldMobile = document.querySelector('.search-popup-mobile input');
+    searchSubmitMobile.addEventListener('click', function() {
+        window.location.href = window.origin + '/pretraga?keyword=' + searchFieldMobile.value;
     });
 </script>
 @yield('scriptsBottom')
