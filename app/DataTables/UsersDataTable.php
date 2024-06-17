@@ -2,15 +2,12 @@
 
 namespace App\DataTables;
 
-use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class UsersDataTable extends DataTable
@@ -23,8 +20,27 @@ class UsersDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
+            ->filterColumn('name', function($query, $keyword) {
+                $sql = "CONCAT(users.name, ' ', users.surname) like ?";
+                $query->whereRaw($sql, ["%{$keyword}%"]);
+            })
             ->addColumn('name', function(User $user) {
                 return $user->name . ' ' . $user->surname;
+            })
+            ->editColumn('email', function(User $user) {
+                return $user->email;
+            })
+            ->addColumn('phone', function(User $user) {
+                return $user->phone;
+            })
+            ->addColumn('city_2', function(User $user) {
+                return $user->city_2;
+            })
+            ->addColumn('address', function(User $user) {
+                return $user->address;
+            })
+            ->addColumn('zip', function(User $user) {
+                return $user->zip;
             })
             ->setRowId('id');
     }
@@ -34,7 +50,7 @@ class UsersDataTable extends DataTable
      */
     public function query(User $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->newQuery()->select(['users.*']);
     }
 
     /**
@@ -65,8 +81,8 @@ class UsersDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('name')->title('Ime i prezime'),
-            Column::make('email')->title('Email'),
+            Column::make('name')->title('Ime i prezime')->searchable(true),
+            Column::make('email')->title('Email')->searchable(true),
             Column::make('phone')->title('Telefon'),
             Column::make('city_2')->title('Grad'),
             Column::make('address')->title('Adresa'),

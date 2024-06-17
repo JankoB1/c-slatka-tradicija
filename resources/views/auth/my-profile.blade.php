@@ -11,10 +11,11 @@
         <div class="my-profile-main-inner container-space">
             <div class="row">
                 <div class="col-md-2">
-                    @if(Auth::user()->image_id != null)
-                        <img src="{{ asset('images/' . Auth::user()->image_id) }}" alt="avatar" class="profile-img">
+                    <input type="file" style="display: none;" class="image-input">
+                    @if(Auth::user()->image_path != null)
+                        <div style="background-image: url('{{ asset('storage/' . Auth::user()->image_path) }}');" class="profile-img"></div>
                     @else
-                        <img src="{{ asset('images/avatar.png') }}" alt="avatar" class="profile-img">
+                        <div style="background-image: url('{{ asset('images/avatar.png') }}');" class="profile-img"></div>
                     @endif
                 </div>
                 <div class="col-md-10">
@@ -71,13 +72,13 @@
                             @foreach(Auth::user()->recipes as $recipe)
                                 <div class="col-md-4">
                                     <div class="single-recipe-preview">
-                                        <a href="{{ route('show-single-recipe', ['category' => $recipe->category->slug, 'slug' => $recipe->slug]) }}">
+                                        <a href="{{ route('show-single-recipe', ['category' => $recipe->category->slug, 'id' => $recipe->id, 'slug' => $recipe->slug]) }}">
                                             @if($recipe->old_recipe == 1)
                                                 <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $recipe->image_old) }}');">
 
                                                 </div>
                                             @else
-                                                <div class="recipe-preview-img" style="background-image: url('{{ isset($recipe->images[0]) ? asset('storage/upload/' . $recipe->images[0]->path): '' }}');">
+                                                <div class="recipe-preview-img" style="background-image: url('{{ isset($recipe->images[0]) ? asset('storage/upload/' . $recipe->images[0]->path): asset('images/recipe-no-image.png') }}');">
 
                                                 </div>
                                             @endif
@@ -91,7 +92,7 @@
                             @foreach($savedRecipes as $saved)
                                 <div class="col-md-4">
                                     <div class="single-recipe-preview">
-                                        <a href="{{ route('show-single-recipe', ['category' => $saved->recipe->category->slug, 'slug' => $saved->recipe->slug]) }}">
+                                        <a href="{{ route('show-single-recipe', ['category' => $saved->recipe->category->slug, 'id' => $saved->recipe->id, 'slug' => $saved->recipe->slug]) }}">
                                             @if($saved->recipe->old_recipe == 1)
                                                 <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $saved->recipe->image_old) }}');">
 

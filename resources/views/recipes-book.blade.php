@@ -3,7 +3,8 @@
 @section('content')
 
     <section>
-        <img src="{{ asset('images/knjiga-recepata-hero.png') }}" alt="" style="width: 100%; margin-top: 70px;">
+        <img class="desktop" src="{{ asset('images/knjiga-recepata-herod.jpeg') }}" alt="" style="width: 100%; margin-top: 70px;">
+        <img class="mobile" src="{{ asset('images/knjiga-recepata-hero.png') }}" alt="" style="width: 100%; margin-top: 70px;">
     </section>
 
     <section id="recipe-book-content">
@@ -74,7 +75,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
+                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa <br>Eskimko sladoledom"</h3>
                     <a href="{{ route('show-competition') }}">Pošaljite recept</a>
                 </div>
             </div>

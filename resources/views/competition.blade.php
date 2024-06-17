@@ -28,10 +28,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <h2>Pošaljite recept</h2>
-                    <h4>Učestvujte u konkursu "Uskršnje torte i kolači"</h4>
-                    <p>Uslov za učešće u konkursu jeste slanje recepata za Uskršnje torte i kolače, koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo vas da imate u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 30. aprila 2024. godine.
+                    <h4>Učestvujte u konkursu "Torte i kolači sa Eskimko sladoledom"</h4>
+                    <p>Uslov za učešće u konkursu jeste slanje recepata za Torte i kolače sa Eskimko sladoledom, koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo vas da imate u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 30. juna 2024. godine.
 
-                        <br><br>Opšte uslove i pravila konkursa možete pogledati na strani <a href="{{ route('show-privacy-note') }}">Uslovi i pravila konkursa</a> Uskršnje torte i kolači.  Odabrane recepte sa prethodnih konkursa možete pogledati na strani Odabrani recepti.</p>
+                        <br><br>Opšte uslove i pravila konkursa možete pogledati na strani <a href="{{ route('show-competition-rules') }}">Uslovi i pravila konkursa</a> Torte i kolači sa Eskimko sladoledom.  Odabrane recepte sa prethodnih konkursa možete pogledati na strani Odabrani recepti.</p>
                 </div>
                 <div class="col-md-6">
                     <img class="desktop" src="{{ asset('images/competitors-final-img-min.jpeg') }}" alt="competition cookies" style="border-radius: 8px;">
@@ -159,8 +159,8 @@
                                 </div>
 
                                 <div class="add-ingredients-btns">
-                                    <button class="add-group-ingredient" type="button"><img src="{{ asset('images/add-group.svg') }}" alt="add group">Dodaj grupu sastojaka</button>
-                                    <button class="add-ingredient" type="button"><img src="{{ asset('images/plus.svg') }}" alt="plus">Dodaj sastojak</button>
+                                    <button style="width: 100% !important;" class="add-group-ingredient" type="button"><img src="{{ asset('images/add-group.svg') }}" alt="add group">Dodaj grupu sastojaka</button>
+                                    <button style="display: none !important;" class="add-ingredient" type="button"><img src="{{ asset('images/plus.svg') }}" alt="plus">Dodaj sastojak</button>
                                 </div>
                             </div>
                         </div>
@@ -231,13 +231,48 @@
         </div>
     </section>
 
+    @if(count($winners) > 0)
+        <section id="winners">
+            <div class="winners-inner container-space">
+                <h2>Odabrani recepti</h2>
+                @foreach($groupedRecipes as $key => $group)
+                <div class="single-winners">
+                    <div class="winners-btns">
+                        <p>{{ \Illuminate\Support\Facades\DB::table('tin_article')->where('inArticleID', $key)->first() == null? '': \Illuminate\Support\Facades\DB::table('tin_article')->where('inArticleID', $key)->first()->inTitle }}</p>
+                    </div>
+                    <div class="row">
+                        @foreach($group as $recipe)
+                            <div class="col-md-3">
+                                <a class="single-recipe-link" href="{{ route('show-single-recipe', ['id' => $recipe->id, 'category' => $recipe->category->slug, 'slug' => $recipe->slug]) }}">
+                                    <div class="single-recipe-preview">
+                                        @if(isset($recipe->images[0]) && $recipe->old_recipe == 0)
+                                            <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $recipe->images[0]->path) }}')">
+
+                                            </div>
+                                        @elseif($recipe->old_recipe == 1)
+                                            <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $recipe->image_old) }}')">
+
+                                            </div>
+                                        @endif
+                                        <p>{{ $recipe->title }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endforeach
+            </div>
+        </section>
+    @endif
+
     <section id="homepage-banner2">
         <img class="mobile" src="{{ asset('images/homepage-banner2-mobile.png') }}" alt="homepage banner2">
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
+                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa <br>Eskimko sladoledom"</h3>
                     <a href="{{ route('show-competition') }}">Pošaljite recept</a>
                 </div>
             </div>
@@ -253,8 +288,8 @@
                         <div class="row">
                             <div class="col-md-5"></div>
                             <div class="col-md-7">
-                                <p>Da biste pristupili ovoj stranici, potrebno je da budete prijavljeni na našem web sajtu.</p>
-                                <p>Bez brige, ukoliko nemate profil, proces je kratak i vrlo brzo ćete moći da nastavite sa korišćenjem sajta.</p>
+                                <p>Za pristup ovoj stranici, potrebna je prijava na našem web sajtu.</p>
+                                <p>Bez brige, ukoliko nemaš profil, proces je kratak i vrlo brzo ćeš moći da nastaviš sa korišćenjem sajta.</p>
                                 <a href="{{ route('login') }}">Prijavi se</a>
                             </div>
                         </div>

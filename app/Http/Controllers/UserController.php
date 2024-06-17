@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\UsersDataTable;
+use App\Models\UserRecipe;
 use App\Repositories\UserRepository;
 use App\Services\RecipeService;
 use Illuminate\Http\Request;
@@ -33,6 +35,13 @@ class UserController extends Controller
 
     public function editContactDetails(Request $request) {
         $this->userRepository->updateProfileDetailsContact($request);
+    }
+
+    public function showUsersList(UsersDataTable $dataTable) {
+        if(Auth::user() == null || Auth::user()->admin == 0) {
+            return redirect()->route('show-homepage');
+        }
+        return $dataTable->render('auth.admin.users-list');
     }
 
 }

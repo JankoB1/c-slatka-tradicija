@@ -10,12 +10,9 @@
 
 @section('content')
 
-    <section id="about-hero" class="mobile">
-
-    </section>
-
-    <section class="desktop">
-        <img src="{{ asset('images/o-nama-final-desk.png') }}" alt="" style="width: 100%; margin-top: 70px;">
+    <section>
+        <img class="desktop" src="{{ asset('images/o-nama-final-desk.png') }}" alt="" style="width: 100%; margin-top: 70px;">
+        <img class="mobile" src="{{ asset('images/about-hero-mobile.png') }}" alt="" style="width: 100%; margin-top: 70px;">
     </section>
 
     <div id="about">
@@ -57,8 +54,8 @@
 
     <section id="action" class="about-action">
         <div class="action-inner container-space">
-            <h2>Inspirišite se!</h2>
-            <p>Izaberite kategoriju, pogledajte recepte koje smo izdvojili za vas i upustite se u kulinarsku avanturu.</p>
+            <h2>Inspiriši se!</h2>
+            <p>Izaberi kategoriju, pogledaj recepte koje smo izdvojili za tebe i upusti se u kulinarsku avanturu.</p>
             <div class="categories-banners row">
                 <div class="col-md-6">
                     <div class="single-category-banner">

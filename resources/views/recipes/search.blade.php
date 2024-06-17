@@ -1,18 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <section id="recipes-category-banner" style="background-image: url('{{ asset('images/' . $category->image) }}')">
+    <section>
+        <img class="desktop" src="{{ asset('images/category-single1.png') }}" alt="" style="width: 100%; margin-top: 70px;">
+        <img class="mobile" src="{{ asset('images/recipes-mobile.png') }}" alt="" style="width: 100%; margin-top: 70px;">
     </section>
 
     <section id="recipes-category-content">
         <div class="recipes-category-content container-space">
             <a href="{{ route('show-all-recipes') }}" class="all-categories-link"><img src="{{ asset('images/left-arrow.svg') }}" alt="left arrow">Sve kategorije recepata</a>
-            <h1>{{ $category->name }}</h1>
+            <h1>Pretraga: {{ $keyword }}</h1>
             <a href="{{ route('recipes.create') }}" class="mobile-send-cta mobile">Pošaljite recept</a>
             <div class="row">
                 @foreach($recipes as $recipe)
                     <div class="col-md-4">
-                        <a class="single-recipe-link" href="{{ route('show-single-recipe', ['slug' => $recipe->slug, 'category' => $category->slug]) }}">
+                        <a class="single-recipe-link" href="{{ route('show-single-recipe', ['id' => $recipe->id, 'category' => $recipe->category->slug, 'slug' => $recipe->slug]) }}">
                             <div class="single-recipe-preview">
                                 @if(isset($recipe->images[0]) && $recipe->old_recipe == 0)
                                     <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $recipe->images[0]->path) }}')">

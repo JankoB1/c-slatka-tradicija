@@ -1,6 +1,9 @@
 let save1 = document.querySelector('.save-1');
 let save2 = document.querySelector('.save-2');
 
+let profileImg = document.querySelector('.profile-img');
+let imageInput = document.querySelector('.image-input');
+
 save1.addEventListener('click', function() {
     let about = document.querySelector('textarea').value;
     let birthdate = document.querySelector('input#birthdate').value;
@@ -58,6 +61,35 @@ save2.addEventListener('click', function() {
         method: 'POST',
         success: function(response) {
             location.reload();
+        }
+    });
+});
+
+profileImg.addEventListener('click', function() {
+    imageInput.click();
+});
+
+imageInput.addEventListener('change', function(e) {
+    let file = e.target.files[0];
+    let formData = new FormData();
+    formData.append('image', file);
+
+    let csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
+
+    jQuery.ajax({
+        url: '/upload-image-profile',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        },
+        success: function(data) {
+            profileImg.style.backgroundImage = "url('" + window.origin +  "/storage/" + data + "')";
+        },
+        error: function(error) {
+            console.error('Error uploading image:', error);
         }
     });
 });

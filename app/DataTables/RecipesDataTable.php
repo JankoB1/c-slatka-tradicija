@@ -25,6 +25,16 @@ class RecipesDataTable extends DataTable
             ->addColumn('title', function(Recipe $recipe) {
                 return $recipe->title;
             })
+            ->addColumn('email', function(Recipe $recipe) {
+                if($recipe->user_recipe != null) {
+                    return $recipe->user_recipe->email;
+                } else {
+                    return '';
+                }
+            })
+            ->editColumn('created_at', function(Recipe $recipe) {
+                return $recipe->created_at;
+            })
             ->addColumn('action', function (Recipe $recipe) {
                 return view('auth.admin.columns.action', compact('recipe'));
             })
@@ -36,7 +46,7 @@ class RecipesDataTable extends DataTable
      */
     public function query(Recipe $model): QueryBuilder
     {
-        return $model->newQuery()->where('deleted_at', '=', null);
+        return $model->newQuery()->where('deleted_at', '=', null)->orderBy('id', 'desc');
     }
 
     /**
@@ -60,6 +70,8 @@ class RecipesDataTable extends DataTable
     {
         return [
             Column::make('title'),
+            Column::make('email')->title('Korisnik'),
+            Column::make('created_at')->name('created_at')->title('Datum objavljivanja'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

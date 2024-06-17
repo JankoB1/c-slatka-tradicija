@@ -41,6 +41,8 @@ class IngredientRepository
                         'recipe_id' => $recipe_id,
                         'product_id' => isset($item['product'])? $item['product']: null,
                         'title' => $item['title'],
+                        'quantity' => $item['quantity'],
+                        'measure' => $item['measure'],
                         'group' => $ingredient_group->id,
                     ]);
                 }
@@ -51,6 +53,8 @@ class IngredientRepository
                     'recipe_id' => $recipe_id,
                     'product_id' => isset($item['product'])? $item['product']: null,
                     'title' => $item['title'],
+                    'quantity' => $item['quantity'],
+                    'measure' => $item['measure'],
                     'group' => null,
                 ]);
             }
@@ -59,7 +63,6 @@ class IngredientRepository
             Log::error('Can\'t add ingredients: ' . $exception->getMessage());
             return null;
         }
-
 
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\RecipesDataTable;
 use App\Models\Category;
 use App\Models\Step;
 use App\Repositories\ProductRepository;
@@ -66,8 +67,8 @@ class RecipeController extends Controller
         return view('recipes.retrieve', ['recipes' => $recipes]);
     }
 
-    public function retrieveSingleRecipe(string $category, string $slug) {
-        $recipe = $this->recipeService->getRecipeBySlug($slug);
+    public function retrieveSingleRecipe(string $category, string $slug, string $id) {
+        $recipe = Recipe::find($id);
         if ($recipe == null)
             return redirect()->route('show-all-recipes');
 
@@ -109,7 +110,7 @@ class RecipeController extends Controller
         $ingredientGroups = $this->ingredientGroupService->getGroupsByRecipeId($recipe->id);
         $stepGroups = $this->stepGroupService->getGroupsByRecipeId($recipe->id);
         //$products = $this->productRepository->getProductByRecipeId($recipe->id);
-        //dd($ingredientGroups);
+//        dd($ingredientGroups);
         return view('auth.edit-recipe', compact('recipe', 'ingredientGroups', 'stepGroups'));
     }
 
@@ -133,7 +134,8 @@ class RecipeController extends Controller
             $this->imageService->removeImage($request);
             $data = [
                 'recipe_slug' => $recipe->slug,
-                'category_slug' => $recipe->category->slug
+                'category_slug' => $recipe->category->slug,
+                'recipe_id' => $recipe->id
             ];
             DB::commit();
             return response($data);
@@ -166,7 +168,11 @@ class RecipeController extends Controller
 
     public function showRecipeCategory($slug) {
         $category = Category::where('slug', '=', $slug)->get()->first();
-        $recipes = $category->recipes()->where('active', '=', 'T')->orderBy('created_at', 'desc')->paginate(21);
+        $recipes = $category->recipes()
+            ->where('active', '=', 'T')
+            ->orderByRaw("CASE WHEN image_old = 'recipe-no-image.png' THEN 2 WHEN image_old = 'c-slatka-tradicija-recepti-2.jpg' THEN 1 ELSE 0 END")
+            ->orderBy('id', 'desc')
+            ->paginate(21);
         return view('recipes.category', compact('category', 'recipes'));
     }
 
@@ -175,7 +181,16 @@ class RecipeController extends Controller
     }
 
     public function showCompetition() {
-        return view('competition');
+        $winners = Recipe::where('winner', '=', 1)->get();
+        $separated = Recipe::whereNotNull('contest_id')
+            ->where('contest_id', '!=', 0)
+            ->whereNull('deleted_at')
+            ->get();
+        $sortedGroupedRecipes = $separated->groupBy('contest_id');
+        $groupedRecipes = $sortedGroupedRecipes->sortByDesc(function ($group, $key) {
+            return $key;
+        });
+        return view('competition', compact('winners', 'groupedRecipes'));
     }
 
     public function showContact() {
@@ -199,16 +214,52 @@ class RecipeController extends Controller
         return view('privacy-policy');
     }
 
+    public function showCompetitionRules() {
+        return view('competition-rules');
+    }
+
     public function softDelete($recipe_id) {
         $this->recipeService->softDelete($recipe_id);
     }
 
-    public function showAdminList() {
-        $recipes = Recipe::where('deleted_at', '=', null)->get();
-        return view('auth.admin.list', compact('recipes'));
+    public function hideRecipe($id) {
+        $recipe = Recipe::find($id);
+        $recipe->active = 'F';
+        $recipe->save();
     }
 
-    public function searchRecipe($request) {
-        return $this->recipeService->searchRecipe($request->keyword);
+    public function showRecipe($id) {
+        $recipe = Recipe::find($id);
+        $recipe->active = 'T';
+        $recipe->save();
+    }
+
+    public function winRecipe($id) {
+        $recipe = Recipe::find($id);
+        $recipe->contest_id = 2223;
+        $recipe->save();
+    }
+
+    public function winRecipeDel($id) {
+        $recipe = Recipe::find($id);
+        $recipe->contest_id = 0;
+        $recipe->save();
+    }
+
+    public function showAdminList(RecipesDataTable $dataTable) {
+        if(Auth::user() == null || Auth::user()->admin == 0) {
+            return redirect()->route('show-homepage');
+        }
+//        $recipes = Recipe::where('deleted_at', '=', null)
+//            ->orderByDesc('id')
+//            ->get();
+//        return view('auth.admin.list', compact('recipes'));
+        return $dataTable->render('auth.admin.list');
+    }
+
+    public function showSearchRecipe(Request $request) {
+        $keyword = $request->keyword;
+        $recipes = $this->recipeService->searchRecipe($keyword);
+        return view('recipes.search', compact( 'recipes', 'keyword'));
     }
 }

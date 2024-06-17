@@ -9,65 +9,23 @@
 @endsection
 
 @section('content')
-    <table id="recipes-table">
-        <thead>
-            <tr>
-                <th>Naziv recepta</th>
-                <th>Akcije</th>
-                <th>Email</th>
-                <th>Datum kreiranja</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($recipes as $recipe)
-                <tr>
-                    <td>{{ $recipe->title }}</td>
-                    <td data-recipe-id="{{ $recipe->id }}">
-                        <span class="delete-span" style="cursor: pointer; text-decoration: underline; color: red;">Izbriši</span>
-                        @if($recipe->category != null)
-                            <a target="_blank" href="{{ route('show-single-recipe', ['category' => $recipe->category->slug, 'slug' => $recipe->slug]) }}">Pogledaj</a>
-                        @endif
-                    </td>
-                    <td>{{ $recipe->created_at }}</td>
-                    <td>
-
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <div class="admin-dashboard container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <ul class="admin-menu">
+                    <li class="active"><a href="{{ route('show-admin-list') }}">Recepti</a></li>
+                    <li><a href="{{ route('show-users-list') }}">Korisnici</a></li>
+                </ul>
+            </div>
+            <div class="col-md-10">
+                <div class="table-responsive">
+                    {{ $dataTable->table() }}
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scriptsBottom')
-    <script>
-        let table = new DataTable('#recipes-table', {
-            responsive: true,
-            pagingType: 'simple_numbers',
-            columnDefs: [{
-                targets: 3,
-                orderable: true
-            }],
-            order: [[3, 'desc']]
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            document.querySelectorAll('#recipes-table tbody .delete-span').forEach((span) => {
-                span.addEventListener('click', function(event) {
-                    let recipeId = span.parentElement.dataset.recipeId;
-                    fetch(`/recipes/remove-recipe/${recipeId}`, {
-                        method: 'DELETE',
-                        headers: {
-                            'X-CSRF-TOKEN': csrfToken,
-                            'Content-Type': 'application/json'
-                        },
-                    }).then(response => {
-                        span.parentElement.parentElement.remove();
-                    }).catch(error => {
-                        console.error('Error deleting recipe:', error);
-                    });
-                });
-            })
-        });
-    </script>
+    {{ $dataTable->scripts() }}
 @endsection

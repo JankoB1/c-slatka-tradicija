@@ -11,10 +11,11 @@
         <div class="my-profile-main-inner container-space">
             <div class="row">
                 <div class="col-md-2">
-                    @if(Auth::user()->image_id != null)
-                        <img src="{{ asset('images/' . Auth::user()->image_id) }}" alt="avatar" class="profile-img">
+                    <input type="file" style="display: none;" class="image-input">
+                    @if(Auth::user()->image_path != null)
+                        <div style="background-image: url('{{ asset('storage/' . Auth::user()->image_path) }}');" class="profile-img"></div>
                     @else
-                        <img src="{{ asset('images/avatar.png') }}" alt="avatar" class="profile-img">
+                        <div style="background-image: url('{{ asset('images/avatar.png') }}');" class="profile-img"></div>
                     @endif
                 </div>
                 <div class="col-md-10">
