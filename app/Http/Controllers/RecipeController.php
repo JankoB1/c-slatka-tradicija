@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\RecipesDataTable;
 use App\Models\Category;
 use App\Models\Step;
+use App\Models\User;
 use App\Repositories\ProductRepository;
 use App\Repositories\StepRepository;
 use App\Services\CategoryService;
@@ -244,6 +245,13 @@ class RecipeController extends Controller
         $recipe = Recipe::find($id);
         $recipe->contest_id = 0;
         $recipe->save();
+    }
+
+    public function getRecipesByUser($userId)
+    {
+        $user = User::find($userId);
+        $recipes = $user->recipes()->paginate(9);
+        return view('recipes.by-user', compact('recipes'));
     }
 
     public function showAdminList(RecipesDataTable $dataTable) {

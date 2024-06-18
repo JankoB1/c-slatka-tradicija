@@ -239,7 +239,7 @@
                         @if($recipe->old_recipe == 0)
                             <h4 class="author-h">Autor</h4>
                             @if($recipe->user_recipe != null)
-                                <p class="author-name">{{ $recipe->user_recipe->username }}</p>
+                                <a href="{{ route('retrieve-recipes-by-user', ['userId' => $recipe->user_recipe->id]) }}" class="author-name">{{ $recipe->user_recipe->username  }}</a>
                             @endif
                         @else
                             @if($recipe->user != null)

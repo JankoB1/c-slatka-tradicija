@@ -31,7 +31,7 @@
                     <h4>Učestvujte u konkursu "Torte i kolači sa Eskimko sladoledom"</h4>
                     <p>Uslov za učešće u konkursu jeste slanje recepata za Torte i kolače sa Eskimko sladoledom, koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo vas da imate u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 30. juna 2024. godine.
 
-                        <br><br>Opšte uslove i pravila konkursa možete pogledati na strani <a href="{{ route('show-competition-rules') }}">Uslovi i pravila konkursa</a> Torte i kolači sa Eskimko sladoledom.  Odabrane recepte sa prethodnih konkursa možete pogledati na strani Odabrani recepti.</p>
+                        <br><br>Opšte uslove i pravila konkursa možete pogledati na strani <a href="{{ route('show-competition-rules') }}">Uslovi i pravila konkursa</a> Torte i kolači sa Eskimko sladoledom.  Odabrane recepte sa prethodnih konkursa možete pogledati na strani <a href="#winners">Odabrani recepti</a>.</p>
                 </div>
                 <div class="col-md-6">
                     <img class="desktop" src="{{ asset('images/competitors-final-img-min.jpeg') }}" alt="competition cookies" style="border-radius: 8px;">

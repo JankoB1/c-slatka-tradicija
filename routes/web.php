@@ -14,6 +14,7 @@ Route::get('/', [RecipeController::class, 'index'])->name('show-homepage');
 Route::get('/o-nama', [RecipeController::class, 'showAbout'])->name('show-about');
 Route::get('/recepti/{slug}', [RecipeController::class, 'showRecipeCategory'])->name('show-recipe-category');
 Route::get('/recepti/{category}/{slug}/{id}', [RecipeController::class, 'retrieveSingleRecipe'])->name('show-single-recipe');
+Route::get('/recepti/autor/{userId}', [RecipeController::class, 'getRecipesByUser'])->name('retrieve-recipes-by-user');
 Route::get('/recepti', [RecipeController::class, 'showAllCategories'])->name('show-all-recipes');
 Route::get('/nagradni-konkursi', [RecipeController::class, 'showCompetition'])->name('show-competition');
 Route::get('/kontakt', [RecipeController::class, 'showContact'])->name('show-contact');
@@ -31,6 +32,7 @@ Route::prefix('recipes')->group(function() {
     Route::post('/show-recipe/{id}', [RecipeController::class, 'showRecipe'])->name('show-recipe');
     Route::post('/win-recipe/{id}', [RecipeController::class, 'winRecipe'])->name('show-recipe');
     Route::post('/win-recipe-del/{id}', [RecipeController::class, 'winRecipeDel'])->name('show-recipe');
+
 });
 
 Route::prefix('categories')->group(function() {
