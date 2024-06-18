@@ -11,7 +11,7 @@
 
 @section('content')
 
-    <section id="recipe-form" class="recipe-form-competition">
+    <section id="recipe-form" class="recipe-form-competition" data-edit="{{ $recipe->id }}">
         <div class="form-inner">
             <form action="{{ route('recipes.store') }}" method="post" enctype="multipart/form-data">
                 @csrf

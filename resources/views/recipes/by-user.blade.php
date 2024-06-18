@@ -2,7 +2,7 @@
 
 @section('title', 'Svi recepti')
 
-<section id="featured-recipes">
+<section id="featured-recipes" style="margin-top: 70px;">
     <div class="featured-recipes-inner container-space">
         <h2>Recepti korisnika</h2>
         <div class="row">

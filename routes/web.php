@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ImageController;
@@ -53,7 +54,7 @@ Route::get('/pravna-napomena', [RecipeController::class, 'showPrivacyNote'])->na
 Route::get('/politika-zastite-podataka', [RecipeController::class, 'showPrivacyPolicy'])->name('show-privacy-policy');
 Route::get('/uslovi-i-pravila-konkursa', [RecipeController::class, 'showCompetitionRules'])->name('show-competition-rules');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/get-all-products', [ProductController::class, 'getAllProducts'])->name('get-all-products');

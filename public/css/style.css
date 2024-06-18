@@ -1749,8 +1749,9 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
 
 .like-cont {
     position: absolute;
-    right: 13%;
+    left: 50%;
     bottom: 45px;
+    transform: translateX(-50%);
 }
 
 .recipe-actions-inner {
@@ -2241,7 +2242,7 @@ input[name="step_group_name"] {
     width: 100% !important;
 }
 
-.create-recipe-step[data-step="3"] .col-md-7 input {
+.create-recipe-step[data-step="3"] .col-md-7 textarea {
     margin-top: 10px;
     width: 87%;
     margin-bottom: 10px;
@@ -3356,6 +3357,11 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
     align-items: center;
     text-decoration: none;
     color: #2E4765;
+}
+
+.row.ingredients-cont textarea {
+    padding-top: 23px;
+    height: 64px;
 }
 
 @media only screen and (max-width: 1507px) {

@@ -25,6 +25,7 @@ let imagesUploaded = [];
 let imagesFinal = [];
 const smallStepsElement = document.querySelector('.small-steps');
 const scrollPosition = smallStepsElement.getBoundingClientRect().top + window.scrollY - 100;
+let editRecipeId = document.querySelector('#recipe-form').dataset.edit;
 
 jQuery.ajax({
     headers: {
@@ -127,7 +128,7 @@ category.addEventListener('change', function() {
 const newIngredientHtml = `<div class="row ingredients-cont">
                                     <input type="hidden" name="ingredient_product" value="">
                                     <div class="col-md-6 col-10">
-                                        <input type="text" name="ingredient_name" placeholder="Naziv sastojka">
+                                        <textarea type="text" name="ingredient_name" placeholder="Naziv sastojka"></textarea>
                                     </div>
                                     <div class="col-md-6 col-10">
                                         <div class="row">
@@ -157,7 +158,7 @@ const newIngredientHtml = `<div class="row ingredients-cont">
 const newIngredientHtmlNoAdd = `<div class="row ingredients-cont">
                                     <input type="hidden" name="ingredient_product" value="">
                                     <div class="col-md-6 col-10">
-                                        <input type="text" name="ingredient_name" placeholder="Naziv sastojka">
+                                        <textarea type="text" name="ingredient_name" placeholder="Naziv sastojka"></textarea>
                                     </div>
                                     <div class="col-md-6 col-10">
                                         <div class="row">
@@ -263,14 +264,14 @@ addGroupIngredient.addEventListener('click', function() {
     newGroupCont.appendChild(newGroupContColDel);
     let newIngredient = document.createElement('div');
     newIngredient.innerHTML = newIngredientHtml;
-    let inEl = newIngredient.querySelector('input[name="ingredient_name"]');
+    let inEl = newIngredient.querySelector('textarea[name="ingredient_name"]');
     inEl.addEventListener('input', function() {
         searchProducts(this);
     });
     deleteIcon.addEventListener('click', function() {
         let newGroupIngredient = document.createElement('div');
         newGroupIngredient.innerHTML = newIngredientHtmlNoAdd;
-        let ingredientName = newGroupIngredient.querySelector('input[name="ingredient_name"]');
+        let ingredientName = newGroupIngredient.querySelector('textarea[name="ingredient_name"]');
         ingredientName.addEventListener('input', function() {
             searchProducts(this);
         });
@@ -322,7 +323,7 @@ addGroupStep.addEventListener('click', function() {
     newGroupCont.appendChild(groupName);
     let newRowStep = document.createElement('div');
     newRowStep.classList.add('row');
-    let newStep = document.createElement('input');
+    let newStep = document.createElement('textarea');
     newStep.type = 'text';
     newStep.name = 'single_step';
     newStep.placeholder = 'Opiši korak pripreme';
@@ -340,7 +341,7 @@ addGroupStep.addEventListener('click', function() {
 addIngredient.addEventListener('click', function() {
     let newRow = document.createElement('div');
     newRow.innerHTML = newIngredientHtmlNoAdd;
-    let ingredientName = newRow.querySelector('input[name="ingredient_name"]');
+    let ingredientName = newRow.querySelector('textarea[name="ingredient_name"]');
     ingredientName.addEventListener('input', function() {
         searchProducts(this);
     });
@@ -416,7 +417,7 @@ createRecipeBtn.addEventListener('click', function(e) {
             let independentIngredientsParsed = [];
 
             let stepGroups = document.querySelectorAll('.single-step-group');
-            let independentSteps = document.querySelectorAll('.single-steps-inner input[name="single_step"]');
+            let independentSteps = document.querySelectorAll('.single-steps-inner textarea[name="single_step"]');
             let stepGroupsParsed = [];
             let independentStepsParsed = [];
 
@@ -425,10 +426,10 @@ createRecipeBtn.addEventListener('click', function(e) {
                 let groupIngredients = singleGroup.querySelectorAll('.ingredients-cont');
                 let ingredients = [];
                 groupIngredients.forEach((single) => {
-                    let name = single.querySelector('input[name="ingredient_name"]').value;
+                    let name = single.querySelector('textarea[name="ingredient_name"]').value;
                     let qty = single.querySelector('input[name="ingredient_quantity"]').value;
                     let measure = single.querySelector('select[name="ingredient_measure"]').value;
-                    let product = single.querySelector('input[name="ingredient_name"]').dataset.productId;
+                    let product = single.querySelector('textarea[name="ingredient_name"]').dataset.productId;
                     ingredients.push({
                         title: name,
                         quantity: qty,
@@ -444,10 +445,10 @@ createRecipeBtn.addEventListener('click', function(e) {
             });
 
             independentIngredients.forEach((single) => {
-                let name = single.querySelector('input[name="ingredient_name"]').value;
+                let name = single.querySelector('textarea[name="ingredient_name"]').value;
                 let qty = single.querySelector('input[name="ingredient_quantity"]').value;
                 let measure = single.querySelector('select[name="ingredient_measure"]').value;
-                let product = single.querySelector('input[name="ingredient_name"]').dataset.productId;
+                let product = single.querySelector('textarea[name="ingredient_name"]').dataset.productId;
                 independentIngredientsParsed.push({
                     title: name,
                     quantity: qty,
@@ -458,7 +459,7 @@ createRecipeBtn.addEventListener('click', function(e) {
 
             stepGroups.forEach((singleGroup) => {
                 let groupName = singleGroup.querySelector('input[name="step_group_name"]').value;
-                let groupSteps = singleGroup.querySelectorAll('input[name="single_step"]');
+                let groupSteps = singleGroup.querySelectorAll('textarea[name="single_step"]');
                 let gSteps = [];
                 groupSteps.forEach((single) => {
                     gSteps.push(single.value);
@@ -529,10 +530,12 @@ createRecipeBtn.addEventListener('click', function(e) {
 });
 
 function searchProducts(target) {
+    target.dataset.productId = null;
     productsIngredients.innerHTML = '';
     let searched = products.filter((p) => {
        return p.name.toLowerCase().includes(target.value.toLowerCase());
     });
+    console.log(searched);
     if(searched.length > 0) {
         productsIngredients.classList.add('active');
         let top = target.getBoundingClientRect().top - ingredientsSection.getBoundingClientRect().top + 65;
@@ -771,10 +774,10 @@ function validateSecondStep() {
         }
         let groupIngredients = singleGroup.querySelectorAll('.ingredients-cont');
         groupIngredients.forEach((single) => {
-            let name = single.querySelector('input[name="ingredient_name"]').value;
+            let name = single.querySelector('textarea[name="ingredient_name"]').value;
             let qty = single.querySelector('input[name="ingredient_quantity"]').value;
             if(name === '') {
-                single.querySelector('input[name="ingredient_name"]').focus();
+                single.querySelector('textarea[name="ingredient_name"]').focus();
                 Swal.fire({
                     title: 'Polje \'Naziv sastojka\' je obavezno i potrebno je da ga popunite da biste nastavili dalje.',
                     confirmButtonText: 'Nastavi'
@@ -795,10 +798,10 @@ function validateSecondStep() {
     });
 
     independentIngredients.forEach((single) => {
-        let name = single.querySelector('input[name="ingredient_name"]').value;
+        let name = single.querySelector('textarea[name="ingredient_name"]').value;
         let qty = single.querySelector('input[name="ingredient_quantity"]').value;
         if(name === '') {
-            single.querySelector('input[name="ingredient_name"]').focus();
+            single.querySelector('textarea[name="ingredient_name"]').focus();
             Swal.fire({
                 title: 'Polje \'Naziv sastojka\' je obavezno i potrebno je da ga popunite da biste nastavili dalje.',
                 confirmButtonText: 'Nastavi'
@@ -822,12 +825,12 @@ function validateSecondStep() {
 
 function validateThirdStep() {
     let stepGroups = document.querySelectorAll('.single-step-group');
-    let independentSteps = document.querySelectorAll('.single-steps-inner input[name="single_step"]');
+    let independentSteps = document.querySelectorAll('.single-steps-inner textarea[name="single_step"]');
     let result = true;
 
     stepGroups.forEach((singleGroup) => {
         let groupName = singleGroup.querySelector('input[name="step_group_name"]').value;
-        let groupSteps = singleGroup.querySelectorAll('input[name="single_step"]');
+        let groupSteps = singleGroup.querySelectorAll('textarea[name="single_step"]');
         if(groupName === '') {
             singleGroup.querySelector('input[name="step_group_name"]').focus();
             Swal.fire({
