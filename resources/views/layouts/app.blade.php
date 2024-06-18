@@ -114,8 +114,10 @@
             <img class="search-icon-desktop" src="{{ asset('images/search-mobile.svg') }}" alt="" style="width: 15px;">
             <div class="search-popup">
                 <i class="fa-solid fa-xmark"></i>
-                <input type="search">
-                <input class="search-submit" type="submit" value="Pretraži">
+                <form action="#" method="GET" style="display: flex; column-gap: 20px;">
+                    <input type="search">
+                    <input class="search-submit" type="submit" value="Pretraži">
+                </form>
             </div>
             @guest()
                 <a href="{{ route('login') }}" class="login-btn">Prijavi se</a>
@@ -226,8 +228,11 @@
     <div class="search-popup-mobile">
         <div class="search-popup-mobile-inner">
             <i class="fa-solid fa-xmark"></i>
-            <input class="mobile-search-input" type="search">
-            <input class="search-submit" type="submit" value="Pretraži">
+            <form action="#">
+                <input class="mobile-search-input" type="search">
+                <input class="search-submit" type="submit" value="Pretraži">
+            </form>
+
         </div>
     </div>
 
@@ -688,6 +693,10 @@
     searchSubmit.addEventListener('click', function() {
         window.location.href = window.origin + '/pretraga?keyword=' + searchField.value;
     });
+    searchField.parentElement.addEventListener('submit', function (e) {
+        e.preventDefault();
+        window.location.href = window.origin + '/pretraga?keyword=' + searchField.value;
+    });
 </script>
 <script>
     let searchIconMobile = document.querySelector('img.search-mobile');
@@ -704,6 +713,10 @@
     let searchSubmitMobile = document.querySelector('.search-popup-mobile input.search-submit');
     let searchFieldMobile = document.querySelector('.search-popup-mobile input');
     searchSubmitMobile.addEventListener('click', function() {
+        window.location.href = window.origin + '/pretraga?keyword=' + searchFieldMobile.value;
+    });
+    searchSubmitMobile.parentElement.addEventListener('submit', function (e) {
+        e.preventDefault();
         window.location.href = window.origin + '/pretraga?keyword=' + searchFieldMobile.value;
     });
 </script>

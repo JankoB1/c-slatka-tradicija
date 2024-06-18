@@ -166,14 +166,12 @@
                     </div>
                     <div class="mobile">
                         <h1 class="desktop">{{ $recipe->title }}</h1>
-                        @if($recipe->old_recipe == 0)
-                            <h4>Opis recepta</h4>
-                        @else
+                        @if($recipe->old_recipe == 1)
                             <h4>Koraci pripreme</h4>
                         @endif
-                        <p>{!! $recipe->description !!}</p>
+                        <p style="margin-bottom: 50px;">{!! $recipe->description !!}</p>
                         @if($recipe->old_recipe == 0)
-                            <h4>Kako se priprema?</h4>
+                            <h4>Koraci pripreme</h4>
                             @foreach($stepGroups as $key => $items)
                                 <h5>{{ $key }}</h5>
                                 @foreach($items as $item)
@@ -216,14 +214,12 @@
                 </div>
                 <div class="col-md-9">
                     <h1 class="desktop">{{ $recipe->title }}</h1>
-                    @if($recipe->old_recipe == 0)
-                        <h4 class="desktop">Opis recepta</h4>
-                    @else
+                    @if($recipe->old_recipe == 1)
                         <h4 class="desktop">Koraci pripreme</h4>
                     @endif
-                    <p class="desktop">{!! $recipe->description !!}</p>
+                    <p class="desktop" style="margin-bottom: 50px;">{!! $recipe->description !!}</p>
                     @if($recipe->old_recipe == 0)
-                        <h4 class="desktop">Kako se priprema?</h4>
+                        <h4 class="desktop">Koraci pripreme</h4>
                         @foreach($stepGroups as $key => $items)
                             <h5 class="desktop">{{ $key }}</h5>
                             @foreach($items as $item)
@@ -242,9 +238,7 @@
                     @elseauth()
                         @if($recipe->old_recipe == 0)
                             <h4 class="author-h">Autor</h4>
-                            @if($recipe->user_recipe->name != null)
-                                <p class="author-name">{{ $recipe->user_recipe->name }} {{ $recipe->user_recipe->surname }}</p>
-                            @else
+                            @if($recipe->user_recipe != null)
                                 <p class="author-name">{{ $recipe->user_recipe->username }}</p>
                             @endif
                         @else
