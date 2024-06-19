@@ -125,6 +125,19 @@ category.addEventListener('change', function() {
     });
 });
 
+if(editRecipeId) {
+    let catId = document.querySelector('input[name="cat_id"]').value;
+    const subarrayIndex = subcategories.findIndex(subarray =>
+        subarray.some(obj => Object.values(obj).includes(parseInt(catId)))
+    );
+    console.log(subarrayIndex)
+    category.value = subarrayIndex;
+    let event = new Event('change');
+    category.dispatchEvent(event);
+    subcategory.value = parseInt(catId);
+    subcategory.dispatchEvent(event);
+}
+
 const newIngredientHtml = `<div class="row ingredients-cont">
                                     <input type="hidden" name="ingredient_product" value="">
                                     <div class="col-md-6 col-10">
@@ -530,7 +543,7 @@ createRecipeBtn.addEventListener('click', function(e) {
 });
 
 function searchProducts(target) {
-    target.dataset.productId = null;
+    target.removeAttribute('data-product-id');
     productsIngredients.innerHTML = '';
     let searched = products.filter((p) => {
        return p.name.toLowerCase().includes(target.value.toLowerCase());

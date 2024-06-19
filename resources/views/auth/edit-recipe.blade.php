@@ -12,6 +12,7 @@
 @section('content')
 
     <section id="recipe-form" class="recipe-form-competition" data-edit="{{ $recipe->id }}">
+        <input type="hidden" name="cat_id" id="cat_id" value="{{ $recipe->category_id }}">
         <div class="form-inner">
             <form action="{{ route('recipes.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -121,7 +122,51 @@
                                 </div>
 
                                 <div class="ingredients-inner">
-
+                                    @foreach($ingredientGroups as $key => $group)
+                                        <div class="single-ingredient-group row">
+                                            <div class="col-md-11 col-10">
+                                                <input type="text" name="ingredient_group_name" placeholder="Naziv grupe sastojaka" value="{{ $key }}">
+                                            </div>
+                                            <div class="col-md-1 col-2">
+                                                <span class="ingredient-plus">
+                                                    <img src="https://www.c-slatkatradicija.rs/images/ingridient-plus.svg" alt="dodaj sastojak">
+                                                </span>
+                                            </div>
+                                            @foreach($group as $ingredient)
+                                                <div>
+                                                    <div class="row ingredients-cont">
+                                                        <input type="hidden" name="ingredient_product" value="{{ $ingredient['product_id'] }}">
+                                                        <div class="col-md-6 col-10">
+                                                            <textarea type="text" name="ingredient_name" placeholder="Naziv sastojka">{{ $ingredient['name'] }}</textarea>
+                                                        </div>
+                                                        <div class="col-md-6 col-10">
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <input type="text" name="ingredient_quantity" placeholder="Količina" value="{{ $ingredient['quantity'] }}">
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <select name="ingredient_measure">
+                                                                        <option value="">Jedinica mere</option>
+                                                                        <option {{ $ingredient['measure'] == 'g'? 'selected': '' }} value="g">g</option>
+                                                                        <option {{ $ingredient['measure'] == 'kg'? 'selected': '' }} value="kg">kg</option>
+                                                                        <option {{ $ingredient['measure'] == 'ml'? 'selected': '' }} value="ml">ml</option>
+                                                                        <option {{ $ingredient['measure'] == 'malo'? 'selected': '' }} value="malo">malo</option>
+                                                                        <option {{ $ingredient['measure'] == 'prstohvat'? 'selected': '' }} value="prstohvat">prstohvat</option>
+                                                                        <option {{ $ingredient['measure'] == 'kašika'? 'selected': '' }} value="kašika">kašika</option>
+                                                                        <option {{ $ingredient['measure'] == 'kesica'? 'selected': '' }} value="kesica">kesica</option>
+                                                                        <option {{ $ingredient['measure'] == 'čaša'? 'selected': '' }} value="čaša">čaša</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <i class="fa-solid fa-minus"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @endforeach
                                 </div>
 
                                 <div class="single-ingredients-inner">
@@ -144,7 +189,13 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="steps-inner">
-
+                                    @foreach($stepGroups as $key => $group)
+                                        <div class="single-step-group">
+                                            <input type="text" name="step_group_name" placeholder="Naziv koraka pripreme" value="{{ $key }}">
+                                            <textarea type="text" name="single_step" placeholder="Opiši korak pripreme">{{ $group[0]['name'] }}</textarea>
+                                            <i class="fa-solid fa-minus"></i>
+                                        </div>
+                                    @endforeach
                                 </div>
 
                                 <div class="single-steps-inner">

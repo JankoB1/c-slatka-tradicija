@@ -638,17 +638,17 @@
             let xsMobile = document.querySelectorAll('.books-mobile-inner p i');
             xs.forEach((x) => {
                 x.addEventListener('click', function() {
+                    let id = x.parentElement.dataset.recipeId;
                     let addToBookCheck = document.querySelector('.add-to-book');
-                    if(addToBookCheck) {
+                    if(addToBookCheck && (id === document.querySelector('#recipe-gallery').dataset.recipeId)) {
                         addToBookCheck.click();
                     } else {
-                        let id = x.parentElement.dataset.recipeId;
                         let i = recipeIds.indexOf(parseInt(id));
                         recipeIds.splice(i, 1);
                         localStorage.setItem('recipeBooks', JSON.stringify(recipeIds));
                         x.parentElement.remove();
                         document.querySelectorAll('span.num')[0].innerText = recipeIds.length;
-                        document.querySelectorAll('span.num')[1].innerText = recipeIds.length;
+                        // document.querySelectorAll('span.num')[1].innerText = recipeIds.length;
 
                         document.querySelector('.books-mobile-inner p[data-recipe-id="' + id + '"]').remove();
                     }
@@ -667,7 +667,7 @@
                         localStorage.setItem('recipeBooks', JSON.stringify(recipeIds));
                         x.parentElement.remove();
                         document.querySelectorAll('span.num')[0].innerText = recipeIds.length;
-                        document.querySelectorAll('span.num')[1].innerText = recipeIds.length;
+                        // document.querySelectorAll('span.num')[1].innerText = recipeIds.length;
 
                         document.querySelector('.books-popup p[data-recipe-id="' + id + '"]').remove();
                     }

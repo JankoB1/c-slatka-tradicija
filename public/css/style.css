@@ -134,7 +134,9 @@ body {
 }
 
 #main-banner .main-banner-inner {
-    padding: 30vh 13% 22vh;
+    padding: 8vh 13% 15vh;
+    height: 480px;
+    margin-top: 90px;
 }
 
 .container-space {
@@ -3402,6 +3404,7 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
 
     #main-banner {
         background-image: url("../images/homepage-hero-mobile.png");
+        background-position: center;
     }
 
     #main-banner .main-banner-inner h1 {
@@ -3421,8 +3424,9 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
     }
 
     #main-banner .main-banner-inner {
-        padding: 17vh 10% 12vh;
+        padding: 6vh 10% 12vh;
         background-position: center;
+        height: 48vh;
     }
 
     #featured-recipes .featured-recipes-inner > p, #recipe-book-content .recipe-book-content-inner > p,
@@ -4627,5 +4631,6 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
 
     #recipe-gallery {
         height: 49vh;
+        margin-top: 70px;
     }
 }

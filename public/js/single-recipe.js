@@ -78,6 +78,9 @@ saveBtn.addEventListener('click', function() {
 });
 
 addToBook.addEventListener('click', function() {
+    recipeBooks = localStorage.getItem('recipeBooks');
+    recipeBooks = recipeBooks ? JSON.parse(recipeBooks) : [];
+
     let index = recipeBooks.indexOf(recipeId);
     if (index !== -1) {
         recipeBooks.splice(index, 1);
