@@ -22,6 +22,8 @@
                                     <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $recipe->image_old) }}')">
 
                                     </div>
+                                @else
+                                    <div class="recipe-preview-img" style="background-image: url('{{ asset('images/recipe-no-image.png') }}"></div>
                                 @endif
                                 <p>{{ $recipe->title }}</p>
                             </div>
