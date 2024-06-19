@@ -5,6 +5,10 @@
 <section id="featured-recipes" style="margin-top: 70px;">
     <div class="featured-recipes-inner container-space">
         <h2>{{ $user->username }}</h2>
+        <div class="user-socials">
+            <a href="{{ $user->fb }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="{{ $user->ig }}" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
         <div class="row">
             @foreach($recipes as $recipe)
                 <div class="col-md-4">

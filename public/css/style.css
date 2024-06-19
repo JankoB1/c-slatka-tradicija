@@ -3366,6 +3366,18 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
     height: 64px;
 }
 
+.user-socials {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+    margin-bottom: 30px;
+}
+
+.user-socials a {
+    color: #2E4765;
+    font-size: 20px;
+}
+
 @media only screen and (max-width: 1507px) {
     #main-header {
         padding: 11px 6.5%;
