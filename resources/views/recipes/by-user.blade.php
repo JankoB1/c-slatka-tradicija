@@ -4,7 +4,7 @@
 
 <section id="featured-recipes" style="margin-top: 70px;">
     <div class="featured-recipes-inner container-space">
-        <h2>Recepti korisnika</h2>
+        <h2>{{ $user->username }}</h2>
         <div class="row">
             @foreach($recipes as $recipe)
                 <div class="col-md-4">

@@ -251,7 +251,7 @@ class RecipeController extends Controller
     {
         $user = User::find($userId);
         $recipes = $user->recipes()->paginate(9);
-        return view('recipes.by-user', compact('recipes'));
+        return view('recipes.by-user', compact('recipes', 'user'));
     }
 
     public function showAdminList(RecipesDataTable $dataTable) {
