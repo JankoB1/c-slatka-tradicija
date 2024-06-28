@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('scriptsTop')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@endsection
+
 @section('content')
 
     <section id="top-profile">
@@ -72,7 +76,8 @@
                             @foreach(Auth::user()->recipes as $recipe)
                                 <div class="col-md-4">
                                     <div class="single-recipe-preview" style="position:relative;">
-                                        <a style="position:absolute; right: 20px; top: 20px; color: #2E4765" href="{{ route('show-edit-recipe', ['id' => $recipe->id]) }}"><i class="fas fa-edit"></i></a>
+                                        <span class="del-recipe" data-recipe-id="{{ $recipe->id }}"><i class="fa-regular fa-trash-can"></i></span>
+                                        <a style="position:absolute; right: 15px; top: 15px; color: #2E4765; background: white; display: flex; justify-content: center; align-items: center; height: 26px; border-radius: 16px; width: 40px;" href="{{ route('show-edit-recipe', ['id' => $recipe->id]) }}"><i class="fas fa-edit"></i></a>
                                         <a href="{{ route('show-single-recipe', ['category' => $recipe->category->slug, 'id' => $recipe->id, 'slug' => $recipe->slug]) }}">
                                             @if($recipe->old_recipe == 1)
                                                 <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $recipe->image_old) }}');">
@@ -90,24 +95,24 @@
                             @endforeach
                         </div>
                         <div class="profile-recipes-content profile-recipes-content-saved row">
-                            @foreach($savedRecipes as $saved)
-                                <div class="col-md-4">
-                                    <div class="single-recipe-preview">
-                                        <a href="{{ route('show-single-recipe', ['category' => $saved->category->slug, 'id' => $saved->recipe->id, 'slug' => $saved->recipe->slug]) }}">
-                                            @if($saved->recipe->old_recipe == 1)
-                                                <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $saved->recipe->image_old) }}');">
+{{--                            @foreach($savedRecipes as $saved)--}}
+{{--                                <div class="col-md-4">--}}
+{{--                                    <div class="single-recipe-preview">--}}
+{{--                                        <a href="{{ route('show-single-recipe', ['category' => $saved->category->slug, 'id' => $saved->recipe->id, 'slug' => $saved->recipe->slug]) }}">--}}
+{{--                                            @if($saved->recipe->old_recipe == 1)--}}
+{{--                                                <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $saved->recipe->image_old) }}');">--}}
 
-                                                </div>
-                                            @else
-                                                <div class="recipe-preview-img" style="background-image: url('{{ isset($saved->recipe->images[0]) ? asset('storage/upload/' . $saved->recipe->images[0]->path): '' }}');">
+{{--                                                </div>--}}
+{{--                                            @else--}}
+{{--                                                <div class="recipe-preview-img" style="background-image: url('{{ isset($saved->recipe->images[0]) ? asset('storage/upload/' . $saved->recipe->images[0]->path): '' }}');">--}}
 
-                                                </div>
-                                            @endif
-                                            <p>{{ $saved->recipe->title }}</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endforeach
+{{--                                                </div>--}}
+{{--                                            @endif--}}
+{{--                                            <p>{{ $saved->recipe->title }}</p>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            @endforeach--}}
                         </div>
                     </div>
                 </div>

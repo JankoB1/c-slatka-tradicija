@@ -270,7 +270,7 @@
                                             <div class="single-img" data-image-id="{{ $image->id }}" style="background-image: url('{{ asset('storage/upload/' . $image->path) }}');"></div>
                                             <div><div class="row image-controls-row">
                                                     <div class="col-3">
-                                                        <img class="delete-img" src="http://127.0.0.1:8000/images/delete-img.png" alt="delete img">
+                                                        <img class="delete-img" src="{{ asset('images/delete-img.png') }}" alt="delete img">
                                                     </div>
                                                     <div class="col-6" style="display: flex; justify-content: center; column-gap: 10px; visibility: hidden;">
                                                         <img class="plus-img" src="http://127.0.0.1:8000/images/zoom-plus-img.png" alt="zoom img">

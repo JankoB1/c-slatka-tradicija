@@ -2,6 +2,7 @@ let navBtns = document.querySelectorAll('.single-btn p');
 let profileRecipesContent = document.querySelectorAll('.profile-recipes-content');
 let profileImg = document.querySelector('.profile-img');
 let imageInput = document.querySelector('.image-input');
+let deleteRecipeBtns = document.querySelectorAll('.del-recipe');
 navBtns.forEach((btn, i) => {
     btn.addEventListener('click', function() {
         let activeBtn = document.querySelector('.single-btn p.active');
@@ -43,6 +44,38 @@ imageInput.addEventListener('change', function(e) {
         error: function(error) {
             console.error('Error uploading image:', error);
         }
+    });
+});
+
+deleteRecipeBtns.forEach((deleteRecipeBtn) => {
+    deleteRecipeBtn.addEventListener('click', function() {
+        let recipeId = this.dataset.recipeId;
+        let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        Swal.fire({
+            title: 'Da li siguran/na da želiš da izbrišeš recept?',
+            showDenyButton: true,
+            confirmButtonText: 'Da',
+            denyButtonText: 'Ne',
+            showCancelButton: false,
+            customClass: {
+                confirmButton: 'del-recipe-sw',
+                denyButton: 'nodel-recipe-sw',
+            },
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/recipes/remove-recipe/${recipeId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken,
+                        'Content-Type': 'application/json'
+                    },
+                }).then(response => {
+                    this.parentElement.parentElement.remove();
+                }).catch(error => {
+                    console.error('Error deleting recipe:', error);
+                });
+            }
+        })
     });
 });
 
