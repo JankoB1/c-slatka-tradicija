@@ -11,7 +11,7 @@
 
 @section('content')
 
-    <section id="recipe-form" class="recipe-form-competition" data-edit="{{ $recipe->id }}">
+    <section id="recipe-form" class="recipe-form-competition recipe-edit-section" data-edit="{{ $recipe->id }}">
         <input type="hidden" name="cat_id" id="cat_id" value="{{ $recipe->category_id }}">
         <div class="form-inner">
             <form action="{{ route('recipes.store') }}" method="post" enctype="multipart/form-data">
@@ -136,12 +136,9 @@
                                                 <div>
                                                     <div class="row ingredients-cont">
                                                         <input type="hidden" name="ingredient_product" value="{{ $ingredient['product_id'] }}">
-                                                        <div class="col-md-6 col-10">
-                                                            <textarea type="text" name="ingredient_name" placeholder="Naziv sastojka">{{ $ingredient['name'] }}</textarea>
-                                                        </div>
-                                                        <div class="col-md-6 col-10">
+                                                        <div class="col-md-5 col-10">
                                                             <div class="row">
-                                                                <div class="col-md-4">
+                                                                <div class="col-md-6">
                                                                     <input type="text" name="ingredient_quantity" placeholder="Količina" value="{{ $ingredient['quantity'] }}">
                                                                 </div>
                                                                 <div class="col-md-6">
@@ -157,6 +154,13 @@
                                                                         <option {{ $ingredient['measure'] == 'čaša'? 'selected': '' }} value="čaša">čaša</option>
                                                                     </select>
                                                                 </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-7 col-10">
+                                                            <div class="row">
+                                                                <div class="col-md-10">
+                                                                    <textarea type="text" name="ingredient_name" placeholder="Naziv sastojka">{{ $ingredient['name'] }}</textarea>
+                                                                </div>
                                                                 <div class="col-md-2">
                                                                     <i class="fa-solid fa-minus"></i>
                                                                 </div>
@@ -170,12 +174,50 @@
                                 </div>
 
                                 <div class="single-ingredients-inner">
-
+                                    @foreach($recipe->ingredients as $ingredient)
+                                        @if($ingredient->group == null)
+                                            <div>
+                                                <div class="row ingredients-cont">
+                                                    <input type="hidden" name="ingredient_product" value="{{ $ingredient->product_id }}">
+                                                    <div class="col-md-5 col-10">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <input type="text" name="ingredient_quantity" placeholder="Količina" value="{{ $ingredient->quantity }}">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <select name="ingredient_measure">
+                                                                    <option value="">Jedinica mere</option>
+                                                                    <option {{ $ingredient->measure == 'g'? 'selected': '' }} value="g">g</option>
+                                                                    <option {{ $ingredient->measure == 'kg'? 'selected': '' }} value="kg">kg</option>
+                                                                    <option {{ $ingredient->measure == 'ml'? 'selected': '' }} value="ml">ml</option>
+                                                                    <option {{ $ingredient->measure == 'malo'? 'selected': '' }} value="malo">malo</option>
+                                                                    <option {{ $ingredient->measure == 'prstohvat'? 'selected': '' }} value="prstohvat">prstohvat</option>
+                                                                    <option {{ $ingredient->measure == 'kašika'? 'selected': '' }} value="kašika">kašika</option>
+                                                                    <option {{ $ingredient->measure == 'kesica'? 'selected': '' }} value="kesica">kesica</option>
+                                                                    <option {{ $ingredient->measure == 'čaša'? 'selected': '' }} value="čaša">čaša</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-7 col-10">
+                                                        <div class="row">
+                                                            <div class="col-md-10">
+                                                                <textarea type="text" name="ingredient_name" placeholder="Naziv sastojka">{{ $ingredient->title }}</textarea>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <i class="fa-solid fa-minus"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 </div>
 
                                 <div class="add-ingredients-btns">
-                                    <button class="add-group-ingredient" type="button"><img src="{{ asset('images/add-group.svg') }}" alt="add group">Dodaj grupu sastojaka</button>
-                                    <button class="add-ingredient" type="button"><img src="{{ asset('images/plus.svg') }}" alt="plus">Dodaj sastojak</button>
+                                    <button style="width: 100% !important;" class="add-group-ingredient" type="button"><img src="{{ asset('images/add-group.svg') }}" alt="add group">Dodaj grupu sastojaka</button>
+                                    <button style="display: none !important;" class="add-ingredient" type="button"><img src="{{ asset('images/plus.svg') }}" alt="plus">Dodaj sastojak</button>
                                 </div>
                             </div>
                         </div>
@@ -223,14 +265,34 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="images">
-
+                                    @foreach($recipe->images as $image)
+                                        <div class="single-image-div">
+                                            <div class="single-img" data-image-id="{{ $image->id }}" style="background-image: url('{{ asset('storage/upload/' . $image->path) }}');"></div>
+                                            <div><div class="row image-controls-row">
+                                                    <div class="col-3">
+                                                        <img class="delete-img" src="http://127.0.0.1:8000/images/delete-img.png" alt="delete img">
+                                                    </div>
+                                                    <div class="col-6" style="display: flex; justify-content: center; column-gap: 10px; visibility: hidden;">
+                                                        <img class="plus-img" src="http://127.0.0.1:8000/images/zoom-plus-img.png" alt="zoom img">
+                                                        <img class="minus-img" src="http://127.0.0.1:8000/images/zoom-minus-img.png" alt="zoom img">
+                                                        <img class="left-img" src="http://127.0.0.1:8000/images/left-img.png" alt="left img">
+                                                        <img class="right-img" src="http://127.0.0.1:8000/images/right-img.png" alt="right img">
+                                                        <img class="top-img" src="http://127.0.0.1:8000/images/left-img.png" alt="top img">
+                                                        <img class="bottom-img" src="http://127.0.0.1:8000/images/left-img.png" alt="bottom img">
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <button class="finish-btn" type="button">Završeno</button>
+                                                    </div>
+                                                </div></div>
+                                        </div>
+                                    @endforeach
                                 </div>
                                 <div class="add-image-container add-image">
                                     <img src="{{ asset('images/add-image-icon.png') }}" alt="add image">
                                     <h3>Dodaj fotografiju</h3>
                                     <p>Formati: PNG, JPG, JPEG, WEBP</p>
                                 </div>
-                                <button class="submit-recipe" type="button">Pošalji recept</button>
+                                <button class="submit-recipe" type="button">Izmeni recept</button>
                             </div>
                         </div>
                     </div>
@@ -258,8 +320,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvujte u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
-                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
+                    <h3>Učestvuj u konkursu<br>"Uskršnje torte i <br>kolači"</h3>
+                    <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>
         </div>

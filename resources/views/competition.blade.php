@@ -19,7 +19,7 @@
     <section id="competition-text">
         <div class="competition-text-inner container-space">
             <h1>Nagradni konkursi</h1>
-            <p>Pozivamo sve ljubitelje poslastica da se pridruže našem nagradnom konkursu! Podelite svoje omiljene recepte sa nama i i budite deo slatke tradicije. Radujemo se vašim originalnim receptima. Učestvujte u nagrađivanju i osvojite sjajne poklone.</p>
+            <p>Pozivamo sve ljubitelje poslastica da se pridruže našem nagradnom konkursu! Podeli svoje omiljene recepte sa nama i budi deo slatke tradicije. Radujemo se tvojim originalnim receptima. Učestvuj u nagrađivanju i osvoji sjajne poklone.</p>
         </div>
     </section>
 
@@ -27,11 +27,11 @@
         <div class="competition-send-recipe-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <h2>Pošaljite recept</h2>
-                    <h4>Učestvujte u konkursu "Torte i kolači sa Eskimko sladoledom"</h4>
-                    <p>Uslov za učešće u konkursu jeste slanje recepata za Torte i kolače sa Eskimko sladoledom, koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo vas da imate u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 30. juna 2024. godine.
+                    <h2>Pošalji recept</h2>
+                    <h4>Učestvuj u konkursu "Torte i kolači sa Eskimko sladoledom"</h4>
+                    <p>Uslov za učešće u konkursu jeste slanje recepata za Torte i kolače sa Eskimko sladoledom, koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo te da imaš u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 30. juna 2024. godine.
 
-                        <br><br>Opšte uslove i pravila konkursa možete pogledati na strani <a href="{{ route('show-competition-rules') }}">Uslovi i pravila konkursa</a> Torte i kolači sa Eskimko sladoledom.  Odabrane recepte sa prethodnih konkursa možete pogledati na strani <a href="#winners">Odabrani recepti</a>.</p>
+                        <br><br>Opšte uslove i pravila konkursa možeš pogledati na strani <a href="{{ route('show-competition-rules') }}">Uslovi i pravila konkursa</a> Torte i kolači sa Eskimko sladoledom.  Odabrane recepte sa prethodnih konkursa možeš pogledati na strani <a href="#winners">Odabrani recepti</a>.</p>
                 </div>
                 <div class="col-md-6">
                     <img class="desktop" src="{{ asset('images/competitors-final-img-min.jpeg') }}" alt="competition cookies" style="border-radius: 8px;">
@@ -273,7 +273,7 @@
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
                     <h3>Učestvuj u konkursu<br>"Torte i kolači sa <br>Eskimko sladoledom"</h3>
-                    <a href="{{ route('show-competition') }}">Pošaljite recept</a>
+                    <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>
         </div>

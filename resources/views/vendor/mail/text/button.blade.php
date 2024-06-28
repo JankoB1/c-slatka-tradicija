@@ -1,0 +1,1 @@
+{{ 'Verifikuj email' }}: {{ $url }}

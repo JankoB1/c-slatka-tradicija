@@ -65,4 +65,17 @@ class IngredientRepository
         }
 
     }
+
+    public function deleteIngredients($id) {
+        try {
+            $ingredients = Ingredient::where('recipe_id', '=', $id)->get();
+            foreach ($ingredients as $ingredient) {
+                $ingredient->delete();
+            }
+        }
+        catch (QueryException $exception) {
+            Log::error('Can\'t delete ingredients: ' . $exception->getMessage());
+            return null;
+        }
+    }
 }

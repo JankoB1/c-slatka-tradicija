@@ -130,22 +130,70 @@ if(editRecipeId) {
     const subarrayIndex = subcategories.findIndex(subarray =>
         subarray.some(obj => Object.values(obj).includes(parseInt(catId)))
     );
-    console.log(subarrayIndex)
     category.value = subarrayIndex;
     let event = new Event('change');
     category.dispatchEvent(event);
     subcategory.value = parseInt(catId);
     subcategory.dispatchEvent(event);
+
+    let ingredientNamesEls = document.querySelectorAll('textarea[name="ingredient_name"]');
+    ingredientNamesEls.forEach((inEl) => {
+        inEl.addEventListener('input', function() {
+            searchProducts(this);
+        });
+    })
+
+    let deleteIcons = document.querySelectorAll('.single-ingredient-group .ingredient-plus')
+    deleteIcons.forEach((deleteIcon) => {
+        deleteIcon.addEventListener('click', function() {
+            let newGroupIngredient = document.createElement('div');
+            newGroupIngredient.innerHTML = newIngredientHtmlNoAdd;
+            let ingredientName = newGroupIngredient.querySelector('textarea[name="ingredient_name"]');
+            ingredientName.addEventListener('input', function() {
+                searchProducts(this);
+            });
+            let deleteSingleIngredient = newGroupIngredient.querySelector('i');
+            deleteSingleIngredient.addEventListener('click', function() {
+                let num = this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.querySelectorAll('.ingredients-cont').length;
+                if(num !== 1) {
+                    this.parentElement.parentElement.parentElement.parentElement.remove();
+                } else {
+                    this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+                }
+            });
+            deleteIcon.parentElement.parentElement.appendChild(newGroupIngredient);
+        });
+    });
+
+    let deleteIconsSingle = document.querySelectorAll('i.fa-minus');
+    deleteIconsSingle.forEach((deleteIconSingle) => {
+        deleteIconSingle.addEventListener('click', function() {
+            if(this.parentElement.classList.contains('single-step-group')) {
+                this.parentElement.remove();
+            } else {
+                let num = this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.querySelectorAll('.ingredients-cont').length;
+                if(num !== 1) {
+                    this.parentElement.parentElement.parentElement.parentElement.remove();
+                } else {
+                    this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+                }
+            }
+        });
+    });
+
+    let deleteImageBtns = document.querySelectorAll('.delete-img');
+    deleteImageBtns.forEach((deleteImageBtn) => {
+        deleteImageBtn.addEventListener('click', function() {
+            deleteImageBtn.parentElement.parentElement.parentElement.parentElement.remove();
+        });
+    });
 }
 
 const newIngredientHtml = `<div class="row ingredients-cont">
                                     <input type="hidden" name="ingredient_product" value="">
-                                    <div class="col-md-6 col-10">
-                                        <textarea type="text" name="ingredient_name" placeholder="Naziv sastojka"></textarea>
-                                    </div>
-                                    <div class="col-md-6 col-10">
+                                    <div class="col-md-5 col-10">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <input type="text" name="ingredient_quantity" placeholder="Količina">
                                             </div>
                                             <div class="col-md-6">
@@ -160,6 +208,13 @@ const newIngredientHtml = `<div class="row ingredients-cont">
                                                     <option value="kesica">kesica</option>
                                                     <option value="čaša">čaša</option>
                                                 </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 col-10">
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <textarea type="text" name="ingredient_name" placeholder="Naziv sastojka"></textarea>
                                             </div>
                                             <div class="col-md-2">
                                                 <i class="fa-solid fa-minus"></i>
@@ -170,12 +225,9 @@ const newIngredientHtml = `<div class="row ingredients-cont">
 
 const newIngredientHtmlNoAdd = `<div class="row ingredients-cont">
                                     <input type="hidden" name="ingredient_product" value="">
-                                    <div class="col-md-6 col-10">
-                                        <textarea type="text" name="ingredient_name" placeholder="Naziv sastojka"></textarea>
-                                    </div>
-                                    <div class="col-md-6 col-10">
+                                    <div class="col-md-5 col-10">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <input type="text" name="ingredient_quantity" placeholder="Količina">
                                             </div>
                                             <div class="col-md-6">
@@ -190,6 +242,13 @@ const newIngredientHtmlNoAdd = `<div class="row ingredients-cont">
                                                     <option value="kesica">kesica</option>
                                                     <option value="čaša">čaša</option>
                                                 </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 col-10">
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <textarea type="text" name="ingredient_name" placeholder="Naziv sastojka"></textarea>
                                             </div>
                                             <div class="col-md-2">
                                                 <i class="fa-solid fa-minus"></i>
@@ -519,11 +578,24 @@ createRecipeBtn.addEventListener('click', function(e) {
                 imagesToDelete: []
             }
 
+            let action = 'store';
+            if(editRecipeId) {
+                action = 'edit';
+                data.recipe_id = parseInt(editRecipeId);
+                let imagesNotToDelete = [];
+                let imageDivs = document.querySelectorAll('.single-img');
+                imageDivs.forEach((im) => {
+                    if(im.dataset.imageId !== null) {
+                        imagesNotToDelete.push(parseInt(im.dataset.imageId));
+                    }
+                });
+                data.imagesNotToDelete = imagesNotToDelete;
+            }
             jQuery.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                 },
-                url: window.origin + '/recipes/store',
+                url: window.origin + `/recipes/${action}`,
                 data: JSON.stringify(data),
                 contentType: 'application/json',
                 method: 'POST',
@@ -545,10 +617,10 @@ createRecipeBtn.addEventListener('click', function(e) {
 function searchProducts(target) {
     target.removeAttribute('data-product-id');
     productsIngredients.innerHTML = '';
+    let targetSr = transformSrLetter(target.value.toLowerCase());
     let searched = products.filter((p) => {
-       return p.name.toLowerCase().includes(target.value.toLowerCase());
+        return transformSrLetter(p.name.toLowerCase()).includes(targetSr);
     });
-    console.log(searched);
     if(searched.length > 0) {
         productsIngredients.classList.add('active');
         let top = target.getBoundingClientRect().top - ingredientsSection.getBoundingClientRect().top + 65;
@@ -721,7 +793,7 @@ function validateFirstStep() {
     if(title === '') {
         document.querySelector('input[name="title"]').focus();
         Swal.fire({
-            title: 'Polje \'Naziv\' je obavezno i potrebno je da ga popunite da biste nastavili dalje.',
+            title: 'Polje \'Naziv\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
             confirmButtonText: 'Nastavi'
         });
         return false;
@@ -729,7 +801,7 @@ function validateFirstStep() {
     if(category === '') {
         document.querySelector('select[name="category"]').focus();
         Swal.fire({
-            title: 'Polje \'Kategorija recepta\' je obavezno i potrebno je da ga popunite da biste nastavili dalje.',
+            title: 'Polje \'Kategorija recepta\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
             confirmButtonText: 'Nastavi'
         });
         return false;
@@ -737,7 +809,7 @@ function validateFirstStep() {
     if(subCategory === '') {
         document.querySelector('select[name="subcategory"]').focus();
         Swal.fire({
-            title: 'Polje \'Podkategorija recepta\' je obavezno i potrebno je da ga popunite da biste nastavili dalje.',
+            title: 'Polje \'Podkategorija recepta\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
             confirmButtonText: 'Nastavi'
         });
         return false;
@@ -745,7 +817,7 @@ function validateFirstStep() {
     if(difficulty === '') {
         document.querySelector('select[name="difficulty"]').focus();
         Swal.fire({
-            title: 'Polje \'Težina pripreme\' je obavezno i potrebno je da ga popunite da biste nastavili dalje.',
+            title: 'Polje \'Težina pripreme\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
             confirmButtonText: 'Nastavi'
         });
         return false;
@@ -753,7 +825,7 @@ function validateFirstStep() {
     if(preparationTime === '') {
         document.querySelector('select[name="preparation_time"]').focus();
         Swal.fire({
-            title: 'Polje \'Vreme pripreme\' je obavezno i potrebno je da ga popunite da biste nastavili dalje.',
+            title: 'Polje \'Vreme pripreme\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
             confirmButtonText: 'Nastavi'
         });
         return false;
@@ -761,7 +833,7 @@ function validateFirstStep() {
     if(portionNumber === '') {
         document.querySelector('input[name="portion_number"]').focus();
         Swal.fire({
-            title: 'Polje \'Broj porcija\' je obavezno i potrebno je da ga popunite da biste nastavili dalje.',
+            title: 'Polje \'Broj porcija\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
             confirmButtonText: 'Nastavi'
         });
         return false;
@@ -779,7 +851,7 @@ function validateSecondStep() {
         if(groupName === '') {
             singleGroup.querySelector('input[name="ingredient_group_name"]').focus();
             Swal.fire({
-                title: 'Polje \'Naziv grupe sastojaka\' je obavezno i potrebno je da ga popunite da biste nastavili dalje.',
+                title: 'Polje \'Naziv grupe sastojaka\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
                 confirmButtonText: 'Nastavi'
             });
             result = false;
@@ -792,7 +864,7 @@ function validateSecondStep() {
             if(name === '') {
                 single.querySelector('textarea[name="ingredient_name"]').focus();
                 Swal.fire({
-                    title: 'Polje \'Naziv sastojka\' je obavezno i potrebno je da ga popunite da biste nastavili dalje.',
+                    title: 'Polje \'Naziv sastojka\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
                     confirmButtonText: 'Nastavi'
                 });
                 result = false;
@@ -801,7 +873,7 @@ function validateSecondStep() {
             if(qty === '') {
                 single.querySelector('input[name="ingredient_quantity"]').focus();
                 Swal.fire({
-                    title: 'Polje \'Količina sastojka\' je obavezno i potrebno je da ga popunite da biste nastavili dalje.',
+                    title: 'Polje \'Količina sastojka\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
                     confirmButtonText: 'Nastavi'
                 });
                 result = false;
@@ -816,7 +888,7 @@ function validateSecondStep() {
         if(name === '') {
             single.querySelector('textarea[name="ingredient_name"]').focus();
             Swal.fire({
-                title: 'Polje \'Naziv sastojka\' je obavezno i potrebno je da ga popunite da biste nastavili dalje.',
+                title: 'Polje \'Naziv sastojka\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
                 confirmButtonText: 'Nastavi'
             });
             result = false;
@@ -825,7 +897,7 @@ function validateSecondStep() {
         if(qty === '') {
             single.querySelector('input[name="ingredient_quantity"]').focus();
             Swal.fire({
-                title: 'Polje \'Količina sastojka\' je obavezno i potrebno je da ga popunite da biste nastavili dalje.',
+                title: 'Polje \'Količina sastojka\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
                 confirmButtonText: 'Nastavi'
             });
             result = false;
@@ -847,7 +919,7 @@ function validateThirdStep() {
         if(groupName === '') {
             singleGroup.querySelector('input[name="step_group_name"]').focus();
             Swal.fire({
-                title: 'Polje \'Naziv koraka pripreme\' je obavezno i potrebno je da ga popunite da biste nastavili dalje.',
+                title: 'Polje \'Naziv koraka pripreme\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
                 confirmButtonText: 'Nastavi'
             });
             result = false;
@@ -857,7 +929,7 @@ function validateThirdStep() {
             if(single.value === '') {
                 single.focus();
                 Swal.fire({
-                    title: 'Polje \'Opis koraka pripreme\' je obavezno i potrebno je da ga popunite da biste nastavili dalje.',
+                    title: 'Polje \'Opis koraka pripreme\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
                     confirmButtonText: 'Nastavi'
                 });
                 result = false;
@@ -875,4 +947,19 @@ function validateThirdStep() {
     });
 
     return result;
+}
+
+function transformSrLetter(word) {
+    let finalWord = '';
+    for (let i = 0; i < word.length; i++) {
+        let letter = word.charAt(i);
+        switch (letter) {
+            case 'ć':
+            case 'č': finalWord += 'c'; break;
+            case 'š': finalWord += 's'; break;
+            case 'ž': finalWord += 'z'; break;
+            default: finalWord += letter; break;
+        }
+    }
+    return finalWord;
 }

@@ -1079,7 +1079,15 @@ footer p {
 }
 
 .create-recipe-step .col-md-7 .col-md-5 {
-    padding-left: 0 !important;
+    padding-left: 15px !important;
+}
+
+.create-recipe-step .col-md-7 .col-md-5 > .col-md-6:first-child {
+    padding-right: 0 !important;
+}
+
+.create-recipe-step .col-md-7.col-10 {
+    padding-right: 2px !important;
 }
 
 .create-recipe-step {
@@ -1352,9 +1360,9 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
     position: absolute;
     height: auto;
     background: white;
-    width: 45%;
+    width: 46%;
     display: none;
-    left: 15px;
+    right: 10%;
     border: 1px solid #2E4765;
     border-radius: 32px;
 }
@@ -1747,6 +1755,10 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
     height: 80vh;
     position: relative;
     margin-bottom: 65px;
+    margin-top: 100px;
+    width: 76%;
+    margin-left: 13%;
+    box-shadow: 0px 26.590377807617188px 53.180755615234375px 0px #E0E0ECCC;
 }
 
 .like-cont {
@@ -1761,7 +1773,7 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
     justify-content: space-between;
 }
 
-.recipe-actions-inner div, .like-cont {
+.recipe-actions-inner div, .like-cont, .share {
     border: 1px solid #2E476566;
     border-radius: 32px;
     display: flex;
@@ -1774,6 +1786,8 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
     transition: all 0.3s ease-in-out;
 }
 
+.share
+
 .like-cont {
     z-index: 10;
 }
@@ -1783,11 +1797,17 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
 }
 
 .recipe-actions-inner div.active p, .like-cont.active p {
-    color: white;
+    color: white !important;
 }
 
 .recipe-actions-inner div.active img, .like-cont.active img {
     filter: brightness(0) invert(1);
+}
+
+.single-info.mobile img {
+    width: 35px !important;
+    position: relative;
+    bottom: 1px;
 }
 
 .images .single-img {
@@ -1802,17 +1822,23 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
     transition: all 0.3s ease-in-out;
 }
 
-.recipe-actions-inner p, .like-cont p {
-    font-family: Montserrat;
-    font-size: 17px;
-    font-weight: 500;
-    line-height: 21px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #2E4765;
+.recipe-actions-inner p, .like-cont p, .share p {
+    font-family: Montserrat !important;
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    line-height: 21px !important;
+    letter-spacing: 0em !important;
+    text-align: left !important;
+    color: #2E4765 !important;
     width: 100%;
     margin-bottom: 0;
     transition: all 0.3s ease-in-out;
+}
+
+section#post-content .share {
+    margin-top: 40px;
+    width: fit-content !important;
+    margin-left: 20px;
 }
 
 .recipe-main-inner h4 {
@@ -1874,7 +1900,7 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
     padding-left: 80px;
 }
 
-.recipe-actions-inner img, .like-cont img {
+.recipe-actions-inner img, .like-cont img, .share img {
     margin-right: 15px;
     transition: all 0.3s ease-in-out;
 }
@@ -1896,8 +1922,13 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
     margin-bottom: 20px;
 }
 
-.single-recipe-preview p {
+.single-recipe-preview p, .single-product-preview {
     box-shadow: 0px 11.214811325073242px 22.429622650146484px 0px #E0E0ECCC;
+}
+
+.single-product-preview {
+    border-radius: 15px;
+    padding-top: 15px;
 }
 
 .single-recipe-preview p {
@@ -2248,6 +2279,8 @@ input[name="step_group_name"] {
     margin-top: 10px;
     width: 87%;
     margin-bottom: 10px;
+    height: 63px;
+    padding-top: 23px;
 }
 
 .single-step-group span.ingridient-plus, .single-step-group i {
@@ -3378,6 +3411,21 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
     font-size: 20px;
 }
 
+.create-recipe-step .col-md-7 .col-md-5 .col-md-6 {
+    padding-right: 0 !important;
+}
+
+.single-product-preview img {
+    max-width: 60%;
+    max-height: 200px;
+    margin: 30px auto;
+    display: block;
+}
+
+.products-search-row {
+    margin-bottom: 50px;
+}
+
 @media only screen and (max-width: 1507px) {
     #main-header {
         padding: 11px 6.5%;
@@ -3598,25 +3646,48 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
     }
 
     .recipe-actions-inner p, .like-cont p {
-        font-size: 10px !important;
+        font-size: 11px !important;
     }
 
-    .recipe-actions-inner div, .like-cont {
+    .recipe-actions-inner div, .like-cont, .share {
         padding: 0 20px;
         height: 30px;
         margin-bottom: 10px;
+        z-index: 100;
+    }
+
+    .single-step-group i {
+        top: 100px !important;
+    }
+
+    .recipe-edit-section {
+        margin-top: 90px;
     }
 
     .recipe-actions-inner img, .like-cont img {
         width: 11px !important;
     }
 
+    .recipe-actions-inner div:nth-child(1) img, .recipe-actions-inner div:nth-child(2) img {
+        width: 18px !important;
+    }
+
     #recipe-main {
         margin-top: 20px;
     }
 
+    a.author-name {
+        width: fit-content;
+        display: block;
+        margin: 0 auto;
+    }
+
     .recipe-main-inner.container-space .col-md-9 {
         padding: 0;
+    }
+
+    #recipe-gallery {
+        box-shadow: none !important;
     }
 
     #recipe-form {
@@ -3627,6 +3698,10 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
         font-size: 28px;
         line-height: 41px;
         text-align: center;
+    }
+
+    .mobile-delete {
+        display: none !important;
     }
 
     .recipe-form-inner p {
@@ -3715,7 +3790,8 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
     }
 
     .products-ingredients {
-        width: 92%;
+        width: 79%;
+        right: 18%;
         z-index: 10;
     }
 
@@ -3802,6 +3878,7 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
         font-size: 24px;
         position: relative;
         top: 10px;
+        right: 8px;
     }
 
     .btns-box {
@@ -4111,7 +4188,7 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
 
     .row.ingredients-cont i {
         position: absolute;
-        top: 0;
+        top: 7px;
         right: 3px;
     }
 
@@ -4168,6 +4245,8 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
 
     #recipe-gallery {
         margin-bottom: 30px;
+        width: 100%;
+        margin-left: 0 !important;
     }
 
     .recipe-main-inner h1 {
@@ -4182,6 +4261,11 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+        margin-bottom: 0;
+    }
+
+    .mb-low {
+        margin-bottom: 0 !important;
     }
 
     .recipe-main-inner h5 {
@@ -4197,6 +4281,11 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
 
     h4.author-h {
         margin-top: 0 !important;
+        margin-bottom: 10px !important;
+    }
+
+    .tags {
+        margin-top: 20px !important;
     }
 
     p.author-name {
@@ -4206,8 +4295,8 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
     .recipe-main-inner.container-space .col-md-3 {
         border-right-width: 0;
         border-bottom: 1px solid #2E4765;
-        padding-bottom: 40px;
-        margin-bottom: 40px;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
     }
 
     #posts-hero {
@@ -4243,6 +4332,15 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
     #posts-list .posts-row p {
         font-weight: 600;
         text-align: center;
+    }
+
+    #login-popup button.btn-close, #loading-popup button.btn-close {
+        right: 20px;
+        top: 10px;
+    }
+
+    #login-popup .col-md-7, #loading-popup .col-md-7 {
+        padding: 30px 20px !important;
     }
 
     #posts-list {
@@ -4644,5 +4742,21 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
     #recipe-gallery {
         height: 49vh;
         margin-top: 70px;
+    }
+
+    .create-recipe-step .col-md-7 {
+        position: unset;
+    }
+
+    .create-recipe-step .col-md-7 .col-md-5, .create-recipe-step .col-md-7.col-10 {
+        padding-right: 10px !important;
+    }
+
+    .create-recipe-step .col-md-7 .col-md-5 .col-md-6 {
+        padding-right: 15px !important;
+    }
+
+    .col-md-7.ingredients-section {
+        position: relative !important;
     }
 }

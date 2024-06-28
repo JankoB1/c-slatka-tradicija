@@ -12,6 +12,7 @@ use App\Services\CategoryService;
 use App\Services\ImageService;
 use App\Services\IngredientGroupService;
 use App\Services\IngredientService;
+use App\Services\ProductService;
 use App\Services\StepGroupService;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Services\RecipeService;
@@ -33,6 +34,7 @@ class RecipeController extends Controller
     protected ProductRepository $productRepository;
     protected IngredientGroupService $ingredientGroupService;
     protected StepGroupService $stepGroupService;
+    protected ProductService $productService;
 
     public function __construct() {
         $this->recipeService = new RecipeService();
@@ -43,6 +45,7 @@ class RecipeController extends Controller
         $this->ingredientGroupService = new IngredientGroupService();
         $this->stepGroupService = new StepGroupService();
         $this->productRepository = new ProductRepository();
+        $this->productService = new ProductService();
     }
 
     public function index() {
@@ -129,6 +132,33 @@ class RecipeController extends Controller
         DB::beginTransaction();
         try {
             $recipe = $this->recipeService->addRecipe($request);
+            $this->ingredientService->addIngredients($request, $recipe->id);
+            $this->stepRepository->addSteps($request, $recipe->id);
+            $this->imageService->addImage($request, $recipe->id);
+            $this->imageService->removeImage($request);
+            $data = [
+                'recipe_slug' => $recipe->slug,
+                'category_slug' => $recipe->category->slug,
+                'recipe_id' => $recipe->id
+            ];
+            DB::commit();
+            return response($data);
+        }
+        catch (Exception $exception) {
+            Log::error('Can\'t upload image: ' . $exception->getMessage());
+            DB::rollBack();
+            return response('Error');
+        }
+    }
+
+    public function edit(Request $request) {
+        DB::beginTransaction();
+        try {
+            $recipe = $this->recipeService->editRecipe($request);
+            $this->ingredientService->deleteIngredients($recipe->id);
+            $this->stepRepository->deleteSteps($recipe->id);
+            $this->imageService->deleteImages($recipe->id, $request->imagesNotToDelete);
+
             $this->ingredientService->addIngredients($request, $recipe->id);
             $this->stepRepository->addSteps($request, $recipe->id);
             $this->imageService->addImage($request, $recipe->id);
@@ -267,7 +297,8 @@ class RecipeController extends Controller
 
     public function showSearchRecipe(Request $request) {
         $keyword = $request->keyword;
+        $products = $this->productService->searchProducts($keyword);
         $recipes = $this->recipeService->searchRecipe($keyword);
-        return view('recipes.search', compact( 'recipes', 'keyword'));
+        return view('recipes.search', compact( 'recipes', 'keyword', 'products'));
     }
 }

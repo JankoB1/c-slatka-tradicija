@@ -120,12 +120,10 @@ addToBook.addEventListener('click', function() {
 
     let recipeIds = localStorage.getItem('recipeBooks') ? JSON.parse(localStorage.getItem('recipeBooks')) : [];
     if(recipeIds.length !== 0) {
-        document.querySelectorAll('span.num')[0].innerText = recipeIds.length;
         document.querySelectorAll('span.num')[0].classList.add('active');
         document.querySelector('.books-mobile-inner').classList.add('active');
-        // document.querySelectorAll('span.num')[1].innerText = recipeIds.length;
-        // document.querySelectorAll('span.num')[1].classList.add('active');
     }
+    document.querySelectorAll('span.num')[0].innerText = recipeIds.length;
 });
 
 print.addEventListener('click', function() {

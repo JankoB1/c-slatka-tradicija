@@ -643,11 +643,12 @@
                     if(addToBookCheck && (id === document.querySelector('#recipe-gallery').dataset.recipeId)) {
                         addToBookCheck.click();
                     } else {
-                        let i = recipeIds.indexOf(parseInt(id));
-                        recipeIds.splice(i, 1);
-                        localStorage.setItem('recipeBooks', JSON.stringify(recipeIds));
+                        let recipeIdsNow = localStorage.getItem('recipeBooks') ? JSON.parse(localStorage.getItem('recipeBooks')) : [];
+                        let i = recipeIdsNow.indexOf(parseInt(id));
+                        recipeIdsNow.splice(i, 1);
+                        localStorage.setItem('recipeBooks', JSON.stringify(recipeIdsNow));
                         x.parentElement.remove();
-                        document.querySelectorAll('span.num')[0].innerText = recipeIds.length;
+                        document.querySelectorAll('span.num')[0].innerText = recipeIdsNow.length;
                         // document.querySelectorAll('span.num')[1].innerText = recipeIds.length;
 
                         document.querySelector('.books-mobile-inner p[data-recipe-id="' + id + '"]').remove();
@@ -661,13 +662,13 @@
                     if(addToBookCheck) {
                         addToBookCheck.click();
                     } else {
+                        let recipeIdsNow = localStorage.getItem('recipeBooks') ? JSON.parse(localStorage.getItem('recipeBooks')) : [];
                         let id = x.parentElement.dataset.recipeId;
-                        let i = recipeIds.indexOf(parseInt(id));
-                        recipeIds.splice(i, 1);
-                        localStorage.setItem('recipeBooks', JSON.stringify(recipeIds));
+                        let i = recipeIdsNow.indexOf(parseInt(id));
+                        recipeIdsNow.splice(i, 1);
+                        localStorage.setItem('recipeBooks', JSON.stringify(recipeIdsNow));
                         x.parentElement.remove();
-                        document.querySelectorAll('span.num')[0].innerText = recipeIds.length;
-                        // document.querySelectorAll('span.num')[1].innerText = recipeIds.length;
+                        document.querySelectorAll('span.num')[0].innerText = recipeIdsNow.length;
 
                         document.querySelector('.books-popup p[data-recipe-id="' + id + '"]').remove();
                     }

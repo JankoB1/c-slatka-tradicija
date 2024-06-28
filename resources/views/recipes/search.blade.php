@@ -10,7 +10,21 @@
         <div class="recipes-category-content container-space">
             <a href="{{ route('show-all-recipes') }}" class="all-categories-link"><img src="{{ asset('images/left-arrow.svg') }}" alt="left arrow">Sve kategorije recepata</a>
             <h1>Pretraga: {{ $keyword }}</h1>
-            <a href="{{ route('recipes.create') }}" class="mobile-send-cta mobile">Pošaljite recept</a>
+            <a href="{{ route('recipes.create') }}" class="mobile-send-cta mobile">Pošalji recept</a>
+            @if(count($products) > 0)
+                <div class="row products-search-row">
+                    @foreach($products as $product)
+                        <div class="col-md-4">
+                            <a class="single-recipe-link" href="{{ route('show-single-product', ['slug' => $product->slug]) }}">
+                                <div class="single-recipe-preview single-product-preview">
+                                    <img src="{{ asset('images/' . $product->image_path) }}" alt="{{ $product->name }}">
+                                    <p>{{ $product->name }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
             <div class="row">
                 @foreach($recipes as $recipe)
                     <div class="col-md-4">

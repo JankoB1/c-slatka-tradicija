@@ -48,4 +48,15 @@ class ProductRepository
             return null;
         }
     }
+
+    public function searchProducts($keyword) {
+        try {
+            return Product::where('name', 'like', '%' . $keyword . '%')
+                ->where('active', '=', 'T')
+                ->get();
+        } catch (QueryException $exception) {
+            Log::error('Can\'t search products: ' . $exception->getMessage());
+            return null;
+        }
+    }
 }

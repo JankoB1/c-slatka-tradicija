@@ -71,7 +71,8 @@
                         <div class="profile-recipes-content row active">
                             @foreach(Auth::user()->recipes as $recipe)
                                 <div class="col-md-4">
-                                    <div class="single-recipe-preview">
+                                    <div class="single-recipe-preview" style="position:relative;">
+                                        <a style="position:absolute; right: 20px; top: 20px; color: #2E4765" href="{{ route('show-edit-recipe', ['id' => $recipe->id]) }}"><i class="fas fa-edit"></i></a>
                                         <a href="{{ route('show-single-recipe', ['category' => $recipe->category->slug, 'id' => $recipe->id, 'slug' => $recipe->slug]) }}">
                                             @if($recipe->old_recipe == 1)
                                                 <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $recipe->image_old) }}');">

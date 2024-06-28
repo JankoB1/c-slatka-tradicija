@@ -2,9 +2,11 @@
 
 namespace App\Repositories;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Models\StepGroup;
 use App\Models\Step;
+use Illuminate\Support\Facades\Log;
 
 class StepRepository
 {
@@ -33,6 +35,19 @@ class StepRepository
                 'title' => $item,
                 'group' => null,
             ]);
+        }
+    }
+
+    public function deleteSteps($id) {
+        try {
+            $steps = Step::where('recipe_id', '=', $id)->get();
+            foreach ($steps as $step) {
+                $step->delete();
+            }
+        }
+        catch (QueryException $exception) {
+            Log::error('Can\'t delete steps: ' . $exception->getMessage());
+            return null;
         }
     }
 }

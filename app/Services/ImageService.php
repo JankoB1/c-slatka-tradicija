@@ -34,4 +34,8 @@ class ImageService
             $this->imageRepository->removeImage($image);
         }
     }
+
+    public function deleteImages($id, $imagesNotToDelete) {
+        return $this->imageRepository->deleteImages($id, $imagesNotToDelete);
+    }
 }

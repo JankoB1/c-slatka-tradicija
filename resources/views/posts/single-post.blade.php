@@ -9,6 +9,10 @@
         <div class="post-content-inner container-space">
             <h1>{{ $post->title }}</h1>
             {!! $post->content !!}
+            <div class="share">
+                <img src="{{ asset('images/share.svg') }}" alt="share">
+                <p>Podeli</p>
+            </div>
         </div>
     </section>
 
@@ -24,4 +28,14 @@
             </div>
         </div>
     </section>
+@endsection
+
+@section('scriptsBottom')
+    <script>
+        let share = document.querySelector('.share');
+        share.addEventListener('click', function() {
+            let shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&src=sdkpreparse`;
+            window.open(shareUrl, '_blank');
+        });
+    </script>
 @endsection

@@ -26,4 +26,8 @@ class IngredientService
     public function getIngredientsOld($recipeId) {
         return $this->ingredientRepository->getIngredientsOld($recipeId);
     }
+
+    public function deleteIngredients($id) {
+        $this->ingredientRepository->deleteIngredients($id);
+    }
 }

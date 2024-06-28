@@ -25,6 +25,7 @@ Route::get('/pretraga', [RecipeController::class, 'showSearchRecipe'])->name('sh
 Route::prefix('recipes')->group(function() {
     Route::get('/', [RecipeController::class, 'retrieve'])->name('recipes.retrieve');
     Route::post('/store', [RecipeController::class, 'store'])->name('recipes.store');
+    Route::post('/edit/', [RecipeController::class, 'edit'])->name('recipes.edit');
     Route::post('/add-recipes-book', [RecipeController::class, 'saveToSession']);
     Route::post('/upload-image', [ImageController::class, 'uploadImage']);
     Route::post('/add-image', [ImageController::class, 'addImage']);

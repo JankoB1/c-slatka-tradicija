@@ -16,7 +16,9 @@ class ProductService
         return $this->productRepository->getAllProductsByCategory($product_category_id);
     }
 
-
+    public function searchProducts($keyword) {
+        return $this->productRepository->searchProducts($keyword);
+    }
 
     public function getAllProducts() {
         return $this->productRepository->getAllProducts();

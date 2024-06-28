@@ -15,9 +15,7 @@ use App\Models\Recipe;
 class RecipeRepository
 {
     public function addRecipe(Request $request) {
-
         try {
-
             $user = Auth::user();
             $recipe = Recipe::create([
                 'category_id'=>$request->subCat,
@@ -36,6 +34,23 @@ class RecipeRepository
             Log::info('Recipe id: ' . $recipe_id);
             return $recipe;
 
+        } catch (QueryException $exception) {
+            Log::error('Can\'t add recipe: ' . $exception->getMessage());
+            return null;
+        }
+    }
+
+    public function edtiRecipe(Request $request) {
+        try {
+            $recipe = Recipe::find($request->recipe_id);
+            $recipe->category_id = $request->subCat;
+            $recipe->title = $request->title;
+            $recipe->difficulty = $request->difficulty;
+            $recipe->preparation_time = $request->preparationTime;
+            $recipe->portion_number = $request->portionNum;
+            $recipe->description = $request->description;
+            $recipe->save();
+            return $recipe;
         } catch (QueryException $exception) {
             Log::error('Can\'t add recipe: ' . $exception->getMessage());
             return null;

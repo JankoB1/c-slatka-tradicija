@@ -32,8 +32,8 @@
                         <div class="row">
                             <div class="col-md-5"></div>
                             <div class="col-md-7">
-                                <p>Da biste izvršili ovu akciju, potrebno je da budete prijavljeni na našem web sajtu.</p>
-                                <p>Bez brige, ukoliko nemate profil, proces je kratak i vrlo brzo ćete moći da nastavite sa korišćenjem sajta.</p>
+                                <p>Da bi izvršio/la ovu akciju, potrebno je da budeš prijavljen na našem web sajtu.</p>
+                                <p>Bez brige, ukoliko nemaš profil, proces je kratak i vrlo brzo ćeš moći da nastaviš sa korišćenjem sajta.</p>
                                 <a href="{{ route('login') }}">Prijavi se</a>
                             </div>
                         </div>
@@ -109,14 +109,14 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="single-info mb-low mobile">
-                        <p><strong>Vreme pripreme:</strong><br>{{ $recipe->preparation_time }}</p>
+                        <p><img src="{{ asset('images/1 vreme outline.svg') }}" alt="vreme pripreme" />{{ $recipe->preparation_time }}</p>
                     </div>
                     <div class="single-info mb-low mobile">
-                        <p><strong>Težina pripreme:</strong><br>{{ $recipe->difficulty }}</p>
+                        <p><img src="{{ asset('images/2 tezina outline-02.svg') }}" alt="tezina pripreme" />{{ $recipe->difficulty }}</p>
                     </div>
                     @if($recipe->old_recipe == 0)
                         <div class="single-info mobile">
-                            <p><strong>Broj porcija:</strong><br>{{ $recipe->portion_number }}</p>
+                            <p><img src="{{ asset('images/1 porcije outline-04.svg') }}" alt="broj porcija" />{{ $recipe->portion_number }}</p>
                         </div>
                     @endif
                     <h1 class="mobile">{{ $recipe->title }}</h1>
@@ -139,18 +139,18 @@
                                 <h5>{{ $key }}</h5>
                                 @foreach($items as $item)
                                     @if($item['product_id'] == null)
-                                        <p>{{ $item['title'] }} {{ $item['quantity'] }} {{ $item['measure'] }}</p>
+                                        <p>{{ $item['quantity'] }} {{ $item['measure'] }} {{ $item['title'] }}</p>
                                     @else
-                                        <p><a href="{{ route('show-single-product', ['slug' => \App\Models\Product::find($item['product_id'])->slug]) }}">{{ $item['title'] }} {{ $item['quantity'] }} {{ $item['measure'] }}</a></p>
+                                        <p><a href="{{ route('show-single-product', ['slug' => \App\Models\Product::find($item['product_id'])->slug]) }}">{{ $item['quantity'] }} {{ $item['measure'] }} {{ $item['title'] }}</a></p>
                                     @endif
                                 @endforeach
                             @endforeach
                             @foreach($recipe->ingredients as $ingredient)
                                 @if($ingredient->group == null)
                                     @if($ingredient->product_id == null)
-                                        <p>{{ $ingredient->title }} {{ $ingredient->quantity }} {{ $ingredient->measure }}</p>
+                                        <p>{{ $ingredient->quantity }} {{ $ingredient->measure }} {{ $ingredient->title }}</p>
                                     @else
-                                        <p><a href="{{ route('show-single-product', ['slug' => \App\Models\Product::find($ingredient->product_id)->slug]) }}">{{ $ingredient->title }} {{ $ingredient->quantity }} {{ $ingredient->measure }}</a></p>
+                                        <p><a href="{{ route('show-single-product', ['slug' => \App\Models\Product::find($ingredient->product_id)->slug]) }}">{{ $ingredient->quantity }} {{ $ingredient->measure }} {{ $ingredient->title }}</a></p>
                                     @endif
                                 @endif
                             @endforeach
@@ -233,21 +233,17 @@
                         @endforeach
                     @endif
 
-                    @guest()
-
-                    @elseauth()
-                        @if($recipe->old_recipe == 0)
-                            <h4 class="author-h">Autor</h4>
-                            @if($recipe->user_recipe != null)
-                                <a href="{{ route('retrieve-recipes-by-user', ['userId' => $recipe->user_recipe->id]) }}" class="author-name">{{ $recipe->user_recipe->username  }}</a>
-                            @endif
-                        @else
-                            @if($recipe->user != null)
-                                <h4 class="author-h">Autor</h4>
-                                <p class="author-name">{{ $recipe->user }}</p>
-                            @endif
+                    @if($recipe->old_recipe == 0)
+                        <h4 class="author-h">Autor</h4>
+                        @if($recipe->user_recipe != null)
+                            <a href="{{ route('retrieve-recipes-by-user', ['userId' => $recipe->user_recipe->id]) }}" class="author-name">{{ $recipe->user_recipe->username  }}</a>
                         @endif
-                    @endguest
+                    @else
+                        @if($recipe->user != null)
+                            <h4 class="author-h">Autor</h4>
+                            <p class="author-name">{{ $recipe->user }}</p>
+                        @endif
+                    @endif
                     {{--                    <p class="recipe-date">--}}
                     {{--                        Recept dodat:--}}
                     {{--                    </p>--}}
@@ -255,7 +251,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-3" style="border-right: none;"></div>
+                <div class="col-md-3 {{ (($recipe->old_recipe == 0 && $recipe->user_recipe == null) || ($recipe->old_recipe == 1 && $recipe->user == null))? 'mobile-delete': '' }}" style="border-right: none;"></div>
                 <div class="col-md-9">
                     <section id="recipe-actions" class="mobile">
                         <div class="recipe-actions-inner">

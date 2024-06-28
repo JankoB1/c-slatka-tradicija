@@ -22,6 +22,10 @@ class RecipeService
         return $this->recipeRepository->addRecipe($request);
     }
 
+    public function editRecipe(Request $request) {
+        return $this->recipeRepository->edtiRecipe($request);
+    }
+
     public function getRecipeBySlug($slug) {
         return $this->recipeRepository->getRecipeBySlug($slug);
     }

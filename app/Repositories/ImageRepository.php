@@ -18,9 +18,24 @@ class ImageRepository
 
         }
         catch (QueryException $exception) {
-                Log::error('Can\'t upload image: ' . $exception->getMessage());
-                return null;
+            Log::error('Can\'t upload image: ' . $exception->getMessage());
+            return null;
+        }
+    }
+
+    public function deleteImages($id, $imagesNotToDelete) {
+        try {
+            $images = RecipeImages::where('recipe_id', '=', $id)->get();
+            foreach ($images as $image) {
+                if(!in_array($image->id, $imagesNotToDelete)) {
+                    $image->delete();
+                }
             }
+        }
+        catch (QueryException $exception) {
+            Log::error('Can\'t delete images: ' . $exception->getMessage());
+            return null;
+        }
     }
 
     public function saveMaskImage($image, $xOffset, $imageName, $recipe_id) {
