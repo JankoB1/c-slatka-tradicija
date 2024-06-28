@@ -95,24 +95,24 @@
                             @endforeach
                         </div>
                         <div class="profile-recipes-content profile-recipes-content-saved row">
-{{--                            @foreach($savedRecipes as $saved)--}}
-{{--                                <div class="col-md-4">--}}
-{{--                                    <div class="single-recipe-preview">--}}
-{{--                                        <a href="{{ route('show-single-recipe', ['category' => $saved->category->slug, 'id' => $saved->recipe->id, 'slug' => $saved->recipe->slug]) }}">--}}
-{{--                                            @if($saved->recipe->old_recipe == 1)--}}
-{{--                                                <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $saved->recipe->image_old) }}');">--}}
+                            @foreach($savedRecipes as $saved)
+                                <div class="col-md-4">
+                                    <div class="single-recipe-preview">
+                                        <a href="{{ route('show-single-recipe', ['category' => $saved->category->slug, 'id' => $saved->recipe->id, 'slug' => $saved->recipe->slug]) }}">
+                                            @if($saved->recipe->old_recipe == 1)
+                                                <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $saved->recipe->image_old) }}');">
 
-{{--                                                </div>--}}
-{{--                                            @else--}}
-{{--                                                <div class="recipe-preview-img" style="background-image: url('{{ isset($saved->recipe->images[0]) ? asset('storage/upload/' . $saved->recipe->images[0]->path): '' }}');">--}}
+                                                </div>
+                                            @else
+                                                <div class="recipe-preview-img" style="background-image: url('{{ isset($saved->recipe->images[0]) ? asset('storage/upload/' . $saved->recipe->images[0]->path): '' }}');">
 
-{{--                                                </div>--}}
-{{--                                            @endif--}}
-{{--                                            <p>{{ $saved->recipe->title }}</p>--}}
-{{--                                        </a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
+                                                </div>
+                                            @endif
+                                            <p>{{ $saved->recipe->title }}</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
