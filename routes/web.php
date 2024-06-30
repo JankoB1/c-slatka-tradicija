@@ -78,3 +78,4 @@ Route::middleware(['auth'])->group(function() {
 
 Route::get('/pdf', [\App\Http\Controllers\PdfController::class, 'generatePdf'])->name('pdf');
 Route::get('/get-recipes-by-ids', [RecipeController::class, 'getRecipesByIds'])->name('get-recipes-by-ids');
+Route::post('/crop-image', [ImageController::class, 'cropImage'])->name('crop-image');

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\Image;
+use Intervention\Image\ImageManager;
 
 
 class ImageController
@@ -51,6 +54,23 @@ class ImageController
 
         /*$imgpath = request()->file('file')->store('uploads', 'public');
         return response()->json(['location' => "/storage/$imgpath"]);*/
+    }
+
+    public function cropImage(Request $request) {
+        $manager = new ImageManager(new Driver());
+        $image = $manager->read(file_get_contents(public_path($request->imagePath)));
+
+        $r = $image->width() / $request->imgWidth;
+
+        $top = $r * $request->cropBoxTop;
+        $left = $r * $request->cropBoxLeft;
+        $width = $r * $request->cropBoxWidth;
+        $height = $r * $request->cropBoxHeight;
+
+        $image->crop($width, $height, $left, $top);
+
+        $croppedImagePath = 'images/cropped_image.jpg';
+        Storage::put($croppedImagePath, (string) $image->encode());
     }
 
 }

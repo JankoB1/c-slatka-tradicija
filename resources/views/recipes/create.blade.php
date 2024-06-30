@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    
+
     <section>
         <img class="desktop" src="{{ asset('images/add-recipe-hero.jpeg') }}" alt="" style="width: 100%; margin-top: 70px;">
         <img class="mobile" src="{{ asset('images/add-recipe-herom.jpeg') }}" alt="" style="width: 100%; margin-top: 70px;">
@@ -269,6 +269,20 @@
             </div>
         </div>
     @endauth
+
+    <div class="modal fade" id="image-crop-popup" tabindex="-1" aria-labelledby="loadingPopupLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="#" alt="crop image" style="width: 100%;">
+                    <div id="obj" class="move" onmousedown="makeObjectToDrag(this);"></div>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="cropImage()">Završi</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection
 
