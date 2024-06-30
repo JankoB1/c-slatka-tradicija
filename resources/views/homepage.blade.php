@@ -3,7 +3,7 @@
 @section('content')
     <section id="main-banner">
         <div class="main-banner-inner">
-            <h1>Učestvuj u konkursu<br>"Torte i kolači <br>sa Eskimko sladoledom"</h1>
+            <h1>Učestvuj u konkursu<br>"Letnje torte i <br>kolači"</h1>
             <a href="{{ route('show-competition') }}">Pošalji recept</a>
         </div>
     </section>
@@ -277,7 +277,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa <br>Eskimko sladoledom"</h3>
+                    <h3>Učestvuj u konkursu<br>"Letnje torte i <br>kolači"</h3>
                     <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>

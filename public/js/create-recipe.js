@@ -662,9 +662,11 @@ addImageBtn.addEventListener('click', function() {
             contentType: false,
             method: 'POST',
             success: function(response) {
-                imageCropPopup.querySelector('img').src = window.origin + '/storage/upload/' + response;
-                imageCropPopup.querySelector('img').dataset.imagePath = '/storage/upload/' + response;
-                imageCropModal.show();
+                // imageCropPopup.querySelector('img').src = window.origin + '/storage/upload/' + response;
+                // imageCropPopup.querySelector('img').dataset.imagePath = '/storage/upload/' + response;
+                // imageCropModal.show();
+
+                let imagePath = window.origin + '/storage/upload/' + response;
                 imagesUploaded.push(response);
 
                 let newImg = document.createElement('div');
