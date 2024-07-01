@@ -3533,8 +3533,10 @@ button.swal2-deny.nodel-recipe-sw.swal2-styled {
     }
 
     #main-banner {
-        background-image: url("../images/homepage-hero-mobile.png");
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/homepage-hero-mobile.png");
         background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 
     #main-banner .main-banner-inner h1 {
