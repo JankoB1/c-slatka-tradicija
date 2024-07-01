@@ -1767,6 +1767,7 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
     bottom: 45px;
     right: 0;
     transform: translateX(-50%);
+    z-index: 100;
 }
 
 .recipe-actions-inner {
@@ -3717,10 +3718,10 @@ button.swal2-deny.nodel-recipe-sw.swal2-styled {
         column-gap: 10px;
     }
 
-    .like-cont {
-        left: 50%;
-        right: unset;
-    }
+    /*.like-cont {*/
+    /*    left: 50%;*/
+    /*    right: unset;*/
+    /*}*/
 
     .recipe-actions-inner p, .like-cont p {
         font-size: 11px !important;
