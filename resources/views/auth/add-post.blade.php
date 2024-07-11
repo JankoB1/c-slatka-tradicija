@@ -42,9 +42,10 @@
         <div class="add-post-inner container-space">
             <form action="#" method="POST" enctype="multipart/form-data">
                 @csrf
+                <input type="file" name="image">
                 <input type="text" name="title" placeholder="Naslov">
                 <textarea name="content" id="content" cols="30" rows="10"></textarea>
-                <input type="submit" value="Submit">
+                <input type="submit" value="Dodaj">
             </form>
         </div>
     </section>
@@ -53,25 +54,26 @@
 
 @section('scriptsBottom')
     <script>
-        let form = document.querySelector('#add-post form');
-        form.addEventListener('submit', function(e) {
+        document.querySelector('#add-post form').addEventListener('submit', function(e) {
             e.preventDefault();
-            let title = form.querySelector('input[name="title"]').value;
-            let content = tinymce.get("content").getContent();
-            jQuery.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                },
-                url: window.origin + '/add-post',
-                data: {
-                    title: title,
-                    html_content: content
-                },
+
+            let formData = new FormData(this);
+            formData.append('html_content', tinymce.get("content").getContent());
+
+            fetch('/add-post', {
                 method: 'POST',
-                success: function(response) {
-                    console.log(response)
-                }
-            });
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                },
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Uspešno dodato!')
+                })
+                .catch(error => {
+                    alert('Neuspešno dodato!')
+                });
         });
     </script>
 @endsection
