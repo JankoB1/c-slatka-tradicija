@@ -71,3 +71,9 @@
     </section>
 
 @endsection
+
+@section('scriptsBottom')
+    <script>
+        document.querySelector('form input').focus();
+    </script>
+@endsection

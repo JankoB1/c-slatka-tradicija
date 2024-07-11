@@ -24,6 +24,7 @@
     @yield('styles')
 
     <!-- Scripts -->
+    <!-- Start cookieyes banner --> <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/27798325c5f1f8a964e18c27/script.js"></script> <!-- End cookieyes banner -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -177,14 +178,16 @@
             <img src="{{ asset('images/search-mobile.svg') }}" alt="search" class="search-mobile">
 
             @guest()
-                <a class="mobile-ps" href="{{ route('login') }}">Prijavi se</a>
+                <a href="{{ route('login') }}">
+                    <div style="background-image: url('{{ asset('images/avatar.png') }}');" class="avatar-img mobile-ps"></div>
+                </a>
             @endguest
                 @auth()
                     <div class="user-info-mobile-row">
                         @if(Auth::user()->image_path != null)
                             <div style="background-image: url('{{ asset('storage/' . Auth::user()->image_path) }}');" class="avatar-img"></div>
                         @else
-                            <div style="background-image: url('{{ asset('images/avatar.png') }}');" class="avatar-img"></div>
+                            <div style="background-image: url('{{ asset('images/avatar.png') }}');" class="avatar-img avatar-img-logged"></div>
                         @endif
                     </div>
 
@@ -201,6 +204,7 @@
                                 <p class="hello2">{{ Auth::user()->name }} {{ Auth::user()->name }}</p>
                                 <p class="email">{{ Auth::user()->email }}</p>
                                 <a href="{{ route('show-profile') }}" class="my-profile-link">Moj profil</a>
+                                <a href="{{ route('recipes.create') }}" class="add-recipe">Dodaj recept</a>
                             </div>
                             <div class="list">
                                 <a href="{{ route('show-profile') }}" class="single-list-item">
@@ -538,7 +542,7 @@
     });
 </script>
 <script>
-    let avatarImg = document.querySelector('.avatar-img');
+    let avatarImg = document.querySelector('.avatar-img-logged');
     if(avatarImg) {
         avatarImg.addEventListener('click', function() {
             document.querySelector('.user-popup').classList.toggle('active');

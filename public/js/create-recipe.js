@@ -68,7 +68,7 @@ const imageControls = `<div class="row image-controls-row">
         <img class="top-img" src="${window.origin + '/images/left-img.png'}" alt="top img">
         <img class="bottom-img" src="${window.origin + '/images/left-img.png'}" alt="bottom img">
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3" style="visibility: hidden;">
         <button class="finish-btn" type="button">Završeno</button>
     </div>
 </div>`;
@@ -662,31 +662,32 @@ addImageBtn.addEventListener('click', function() {
             contentType: false,
             method: 'POST',
             success: function(response) {
-                // imageCropPopup.querySelector('img').src = window.origin + '/storage/upload/' + response;
-                // imageCropPopup.querySelector('img').dataset.imagePath = '/storage/upload/' + response;
-                // imageCropModal.show();
+                imageCropPopup.querySelector('img').src = window.origin + '/storage/upload/' + response;
+                imageCropPopup.querySelector('img').dataset.imagePath = '/storage/upload/' + response;
+                imageCropPopup.querySelector('#obj').style.top = 0;
+                imageCropPopup.querySelector('#obj').style.left = 0;
+                imageCropModal.show();
 
-                let imagePath = window.origin + '/storage/upload/' + response;
-                imagesUploaded.push(response);
+                // imagesUploaded.push(response);
 
-                let newImg = document.createElement('div');
-                newImg.classList.add('single-img');
-                newImg.style.backgroundImage = 'url("' + imagePath + '")';
-                let newImgGrid = document.createElement('div');
-                newImg.appendChild(newImgGrid);
-                let newDiv = document.createElement('div');
-                newDiv.classList.add('single-image-div');
-                newDiv.appendChild(newImg)
-                let newImagesRow = document.createElement('div');
-                newImagesRow.innerHTML = imageControls;
-                newDiv.appendChild(newImagesRow);
-                document.querySelector('.images').appendChild(newDiv);
-
-                let deleteImg = newImagesRow.querySelector('.delete-img');
-                deleteImg.addEventListener('click', function() {
-                    newImagesRow.parentElement.remove();
-
-                });
+                // let newImg = document.createElement('div');
+                // newImg.classList.add('single-img');
+                // newImg.style.backgroundImage = 'url("' + imagePath + '")';
+                // let newImgGrid = document.createElement('div');
+                // newImg.appendChild(newImgGrid);
+                // let newDiv = document.createElement('div');
+                // newDiv.classList.add('single-image-div');
+                // newDiv.appendChild(newImg)
+                // let newImagesRow = document.createElement('div');
+                // newImagesRow.innerHTML = imageControls;
+                // newDiv.appendChild(newImagesRow);
+                // document.querySelector('.images').appendChild(newDiv);
+                //
+                // let deleteImg = newImagesRow.querySelector('.delete-img');
+                // deleteImg.addEventListener('click', function() {
+                //     newImagesRow.parentElement.remove();
+                //
+                // });
 
             },
             error: function(xhr, status, error) {
@@ -905,6 +906,7 @@ function transformSrLetter(word) {
     return finalWord;
 }
 
+
 var cursor = {
     x: 0,
     y: 0
@@ -936,7 +938,7 @@ function makeObjectToDrag(obj) {
 function startMove(e) {
     if (dragobj) {
         getCursorPos(e);
-        dragobj.className = "moving";
+        dragobj.className = "moving resizable";
         i1 = cursor.x - dragobj.offsetLeft;
         h1 = cursor.y - dragobj.offsetTop;
     }
@@ -944,7 +946,7 @@ function startMove(e) {
 
 function drop() {
     if (dragobj) {
-        dragobj.className = "move";
+        dragobj.className = "move resizable";
         dragobj = null;
     }
 }
@@ -968,12 +970,89 @@ function getCursorPos(e) {
 function moving(e) {
     getCursorPos(e);
     if (dragobj) {
+        const parent = dragobj.parentElement;
+        const parentRect = parent.getBoundingClientRect();
+        const dragRect = dragobj.getBoundingClientRect();
+
         oLeft = cursor.x - i1;
         oTop = cursor.y - h1;
+
+        // Boundary checks
+        if (oLeft < 0) {
+            oLeft = 0;
+        } else if (oLeft + dragRect.width > parentRect.width) {
+            oLeft = parentRect.width - dragRect.width;
+        }
+
+        if (oTop < 0) {
+            oTop = 0;
+        } else if (oTop + dragRect.height > parentRect.height) {
+            oTop = parentRect.height - dragRect.height;
+        }
+
         dragobj.style.left = oLeft + 'px';
         dragobj.style.top = oTop + 'px';
     }
 }
+
+
+function makeResizableDiv(div) {
+    const element = document.querySelector(div);
+    const resizers = document.querySelectorAll(div + ' .resizer')
+    const minimum_size = 20;
+    let original_width = 0;
+    let original_height = 0;
+    let original_x = 0;
+    let original_y = 0;
+    let original_mouse_x = 0;
+    let original_mouse_y = 0;
+    let aspectRatio = 1.15;
+    for (let i = 0;i < resizers.length; i++) {
+        const currentResizer = resizers[i];
+        currentResizer.addEventListener('mousedown', function(e) {
+            e.preventDefault()
+            original_width = parseFloat(getComputedStyle(element, null).getPropertyValue('width').replace('px', ''));
+            original_height = parseFloat(getComputedStyle(element, null).getPropertyValue('height').replace('px', ''));
+            original_x = element.getBoundingClientRect().left;
+            original_y = element.getBoundingClientRect().top;
+            original_mouse_x = e.pageX;
+            original_mouse_y = e.pageY;
+            window.addEventListener('mousemove', resize)
+            window.addEventListener('mouseup', stopResize)
+        })
+
+        function resize(e) {
+            let width, height;
+            if (currentResizer.classList.contains('bottom-right')) {
+                width = original_width + (e.pageX - original_mouse_x);
+                height = width / aspectRatio;
+            } else if (currentResizer.classList.contains('bottom-left')) {
+                height = original_height + (e.pageY - original_mouse_y);
+                width = height * aspectRatio;
+                element.style.left = original_x + (original_width - width) + 'px';
+            } else if (currentResizer.classList.contains('top-right')) {
+                width = original_width + (e.pageX - original_mouse_x);
+                height = width / aspectRatio;
+                element.style.top = original_y + (original_height - height) + 'px';
+            } else if (currentResizer.classList.contains('top-left')) {
+                height = original_height - (e.pageY - original_mouse_y);
+                width = height * aspectRatio;
+                element.style.top = original_y + (original_height - height) + 'px';
+                element.style.left = original_x + (original_width - width) + 'px';
+            }
+            if (width > minimum_size && height > minimum_size) {
+                element.style.width = width + 'px';
+                element.style.height = height + 'px';
+            }
+        }
+
+        function stopResize() {
+            window.removeEventListener('mousemove', resize)
+        }
+    }
+}
+
+makeResizableDiv('.resizable')
 
 function getCropData() {
     let img = imageCropPopup.querySelector('img');
@@ -1015,7 +1094,25 @@ function cropImage() {
         },
         method: 'POST',
         success: function (response) {
+            imageCropModal.hide();
+            imagesUploaded.push(response);
+            let imagePath = window.origin + '/storage/upload/' + response;
 
+            let newImg = document.createElement('img');
+            newImg.classList.add('single-img-cropped');
+            newImg.src = imagePath;
+            let newDiv = document.createElement('div');
+            newDiv.appendChild(newImg)
+            let newImagesRow = document.createElement('div');
+            newImagesRow.innerHTML = imageControls;
+            newDiv.appendChild(newImagesRow);
+            document.querySelector('.images').appendChild(newDiv);
+
+            let deleteImg = newImagesRow.querySelector('.delete-img');
+            deleteImg.addEventListener('click', function() {
+                newImagesRow.parentElement.remove();
+
+            });
         }
     });
 }

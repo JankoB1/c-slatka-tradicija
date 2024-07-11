@@ -4,6 +4,11 @@
 
 <section id="featured-recipes" style="margin-top: 70px;">
     <div class="featured-recipes-inner container-space">
+        @if($user->image_path != null)
+            <div style="background-image: url('{{ asset('storage/' . $user->image_path) }}');" class="profile-img profile-img-recipes"></div>
+        @else
+            <div style="background-image: url('{{ asset('images/avatar.png') }}');" class="profile-img profile-img-recipes"></div>
+        @endif
         <h2>{{ $user->username }}</h2>
         <div class="user-socials">
             <a href="{{ $user->fb }}" target="_blank"><i class="fab fa-facebook-f"></i></a>

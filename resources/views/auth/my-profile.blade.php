@@ -17,9 +17,9 @@
                 <div class="col-md-2">
                     <input type="file" style="display: none;" class="image-input">
                     @if(Auth::user()->image_path != null)
-                        <div style="background-image: url('{{ asset('storage/' . Auth::user()->image_path) }}');" class="profile-img"></div>
+                        <div style="background-image: url('{{ asset('storage/' . Auth::user()->image_path) }}');" class="profile-img"><i class="fas fa-edit"></i></div>
                     @else
-                        <div style="background-image: url('{{ asset('images/avatar.png') }}');" class="profile-img"></div>
+                        <div style="background-image: url('{{ asset('images/avatar.png') }}');" class="profile-img"><i class="fas fa-edit"></i></div>
                     @endif
                 </div>
                 <div class="col-md-10">

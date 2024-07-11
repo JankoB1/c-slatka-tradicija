@@ -69,8 +69,11 @@ class ImageController
 
         $image->crop($width, $height, $left, $top);
 
-        $croppedImagePath = 'images/cropped_image.jpg';
+        $imageName = time() . '.jpg';
+        $croppedImagePath = 'public/upload/' . $imageName;
         Storage::put($croppedImagePath, (string) $image->encode());
+
+        return $imageName;
     }
 
 }

@@ -33,7 +33,6 @@
                             <div class="col-md-5"></div>
                             <div class="col-md-7">
                                 <p>Da bi izvršio/la ovu akciju, potrebno je da budeš prijavljen na našem web sajtu.</p>
-                                <p>Bez brige, ukoliko nemaš profil, proces je kratak i vrlo brzo ćeš moći da nastaviš sa korišćenjem sajta.</p>
                                 <a href="{{ route('login') }}">Prijavi se</a>
                             </div>
                         </div>

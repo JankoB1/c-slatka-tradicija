@@ -275,10 +275,17 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <img src="#" alt="crop image" style="width: 100%;">
-                    <div id="obj" class="move" onmousedown="makeObjectToDrag(this);"></div>
+                    <div id="obj" class="move resizable" onmousedown="makeObjectToDrag(this);">
+                        <div class="resizers">
+                            <div class="resizer top-left"></div>
+                            <div class="resizer top-right"></div>
+                            <div class="resizer bottom-left"></div>
+                            <div class="resizer bottom-right"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button onclick="cropImage()">Završi</button>
+                    <button class="add-recipe" onclick="cropImage()">Završi</button>
                 </div>
             </div>
         </div>
