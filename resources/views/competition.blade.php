@@ -322,7 +322,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <img src="#" alt="crop image" style="width: 100%;">
-                    <div id="obj" class="move resizable" onmousedown="makeObjectToDrag(this);">
+                    <div id="obj" class="move resizable" onmousedown="makeObjectToDrag(this);" ontouchstart="makeObjectToDrag(this);">
                         <div class="resizers">
                             <div class="resizer top-left"></div>
                             <div class="resizer top-right"></div>

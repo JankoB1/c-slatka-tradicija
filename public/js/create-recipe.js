@@ -906,7 +906,6 @@ function transformSrLetter(word) {
     return finalWord;
 }
 
-
 var cursor = {
     x: 0,
     y: 0
@@ -929,13 +928,18 @@ function gTxt(ob, txt) {
 function makeObjectToDrag(obj) {
     if (obj) {
         dragobj = rel(obj.id);
-        document.onmousedown = startMove;
-        document.onmouseup = drop;
-        document.onmousemove = moving;
+        // Add event listeners for both mouse and touch events
+        obj.addEventListener('mousedown', startMove);
+        obj.addEventListener('touchstart', startMove);
+        document.addEventListener('mouseup', drop);
+        document.addEventListener('touchend', drop);
+        document.addEventListener('mousemove', moving);
+        document.addEventListener('touchmove', moving);
     }
 }
 
 function startMove(e) {
+    e.preventDefault(); // Prevent default action for touch events
     if (dragobj) {
         getCursorPos(e);
         dragobj.className = "moving resizable";
@@ -959,9 +963,9 @@ function getCursorPos(e) {
     } else {
         var de = document.documentElement;
         var db = document.body;
-        cursor.x = e.clientX +
+        cursor.x = e.touches[0].clientX +
             (de.scrollLeft || db.scrollLeft) - (de.clientLeft || 0);
-        cursor.y = e.clientY +
+        cursor.y = e.touches[0].clientY +
             (de.scrollTop || db.scrollTop) - (de.clientTop || 0);
     }
     return cursor;
@@ -995,7 +999,6 @@ function moving(e) {
     }
 }
 
-
 function makeResizableDiv(div) {
     const element = document.querySelector(div);
     const resizers = document.querySelectorAll(div + ' .resizer')
@@ -1007,35 +1010,40 @@ function makeResizableDiv(div) {
     let original_mouse_x = 0;
     let original_mouse_y = 0;
     let aspectRatio = 1.15;
-    for (let i = 0;i < resizers.length; i++) {
+    for (let i = 0; i < resizers.length; i++) {
         const currentResizer = resizers[i];
-        currentResizer.addEventListener('mousedown', function(e) {
-            e.preventDefault()
+        currentResizer.addEventListener('mousedown', initResize);
+        currentResizer.addEventListener('touchstart', initResize);
+
+        function initResize(e) {
+            e.preventDefault(); // Prevent default action for touch events
             original_width = parseFloat(getComputedStyle(element, null).getPropertyValue('width').replace('px', ''));
             original_height = parseFloat(getComputedStyle(element, null).getPropertyValue('height').replace('px', ''));
             original_x = element.getBoundingClientRect().left;
             original_y = element.getBoundingClientRect().top;
-            original_mouse_x = e.pageX;
-            original_mouse_y = e.pageY;
-            window.addEventListener('mousemove', resize)
-            window.addEventListener('mouseup', stopResize)
-        })
+            original_mouse_x = e.touches ? e.touches[0].pageX : e.pageX;
+            original_mouse_y = e.touches ? e.touches[0].pageY : e.pageY;
+            window.addEventListener('mousemove', resize);
+            window.addEventListener('touchmove', resize);
+            window.addEventListener('mouseup', stopResize);
+            window.addEventListener('touchend', stopResize);
+        }
 
         function resize(e) {
             let width, height;
             if (currentResizer.classList.contains('bottom-right')) {
-                width = original_width + (e.pageX - original_mouse_x);
+                width = original_width + (e.touches ? e.touches[0].pageX - original_mouse_x : e.pageX - original_mouse_x);
                 height = width / aspectRatio;
             } else if (currentResizer.classList.contains('bottom-left')) {
-                height = original_height + (e.pageY - original_mouse_y);
+                height = original_height + (e.touches ? e.touches[0].pageY - original_mouse_y : e.pageY - original_mouse_y);
                 width = height * aspectRatio;
                 element.style.left = original_x + (original_width - width) + 'px';
             } else if (currentResizer.classList.contains('top-right')) {
-                width = original_width + (e.pageX - original_mouse_x);
+                width = original_width + (e.touches ? e.touches[0].pageX - original_mouse_x : e.pageX - original_mouse_x);
                 height = width / aspectRatio;
                 element.style.top = original_y + (original_height - height) + 'px';
             } else if (currentResizer.classList.contains('top-left')) {
-                height = original_height - (e.pageY - original_mouse_y);
+                height = original_height - (e.touches ? e.touches[0].pageY - original_mouse_y : e.pageY - original_mouse_y);
                 width = height * aspectRatio;
                 element.style.top = original_y + (original_height - height) + 'px';
                 element.style.left = original_x + (original_width - width) + 'px';
@@ -1047,12 +1055,13 @@ function makeResizableDiv(div) {
         }
 
         function stopResize() {
-            window.removeEventListener('mousemove', resize)
+            window.removeEventListener('mousemove', resize);
+            window.removeEventListener('touchmove', resize);
         }
     }
 }
 
-makeResizableDiv('.resizable')
+makeResizableDiv('.resizable');
 
 function getCropData() {
     let img = imageCropPopup.querySelector('img');
