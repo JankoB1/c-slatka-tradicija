@@ -3491,6 +3491,15 @@ button.swal2-deny.nodel-recipe-sw.swal2-styled {
     outline: none !important;
 }
 
+p {
+    font-family: Brandon Grotesque DS;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: left;
+    color: #000000
+}
+
 .move {
     position: absolute;
     z-index: 1;

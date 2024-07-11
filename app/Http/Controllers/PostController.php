@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Services\PostService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -32,6 +33,16 @@ class PostController extends Controller
     public function showPosts() {
         $posts = Post::orderBy('created_at', 'desc')->paginate(21);
         return view('posts.posts', compact('posts'));
+    }
+
+    public function testEmail() {
+        $data = [];
+        Mail::send('test-email', $data, function($message) use ($data)
+        {
+            $message->from(env('MAIL_FROM_ADDRESS', 'test@c-slatkatradicija.com'));
+            $message->to("janko.tbbt@gmail.com", "Janko");
+            $message->subject('Test email');
+        });
     }
 
 }

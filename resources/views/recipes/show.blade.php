@@ -23,6 +23,7 @@
 
 @section('content')
 
+
     @guest()
         <div class="modal fade" id="login-popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">

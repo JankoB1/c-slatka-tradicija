@@ -945,6 +945,9 @@ function startMove(e) {
         dragobj.className = "moving resizable";
         i1 = cursor.x - dragobj.offsetLeft;
         h1 = cursor.y - dragobj.offsetTop;
+        // Store initial position of the element
+        original_x = dragobj.getBoundingClientRect().left;
+        original_y = dragobj.getBoundingClientRect().top;
     }
 }
 
