@@ -548,6 +548,13 @@
             document.querySelector('.user-popup').classList.toggle('active');
         });
     }
+
+    let avaterImgDesc = document.querySelector('.avatar-img');
+    if(avaterImgDesc) {
+        avaterImgDesc.addEventListener('click', function() {
+            document.querySelector('.user-popup').classList.toggle('active');
+        });
+    }
 </script>
 <script>
     let triggers = document.querySelectorAll('.has-dropdown');

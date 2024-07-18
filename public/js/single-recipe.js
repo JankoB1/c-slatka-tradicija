@@ -3,6 +3,7 @@ let recipeBooks = localStorage.getItem('recipeBooks');
 let recipeId = parseInt(document.querySelector('#recipe-gallery').dataset.recipeId);
 let print = document.querySelector('.print');
 let loginPopup = document.querySelector('#login-popup');
+let loginPopup2 = document.querySelector('#login-popup2');
 
 let share, addToBook, saveBtn;
 
@@ -54,7 +55,7 @@ likeBtn.addEventListener('click', function() {
 
 saveBtn.addEventListener('click', function() {
     if(loginPopup) {
-        let modal = new bootstrap.Modal(loginPopup);
+        let modal = new bootstrap.Modal(loginPopup2);
         modal.show();
     } else {
         let data = {

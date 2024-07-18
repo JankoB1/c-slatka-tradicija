@@ -33,7 +33,24 @@
                         <div class="row">
                             <div class="col-md-5"></div>
                             <div class="col-md-7">
-                                <p>Da bi izvršio/la ovu akciju, potrebno je da budeš prijavljen na našem web sajtu.</p>
+                                <p>Lajkovanje recepata je omogućeno samo prijavljenim korisnicima.</p>
+                                <a href="{{ route('login') }}">Prijavi se</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="login-popup2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-7">
+                                <p>Čuvanje recepata je omogućeno samo prijavljenim korisnicima.</p>
                                 <a href="{{ route('login') }}">Prijavi se</a>
                             </div>
                         </div>
@@ -114,11 +131,9 @@
                     <div class="single-info mb-low mobile">
                         <p><img src="{{ asset('images/2 tezina outline-02.svg') }}" alt="tezina pripreme" />{{ $recipe->difficulty }}</p>
                     </div>
-                    @if($recipe->old_recipe == 0)
-                        <div class="single-info mobile">
-                            <p><img src="{{ asset('images/1 porcije outline-04.svg') }}" alt="broj porcija" />{{ $recipe->portion_number }}</p>
-                        </div>
-                    @endif
+                    <div class="single-info mobile">
+                        <p><img src="{{ asset('images/1 porcije outline-04.svg') }}" alt="broj porcija" />{{ $recipe->portion_number }}</p>
+                    </div>
                     <h1 class="mobile">{{ $recipe->title }}</h1>
                     <h4 class="main-info desktop">Osnovne informacije</h4>
                     <div class="single-info mb-low desktop">
@@ -127,11 +142,9 @@
                     <div class="single-info mb-low desktop">
                         <p><strong>Težina pripreme:</strong><br>{{ $recipe->difficulty }}</p>
                     </div>
-                    @if($recipe->old_recipe == 0)
-                        <div class="single-info desktop">
-                            <p><strong>Broj porcija:</strong><br>{{ $recipe->portion_number }}</p>
-                        </div>
-                    @endif
+                    <div class="single-info desktop">
+                        <p><strong>Broj porcija:</strong><br>{{ $recipe->portion_number }}</p>
+                    </div>
                     <h4 class="ing-header">Sastojci</h4>
                     <div class="single-info info-ings">
                         @if($recipe->old_recipe == 0)

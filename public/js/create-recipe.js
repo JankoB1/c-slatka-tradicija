@@ -788,6 +788,15 @@ function validateSecondStep() {
     let independentIngredients = document.querySelectorAll('.single-ingredients-inner .ingredients-cont');
     let result = true;
 
+    if(ingredientGroups.length === 0) {
+        Swal.fire({
+            title: 'Potrebno je dodati minimum jednu grupu sastojaka.',
+            confirmButtonText: 'Nastavi'
+        });
+        result = false;
+        return;
+    }
+
     ingredientGroups.forEach((singleGroup) => {
         let groupName = singleGroup.querySelector('input[name="ingredient_group_name"]').value;
         if(groupName === '') {
@@ -854,6 +863,15 @@ function validateThirdStep() {
     let stepGroups = document.querySelectorAll('.single-step-group');
     let independentSteps = document.querySelectorAll('.single-steps-inner textarea[name="single_step"]');
     let result = true;
+
+    if(stepGroups.length === 0) {
+        Swal.fire({
+            title: 'Potrebno je dodati minimum jedan korak pripreme.',
+            confirmButtonText: 'Nastavi'
+        });
+        result = false;
+        return;
+    }
 
     stepGroups.forEach((singleGroup) => {
         let groupName = singleGroup.querySelector('input[name="step_group_name"]').value;
@@ -1123,7 +1141,7 @@ function cropImage() {
             let deleteImg = newImagesRow.querySelector('.delete-img');
             deleteImg.addEventListener('click', function() {
                 newImagesRow.parentElement.remove();
-
+                imagesUploaded = imagesUploaded.filter(image => image !== response);
             });
         }
     });
