@@ -11,6 +11,8 @@ use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CategoryController;
 
+Auth::routes(['verify' => true]);
+
 Route::get('/', [RecipeController::class, 'index'])->name('show-homepage');
 Route::get('/o-nama', [RecipeController::class, 'showAbout'])->name('show-about');
 Route::get('/recepti/{slug}', [RecipeController::class, 'showRecipeCategory'])->name('show-recipe-category');
