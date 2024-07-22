@@ -159,7 +159,7 @@
                                                         <div class="col-md-7 col-10">
                                                             <div class="row">
                                                                 <div class="col-md-10">
-                                                                    <textarea type="text" name="ingredient_name" placeholder="Naziv sastojka">{{ $ingredient['name'] }}</textarea>
+                                                                    <textarea type="text" name="ingredient_name" placeholder="Naziv sastojka">{{ $ingredient['title'] }}</textarea>
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <i class="fa-solid fa-minus"></i>
