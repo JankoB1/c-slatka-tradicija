@@ -234,7 +234,7 @@
                                     @foreach($stepGroups as $key => $group)
                                         <div class="single-step-group">
                                             <input type="text" name="step_group_name" placeholder="Naziv koraka pripreme" value="{{ $key }}">
-                                            <textarea type="text" name="single_step" placeholder="Opiši korak pripreme">{{ $group[0]['name'] }}</textarea>
+                                            <textarea type="text" name="single_step" placeholder="Opiši korak pripreme">{{ $group[0]['title'] }}</textarea>
                                             <i class="fa-solid fa-minus"></i>
                                         </div>
                                     @endforeach

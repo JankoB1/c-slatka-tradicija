@@ -114,7 +114,6 @@ class RecipeController extends Controller
         $ingredientGroups = $this->ingredientGroupService->getGroupsByRecipeId($recipe->id);
         $stepGroups = $this->stepGroupService->getGroupsByRecipeId($recipe->id);
         //$products = $this->productRepository->getProductByRecipeId($recipe->id);
-//        dd($stepGroups);
         return view('auth.edit-recipe', compact('recipe', 'ingredientGroups', 'stepGroups'));
     }
 
