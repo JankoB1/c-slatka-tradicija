@@ -43,7 +43,7 @@
     <section id="action" class="action-books">
         <div class="action-inner container-space">
             <h2>C Slatka tradicija knjižice recepata</h2>
-            <p>Trebaju ti brza resenja? C Slatka tradicija tim ti je pripremio 4 vec spremne knjizice recepata koje mozeš preuzeti na svoj uredaj.</p>
+            <p>Trebaju ti brza rešenja? C Slatka tradicija tim ti je pripremio 4 već spremne knjižice recepata koje mozeš preuzeti na svoj uređaj.</p>
             <div class="categories-banners row">
                 <div class="col-md-6">
                     <div class="single-category-banner">

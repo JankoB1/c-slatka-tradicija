@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-md-12">
                                 <input type="email" name="email" placeholder="E-mail adresa">
-                                <textarea name="message" id="" cols="30" rows="10" placeholder="Vaša poruka"></textarea>
+                                <textarea name="message" id="" cols="30" rows="10" placeholder="Tvoja poruka"></textarea>
                                 <button>Pošalji poruku</button>
                             </div>
                         </div>
