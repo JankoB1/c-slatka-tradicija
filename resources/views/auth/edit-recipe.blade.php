@@ -355,7 +355,7 @@
                         <div class="row">
                             <div class="col-md-5"></div>
                             <div class="col-md-7">
-                                <p>Vaš recept se objavljuje.</p>
+                                <p>Tvoj recept se objavljuje.</p>
                                 <img src="{{ asset('images/loading.png') }}" alt="loading" class="loading-spinner">
                             </div>
                         </div>

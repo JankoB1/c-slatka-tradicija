@@ -3578,6 +3578,27 @@ p {
     margin: 0 auto;
 }
 
+.resend-email-activation {
+    border-radius: 32px;
+    background: #F5CC45 !important;
+    height: 64px;
+    color: #2E4765 !important;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    width: 100%;
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.resend-email-modal p {
+    margin-bottom: 20px;
+}
+
 
 
 @media only screen and (max-width: 1507px) {

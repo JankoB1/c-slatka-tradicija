@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CategoryController;
+use Illuminate\Http\Request;
+
 
 
 Route::get('/', [RecipeController::class, 'index'])->name('show-homepage');
@@ -45,7 +47,7 @@ Route::prefix('categories')->group(function() {
 Route::get('/proizvodi', [ProductController::class, 'showAllCategories'])->name('show-all-categories');
 Route::get('/nasi-proizvodi/{slug}', [ProductController::class, 'showSingleCategory'])->name('show-single-category');
 Route::get('/proizvod/{slug}', [ProductController::class, 'showSingleProduct'])->name('show-single-product');
-Route::get('/posaljite-recept', [RecipeController::class, 'create'])->name('recipes.create');
+Route::get('/posaljite-recept', [RecipeController::class, 'create'])->name('recipes.create')->middleware('verified');
 Route::get('/mapa-sajta', [SiteController::class, 'showSitemap'])->name('show-sitemap');
 Route::get('/moja-knjizica-recepata', [RecipeController::class, 'showRecipeBook'])->name('show-recipe-book');
 
@@ -56,12 +58,12 @@ Route::get('/pravna-napomena', [RecipeController::class, 'showPrivacyNote'])->na
 Route::get('/politika-zastite-podataka', [RecipeController::class, 'showPrivacyPolicy'])->name('show-privacy-policy');
 Route::get('/uslovi-i-pravila-konkursa', [RecipeController::class, 'showCompetitionRules'])->name('show-competition-rules');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/get-all-products', [ProductController::class, 'getAllProducts'])->name('get-all-products');
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth', 'verified'])->group(function() {
     Route::get('/profil', [UserController::class, 'showProfile'])->name('show-profile');
     Route::get('/edit-profil', [UserController::class, 'showEditProfile'])->name('show-edit-profile');
     Route::post('/izmeni-kontakt', [UserController::class, 'editContactDetails'])->name('edit-contact-details');
@@ -81,3 +83,12 @@ Route::get('/pdf', [\App\Http\Controllers\PdfController::class, 'generatePdf'])-
 Route::get('/get-recipes-by-ids', [RecipeController::class, 'getRecipesByIds'])->name('get-recipes-by-ids');
 Route::post('/crop-image', [ImageController::class, 'cropImage'])->name('crop-image');
 Route::get('/test-email', [PostController::class, 'testEmail'])->name('test-email');
+
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+})->middleware('auth')->name('verification.notice');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return view('auth.resend-verify');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
