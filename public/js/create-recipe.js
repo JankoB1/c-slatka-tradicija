@@ -644,6 +644,7 @@ function searchProducts(target) {
     }
 }
 
+let cropper;
 addImageBtn.addEventListener('click', function() {
     let addImageInput = document.createElement('input');
     addImageInput.type = 'file';
@@ -662,32 +663,33 @@ addImageBtn.addEventListener('click', function() {
             contentType: false,
             method: 'POST',
             success: function(response) {
-                imageCropPopup.querySelector('img').src = window.origin + '/storage/upload/' + response;
-                imageCropPopup.querySelector('img').dataset.imagePath = '/storage/upload/' + response;
-                imageCropPopup.querySelector('#obj').style.top = 0;
-                imageCropPopup.querySelector('#obj').style.left = 0;
+                const imagePath = window.origin + '/storage/upload/' + response;
+                const imageElement = imageCropPopup.querySelector('img');
+                imageElement.src = imagePath;
+                imageElement.dataset.imagePath = imagePath;
                 imageCropModal.show();
-
-                // imagesUploaded.push(response);
-
-                // let newImg = document.createElement('div');
-                // newImg.classList.add('single-img');
-                // newImg.style.backgroundImage = 'url("' + imagePath + '")';
-                // let newImgGrid = document.createElement('div');
-                // newImg.appendChild(newImgGrid);
-                // let newDiv = document.createElement('div');
-                // newDiv.classList.add('single-image-div');
-                // newDiv.appendChild(newImg)
-                // let newImagesRow = document.createElement('div');
-                // newImagesRow.innerHTML = imageControls;
-                // newDiv.appendChild(newImagesRow);
-                // document.querySelector('.images').appendChild(newDiv);
-                //
-                // let deleteImg = newImagesRow.querySelector('.delete-img');
-                // deleteImg.addEventListener('click', function() {
-                //     newImagesRow.parentElement.remove();
-                //
-                // });
+                imageCropModal._element.addEventListener('shown.bs.modal', function () {
+                    if (cropper) {
+                        let cropData = {};
+                        cropper.destroy();
+                        cropper = null; // Clear the reference
+                    }
+                    cropper = new Cropper(imageElement, {
+                        autoCropArea: 0.5,
+                        viewMode: 2,
+                        dragMode: 'none',
+                        crop: function(event) {
+                            cropData = {
+                                cropBoxHeight: event.detail.height,
+                                cropBoxWidth: event.detail.width,
+                                cropBoxTop: event.detail.y,
+                                cropBoxLeft: event.detail.x,
+                                imgHeight: imageElement.height,
+                                imgWidth: imageElement.width,
+                            };
+                        }
+                    });
+                }, { once: true });
 
             },
             error: function(xhr, status, error) {
@@ -1020,94 +1022,12 @@ function moving(e) {
     }
 }
 
-function makeResizableDiv(div) {
-    const element = document.querySelector(div);
-    const resizers = document.querySelectorAll(div + ' .resizer')
-    const minimum_size = 20;
-    let original_width = 0;
-    let original_height = 0;
-    let original_x = 0;
-    let original_y = 0;
-    let original_mouse_x = 0;
-    let original_mouse_y = 0;
-    let aspectRatio = 1.15;
-    for (let i = 0; i < resizers.length; i++) {
-        const currentResizer = resizers[i];
-        currentResizer.addEventListener('mousedown', initResize);
-        currentResizer.addEventListener('touchstart', initResize);
-
-        function initResize(e) {
-            e.preventDefault(); // Prevent default action for touch events
-            original_width = parseFloat(getComputedStyle(element, null).getPropertyValue('width').replace('px', ''));
-            original_height = parseFloat(getComputedStyle(element, null).getPropertyValue('height').replace('px', ''));
-            original_x = element.getBoundingClientRect().left;
-            original_y = element.getBoundingClientRect().top;
-            original_mouse_x = e.touches ? e.touches[0].pageX : e.pageX;
-            original_mouse_y = e.touches ? e.touches[0].pageY : e.pageY;
-            window.addEventListener('mousemove', resize);
-            window.addEventListener('touchmove', resize);
-            window.addEventListener('mouseup', stopResize);
-            window.addEventListener('touchend', stopResize);
-        }
-
-        function resize(e) {
-            let width, height;
-            if (currentResizer.classList.contains('bottom-right')) {
-                width = original_width + (e.touches ? e.touches[0].pageX - original_mouse_x : e.pageX - original_mouse_x);
-                height = width / aspectRatio;
-            } else if (currentResizer.classList.contains('bottom-left')) {
-                height = original_height + (e.touches ? e.touches[0].pageY - original_mouse_y : e.pageY - original_mouse_y);
-                width = height * aspectRatio;
-                element.style.left = original_x + (original_width - width) + 'px';
-            } else if (currentResizer.classList.contains('top-right')) {
-                width = original_width + (e.touches ? e.touches[0].pageX - original_mouse_x : e.pageX - original_mouse_x);
-                height = width / aspectRatio;
-                element.style.top = original_y + (original_height - height) + 'px';
-            } else if (currentResizer.classList.contains('top-left')) {
-                height = original_height - (e.touches ? e.touches[0].pageY - original_mouse_y : e.pageY - original_mouse_y);
-                width = height * aspectRatio;
-                element.style.top = original_y + (original_height - height) + 'px';
-                element.style.left = original_x + (original_width - width) + 'px';
-            }
-            if (width > minimum_size && height > minimum_size) {
-                element.style.width = width + 'px';
-                element.style.height = height + 'px';
-            }
-        }
-
-        function stopResize() {
-            window.removeEventListener('mousemove', resize);
-            window.removeEventListener('touchmove', resize);
-        }
-    }
-}
-
-makeResizableDiv('.resizable');
-
-function getCropData() {
-    let img = imageCropPopup.querySelector('img');
-    let imgWidth = img.clientWidth;
-    let imgHeight = img.clientHeight;
-
-    let cropBox = imageCropPopup.querySelector('#obj');
-    let cropBoxTop = parseInt(cropBox.style.top.slice(0, -2));
-    let cropBoxLeft = parseInt(cropBox.style.left.slice(0, -2));
-    let cropBoxWidth = cropBox.clientWidth + 4;
-    let cropBoxHeight = cropBox.clientHeight + 4;
-
-    return {
-        imgWidth: imgWidth,
-        imgHeight: imgHeight,
-        cropBoxTop: cropBoxTop,
-        cropBoxLeft: cropBoxLeft,
-        cropBoxWidth: cropBoxWidth,
-        cropBoxHeight: cropBoxHeight
-    };
-}
-
 function cropImage() {
-    let cropData = getCropData();
     let imagePath = imageCropPopup.querySelector('img').dataset.imagePath;
+    let storageIndex = imagePath.indexOf('/storage/')
+    if(storageIndex !== -1) {
+        imagePath = imagePath.substring(storageIndex);
+    }
     jQuery.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
