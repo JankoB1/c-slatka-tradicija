@@ -58,8 +58,8 @@
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
-                    <h3>Vaš omiljeni obrok <br>još od detinjstva</h3>
-                    <p>Za stare i mlade, za one koji vole ukuse detinjstva. Dečak sa pakovanja je dobro poznat svima i generacijama unazad je deo našeg odrastanja.</p>
+                    <h3>Tvoj omiljeni obrok <br>još od detinjstva</h3>
+                    <p>Za stare i mlade, za one koji vole ukuse detinjstva.</p>
                     <a href="{{ route('show-single-product', ['slug' => 'psenicni-griz-200g']) }}">Saznaj više</a>
                 </div>
             </div>
