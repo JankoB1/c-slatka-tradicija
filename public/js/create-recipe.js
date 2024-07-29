@@ -676,6 +676,7 @@ addImageBtn.addEventListener('click', function() {
                     }
                     cropper = new Cropper(imageElement, {
                         autoCropArea: 0.5,
+                        aspectRatio: 1.88,
                         viewMode: 2,
                         dragMode: 'none',
                         crop: function(event) {
