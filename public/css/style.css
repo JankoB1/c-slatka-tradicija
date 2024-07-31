@@ -129,7 +129,7 @@ body {
 }
 
 #main-banner {
-    background-image: url("../images/home-hero1.jpeg");
+    background-image: url("../images/konkurs-desktop-1920x620-2.png");
     background-size: cover;
     background-position: center right;
 }
@@ -151,7 +151,7 @@ body {
 #main-banner .main-banner-inner h1 {
     font: normal normal 700 60px/72px Montserrat;
     letter-spacing: 0px;
-    color: #ffffff;
+    color: #FFFFFF;
     margin-bottom: 40px;
 }
 
@@ -342,7 +342,7 @@ body {
     text-align: left;
     font: normal normal 600 36px/51px Montserrat;
     letter-spacing: 0px;
-    color: #FFFFFF;
+    color: #2E4765;
     /*text-shadow: 0px 1px 24px #000000;*/
     margin-bottom: 30px;
 }
@@ -351,7 +351,7 @@ body {
     text-align: left;
     font: normal normal 500 16px/26px Montserrat;
     letter-spacing: 0px;
-    color: #FFFFFF;
+    color: #2E4765;
     /*text-shadow: 0px 1px 34px #000000;*/
     margin-bottom: 60px;
 }
@@ -453,7 +453,7 @@ body {
 }
 
 #homepage-banner2 {
-    background-image: url("../images/homepage-banner-2.jpeg");
+    background-image: url("../images/konkurs-desktop-1920x620-futer-3.png");
     background-position: right;
 }
 
@@ -3598,7 +3598,7 @@ p {
     }
 
     #main-banner {
-        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/homepage-hero-mobile.png");
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/konkurs-mobile-520x360-2.png");
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -3718,8 +3718,7 @@ p {
     }
 
     #homepage-banner2 {
-        background-color: #EB94A2;
-        background-image: none;
+        background-image: url("../images/konkurs-mobile-520x360-2-footer.png");
         padding-bottom: 50px;
     }
 

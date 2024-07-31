@@ -12,8 +12,8 @@
 @section('content')
 
     <section>
-        <img class="desktop" src="{{ asset('images/competition-hero.jpeg') }}" alt="" style="width: 100%; margin-top: 70px;">
-        <img class="mobile" src="{{ asset('images/competition-hero-m.png') }}" alt="" style="width: 100%; margin-top: 70px;">
+        <img class="desktop" src="{{ asset('images/konkurs-desktop-1920x620-1.png') }}" alt="" style="width: 100%; margin-top: 70px;">
+        <img class="mobile" src="{{ asset('images/konkurs-mobile-520x360-1.png') }}" alt="" style="width: 100%; margin-top: 70px;">
     </section>
 
     <section id="competition-text">
@@ -28,14 +28,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <h2>Pošalji recept</h2>
-                    <h4>Učestvuj u konkursu "Letnje torte i kolači"</h4>
-                    <p>Uslov za učešće u konkursu jeste slanje recepata za Letnje torte i kolače, koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo te da imaš u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 31. jula 2024. godine.
+                    <h4>Učestvuj u konkursu <br>"Slatka i kisela zimnica"</h4>
+                    <p>Uslov za učešće u konkursu jeste slanje recepata za "Slatka i kisela zimnica", koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo te da imaš u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 31. avgusta 2024. godine.
 
-                        <br><br>Opšte uslove i pravila konkursa možeš pogledati na strani <a href="{{ route('show-competition-rules') }}">Uslovi i pravila konkursa</a> Letnje torte i kolači.  Odabrane recepte sa prethodnih konkursa možeš pogledati na strani <a href="#winners">Odabrani recepti</a>.</p>
+                        <br><br>Opšte uslove i pravila konkursa možeš pogledati na strani <a href="{{ route('show-competition-rules') }}">Uslovi i pravila konkursa</a> "Slatka i kisela zimnica".  Odabrane recepte sa prethodnih konkursa možeš pogledati na strani <a href="#winners">Odabrani recepti</a>.</p>
                 </div>
                 <div class="col-md-6">
-                    <img class="desktop" src="{{ asset('images/competitors-final-img-min.jpeg') }}" alt="competition cookies" style="border-radius: 8px;">
-                    <img src="{{ asset('images/competi-mob.png') }}" alt="" class="mobile" style="border-radius: 8px;">
+                    <img class="desktop" src="{{ asset('images/konkurs-mobile-520x360-1.png') }}" alt="competition cookies" style="border-radius: 8px;">
+                    <img src="{{ asset('images/konkurs-mobile-520x360-1.png') }}" alt="" class="mobile" style="border-radius: 8px;">
                 </div>
             </div>
         </div>
@@ -267,12 +267,12 @@
     @endif
 
     <section id="homepage-banner2">
-        <img class="mobile" src="{{ asset('images/homepage-banner2-mobile.png') }}" alt="homepage banner2">
+        <img class="mobile" src="{{ asset('images/konkurs-mobile-520x360-3.png') }}" alt="homepage banner2">
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Letnje torte i <br>kolači"</h3>
+                    <h3>Učestvuj u konkursu<br>"Slatka i kisela <br>zimnica"</h3>
                     <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>

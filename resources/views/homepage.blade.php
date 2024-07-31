@@ -3,7 +3,7 @@
 @section('content')
     <section id="main-banner">
         <div class="main-banner-inner">
-            <h1>Učestvuj u konkursu<br>"Letnje torte i <br>kolači"</h1>
+            <h1>Učestvuj u konkursu<br>"Slatka i kisela zimnica"</h1>
             <a href="{{ route('show-competition') }}">Pošalji recept</a>
         </div>
     </section>
@@ -272,12 +272,12 @@
     </section>
 
     <section id="homepage-banner2">
-        <img class="mobile" src="{{ asset('images/homepage-banner2-mobile.png') }}" alt="homepage banner2">
+        <img class="mobile" src="{{ asset('images/konkurs-mobile-520x360-3.png') }}" alt="homepage banner2">
         <div class="homepage-banner-inner container-space">
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Letnje torte i <br>kolači"</h3>
+                    <h3>Učestvuj u konkursu<br>"Slatka i kisela <br>zimnica"</h3>
                     <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>
