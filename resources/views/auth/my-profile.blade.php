@@ -73,7 +73,7 @@
                             </div>
                         </div>
                         <div class="profile-recipes-content row active">
-                            @foreach(Auth::user()->recipes as $recipe)
+                            @foreach(Auth::user()->recipes_sorted as $recipe)
                                 <div class="col-md-4">
                                     <div class="single-recipe-preview" style="position:relative;">
                                         <span class="del-recipe" data-recipe-id="{{ $recipe->id }}"><i class="fa-regular fa-trash-can"></i></span>
