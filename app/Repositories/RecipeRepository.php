@@ -94,13 +94,25 @@ class RecipeRepository
 
     private function getRecipes($recipeIds, $keyword, $recipeIdsByTitle)
     {
-        $recipes = Recipe::whereIn('id', $recipeIds)
-            ->where('active', '=', 'T')
-            ->orderByRaw('FIELD(id, ' . implode(',', $recipeIdsByTitle) . ') DESC') // Prioritize title matches
-            ->orderByRaw("CASE WHEN image_old = 'recipe-no-image.png' THEN 2 WHEN image_old = 'c-slatka-tradicija-recepti-2.jpg' THEN 1 ELSE 0 END")
-            ->orderBy('created_at', 'desc')
-            ->paginate(21)
-            ->appends(['keyword' => $keyword]);
+        if(!$recipeIdsByTitle)
+        {
+            $recipes = Recipe::whereIn('id', $recipeIds)
+                ->where('active', '=', 'T')
+                ->orderByRaw("CASE WHEN image_old = 'recipe-no-image.png' THEN 2 WHEN image_old = 'c-slatka-tradicija-recepti-2.jpg' THEN 1 ELSE 0 END")
+                ->orderBy('created_at', 'desc')
+                ->paginate(21)
+                ->appends(['keyword' => $keyword]);
+        }
+        else
+        {
+            $recipes = Recipe::whereIn('id', $recipeIds)
+                ->where('active', '=', 'T')
+                ->orderByRaw('FIELD(id, ' . implode(',', $recipeIdsByTitle) . ') DESC')
+                ->orderByRaw("CASE WHEN image_old = 'recipe-no-image.png' THEN 2 WHEN image_old = 'c-slatka-tradicija-recepti-2.jpg' THEN 1 ELSE 0 END")
+                ->orderBy('created_at', 'desc')
+                ->paginate(21)
+                ->appends(['keyword' => $keyword]);
+        }
 
         return $recipes;
     }
