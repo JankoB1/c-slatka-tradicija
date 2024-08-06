@@ -622,7 +622,8 @@ function searchProducts(target) {
     productsIngredients.innerHTML = '';
     let targetSr = transformSrLetter(target.value.toLowerCase());
     let searched = products.filter((p) => {
-        return transformSrLetter(p.name.toLowerCase()).includes(targetSr);
+        let productCName = 'c ' + p.name.toLowerCase();
+        return transformSrLetter(productCName).includes(targetSr);
     });
     if(searched.length > 0) {
         productsIngredients.classList.add('active');
