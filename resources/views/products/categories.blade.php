@@ -85,7 +85,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Voćne torte i <br>kolači"</h3>
+                    <h3>Učestvuj u konkursu<br>"Slatka i kisela zimnica"</h3>
                     <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>

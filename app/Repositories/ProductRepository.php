@@ -53,7 +53,7 @@ class ProductRepository
         try {
             return Product::where('name', 'like', '%' . $keyword . '%')
                 ->where('active', '=', 'T')
-                ->get();
+                ->paginate(21);
         } catch (QueryException $exception) {
             Log::error('Can\'t search products: ' . $exception->getMessage());
             return null;

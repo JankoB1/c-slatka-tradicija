@@ -5,15 +5,10 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-md-7 someclass">
-                            <p style="margin-bottom: 20px;">Najnoviji link je poslat na tvoju adresu!</p>
-                            <form class="d-inline" method="POST" action="{{ route('verification.send') }}">
-                                @csrf
-                                <div>
-                                    <button class="resend-email-activation" type="submit">Klikni ovde za ponovno slanje.</button>
-                                </div>
-                            </form>
+                    <div class="row d-flex justify-content-center text-center">
+                        <div class="col-md-7 text-center">
+                            <p style="margin-bottom: 20px; text-align: center;">Novi link je poslat na tvoju e-mail adresu.</p>
+                            <p style="text-align: center;"> Ukoliko i dalje imaš problema sa verifikacijom naloga, molimo te da nam pišeš na <a style="all: unset; text-decoration: underline;" href="#"> info@c-slatkatradicija.rs </a>.</p>
                         </div>
                     </div>
                 </div>

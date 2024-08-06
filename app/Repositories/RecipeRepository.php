@@ -57,14 +57,64 @@ class RecipeRepository
         }
     }
 
-    public function searchRecipe(string $keyword)
+    public function searchRecipe($keyword)
+    {
+        $recipeIdsByTitle = $this->searchRecipesByTitle($keyword);
+        $recipeIdsByIngredients = $this->searchIngredients($keyword);
+
+        $recipeIds = array_unique(array_merge($recipeIdsByTitle, $recipeIdsByIngredients));
+        return $this->getRecipes($recipeIds, $keyword, $recipeIdsByTitle);
+    }
+
+    private function searchRecipesByTitle($keyword)
     {
         return Recipe::where('title', 'like', '%' . $keyword . '%')
-            ->where('active', '=', 'T')
-            ->orderByRaw("CASE WHEN image_old = 'recipe-no-image.png' THEN 2 WHEN image_old = 'c-slatka-tradicija-recepti-2.jpg' THEN 1 ELSE 0 END")
-            ->orderBy('created_at', 'desc')
-            ->paginate(21)
-            ->appends(['keyword' => $keyword]);
+            ->where('active', 'T')
+            ->pluck('id')
+            ->toArray();
+    }
+
+    private function searchIngredients($keyword)
+    {
+        $oldIngredients = DB::table('tin_receptsastojak')
+            ->where('tin_receptsastojak.title', 'like', '%' . $keyword . '%')
+            ->pluck('tin_receptsastojak.recipe_id')
+            ->toArray();
+
+        $newIngredients = DB::table('ingredients')
+            ->where('ingredients.title', 'like', '%' . $keyword . '%')
+            ->pluck('ingredients.recipe_id')
+            ->toArray();
+
+        // Combine and deduplicate results
+        $recipeIds = array_unique(array_merge($oldIngredients, $newIngredients));
+
+        return $recipeIds;
+    }
+
+    private function getRecipes($recipeIds, $keyword, $recipeIdsByTitle)
+    {
+        if(!$recipeIdsByTitle)
+        {
+            $recipes = Recipe::whereIn('id', $recipeIds)
+                ->where('active', '=', 'T')
+                ->orderByRaw("CASE WHEN image_old = 'recipe-no-image.png' THEN 2 WHEN image_old = 'c-slatka-tradicija-recepti-2.jpg' THEN 1 ELSE 0 END")
+                ->orderBy('created_at', 'desc')
+                ->paginate(21)
+                ->appends(['keyword' => $keyword]);
+        }
+        else
+        {
+            $recipes = Recipe::whereIn('id', $recipeIds)
+                ->where('active', '=', 'T')
+                ->orderByRaw('FIELD(id, ' . implode(',', $recipeIdsByTitle) . ') DESC')
+                ->orderByRaw("CASE WHEN image_old = 'recipe-no-image.png' THEN 2 WHEN image_old = 'c-slatka-tradicija-recepti-2.jpg' THEN 1 ELSE 0 END")
+                ->orderBy('created_at', 'desc')
+                ->paginate(21)
+                ->appends(['keyword' => $keyword]);
+        }
+
+        return $recipes;
     }
 
     public function createSlug(string $title, int $increment = 0)

@@ -125,16 +125,16 @@
         <div class="recipe-main-inner container-space">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="single-info mb-low mobile">
+                    <div class="single-info recipe-item-spacing mobile">
                         <p><img src="{{ asset('images/1 vreme outline.svg') }}" alt="vreme pripreme" />{{ $recipe->preparation_time }}</p>
                     </div>
-                    <div class="single-info mb-low mobile">
+                    <div class="single-info recipe-item-spacing mobile">
                         <p><img src="{{ asset('images/2 tezina outline-02.svg') }}" alt="tezina pripreme" />{{ $recipe->difficulty }}</p>
                     </div>
-                    <div class="single-info mobile">
+                    <div class="single-info recipe-item-spacing mobile">
                         <p><img src="{{ asset('images/1 porcije outline-04.svg') }}" alt="broj porcija" />{{ $recipe->portion_number }}</p>
                     </div>
-                    <h1 class="mobile">{{ $recipe->title }}</h1>
+                    <h1 class="mobile recipe-item-spacing">{{ $recipe->title }}</h1>
                     <h4 class="main-info desktop">Osnovne informacije</h4>
                     <div class="single-info mb-low desktop">
                         <p><strong>Vreme pripreme:</strong><br>{{ $recipe->preparation_time }}</p>
@@ -143,7 +143,7 @@
                         <p><strong>Težina pripreme:</strong><br>{{ $recipe->difficulty }}</p>
                     </div>
                     <div class="single-info desktop">
-                        <p><strong>Broj porcija:</strong><br>{{ $recipe->portion_number }}</p>
+                        <p style="margin-bottom: 0 !important;"><strong>Broj porcija:</strong><br>{{ $recipe->portion_number }}</p>
                     </div>
                     <h4 class="ing-header">Sastojci</h4>
                     <div class="single-info info-ings">
@@ -373,7 +373,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Letnje torte i <br>kolači"</h3>
+                    <h3>Učestvuj u konkursu<br>"Slatka i kisela zimnica"</h3>
                     <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>
