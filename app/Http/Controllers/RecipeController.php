@@ -279,7 +279,7 @@ class RecipeController extends Controller
     public function getRecipesByUser($userId)
     {
         $user = User::find($userId);
-        $recipes = $user->recipes()->paginate(9);
+        $recipes = $user->recipes_sorted()->paginate(9);
         return view('recipes.by-user', compact('recipes', 'user'));
     }
 
