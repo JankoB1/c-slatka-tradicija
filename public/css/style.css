@@ -129,14 +129,14 @@ body {
 }
 
 #main-banner {
-    background-image: url("../images/konkurs-desktop-1920x620-2.png");
+    background-image: url("../images/konkurs-desktop-1920x620-2.jpg");
     background-size: cover;
     background-position: center right;
 }
 
 #main-banner .main-banner-inner {
     padding: 8vh 13% 15vh;
-    height: 480px;
+    height: 595px;
     margin-top: 90px;
 }
 
@@ -151,7 +151,7 @@ body {
 #main-banner .main-banner-inner h1 {
     font: normal normal 700 60px/72px Montserrat;
     letter-spacing: 0px;
-    color: #2E4765;
+    color: #FFF;
     margin-bottom: 40px;
 }
 
