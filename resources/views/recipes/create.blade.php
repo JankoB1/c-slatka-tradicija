@@ -12,8 +12,8 @@
 @section('content')
 
     <section>
-        <img class="desktop" src="{{ asset('images/add-recipe-hero.jpeg') }}" alt="" style="width: 100%; margin-top: 70px;">
-        <img class="mobile" src="{{ asset('images/add-recipe-herom.jpeg') }}" alt="" style="width: 100%; margin-top: 70px;">
+        <img class="desktop" src="{{ asset('images/add-recipe-hero.jpg') }}" alt="" style="width: 100%; margin-top: 70px;">
+        <img class="mobile" src="{{ asset('images/add-recipe-herom.jpg') }}" alt="" style="width: 100%; margin-top: 70px;">
     </section>
 
     <section id="recipe-form">
