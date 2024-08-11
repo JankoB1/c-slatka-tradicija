@@ -51,6 +51,9 @@ class ProductRepository
 
     public function searchProducts($keyword) {
         try {
+            if (stripos($keyword, 'c ') === 0) {
+                $keyword = substr($keyword, 2);
+            }
             return Product::where('name', 'like', '%' . $keyword . '%')
                 ->where('active', '=', 'T')
                 ->paginate(21);

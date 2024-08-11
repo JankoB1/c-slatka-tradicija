@@ -208,6 +208,7 @@ const newIngredientHtml = `<div class="row ingredients-cont">
                                                     <option value="malo">malo</option>
                                                     <option value="prstohvat">prstohvat</option>
                                                     <option value="kašika">kašika</option>
+                                                    <option value="kašičica">kašičica</option>
                                                     <option value="kesica">kesica</option>
                                                     <option value="čaša">čaša</option>
                                                 </select>
