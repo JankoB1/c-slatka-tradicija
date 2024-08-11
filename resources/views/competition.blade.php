@@ -321,14 +321,8 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
-                    <img src="#" alt="crop image" style="width: 100%;">
-                    <div id="obj" class="move resizable" onmousedown="makeObjectToDrag(this);" ontouchstart="makeObjectToDrag(this);">
-                        <div class="resizers">
-                            <div class="resizer top-left"></div>
-                            <div class="resizer top-right"></div>
-                            <div class="resizer bottom-left"></div>
-                            <div class="resizer bottom-right"></div>
-                        </div>
+                    <div class="img-container">
+                        <img id='cropper-modal-image' src="#" alt="crop image">
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -3621,6 +3621,10 @@ p {
         background-repeat: no-repeat;
     }
 
+    #main-banner .main-banner-inner {
+        margin-top: 60px !important;
+    }
+
     #main-banner .main-banner-inner h1 {
         font-size: 26px;
         line-height: 38px;
@@ -4792,6 +4796,11 @@ p {
     .right-mob {
         display: flex;
         justify-content: right;
+    }
+
+    .right-mob .avatar-img.mobile-ps {
+        width: 30px !important;
+        height: 30px !important;
     }
 
     .books-mob {

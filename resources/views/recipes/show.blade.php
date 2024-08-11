@@ -188,7 +188,7 @@
                             @foreach($stepGroups as $key => $items)
                                 <h5>{{ $key }}</h5>
                                 @foreach($items as $item)
-                                    <p>{{ $item['title'] }}</p>
+                                    <p>{!! nl2br(e($item['title'])) !!}</p>
                                 @endforeach
                             @endforeach
                             @foreach($recipe->steps as $step)
@@ -236,7 +236,7 @@
                         @foreach($stepGroups as $key => $items)
                             <h5 class="desktop">{{ $key }}</h5>
                             @foreach($items as $item)
-                                <p class="desktop">{{ $item['title'] }}</p>
+                                <p class="desktop">{!! nl2br(e($item['title'])) !!}</p>
                             @endforeach
                         @endforeach
                         @foreach($recipe->steps as $step)
