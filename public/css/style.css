@@ -4803,7 +4803,7 @@ p {
         justify-content: right;
     }
 
-    .right-mob .avatar-img.mobile-ps {
+    .right-mob .avatar-img {
         width: 30px !important;
         height: 30px !important;
     }
