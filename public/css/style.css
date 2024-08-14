@@ -1164,6 +1164,8 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
     cursor: pointer;
     align-items: center;
     justify-content: center;
+    position: relative;
+    top: 4px;
 }
 
 .row.recipe-products .col-4 {
@@ -3581,7 +3583,10 @@ p {
     margin-top: 0 !important;
 }
 
-
+.search-mobile {
+    width: 23px;
+    margin-right: 15px;
+}
 
 @media only screen and (max-width: 1507px) {
     #main-header {
@@ -3602,6 +3607,10 @@ p {
 }
 
 @media only screen and (max-width: 768px) {
+    .mobile-actions > a {
+        margin-left: 13%;
+    }
+
     #main-header, .desktop {
         display: none;
     }
@@ -4913,7 +4922,7 @@ p {
 
     #recipe-gallery {
         height: 49vh;
-        margin-top: 70px;
+        margin-top: 61px;
     }
 
     .create-recipe-step .col-md-7 {
