@@ -1837,9 +1837,10 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
 }
 
 .single-info.mobile img {
-    width: 35px !important;
+    width: 20px !important;
     position: relative;
     bottom: 1px;
+    margin-right: 5px;
 }
 
 .images .single-img {

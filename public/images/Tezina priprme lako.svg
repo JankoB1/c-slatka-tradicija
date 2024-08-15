@@ -4,13 +4,20 @@
     <style>
       .cls-1 {
         fill: #2f4866;
+      }
+
+      .cls-1, .cls-2 {
         stroke: #2f4866;
         stroke-miterlimit: 10;
         stroke-width: 15px;
       }
+
+      .cls-2 {
+        fill: none;
+      }
     </style>
   </defs>
   <rect class="cls-1" x="7.5" y="195.2" width="128.3" height="162.6" rx="24.5" ry="24.5"/>
-  <rect class="cls-1" x="168.8" y="112" width="128.3" height="245.8" rx="24.5" ry="24.5"/>
-  <rect class="cls-1" x="330.5" y="7.5" width="128.3" height="350.3" rx="24.5" ry="24.5"/>
+  <rect class="cls-2" x="168.8" y="112" width="128.3" height="245.8" rx="24.5" ry="24.5"/>
+  <rect class="cls-2" x="330.5" y="7.5" width="128.3" height="350.3" rx="24.5" ry="24.5"/>
 </svg>

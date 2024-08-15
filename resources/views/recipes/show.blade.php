@@ -126,13 +126,22 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="single-info recipe-item-spacing mobile">
-                        <p><img src="{{ asset('images/1 vreme outline.svg') }}" alt="vreme pripreme" />{{ $recipe->preparation_time }}</p>
+                        <p><img src="{{ asset('images/Vreme pripreme.svg') }}" alt="vreme pripreme" />{{ $recipe->preparation_time }}</p>
                     </div>
                     <div class="single-info recipe-item-spacing mobile">
-                        <p><img src="{{ asset('images/2 tezina outline-02.svg') }}" alt="tezina pripreme" />{{ $recipe->difficulty }}</p>
+                        <p>
+                            @if($recipe->difficulty == 'Lako se priprema' || $recipe->difficulty == 'Lako')
+                                <img src="{{ asset('images/Tezina priprme lako.svg') }}" alt="tezina pripreme" />
+                            @elseif($recipe->difficulty == 'Zahteva određeno umeće' || $recipe->difficulty == 'Srednje')
+                                <img src="{{ asset('images/Tezina pripreme srednje.svg') }}" alt="tezina pripreme" />
+                            @else
+                                <img src="{{ asset('images/Tezina pripreme tesko.svg') }}" alt="tezina pripreme" />
+                            @endif
+                                {{ $recipe->difficulty }}
+                        </p>
                     </div>
                     <div class="single-info recipe-item-spacing mobile">
-                        <p><img src="{{ asset('images/1 porcije outline-04.svg') }}" alt="broj porcija" />{{ $recipe->portion_number }}</p>
+                        <p><img src="{{ asset('images/Broj porcija.svg') }}" alt="broj porcija" />{{ $recipe->portion_number }}</p>
                     </div>
                     <h1 class="mobile recipe-item-spacing">{{ $recipe->title }}</h1>
                     <h4 class="main-info desktop">Osnovne informacije</h4>
