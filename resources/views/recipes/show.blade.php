@@ -125,23 +125,25 @@
         <div class="recipe-main-inner container-space">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="single-info recipe-item-spacing mobile">
-                        <p><img src="{{ asset('images/Vreme pripreme.svg') }}" alt="vreme pripreme" />{{ $recipe->preparation_time }}</p>
-                    </div>
-                    <div class="single-info recipe-item-spacing mobile">
-                        <p>
-                            @if($recipe->difficulty == 'Lako se priprema' || $recipe->difficulty == 'Lako')
-                                <img src="{{ asset('images/Tezina priprme lako.svg') }}" alt="tezina pripreme" />
-                            @elseif($recipe->difficulty == 'Zahteva određeno umeće' || $recipe->difficulty == 'Srednje')
-                                <img src="{{ asset('images/Tezina pripreme srednje.svg') }}" alt="tezina pripreme" />
-                            @else
-                                <img src="{{ asset('images/Tezina pripreme tesko.svg') }}" alt="tezina pripreme" />
-                            @endif
-                                {{ $recipe->difficulty }}
-                        </p>
-                    </div>
-                    <div class="single-info recipe-item-spacing mobile">
-                        <p><img src="{{ asset('images/Broj porcija.svg') }}" alt="broj porcija" />{{ $recipe->portion_number }}</p>
+                    <div class="recipe-info">
+                        <div class="single-info recipe-item-spacing mobile">
+                            <p><img src="{{ asset('images/Vreme pripreme.svg') }}" alt="vreme pripreme" />{{ $recipe->preparation_time }}</p>
+                        </div>
+                        <div class="single-info recipe-item-spacing mobile">
+                            <p>
+                                @if($recipe->difficulty == 'Lako se priprema' || $recipe->difficulty == 'Lako')
+                                    <img src="{{ asset('images/Tezina priprme lako.svg') }}" alt="tezina pripreme" />
+                                @elseif($recipe->difficulty == 'Zahteva određeno umeće' || $recipe->difficulty == 'Srednje')
+                                    <img src="{{ asset('images/Tezina pripreme srednje.svg') }}" alt="tezina pripreme" />
+                                @else
+                                    <img src="{{ asset('images/Tezina pripreme tesko.svg') }}" alt="tezina pripreme" />
+                                @endif
+                                    {{ $recipe->difficulty }}
+                            </p>
+                        </div>
+                        <div class="single-info recipe-item-spacing mobile">
+                            <p><img src="{{ asset('images/Broj porcija.svg') }}" alt="broj porcija" />{{ $recipe->portion_number }}</p>
+                        </div>
                     </div>
                     <h1 class="mobile recipe-item-spacing">{{ $recipe->title }}</h1>
                     <h4 class="main-info desktop">Osnovne informacije</h4>
