@@ -13,9 +13,9 @@
         <div class="row">
             <div class="col-md-2">
                 <ul class="admin-menu">
-                    <li class="active"><a href="{{ route('show-admin-list') }}">Recepti</a></li>
+                    <li><a href="{{ route('show-admin-list') }}">Recepti</a></li>
                     <li><a href="{{ route('show-users-list') }}">Korisnici</a></li>
-                    <li><a href="{{ route('show-posts-list') }}">Blog</a></li>
+                    <li class="active"><a href="{{ route('show-posts-list') }}">Blog</a></li>
                 </ul>
             </div>
             <div class="col-md-10">

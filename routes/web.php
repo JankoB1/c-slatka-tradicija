@@ -77,6 +77,10 @@ Route::middleware(['auth', 'verified'])->group(function() {
     Route::get('/edit/recepti/{id}', [RecipeController::class, 'showEditRecipe'])->name('show-edit-recipe');
     Route::get('/admin/list', [RecipeController::class, 'showAdminList'])->name('show-admin-list');
     Route::get('/admin/users-list', [UserController::class, 'showUsersList'])->name('show-users-list');
+    Route::get('/admin/posts-list', [PostController::class, 'showPostsList'])->name('show-posts-list');
+    Route::delete('/delete-post/{id}', [PostController::class, 'deletePost'])->name('delete-post');
+    Route::get('/izmeni-blog/{id}', [PostController::class, 'showEditPost'])->name('show-edit-post');
+    Route::post('/edit-post/{id}', [PostController::class, 'editPost'])->name('edit-post');
 });
 
 Route::get('/pdf', [\App\Http\Controllers\PdfController::class, 'generatePdf'])->name('pdf');

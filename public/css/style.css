@@ -3258,6 +3258,10 @@ h2.preparation-heading {
     background-image: url("../images/books-c4.jpeg");
 }
 
+.login-hero {
+    margin-top: 100px;
+}
+
 img.loading-spinner {
     display: block;
     margin: 0 auto;
@@ -4900,6 +4904,7 @@ p {
     #homepage-banner2.login-hero {
         background-image: url("../images/login-register-mobile-hero.jpg");
         padding-bottom: 50vh;
+        margin-top: 60px;
     }
 
     #homepage-banner2.login-hero h3 {

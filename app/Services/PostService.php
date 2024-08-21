@@ -17,4 +17,12 @@ class PostService
         return $this->postRepository->addPost($request);
     }
 
+    public function deletePost($id) {
+        $this->postRepository->deletePost($id);
+    }
+
+    public function editPost($request, $id) {
+        return $this->postRepository->editPost($request, $id);
+    }
+
 }
