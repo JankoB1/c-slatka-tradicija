@@ -1888,7 +1888,7 @@ section#post-content .share {
     letter-spacing: 0em;
     text-align: left;
     color: #56924C;
-    margin-bottom: 35px;
+    margin-bottom: 25px !important;
 }
 
 .recipe-main-inner h1 {
@@ -1922,6 +1922,7 @@ section#post-content .share {
 
 .recipe-main-inner h5 {
     font-family: Montserrat;
+    margin-top: 20px;
     font-size: 23px;
     font-weight: 600;
     line-height: 32px;
