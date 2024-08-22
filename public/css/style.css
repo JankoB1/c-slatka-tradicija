@@ -1168,6 +1168,10 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
     top: 4px;
 }
 
+.ingredients-section .ingredient-plus, .ingredients-section i.fa-minus {
+    top: 7px !important;
+}
+
 .row.recipe-products .col-4 {
     padding: 0 3px;
 }
