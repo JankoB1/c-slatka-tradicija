@@ -29,8 +29,12 @@ class PostController extends Controller
     }
 
     public function showSinglePost($id) {
-        $post  = Post::find($id);
-        return view('posts.single-post', compact('post'));
+        $post = Post::find($id);
+        if($post != null) {
+            return view('posts.single-post', compact('post'));
+        } else {
+            return redirect()->route('show-posts');
+        }
     }
 
     public function showPosts() {
