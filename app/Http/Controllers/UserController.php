@@ -22,6 +22,7 @@ class UserController extends Controller
 
     public function showProfile() {
         $savedRecipes = $this->recipeService->getUserSaved(Auth::user()->id);
+        //dd($savedRecipes);
         return view('auth.my-profile', compact('savedRecipes'));
     }
 

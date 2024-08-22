@@ -98,7 +98,7 @@
                             @foreach($savedRecipes as $saved)
                                 <div class="col-md-4">
                                     <div class="single-recipe-preview">
-                                        <a href="{{ route('show-single-recipe', ['category' => $saved->category->slug, 'id' => $saved->recipe->id, 'slug' => $saved->recipe->slug]) }}">
+                                        <a href="{{ route('show-single-recipe', ['category' => \App\Models\Category::where('id', $saved->recipe->category_id)->first()->slug, 'id' => $saved->recipe->id, 'slug' => $saved->recipe->slug]) }}">
                                             @if($saved->recipe->old_recipe == 1)
                                                 <div class="recipe-preview-img" style="background-image: url('{{ asset('storage/upload/' . $saved->recipe->image_old) }}');">
 
