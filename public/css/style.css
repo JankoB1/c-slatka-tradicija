@@ -2601,6 +2601,7 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
     border: none !important;
     color: #2E4765 !important;
     font-weight: 600 !important;
+    margin-top: 35px;
 }
 
 div:where(.swal2-container) h2:where(.swal2-title) {
@@ -3882,6 +3883,11 @@ p {
         font-size: 12px;
         margin-top: 35px;
         height: 46px;
+    }
+
+    #recipes-category-banner {
+        height: 50vh;
+        margin-top: 70px;
     }
 
     div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm, button.swal2-deny.nodel-recipe-sw.swal2-styled {
