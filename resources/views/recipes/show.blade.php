@@ -233,7 +233,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <a href="{{ route('show-all-categories') }}" class="mobile mobile-see-more-products">Vidi još proizvoda</a>
+{{--                        <a href="{{ route('show-all-categories') }}" class="mobile mobile-see-more-products">Vidi još proizvoda</a>--}}
                     @endif
                 </div>
                 <div class="col-md-9">

@@ -73,20 +73,6 @@ const imageControls = `<div class="row image-controls-row">
     </div>
 </div>`;
 
-// const srSteps = [
-//     'Prvi',
-//     'Drugi',
-//     'Treći',
-//     'Četvrti',
-//     'Peti',
-//     'Šesti',
-//     'Sedmi',
-//     'Osmi',
-//     'Deveti',
-//     'Deseti',
-//     'Jedanaesti'
-// ];
-
 const subcategories = [
     [
         {'Čokoladne torte': 25},
@@ -1068,4 +1054,8 @@ function cropImage() {
             });
         }
     });
+}
+
+if(!editRecipeId) {
+    document.querySelector('button.add-group-ingredient').click();
 }

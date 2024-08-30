@@ -158,7 +158,7 @@
                         </a>
                         <a href="/logout" class="single-list-item">
                             <p>Odjavi se</p>
-                            <img src="{{ asset('images/os-icon.svg') }}" alt="">
+                            <img style="width: 25px !important; position: relative; left: 5px;" src="{{ asset('images/os-icon.svg') }}" alt="">
                         </a>
                     </div>
                 </div>
@@ -217,7 +217,7 @@
                                 </a>
                                 <a href="/logout" class="single-list-item">
                                     <p>Odjavi se</p>
-                                    <img src="{{ asset('images/os-icon.svg') }}" alt="">
+                                    <img style="width: 25px !important; position: relative; left: 5px;" src="{{ asset('images/os-icon.svg') }}" alt="">
                                 </a>
                             </div>
                         </div>

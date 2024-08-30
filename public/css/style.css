@@ -1188,7 +1188,13 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
     background-image: url("../images/mapa-sajta-hero.png");
     background-size: cover;
     background-position: center center;
-    height: 50vh;
+    height: 53vh;
+    margin-top: 110px;
+}
+
+#create-recipe-hero.contact-hero.impressum-hero, #create-recipe-hero.contact-hero {
+    height: 53vh;
+    margin-top: 110px;
 }
 
 .dropdown-links {
@@ -2185,10 +2191,11 @@ section#post-content .share {
 }
 
 #recipes-category-banner {
-    height: 50vh;
+    height: 53vh;
     background-image: url("../images/category-single1.png");
     background-size: cover;
     background-position: center;
+    margin-top: 110px;
 }
 
 .all-categories-link {
@@ -2694,9 +2701,9 @@ div:where(.swal2-container) h2:where(.swal2-title) {
     padding: 110px 100px;
 }
 
-#login-popup p, #loading-popup p, #login-popup2 p {
+#login-popup p, #loading-popup p, #login-popup2 p, div:where(.swal2-container) h2:where(.swal2-title) {
     font-family: Montserrat;
-    font-size: 18px;
+    font-size: 18px !important;
     font-weight: 600;
     line-height: 30px;
     letter-spacing: 0em;
@@ -3102,7 +3109,8 @@ h2.preparation-heading {
     background-image: url("../images/privact-note-hero.png");
     background-position: center center;
     background-size: cover;
-    height: 50vh;
+    height: 53vh;
+    margin-top: 110px;
 }
 
 #privacy-policy-hero {
@@ -3495,14 +3503,17 @@ span.hide-recipe, span.delete-span, #recipes-table_wrapper td a, span.show-recip
     color: rgb(194, 65, 12);
 }
 
-button.swal2-confirm.del-recipe-sw.swal2-styled {
-    background-color: rgb(194, 65, 12) !important;
-    color: white !important;
+button.swal2-confirm.del-recipe-sw.swal2-styled, button.swal2-deny.nodel-recipe-sw.swal2-styled,
+button.swal2-confirm.swal2-styled {
+    width: 130px;
+    font-weight: 600;
+    border-radius: 32px;
 }
 
 button.swal2-deny.nodel-recipe-sw.swal2-styled {
-    background-color: #F5CC45 !important;
+    background-color: transparent !important;
     color: #2E4765 !important;
+    border: 1px solid #2E4765 !important;
 }
 
 
@@ -3846,8 +3857,38 @@ p {
         z-index: 100;
     }
 
+    .create-recipe-step[data-step="3"] .col-md-7 textarea {
+        width: 82% !important;
+    }
+
     .single-step-group i {
         top: 100px !important;
+    }
+
+    #login-popup p, #loading-popup p, #login-popup2 p, div:where(.swal2-container) h2:where(.swal2-title) {
+        text-align: center !important;
+        font-size: 14px !important;
+        margin-bottom: 22px;
+        height: 46px
+    }
+
+    div:where(.swal2-container) h2:where(.swal2-title) {
+        padding-top: 20px !important;
+    }
+
+    #login-popup a, #login-popup2 a {
+        width: 60%;
+        margin: 0 auto;
+        font-size: 12px;
+    }
+
+    div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm, button.swal2-deny.nodel-recipe-sw.swal2-styled {
+        border-radius: 32px !important;
+        font-size: 12px;
+    }
+
+    .swal2-actions {
+        width: 100%;
     }
 
     .recipe-edit-section {
@@ -4855,6 +4896,32 @@ p {
         background: #F95A2C;
     }
 
+    .search-popup-mobile-inner {
+        padding: 10px 5% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        flex-direction: row-reverse !important;
+        border-radius: 0 !important;
+        position: unset;
+        margin-top: 60px;
+    }
+
+    .mobile-search-input {
+        margin: 0;
+    }
+
+    .search-popup-mobile-inner form {
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+    }
+
+    .search-popup-mobile {
+        height: auto !important;
+        backdrop-filter: none !important;
+    }
+
     .books-mobile-inner > i, .search-popup-mobile-inner i {
         right: unset;
         left: 50%;
@@ -4863,7 +4930,8 @@ p {
     }
 
     .search-popup-mobile-inner i {
-        position: absolute;
+        position: initial;
+        transform: unset;
     }
 
     #contact-form {
