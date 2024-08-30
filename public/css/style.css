@@ -3888,6 +3888,10 @@ p {
         margin-top: 35px;
     }
 
+    button.swal2-confirm.del-recipe-sw.swal2-styled {
+        margin-top: 0 !important;
+    }
+
     #recipes-category-banner {
         height: 50vh;
         margin-top: 70px;
