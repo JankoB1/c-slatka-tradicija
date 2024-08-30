@@ -3869,7 +3869,7 @@ p {
         text-align: center !important;
         font-size: 14px !important;
         margin-bottom: 22px;
-        height: 46px
+        line-height: 22px;
     }
 
     div:where(.swal2-container) h2:where(.swal2-title) {
