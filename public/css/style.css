@@ -3880,6 +3880,8 @@ p {
         width: 60%;
         margin: 0 auto;
         font-size: 12px;
+        margin-top: 35px;
+        height: 46px;
     }
 
     div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm, button.swal2-deny.nodel-recipe-sw.swal2-styled {
