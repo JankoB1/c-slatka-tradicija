@@ -2601,7 +2601,6 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
     border: none !important;
     color: #2E4765 !important;
     font-weight: 600 !important;
-    margin-top: 35px;
 }
 
 div:where(.swal2-container) h2:where(.swal2-title) {
@@ -3883,6 +3882,10 @@ p {
         font-size: 12px;
         margin-top: 35px;
         height: 46px;
+    }
+
+    div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+        margin-top: 35px;
     }
 
     #recipes-category-banner {
