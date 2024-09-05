@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="custom-select custom-select-category">
-                                            <div class="selected">Kategorija recepta (izaberi)</div>
+                                            <div class="selected">Kategorija recepta (izaberi) <img src="{{ asset('images/select-arrow.svg') }}" alt=""></div>
                                             <div class="custom-select-options">
                                                 <div data-value="0" class="single-select">Torte</div>
                                                 <div data-value="1" class="single-select">Kolači</div>
@@ -89,61 +89,61 @@
                                                 <div data-value="4" class="single-select">Deserti</div>
                                             </div>
                                         </div>
-{{--                                        <select name="category">--}}
-{{--                                            <option selected value="">Kategorija recepta (izaberi)</option>--}}
-{{--                                            <option value="0">Torte</option>--}}
-{{--                                            <option value="1">Kolači</option>--}}
-{{--                                            <option value="2">Hleb i peciva</option>--}}
-{{--                                            <option value="3">Zimnica</option>--}}
-{{--                                            <option value="4">Deserti</option>--}}
-{{--                                        </select>--}}
+                                        {{--                                        <select name="category">--}}
+                                        {{--                                            <option selected value="">Kategorija recepta (izaberi)</option>--}}
+                                        {{--                                            <option value="0">Torte</option>--}}
+                                        {{--                                            <option value="1">Kolači</option>--}}
+                                        {{--                                            <option value="2">Hleb i peciva</option>--}}
+                                        {{--                                            <option value="3">Zimnica</option>--}}
+                                        {{--                                            <option value="4">Deserti</option>--}}
+                                        {{--                                        </select>--}}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="custom-select custom-select-subcategory">
-                                            <div class="selected">Podkategorija recepta (izaberi)</div>
+                                            <div class="selected">Podkategorija recepta (izaberi) <img src="{{ asset('images/select-arrow.svg') }}" alt=""></div>
                                             <div class="custom-select-options">
 
                                             </div>
                                         </div>
-{{--                                        <select name="subcategory">--}}
-{{--                                            <option selected value="">Podkategorija recepta (izaberi)</option>--}}
-{{--                                        </select>--}}
+                                        {{--                                        <select name="subcategory">--}}
+                                        {{--                                            <option selected value="">Podkategorija recepta (izaberi)</option>--}}
+                                        {{--                                        </select>--}}
                                     </div>
                                     <div class="col-md-6">
                                         <div class="custom-select custom-select-difficulty">
-                                            <div class="selected">Težina pripreme (izaberi)</div>
+                                            <div class="selected">Težina pripreme (izaberi) <img src="{{ asset('images/select-arrow.svg') }}" alt=""></div>
                                             <div class="custom-select-options">
                                                 <div data-value="Lako" class="single-select">Lako</div>
                                                 <div data-value="Srednje" class="single-select">Srednje</div>
                                                 <div data-value="Teško" class="single-select">Teško</div>
                                             </div>
                                         </div>
-{{--                                        <select name="difficulty">--}}
-{{--                                            <option selected value="">Težina pripreme (izaberi)</option>--}}
-{{--                                            <option value="Lako">Lako</option>--}}
-{{--                                            <option value="Srednje">Srednje</option>--}}
-{{--                                            <option value="Teško">Teško</option>--}}
-{{--                                        </select>--}}
+                                        {{--                                        <select name="difficulty">--}}
+                                        {{--                                            <option selected value="">Težina pripreme (izaberi)</option>--}}
+                                        {{--                                            <option value="Lako">Lako</option>--}}
+                                        {{--                                            <option value="Srednje">Srednje</option>--}}
+                                        {{--                                            <option value="Teško">Teško</option>--}}
+                                        {{--                                        </select>--}}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="custom-select custom-select-preparation_time">
-                                            <div class="selected">Vreme pripreme (izaberi)</div>
+                                            <div class="selected">Vreme pripreme (izaberi) <img src="{{ asset('images/select-arrow.svg') }}" alt=""></div>
                                             <div class="custom-select-options">
                                                 <div data-value="do 30 min" class="single-select">do 30 min</div>
                                                 <div data-value="30-60 min" class="single-select">30-60 min</div>
                                                 <div data-value="60+ min" class="single-select">60+ min</div>
                                             </div>
                                         </div>
-{{--                                        <select name="preparation_time">--}}
-{{--                                            <option selected value="">Vreme pripreme (izaberi)</option>--}}
-{{--                                            <option value="do 30 min">do 30 min</option>--}}
-{{--                                            <option value="30-60 min">30-60 min</option>--}}
-{{--                                            <option value="60+ min">60+ min</option>--}}
-{{--                                        </select>--}}
+                                        {{--                                        <select name="preparation_time">--}}
+                                        {{--                                            <option selected value="">Vreme pripreme (izaberi)</option>--}}
+                                        {{--                                            <option value="do 30 min">do 30 min</option>--}}
+                                        {{--                                            <option value="30-60 min">30-60 min</option>--}}
+                                        {{--                                            <option value="60+ min">60+ min</option>--}}
+                                        {{--                                        </select>--}}
                                     </div>
                                     <div class="col-md-6">
                                         <input type="text" name="portion_number" placeholder="Broj porcija">
