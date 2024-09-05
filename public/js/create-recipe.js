@@ -237,7 +237,7 @@ const newIngredientHtml = `<div class="row ingredients-cont">
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="custom-select custom-select-ingredient_measure">
-                                                <div class="selected">Jedinica mere + '  <img src="' + window.origin + '/images/select-arrow.svg' + '" alt="">';</div>
+                                                <div class="selected">Jedinica mere  <img src="${window.origin}/images/select-arrow.svg" alt=""></div>
                                                     <div class="custom-select-options">
                                                         <div data-value="g" class="single-select">g</div>
                                                         <div data-value="kg" class="single-select">kg</div>
@@ -286,7 +286,7 @@ const newIngredientHtmlNoAdd = `<div class="row ingredients-cont">
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="custom-select custom-select-ingredient_measure">
-                                                <div class="selected">Jedinica mere + '  <img src="' + window.origin + '/images/select-arrow.svg' + '" alt="">';</div>
+                                                <div class="selected">Jedinica mere  <img src="${window.origin}/images/select-arrow.svg" alt=""></div>
                                                     <div class="custom-select-options">
                                                         <div data-value="g" class="single-select">g</div>
                                                         <div data-value="kg" class="single-select">kg</div>
