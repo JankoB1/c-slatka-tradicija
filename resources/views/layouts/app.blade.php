@@ -717,6 +717,9 @@
     let searchPopupMobile = document.querySelector('.search-popup-mobile');
     searchIconMobile.addEventListener('click', function() {
         searchPopupMobile.classList.toggle('active');
+        if(searchPopupMobile.classList.contains('active')) {
+            document.querySelector('.mobile-search-input').focus();
+        }
     });
 
     let searchCloseMobile = document.querySelector('.search-popup-mobile i');

@@ -104,15 +104,65 @@ const subcategories = [
     ]
 ];
 
-category.addEventListener('change', function() {
-    subcategory.innerHTML = '';
-    let subArr = subcategories[parseInt(this.value)];
-    subArr.forEach((el) => {
-        Object.entries(el).forEach(([key, value]) => {
-            subcategory.innerHTML += `<option value="${value}">${key}</option>`;
+let customSelects = document.querySelectorAll('.custom-select');
+let customSelectCategory = document.querySelector('.custom-select-category');
+customSelects.forEach((customSelect) => {
+    customSelect.addEventListener('click', function() {
+        customSelect.classList.toggle('active');
+    });
+});
+
+customSelectCategory.querySelectorAll('.single-select').forEach((singleSelect) => {
+    singleSelect.addEventListener('click', function() {
+        customSelectCategory.querySelector('.selected').innerHTML = this.innerHTML + '  <img src="' + window.origin + '/images/select-arrow.svg' + '" alt="">';
+        customSelectCategory.querySelector('.selected').dataset.value = this.dataset.value;
+        let customSelectCategoryOptions = document.querySelector('.custom-select-subcategory .custom-select-options');
+        customSelectCategoryOptions.innerHTML = '';
+        let subArr = subcategories[parseInt(this.dataset.value)];
+        subArr.forEach((el, i) => {
+            if(i === 0) {
+                Object.entries(el).forEach(([key, value]) => {
+                    document.querySelector('.custom-select-subcategory .selected').innerHTML = key + '  <img src="' + window.origin + '/images/select-arrow.svg' + '" alt="">';;
+                    document.querySelector('.custom-select-subcategory .selected').dataset.value = value;
+                });
+            }
+            Object.entries(el).forEach(([key, value]) => {
+                customSelectCategoryOptions.innerHTML += `<div data-value="${value}" class="single-select">${key}</div>`;
+            });
+        });
+
+        document.querySelectorAll('.custom-select-subcategory .single-select').forEach((singleSelect2) => {
+            singleSelect2.addEventListener('click', function() {
+                document.querySelector('.custom-select-subcategory .selected').innerHTML = this.innerHTML + '  <img src="' + window.origin + '/images/select-arrow.svg' + '" alt="">';;
+                document.querySelector('.custom-select-subcategory .selected').dataset.value = this.dataset.value;
+            });
         });
     });
 });
+
+document.querySelectorAll('.custom-select-difficulty .single-select').forEach((singleSelect) => {
+    singleSelect.addEventListener('click', function() {
+        document.querySelector('.custom-select-difficulty .selected').innerHTML = singleSelect.innerHTML + '  <img src="' + window.origin + '/images/select-arrow.svg' + '" alt="">';;
+        document.querySelector('.custom-select-difficulty .selected').dataset.value = singleSelect.dataset.value;
+    });
+});
+
+document.querySelectorAll('.custom-select-preparation_time .single-select').forEach((singleSelect) => {
+    singleSelect.addEventListener('click', function() {
+        document.querySelector('.custom-select-preparation_time .selected').innerHTML = singleSelect.innerHTML + '  <img src="' + window.origin + '/images/select-arrow.svg' + '" alt="">';;
+        document.querySelector('.custom-select-preparation_time .selected').dataset.value = singleSelect.dataset.value;
+    });
+});
+
+// category.addEventListener('change', function() {
+//     subcategory.innerHTML = '';
+//     let subArr = subcategories[parseInt(this.value)];
+//     subArr.forEach((el) => {
+//         Object.entries(el).forEach(([key, value]) => {
+//             subcategory.innerHTML += `<option value="${value}">${key}</option>`;
+//         });
+//     });
+// });
 
 if(editRecipeId) {
     let catId = document.querySelector('input[name="cat_id"]').value;
@@ -186,18 +236,32 @@ const newIngredientHtml = `<div class="row ingredients-cont">
                                                 <input type="text" name="ingredient_quantity" placeholder="Količina">
                                             </div>
                                             <div class="col-md-6">
-                                                <select name="ingredient_measure">
-                                                    <option value="">Jedinica mere</option>
-                                                    <option value="g">g</option>
-                                                    <option value="kg">kg</option>
-                                                    <option value="ml">ml</option>
-                                                    <option value="malo">malo</option>
-                                                    <option value="prstohvat">prstohvat</option>
-                                                    <option value="kašika">kašika</option>
-                                                    <option value="kašičica">kašičica</option>
-                                                    <option value="kesica">kesica</option>
-                                                    <option value="čaša">čaša</option>
-                                                </select>
+                                                <div class="custom-select custom-select-ingredient_measure">
+                                                <div class="selected">Jedinica mere + '  <img src="' + window.origin + '/images/select-arrow.svg' + '" alt="">';</div>
+                                                    <div class="custom-select-options">
+                                                        <div data-value="g" class="single-select">g</div>
+                                                        <div data-value="kg" class="single-select">kg</div>
+                                                        <div data-value="ml" class="single-select">ml</div>
+                                                        <div data-value="malo" class="single-select">malo</div>
+                                                        <div data-value="prstohvat" class="single-select">prstohvat</div>
+                                                        <div data-value="kašika" class="single-select">kašika</div>
+                                                        <div data-value="kašičica" class="single-select">kašičica</div>
+                                                        <div data-value="kesica" class="single-select">kesica</div>
+                                                        <div data-value="čaša" class="single-select">čaša</div>
+                                                    </div>
+                                                </div>
+<!--                                                <select name="ingredient_measure">-->
+<!--                                                    <option value="">Jedinica mere</option>-->
+<!--                                                    <option value="g">g</option>-->
+<!--                                                    <option value="kg">kg</option>-->
+<!--                                                    <option value="ml">ml</option>-->
+<!--                                                    <option value="malo">malo</option>-->
+<!--                                                    <option value="prstohvat">prstohvat</option>-->
+<!--                                                    <option value="kašika">kašika</option>-->
+<!--                                                    <option value="kašičica">kašičica</option>-->
+<!--                                                    <option value="kesica">kesica</option>-->
+<!--                                                    <option value="čaša">čaša</option>-->
+<!--                                                </select>-->
                                             </div>
                                         </div>
                                     </div>
@@ -221,17 +285,31 @@ const newIngredientHtmlNoAdd = `<div class="row ingredients-cont">
                                                 <input type="text" name="ingredient_quantity" placeholder="Količina">
                                             </div>
                                             <div class="col-md-6">
-                                                <select name="ingredient_measure">
-                                                    <option value="">Jedinica mere</option>
-                                                    <option value="g">g</option>
-                                                    <option value="kg">kg</option>
-                                                    <option value="ml">ml</option>
-                                                    <option value="malo">malo</option>
-                                                    <option value="prstohvat">prstohvat</option>
-                                                    <option value="kašika">kašika</option>
-                                                    <option value="kesica">kesica</option>
-                                                    <option value="čaša">čaša</option>
-                                                </select>
+                                                <div class="custom-select custom-select-ingredient_measure">
+                                                <div class="selected">Jedinica mere + '  <img src="' + window.origin + '/images/select-arrow.svg' + '" alt="">';</div>
+                                                    <div class="custom-select-options">
+                                                        <div data-value="g" class="single-select">g</div>
+                                                        <div data-value="kg" class="single-select">kg</div>
+                                                        <div data-value="ml" class="single-select">ml</div>
+                                                        <div data-value="malo" class="single-select">malo</div>
+                                                        <div data-value="prstohvat" class="single-select">prstohvat</div>
+                                                        <div data-value="kašika" class="single-select">kašika</div>
+                                                        <div data-value="kašičica" class="single-select">kašičica</div>
+                                                        <div data-value="kesica" class="single-select">kesica</div>
+                                                        <div data-value="čaša" class="single-select">čaša</div>
+                                                    </div>
+                                                </div>
+<!--                                                <select name="ingredient_measure">-->
+<!--                                                    <option value="">Jedinica mere</option>-->
+<!--                                                    <option value="g">g</option>-->
+<!--                                                    <option value="kg">kg</option>-->
+<!--                                                    <option value="ml">ml</option>-->
+<!--                                                    <option value="malo">malo</option>-->
+<!--                                                    <option value="prstohvat">prstohvat</option>-->
+<!--                                                    <option value="kašika">kašika</option>-->
+<!--                                                    <option value="kesica">kesica</option>-->
+<!--                                                    <option value="čaša">čaša</option>-->
+<!--                                                </select>-->
                                             </div>
                                         </div>
                                     </div>
@@ -347,6 +425,17 @@ addGroupIngredient.addEventListener('click', function() {
             }
         });
         newGroupCont.appendChild(newGroupIngredient);
+
+        newGroupIngredient.querySelector('.custom-select-ingredient_measure').addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+
+        newGroupIngredient.querySelectorAll('.custom-select-ingredient_measure .single-select').forEach((singleSelect) => {
+            singleSelect.addEventListener('click', function() {
+                newGroupIngredient.querySelector('.selected').innerHTML = this.innerHTML + '  <img src="' + window.origin + '/images/select-arrow.svg' + '" alt="">';;
+                newGroupIngredient.querySelector('.selected').dataset.value = this.dataset.value;
+            });
+        });
     });
     newGroupCont.appendChild(newIngredient);
     let deleteIconSingle = newIngredient.querySelector('i');
@@ -358,6 +447,18 @@ addGroupIngredient.addEventListener('click', function() {
             this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
         }
     });
+
+    newIngredient.querySelector('.custom-select-ingredient_measure').addEventListener('click', function() {
+        this.classList.toggle('active');
+    });
+
+    newIngredient.querySelectorAll('.custom-select-ingredient_measure .single-select').forEach((singleSelect) => {
+        singleSelect.addEventListener('click', function() {
+            newIngredient.querySelector('.selected').innerHTML = this.innerHTML + '  <img src="' + window.origin + '/images/select-arrow.svg' + '" alt="">';;
+            newIngredient.querySelector('.selected').dataset.value = this.dataset.value;
+        });
+    });
+
     // let addIngredientInGroup = newIngredient.querySelector('span');
     // addIngredientInGroup.addEventListener('click', function() {
     //     let newGroupIngredient = document.createElement('div');
@@ -466,10 +567,10 @@ createRecipeBtn.addEventListener('click', function(e) {
     // processImages(imageDivs)
     //     .then(() => {
             let title = document.querySelector('form input[name="title"]').value;
-            let cat = category.value;
-            let subCat = subcategory.value;
-            let difficulty = document.querySelector('form select[name="difficulty"]').value;
-            let preparationTime = document.querySelector('form select[name="preparation_time"]').value;
+            let cat = document.querySelector('.custom-select-category .selected').dataset.value;
+            let subCat = document.querySelector('.custom-select-subcategory .selected').dataset.value;
+            let difficulty = document.querySelector('.custom-select-difficulty .selected').dataset.value;
+            let preparationTime = document.querySelector('.custom-select-preparation_time .selected').value;
             let portionNum = document.querySelector('form input[name="portion_number"]').value;
             let description = document.querySelector('textarea[name="description"]').value;
 
@@ -490,7 +591,7 @@ createRecipeBtn.addEventListener('click', function(e) {
                 groupIngredients.forEach((single) => {
                     let name = single.querySelector('textarea[name="ingredient_name"]').value;
                     let qty = single.querySelector('input[name="ingredient_quantity"]').value;
-                    let measure = single.querySelector('select[name="ingredient_measure"]').value;
+                    let measure = single.querySelector('.selected').dataset.value;
                     let product = single.querySelector('textarea[name="ingredient_name"]').dataset.productId;
                     ingredients.push({
                         title: name,
@@ -509,7 +610,7 @@ createRecipeBtn.addEventListener('click', function(e) {
             independentIngredients.forEach((single) => {
                 let name = single.querySelector('textarea[name="ingredient_name"]').value;
                 let qty = single.querySelector('input[name="ingredient_quantity"]').value;
-                let measure = single.querySelector('select[name="ingredient_measure"]').value;
+                let measure = single.querySelector('.selected').dataset.value;
                 let product = single.querySelector('textarea[name="ingredient_name"]').dataset.productId;
                 independentIngredientsParsed.push({
                     title: name,
@@ -718,10 +819,10 @@ function saveMaskImage(dataUrl, xOffset, imageName) {
 
 function validateFirstStep() {
     let title = document.querySelector('input[name="title"]').value;
-    let category = document.querySelector('select[name="category"]').value;
-    let subCategory = document.querySelector('select[name="subcategory"]').value;
-    let difficulty = document.querySelector('select[name="difficulty"]').value;
-    let preparationTime = document.querySelector('select[name="preparation_time"]').value;
+    let category = document.querySelector('.custom-select-category .selected').dataset.value;
+    let subCategory = document.querySelector('.custom-select-subcategory .selected').dataset.value;
+    let difficulty = document.querySelector('.custom-select-difficulty .selected').dataset.value;
+    let preparationTime = document.querySelector('.custom-select-preparation_time .selected').dataset.value;
     let portionNumber = document.querySelector('input[name="portion_number"]').value;
     if(title === '') {
         document.querySelector('input[name="title"]').focus();
@@ -731,32 +832,28 @@ function validateFirstStep() {
         });
         return false;
     }
-    if(category === '') {
-        document.querySelector('select[name="category"]').focus();
+    if(category === undefined) {
         Swal.fire({
             title: 'Polje \'Kategorija recepta\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
             confirmButtonText: 'Nastavi'
         });
         return false;
     }
-    if(subCategory === '') {
-        document.querySelector('select[name="subcategory"]').focus();
+    if(subCategory === undefined) {
         Swal.fire({
             title: 'Polje \'Podkategorija recepta\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
             confirmButtonText: 'Nastavi'
         });
         return false;
     }
-    if(difficulty === '') {
-        document.querySelector('select[name="difficulty"]').focus();
+    if(difficulty === undefined) {
         Swal.fire({
             title: 'Polje \'Težina pripreme\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
             confirmButtonText: 'Nastavi'
         });
         return false;
     }
-    if(preparationTime === '') {
-        document.querySelector('select[name="preparation_time"]').focus();
+    if(preparationTime === undefined) {
         Swal.fire({
             title: 'Polje \'Vreme pripreme\' je obavezno i potrebno je da ga popuniš da bi nastavio/la dalje.',
             confirmButtonText: 'Nastavi'
@@ -1058,4 +1155,13 @@ function cropImage() {
 
 if(!editRecipeId) {
     document.querySelector('button.add-group-ingredient').click();
+    document.querySelector('button.add-group-step').click();
 }
+
+document.addEventListener('click', function(event) {
+    document.querySelectorAll('.custom-select').forEach(function(element) {
+        if (!element.contains(event.target)) {
+            element.classList.remove('active');
+        }
+    });
+});

@@ -1417,8 +1417,8 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
 }
 
 .products-ingredients p:hover {
-    background: #F5CC45;
-
+    background: #2E4765;
+    color: white;
 }
 
 .avatar-img {
@@ -2596,9 +2596,9 @@ input[name="step_group_name"] {
 
 div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
     background-color: #F5CC45 !important;
+    border: 1px solid #F5CC45 !important;
     outline: none !important;
     box-shadow: none !important;
-    border: none !important;
     color: #2E4765 !important;
     font-weight: 600 !important;
 }
@@ -3613,6 +3613,76 @@ p {
     margin-right: 15px;
 }
 
+.custom-select {
+    border-radius: 32px;
+    border: 1px solid #2E4765;
+    background: #FFF;
+    height: 64px;
+    padding: 15px 10px;
+    color: #2E4765;
+    font-family: Montserrat;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-select-options {
+    color: #2E4765;
+    font-family: Montserrat;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: calc(100% + 2px);
+    text-align: center;
+    border: 1px solid #2E4765;
+    background: white;
+    position: absolute;
+    z-index: 10;
+    top: 45px;
+    left: -1px;
+    border-radius: 0 0 32px 32px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    border-top: 0;
+}
+
+.custom-select.active .custom-select-options {
+    display: flex;
+}
+
+.custom-select.active {
+    border-radius: 32px 32px 0 0;
+}
+
+.custom-select .single-select {
+    width: 100%;
+    padding: 7px 0;
+    transition: all 0.1s ease-in-out;
+}
+
+.custom-select .single-select:last-child {
+    border-radius: 0 0 32px 32px;
+}
+
+.custom-select .single-select:hover {
+    background: #2E4765;
+    color: white;
+}
+
+.selected img {
+    position: relative !important;
+}
+
 @media only screen and (max-width: 1507px) {
     #main-header {
         padding: 11px 6.5%;
@@ -3716,6 +3786,10 @@ p {
         font-size: 14px;
         line-height: 21px;
         padding: 30px 0;
+    }
+
+    .custom-select {
+        margin-bottom: 20px;
     }
 
     .featured-recipe-single.mini .featured-image-cont {

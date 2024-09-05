@@ -226,9 +226,9 @@
                         <div class="row recipe-products">
                             @foreach($products as $product)
                                 <div class="col-4">
-                                    <a href="{{ route('show-single-product', ['slug' => $product->slug]) }}">
-                                        <img src="{{ asset('images/' . $product->image_path) }}" alt="" style="{{ $product->slug == 'oblande'? 'margin: 24px auto; height: 40px;': '' }}">
-                                        <p>{{ $product->name }}</p>
+                                    <a href="{{ route('show-single-product', ['slug' => $product->slug]) }}" style="background-image: url('{{ asset('images/' . $product->image_path) }}');">
+{{--                                        <img src="{{ asset('images/' . $product->image_path) }}" alt="" style="{{ $product->slug == 'oblande'? 'margin: 24px auto; height: 40px;': '' }}">--}}
+{{--                                        <p>{{ $product->name }}</p>--}}
                                     </a>
                                 </div>
                             @endforeach

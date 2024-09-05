@@ -74,7 +74,7 @@
 
 @section('scriptsBottom')
     <script>
-        document.querySelector('form input#email').scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('#login-content').scrollIntoView({ behavior: 'smooth' });
         document.querySelector('form input#email').focus();
     </script>
 @endsection
