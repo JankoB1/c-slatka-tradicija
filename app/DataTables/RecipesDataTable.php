@@ -22,9 +22,9 @@ class RecipesDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('title', function(Recipe $recipe) {
-                return $recipe->title;
-            })
+//            ->addColumn('title', function(Recipe $recipe) {
+//                return $recipe->title;
+//            })
             ->addColumn('email', function(Recipe $recipe) {
                 if($recipe->user_recipe != null) {
                     return $recipe->user_recipe->email;
@@ -46,8 +46,19 @@ class RecipesDataTable extends DataTable
      */
     public function query(Recipe $model): QueryBuilder
     {
-        return $model->newQuery()->where('deleted_at', '=', null)->orderBy('id', 'desc');
+        $query = $model->newQuery()
+            ->whereNull('deleted_at') // Using 'whereNull' is more concise than '= null'
+            ->orderBy('id', 'desc');
+
+        // If the title column is being searched, add the search filter
+        if (request()->has('search') && request('search')['value']) {
+            $searchValue = request('search')['value'];
+            $query->where('title', 'like', "%{$searchValue}%");
+        }
+
+        return $query;
     }
+
 
     /**
      * Optional method if you want to use the html builder.
@@ -69,7 +80,7 @@ class RecipesDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('title'),
+            Column::make('title')->searchable(true),
             Column::make('email')->title('Korisnik'),
             Column::make('created_at')->name('created_at')->title('Datum objavljivanja'),
             Column::computed('action')
