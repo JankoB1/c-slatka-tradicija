@@ -2495,7 +2495,7 @@ input[name="step_group_name"] {
 
 .recipe-products img {
     width: auto;
-    max-height: 80px;
+    max-height: 65px;
     margin: 0 auto;
     display: block;
 }
