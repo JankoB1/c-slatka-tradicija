@@ -6,8 +6,8 @@
         tinymce.init({
             selector: '#content',
             convert_urls: false,
-            plugins: 'image',
-            toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image',
+            plugins: 'image media code',
+            toolbar: 'media code undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image',
             images_upload_url: '/upload-mce',
             file_picker_types: 'image',
             file_picker_callback: function(cb, value, meta) {

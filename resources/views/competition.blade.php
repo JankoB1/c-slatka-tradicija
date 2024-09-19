@@ -233,6 +233,9 @@
                                 {{--                                <input type="file" name="images[]" multiple accept="images/*">--}}
                             </div>
                             <div class="col-md-7">
+                                @if(\Illuminate\Support\Facades\Auth::user()->admin == 1)
+                                    <input style="margin-bottom: 20px;" type="text" name="yt_video" class="yt-video" placeholder="YouTube video">
+                                @endif
                                 <div class="images">
 
                                 </div>

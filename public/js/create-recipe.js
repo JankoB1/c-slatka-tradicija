@@ -655,6 +655,12 @@ createRecipeBtn.addEventListener('click', function(e) {
                 }
             });
 
+            let ytVideoInput = document.querySelector('.yt-video');
+            let ytVideo = null;
+            if(ytVideoInput) {
+                ytVideo = ytVideoInput.value;
+            }
+
             let data = {
                 title: title,
                 cat: cat,
@@ -666,7 +672,8 @@ createRecipeBtn.addEventListener('click', function(e) {
                 ingredients: ingredients,
                 steps: stepsForm,
                 imagesFinal: imagesUploaded,
-                imagesToDelete: []
+                imagesToDelete: [],
+                ytVideo: ytVideo
             }
 
             let action = 'store';

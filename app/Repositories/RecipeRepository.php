@@ -27,7 +27,8 @@ class RecipeRepository
                 'portion_number' => $request->portionNum,
                 'description' => $request->description,
                 'active' => 'T',
-                'old_recipe' => 0
+                'old_recipe' => 0,
+                'yt_video' => $request->ytVideo
             ]);
 
             $recipe_id = $recipe->id;
