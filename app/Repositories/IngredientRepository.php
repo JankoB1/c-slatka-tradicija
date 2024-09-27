@@ -42,7 +42,7 @@ class IngredientRepository
                         'product_id' => isset($item['product'])? $item['product']: null,
                         'title' => $item['title'],
                         'quantity' => $item['quantity'],
-                        'measure' => $item['measure'],
+                        'measure' => isset($item['measure'])? $item['measure']: null,
                         'group' => $ingredient_group->id,
                     ]);
                 }
