@@ -52,7 +52,7 @@ deleteRecipeBtns.forEach((deleteRecipeBtn) => {
         let recipeId = this.dataset.recipeId;
         let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         Swal.fire({
-            title: 'Da li siguran/na da želiš da izbrišeš recept?',
+            title: 'Da li želiš da obrišeš recept?',
             showDenyButton: true,
             confirmButtonText: 'Da',
             denyButtonText: 'Ne',

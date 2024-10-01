@@ -27,6 +27,9 @@ class UsersDataTable extends DataTable
             ->addColumn('name', function(User $user) {
                 return $user->name . ' ' . $user->surname;
             })
+            ->addColumn('username', function(User $user) {
+                return $user->username;
+            })
             ->editColumn('email', function(User $user) {
                 return $user->email;
             })
@@ -82,6 +85,7 @@ class UsersDataTable extends DataTable
     {
         return [
             Column::make('name')->title('Ime i prezime')->searchable(true),
+            Column::make('username')->title('Korisnicko ime')->searchable(true),
             Column::make('email')->title('Email')->searchable(true),
             Column::make('phone')->title('Telefon'),
             Column::make('city_2')->title('Grad'),

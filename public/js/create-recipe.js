@@ -169,11 +169,16 @@ if(editRecipeId) {
     const subarrayIndex = subcategories.findIndex(subarray =>
         subarray.some(obj => Object.values(obj).includes(parseInt(catId)))
     );
-    category.value = subarrayIndex;
-    let event = new Event('change');
-    category.dispatchEvent(event);
-    subcategory.value = parseInt(catId);
-    subcategory.dispatchEvent(event);
+    document.querySelector('.custom-select-category').click();
+    document.querySelector('.custom-select-category .single-select[data-value="' + subarrayIndex + '"]').click();
+
+    let diff = document.querySelector('input[name="diff"]').value;
+    document.querySelector('.custom-select-difficulty').click();
+    document.querySelector('.custom-select-difficulty .single-select[data-value="' + diff + '"]').click();
+
+    let prep = document.querySelector('input[name="prep"]').value;
+    document.querySelector('.custom-select-preparation_time').click();
+    document.querySelector('.custom-select-preparation_time .single-select[data-value="' + prep + '"]').click();
 
     let ingredientNamesEls = document.querySelectorAll('textarea[name="ingredient_name"]');
     ingredientNamesEls.forEach((inEl) => {
@@ -226,6 +231,13 @@ if(editRecipeId) {
             deleteImageBtn.parentElement.parentElement.parentElement.parentElement.remove();
         });
     });
+
+    document.querySelectorAll('.custom-select-ingredient_measure .single-select').forEach((singleSelect) => {
+        singleSelect.addEventListener('click', function() {
+            singleSelect.parentElement.parentElement.querySelector('.selected').innerHTML = singleSelect.innerHTML + '  <img src="' + window.origin + '/images/select-arrow.svg' + '" alt="">';;
+            singleSelect.parentElement.parentElement.querySelector('.selected').dataset.value = singleSelect.dataset.value;
+        });
+    });
 }
 
 const newIngredientHtml = `<div class="row ingredients-cont">
@@ -247,6 +259,7 @@ const newIngredientHtml = `<div class="row ingredients-cont">
                                                         <div data-value="kašika" class="single-select">kašika</div>
                                                         <div data-value="kašičica" class="single-select">kašičica</div>
                                                         <div data-value="kesica" class="single-select">kesica</div>
+                                                        <div data-value="komad" class="single-select">komad</div>
                                                         <div data-value="čaša" class="single-select">čaša</div>
                                                     </div>
                                                 </div>
@@ -296,6 +309,7 @@ const newIngredientHtmlNoAdd = `<div class="row ingredients-cont">
                                                         <div data-value="kašika" class="single-select">kašika</div>
                                                         <div data-value="kašičica" class="single-select">kašičica</div>
                                                         <div data-value="kesica" class="single-select">kesica</div>
+                                                        <div data-value="komad" class="single-select">komad</div>
                                                         <div data-value="čaša" class="single-select">čaša</div>
                                                     </div>
                                                 </div>
@@ -570,7 +584,7 @@ createRecipeBtn.addEventListener('click', function(e) {
             let cat = document.querySelector('.custom-select-category .selected').dataset.value;
             let subCat = document.querySelector('.custom-select-subcategory .selected').dataset.value;
             let difficulty = document.querySelector('.custom-select-difficulty .selected').dataset.value;
-            let preparationTime = document.querySelector('.custom-select-preparation_time .selected').value;
+            let preparationTime = document.querySelector('.custom-select-preparation_time .selected').dataset.value;
             let portionNum = document.querySelector('form input[name="portion_number"]').value;
             let description = document.querySelector('textarea[name="description"]').value;
 

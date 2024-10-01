@@ -4759,8 +4759,9 @@ p {
     }
 
     .single-product-main-inner.container-space img {
-        width: 80% !important;
         margin: 0 auto !important;
+        max-height: 400px;
+        width: auto !important;
     }
 
     #single-product-main {

@@ -13,6 +13,8 @@
 
     <section id="recipe-form" class="recipe-form-competition recipe-edit-section" data-edit="{{ $recipe->id }}">
         <input type="hidden" name="cat_id" id="cat_id" value="{{ $recipe->category_id }}">
+        <input type="hidden" name="diff" id="diff" value="{{ $recipe->difficulty }}">
+        <input type="hidden" name="prep" id="prep" value="{{ $recipe->preparation_time }}">
         <div class="form-inner">
             <form action="{{ route('recipes.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -62,39 +64,48 @@
                                         <input type="text" name="title" placeholder="Naziv recepta" value="{{ $recipe->title }}">
                                     </div>
                                     <div class="col-md-6">
-                                        <select name="category">
-                                            <option value="">Kategorija recepta (izaberi)</option>
-                                            <option value="0">Torte</option>
-                                            <option value="1">Kolači</option>
-                                            <option value="2">Hleb i peciva</option>
-                                            <option value="3">Zimnica</option>
-                                            <option value="4">Deserti</option>
-                                        </select>
+                                        <div class="custom-select custom-select-category">
+                                            <div class="selected">Kategorija recepta (izaberi) <img src="{{ asset('images/select-arrow.svg') }}" alt=""></div>
+                                            <div class="custom-select-options">
+                                                <div data-value="0" class="single-select">Torte</div>
+                                                <div data-value="1" class="single-select">Kolači</div>
+                                                <div data-value="2" class="single-select">Hleb i peciva</div>
+                                                <div data-value="3" class="single-select">Zimnica</div>
+                                                <div data-value="4" class="single-select">Deserti</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <select name="subcategory">
-                                            <option selected value="">Podkategorija recepta (izaberi)</option>
-                                        </select>
+                                        <div class="custom-select custom-select-subcategory">
+                                            <div class="selected">Podkategorija recepta (izaberi) <img src="{{ asset('images/select-arrow.svg') }}" alt=""></div>
+                                            <div class="custom-select-options">
+
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <select name="difficulty">
-                                            <option value="">Težina pripreme (izaberi)</option>
-                                            <option {{ $recipe->difficulty == 'Lako'? 'selected': '' }} value="Lako">Lako</option>
-                                            <option {{ $recipe->difficulty == 'Srednje'? 'selected': '' }} value="Srednje">Srednje</option>
-                                            <option {{ $recipe->difficulty == 'Teško'? 'selected': '' }} value="Teško">Teško</option>
-                                        </select>
+                                        <div class="custom-select custom-select-difficulty">
+                                            <div class="selected">Težina pripreme (izaberi) <img src="{{ asset('images/select-arrow.svg') }}" alt=""></div>
+                                            <div class="custom-select-options">
+                                                <div data-value="Lako" class="single-select">Lako</div>
+                                                <div data-value="Srednje" class="single-select">Srednje</div>
+                                                <div data-value="Teško" class="single-select">Teško</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <select name="preparation_time">
-                                            <option value="">Vreme pripreme (izaberi)</option>
-                                            <option {{ $recipe->preparation_time == 'do 30 min'? 'selected': '' }} value="do 30 min">do 30 min</option>
-                                            <option {{ $recipe->preparation_time == '30-60 min'? 'selected': '' }} value="30-60 min">30-60 min</option>
-                                            <option {{ $recipe->preparation_time == '60+ min'? 'selected': '' }} value="60+ min">60+ min</option>
-                                        </select>
+                                        <div class="custom-select custom-select-preparation_time">
+                                            <div class="selected">Vreme pripreme (izaberi) <img src="{{ asset('images/select-arrow.svg') }}" alt=""></div>
+                                            <div class="custom-select-options">
+                                                <div data-value="do 30 min" class="single-select">do 30 min</div>
+                                                <div data-value="30-60 min" class="single-select">30-60 min</div>
+                                                <div data-value="60+ min" class="single-select">60+ min</div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <input type="text" name="portion_number" placeholder="Broj porcija" value="{{ $recipe->portion_number }}">
@@ -142,17 +153,20 @@
                                                                     <input type="text" name="ingredient_quantity" placeholder="Količina" value="{{ $ingredient['quantity'] }}">
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                    <select name="ingredient_measure">
-                                                                        <option value="">Jedinica mere</option>
-                                                                        <option {{ $ingredient['measure'] == 'g'? 'selected': '' }} value="g">g</option>
-                                                                        <option {{ $ingredient['measure'] == 'kg'? 'selected': '' }} value="kg">kg</option>
-                                                                        <option {{ $ingredient['measure'] == 'ml'? 'selected': '' }} value="ml">ml</option>
-                                                                        <option {{ $ingredient['measure'] == 'malo'? 'selected': '' }} value="malo">malo</option>
-                                                                        <option {{ $ingredient['measure'] == 'prstohvat'? 'selected': '' }} value="prstohvat">prstohvat</option>
-                                                                        <option {{ $ingredient['measure'] == 'kašika'? 'selected': '' }} value="kašika">kašika</option>
-                                                                        <option {{ $ingredient['measure'] == 'kesica'? 'selected': '' }} value="kesica">kesica</option>
-                                                                        <option {{ $ingredient['measure'] == 'čaša'? 'selected': '' }} value="čaša">čaša</option>
-                                                                    </select>
+                                                                    <div class="custom-select custom-select-ingredient_measure">
+                                                                        <div class="selected" data-value="{{ $ingredient['measure'] }}">{{ $ingredient['measure'] }}  <img src="{{ asset('images/select-arrow.svg') }}" alt=""></div>
+                                                                        <div class="custom-select-options">
+                                                                            <div data-value="g" class="single-select {{ $ingredient['measure'] == 'g'? 'selected': '' }}">g</div>
+                                                                            <div data-value="kg" class="single-select {{ $ingredient['measure'] == 'kg'? 'selected': '' }}">kg</div>
+                                                                            <div data-value="ml" class="single-select {{ $ingredient['measure'] == 'ml'? 'selected': '' }}">ml</div>
+                                                                            <div data-value="malo" class="single-select {{ $ingredient['measure'] == 'malo'? 'selected': '' }}">malo</div>
+                                                                            <div data-value="prstohvat" class="single-select {{ $ingredient['measure'] == 'prstohvat'? 'selected': '' }}">prstohvat</div>
+                                                                            <div data-value="kašika" class="single-select {{ $ingredient['measure'] == 'kašika'? 'selected': '' }}">kašika</div>
+                                                                            <div data-value="kašičica" class="single-select {{ $ingredient['measure'] == 'kašičica'? 'selected': '' }}">kašičica</div>
+                                                                            <div data-value="kesica" class="single-select {{ $ingredient['measure'] == 'kesica'? 'selected': '' }}">kesica</div>
+                                                                            <div data-value="čaša" class="single-select {{ $ingredient['measure'] == 'čaša'? 'selected': '' }}">čaša</div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -185,17 +199,21 @@
                                                                 <input type="text" name="ingredient_quantity" placeholder="Količina" value="{{ $ingredient->quantity }}">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <select name="ingredient_measure">
-                                                                    <option value="">Jedinica mere</option>
-                                                                    <option {{ $ingredient->measure == 'g'? 'selected': '' }} value="g">g</option>
-                                                                    <option {{ $ingredient->measure == 'kg'? 'selected': '' }} value="kg">kg</option>
-                                                                    <option {{ $ingredient->measure == 'ml'? 'selected': '' }} value="ml">ml</option>
-                                                                    <option {{ $ingredient->measure == 'malo'? 'selected': '' }} value="malo">malo</option>
-                                                                    <option {{ $ingredient->measure == 'prstohvat'? 'selected': '' }} value="prstohvat">prstohvat</option>
-                                                                    <option {{ $ingredient->measure == 'kašika'? 'selected': '' }} value="kašika">kašika</option>
-                                                                    <option {{ $ingredient->measure == 'kesica'? 'selected': '' }} value="kesica">kesica</option>
-                                                                    <option {{ $ingredient->measure == 'čaša'? 'selected': '' }} value="čaša">čaša</option>
-                                                                </select>
+                                                                <div class="custom-select custom-select-ingredient_measure">
+                                                                    <div class="selected" data-value="{{ $ingredient['measure'] }}">{{ $ingredient['measure'] }}  <img src="{{ asset('images/select-arrow.svg') }}" alt=""></div>
+                                                                    <div class="custom-select-options">
+                                                                        <div data-value="g" class="single-select {{ $ingredient['measure'] == 'g'? 'selected': '' }}">g</div>
+                                                                        <div data-value="kg" class="single-select {{ $ingredient['measure'] == 'kg'? 'selected': '' }}">kg</div>
+                                                                        <div data-value="ml" class="single-select {{ $ingredient['measure'] == 'ml'? 'selected': '' }}">ml</div>
+                                                                        <div data-value="malo" class="single-select {{ $ingredient['measure'] == 'malo'? 'selected': '' }}">malo</div>
+                                                                        <div data-value="prstohvat" class="single-select {{ $ingredient['measure'] == 'prstohvat'? 'selected': '' }}">prstohvat</div>
+                                                                        <div data-value="kašika" class="single-select {{ $ingredient['measure'] == 'kašika'? 'selected': '' }}">kašika</div>
+                                                                        <div data-value="kašičica" class="single-select {{ $ingredient['measure'] == 'kašičica'? 'selected': '' }}">kašičica</div>
+                                                                        <div data-value="kesica" class="single-select {{ $ingredient['measure'] == 'kesica'? 'selected': '' }}">kesica</div>
+                                                                        <div data-value="komad" class="single-select {{ $ingredient['measure'] == 'komad'? 'selected': '' }}">komad</div>
+                                                                        <div data-value="čaša" class="single-select {{ $ingredient['measure'] == 'čaša'? 'selected': '' }}">čaša</div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
