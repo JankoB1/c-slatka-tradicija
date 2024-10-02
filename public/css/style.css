@@ -129,7 +129,7 @@ body {
 }
 
 #main-banner {
-    background-image: url("../images/konkurs-desktop-1920x620-2.jpg");
+    background-image: url("../images/konkurs-desktop-1920x620-2.png");
     background-size: cover;
     background-position: center right;
 }
@@ -5065,7 +5065,7 @@ p {
     }
 
     #homepage-banner2.login-hero {
-        background-image: url("../images/login-register-mobile-hero.jpg");
+        background-image: url("../images/login-register-mobile-hero.png");
         padding-bottom: 50vh;
         margin-top: 60px;
     }
