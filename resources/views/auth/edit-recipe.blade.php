@@ -154,7 +154,7 @@
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="custom-select custom-select-ingredient_measure">
-                                                                        <div class="selected" data-value="{{ $ingredient['measure'] }}">{{ $ingredient['measure'] }}  <img src="{{ asset('images/select-arrow.svg') }}" alt=""></div>
+                                                                        <div class="selected" data-value="{{ $ingredient['measure'] }}">{{ $ingredient['measure'] != ''? $ingredient['measure']: 'Jedinica mere' }}  <img src="{{ asset('images/select-arrow.svg') }}" alt=""></div>
                                                                         <div class="custom-select-options">
                                                                             <div data-value="g" class="single-select {{ $ingredient['measure'] == 'g'? 'selected': '' }}">g</div>
                                                                             <div data-value="kg" class="single-select {{ $ingredient['measure'] == 'kg'? 'selected': '' }}">kg</div>
@@ -200,7 +200,7 @@
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="custom-select custom-select-ingredient_measure">
-                                                                    <div class="selected" data-value="{{ $ingredient['measure'] }}">{{ $ingredient['measure'] }}  <img src="{{ asset('images/select-arrow.svg') }}" alt=""></div>
+                                                                    <div class="selected" data-value="{{ $ingredient['measure'] }}">{{ $ingredient['measure'] != ''? $ingredient['measure']: 'Jedinica mere' }}  <img src="{{ asset('images/select-arrow.svg') }}" alt=""></div>
                                                                     <div class="custom-select-options">
                                                                         <div data-value="g" class="single-select {{ $ingredient['measure'] == 'g'? 'selected': '' }}">g</div>
                                                                         <div data-value="kg" class="single-select {{ $ingredient['measure'] == 'kg'? 'selected': '' }}">kg</div>

@@ -172,6 +172,10 @@ if(editRecipeId) {
     document.querySelector('.custom-select-category').click();
     document.querySelector('.custom-select-category .single-select[data-value="' + subarrayIndex + '"]').click();
 
+    document.querySelector('.custom-select-subcategory').click();
+    document.querySelector('.custom-select-subcategory .single-select[data-value="' + catId + '"]').click();
+
+
     let diff = document.querySelector('input[name="diff"]').value;
     document.querySelector('.custom-select-difficulty').click();
     document.querySelector('.custom-select-difficulty .single-select[data-value="' + diff + '"]').click();
@@ -204,6 +208,17 @@ if(editRecipeId) {
                 } else {
                     this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
                 }
+            });
+
+            newGroupIngredient.querySelector('.custom-select-ingredient_measure').addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+
+            newGroupIngredient.querySelectorAll('.custom-select-ingredient_measure .single-select').forEach((singleSelect) => {
+                singleSelect.addEventListener('click', function() {
+                    newGroupIngredient.querySelector('.selected').innerHTML = this.innerHTML + '  <img src="' + window.origin + '/images/select-arrow.svg' + '" alt="">';;
+                    newGroupIngredient.querySelector('.selected').dataset.value = this.dataset.value;
+                });
             });
             deleteIcon.parentElement.parentElement.appendChild(newGroupIngredient);
         });
@@ -450,6 +465,7 @@ addGroupIngredient.addEventListener('click', function() {
                 newGroupIngredient.querySelector('.selected').dataset.value = this.dataset.value;
             });
         });
+
     });
     newGroupCont.appendChild(newIngredient);
     let deleteIconSingle = newIngredient.querySelector('i');
