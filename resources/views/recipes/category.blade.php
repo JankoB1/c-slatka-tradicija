@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <section id="recipes-category-banner" style="background-image: url('{{ asset('images/' . $category->image) }}')">
+
+    <section>
+        <img class="desktop" src="{{ asset('images/' . $category->slug . '-d.png') }}" alt="" style="width: 100%; margin-top: 70px;">
+        <img class="mobile" src="{{ asset('images/' . $category->slug . '-m.png') }}" alt="" style="width: 100%; margin-top: 70px;">
     </section>
+
+{{--    <section id="recipes-category-banner" style="background-image: url('{{ asset('images/' . $category->image) }}')">--}}
+{{--    </section>--}}
 
     <section id="recipes-category-content">
         <div class="recipes-category-content container-space">

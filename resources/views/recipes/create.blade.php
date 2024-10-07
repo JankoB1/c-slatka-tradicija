@@ -314,6 +314,7 @@
                     <div class="img-container">
                         <img id='cropper-modal-image' src="#" alt="crop image">
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button class="add-recipe" onclick="cropImage()">Završi</button>
