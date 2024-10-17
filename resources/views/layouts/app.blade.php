@@ -717,7 +717,9 @@
     searchIconMobile.addEventListener('click', function() {
         searchPopupMobile.classList.toggle('active');
         if(searchPopupMobile.classList.contains('active')) {
-            document.querySelector('.mobile-search-input').focus();
+            setTimeout(function() {
+                document.querySelector('.mobile-search-input').focus();
+            }, 500);
         }
     });
 
