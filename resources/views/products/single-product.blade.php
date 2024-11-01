@@ -143,7 +143,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Slavski kolači i torte"</h3>
+                    <h3>Učestvuj u konkursu<br>"Recepti za pripremu oblandi"</h3>
                     <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>

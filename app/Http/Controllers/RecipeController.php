@@ -266,7 +266,7 @@ class RecipeController extends Controller
 
     public function winRecipe($id) {
         $recipe = Recipe::find($id);
-        $recipe->contest_id = 2227;
+        $recipe->contest_id = 2228;
         $recipe->save();
     }
 
