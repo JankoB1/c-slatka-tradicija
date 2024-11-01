@@ -5,7 +5,7 @@
     <section id="competition-rules" style="padding-top: 140px;">
         <div class="competition-rules-inner container-space">
             <h2>Organizator</h2>
-            <p>Dr. Oetker d.o.o organizuje konkurs pod nazivom &quot;Po&scaron;aljite recept (Recepti za pripremu oblandi)&quot;. Predmet konkursa je izbor najboljih recepata za Slavski kolači i torte, koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana.</p>
+            <p>Dr. Oetker d.o.o organizuje konkurs pod nazivom &quot;Po&scaron;aljite recept (Recepti za pripremu oblandi)&quot;. Predmet konkursa je izbor najboljih recepata za Recepti za pripremu oblandi, koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana.</p>
             <h2>Opis konkursa</h2>
             <p>Konkurs traje od 01. novembra do 30. novembra 2024. godine.<br /><br />Konkurs se organizuje za sve posetioce sajta <a href="https://www.c-slatkatradicija.rs" style="color:#258b42;">www.c-slatkatradicija.rs</a> koji za vreme trajanja konkursa posete sajt, ispune formular za slanje recepta i prihvate prava i obaveze.<br /><br />Pri popunjavanju formulara recepta učesnici su dužni da budu prijavljeni na svoj
 nalog i da unesu naziv i opis recepta, sastojke kao i korake pripreme. Uslov za učešće jeste i prihvatanje pravila konkursa, naznačenih u ovim pravilima. Slanje fotografije koja prati recepte je opciono i nije uslovno za učešće. <br>Organizator ne ograničava broj recepata koji mogu biti poslati od strane jednog učesnika.</p>
