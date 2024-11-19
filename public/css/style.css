@@ -3705,8 +3705,13 @@ p {
         width: 110px;
     }
 }
-
+.recipe-products {
+    width: 100%;
+}
 @media only screen and (max-width: 768px) {
+    .recipe-products {
+       margin: 0 auto;
+    }
     .mobile-actions > a {
         margin-left: 13%;
     }
@@ -3749,8 +3754,15 @@ p {
         font-size: 14px;
         line-height: 17px;
         margin: 0 auto;
+        min-height: 50px;
+        width:  170px;
     }
-
+    @media (max-width: 768px) {
+    .custom-offset-4 {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    }
     .single-product-main-inner.container-space p.neto-menu-toggle img {
         width: 15px !important;
     }
@@ -4768,7 +4780,11 @@ p {
         max-height: 400px;
         width: auto !important;
     }
-
+    .single-product-main-inner.container-space img[alt="Oblande"]{
+        margin: 0 auto !important;
+        max-height: 200px;
+        width: auto !important;
+    }
     #single-product-main {
         padding-top: 90px;
         padding-bottom: 30px;

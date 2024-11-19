@@ -232,10 +232,11 @@
 
     <div class="search-popup-mobile">
         <div class="search-popup-mobile-inner">
-            <i class="fa-solid fa-xmark"></i>
+
             <form action="#">
                 <input class="mobile-search-input" type="search">
                 <input class="search-submit" type="submit" value="Pretraži">
+                <i class="fa-solid fa-xmark"></i>
             </form>
 
         </div>

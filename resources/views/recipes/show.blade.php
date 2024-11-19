@@ -218,7 +218,7 @@
                         <h4>Naši proizvodi</h4>
                         <div class="row recipe-products">
                             @foreach($products as $product)
-                                <div class="col-4">
+                                <div class="col-4 {{ count($products) == 1 ? 'custom-offset-4' : '' }}">
                                     <a href="{{ route('show-single-product', ['slug' => $product->slug]) }}">
                                         <img src="{{ asset('images/' . $product->image_path) }}" alt="">
                                         <p>{{ $product->name }}</p>
@@ -230,7 +230,7 @@
                         <h4>Naši proizvodi</h4>
                         <div class="row recipe-products">
                             @foreach($products as $product)
-                                <div class="col-4">
+                                <div class="col-4 {{ count($products) == 1 ? 'custom-offset-4' : '' }}" >
                                     <a href="{{ route('show-single-product', ['slug' => $product->slug]) }}" style="background-image: url('{{ asset('images/' . $product->image_path) }}');">
                                         <img src="{{ asset('images/' . $product->image_path) }}" alt="">
                                         <p>{{ $product->name }}</p>

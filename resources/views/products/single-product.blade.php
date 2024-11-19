@@ -165,4 +165,5 @@
             this.classList.toggle('active');
         });
     </script>
+
 @endsection
