@@ -1,6 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(session('message'))
+        <div class="modal fade" id="login-popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-7">
+                                <p>Verifikacioni email je poslat na email adresu.</p>
+                                <p>Proveriti i Spam/Junk folder.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <section id="main-banner">
         <div class="main-banner-inner">
             <h1>Učestvuj u konkursu<br>"Recepti za pripremu oblandi"</h1>
@@ -287,6 +306,8 @@
 @endsection
 
 @section('scriptsBottom')
-    <script type="text/javascript" src="{{ asset('js/homepage.js') }}"></script>
+    @if(session('message'))
+        <script type="text/javascript" src="{{ asset('js/homepage.js') }}"></script>
+    @endif
     <script type="text/javascript" src="{{ asset('js/categories-filter.js') }}"></script>
 @endsection
