@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <p class="desktop">NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Recepti za pripremu oblandi"</h3>
+                    <h3>Učestvuj u konkursu<br>"Posne torte i kolači"</h3>
                     <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>
