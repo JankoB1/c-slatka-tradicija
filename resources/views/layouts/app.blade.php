@@ -719,6 +719,7 @@
         searchPopupMobile.classList.toggle('active');
         if(searchPopupMobile.classList.contains('active')) {
             setTimeout(function() {
+                document.querySelector('.mobile-search-input').setAttribute('autofocus', 'autofocus');
                 document.querySelector('.mobile-search-input').focus();
             }, 500);
         }
