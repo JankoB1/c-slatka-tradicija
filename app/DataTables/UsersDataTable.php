@@ -24,6 +24,9 @@ class UsersDataTable extends DataTable
                 $sql = "CONCAT(users.name, ' ', users.surname) like ?";
                 $query->whereRaw($sql, ["%{$keyword}%"]);
             })
+            ->filterColumn('username', function ($query, $keyword) {
+                $query->where('users.username', 'like', "%{$keyword}%");
+            })
             ->addColumn('name', function(User $user) {
                 return $user->name . ' ' . $user->surname;
             })

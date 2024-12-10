@@ -1171,6 +1171,7 @@ span.ingridient-plus, i.fa-minus, span.ingredient-plus {
     justify-content: center;
     position: relative;
     top: 4px;
+    right: 10px !important;
 }
 
 .ingredients-section .ingredient-plus, .ingredients-section i.fa-minus {
@@ -3954,6 +3955,7 @@ p {
 
     .single-step-group i {
         top: 100px !important;
+        right: 0 !important;
     }
 
     #login-popup p, #loading-popup p, #login-popup2 p, div:where(.swal2-container) h2:where(.swal2-title) {
@@ -4526,7 +4528,7 @@ p {
     .row.ingredients-cont i {
         position: absolute;
         top: 7px;
-        right: 3px;
+        right: 13px;
     }
 
 
