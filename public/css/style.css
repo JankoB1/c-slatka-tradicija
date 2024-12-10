@@ -4529,6 +4529,7 @@ p {
         right: 3px;
     }
 
+
     #single-category-products {
         padding-top: 40px;
     }
@@ -5143,5 +5144,39 @@ p {
     .user-popup-mobile .add-recipe {
         width: 100%;
         font-size: 14px;
+    }
+}
+.title-maintenance {
+    font-size: 74px;
+    line-height: 90px;
+    font-weight: 700;
+    color: #2E4765;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container-maintenance {
+    max-width:1270px;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.container-maintenance-section{
+    background-color: #FFF8E2;
+    margin-top: 100px;
+}
+@media (max-width: 768px) {
+    .title-maintenance {
+        font-size: 32px;    /* Još manji font za manje ekrane */
+        line-height: 50px;
+        font-weight: 700;
+
+    }
+    .container-maintenance {
+        margin: 0 auto !important;
+        width: 90%;
+        height: 60vh;
     }
 }

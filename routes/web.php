@@ -96,3 +96,7 @@ Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
     return view('auth.resend-verify');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::get('/u-izradi', function(){
+    return view('maintenance');
+});

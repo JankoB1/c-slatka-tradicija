@@ -186,7 +186,7 @@
                                         </div>
                                     @endforeach
                                 </div>
-
+                                  
                                 <div class="single-ingredients-inner">
                                     @foreach($recipe->ingredients as $ingredient)
                                         @if($ingredient->group == null)
