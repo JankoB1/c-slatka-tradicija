@@ -4526,9 +4526,17 @@ p {
     }
 
     .row.ingredients-cont i {
+        /*position: absolute;*/
+        /*top: 7px;*/
+        /*right: 13px;*/
+        right: 0 !important;
+    }
+
+    .row.ingredients-cont .col-md-2 {
         position: absolute;
-        top: 7px;
-        right: 13px;
+        top: 0;
+        right: 0;
+        width: calc(18% + 3px);
     }
 
 
