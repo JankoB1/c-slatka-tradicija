@@ -5098,7 +5098,8 @@ p {
 
     #homepage-banner2.login-hero {
         background-image: url("../images/login-register-mobile-hero.png");
-        padding-bottom: 50vh;
+        padding-bottom: 10vh;
+        padding-top: 40vh;
         margin-top: 60px;
     }
 
