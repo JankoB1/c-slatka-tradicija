@@ -3689,6 +3689,21 @@ p {
     position: relative !important;
 }
 
+#image-crop-popup .modal-body {
+    display: flex;
+    justify-content: center;
+}
+
+#image-crop-popup .modal-footer {
+    justify-content: space-between;
+}
+
+.rotate-btns i {
+    font-size: 28px;
+    padding: 10px;
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 1507px) {
     #main-header {
         padding: 11px 6.5%;

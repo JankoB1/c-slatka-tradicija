@@ -76,4 +76,26 @@ class ImageController
         return $imageName;
     }
 
+    public function cropImageTest(Request $request) {
+        $manager = new ImageManager(new Driver());
+        $image = $manager->read(file_get_contents(public_path($request->imagePath)));
+        $image->rotate(-$request->rotate);
+
+        $direction = $request->vertical != 'false' ? $request->imgHeight : $request->imgWidth;
+        $r = $image->width() / $direction;
+
+        $top = $r * $request->cropBoxTop;
+        $left = $r * $request->cropBoxLeft;
+        $width = $r * $request->cropBoxWidth;
+        $height = $r * $request->cropBoxHeight;
+
+        $image->crop($width, $height, $left, $top);
+
+        $imageName = time() . '.jpg';
+        $croppedImagePath = 'public/upload/' . $imageName;
+        Storage::put($croppedImagePath, (string) $image->encode());
+
+        return $imageName;
+    }
+
 }

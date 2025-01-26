@@ -50,6 +50,7 @@ Route::get('/proizvod/{slug}', [ProductController::class, 'showSingleProduct'])-
 Route::get('/posaljite-recept', [RecipeController::class, 'create'])->name('recipes.create')->middleware('verified');
 Route::get('/mapa-sajta', [SiteController::class, 'showSitemap'])->name('show-sitemap');
 Route::get('/moja-knjizica-recepata', [RecipeController::class, 'showRecipeBook'])->name('show-recipe-book');
+Route::get('/posaljite-recept/test', [RecipeController::class, 'testShowCreate'])->name('recipes.create-test');
 
 Route::get('/predstavljamo/{id}', [PostController::class, 'showSinglePost'])->name('show-single-post');
 Route::get('/predstavljamo', [PostController::class, 'showPosts'])->name('show-posts');
@@ -86,6 +87,7 @@ Route::middleware(['auth', 'verified'])->group(function() {
 Route::get('/pdf', [\App\Http\Controllers\PdfController::class, 'generatePdf'])->name('pdf');
 Route::get('/get-recipes-by-ids', [RecipeController::class, 'getRecipesByIds'])->name('get-recipes-by-ids');
 Route::post('/crop-image', [ImageController::class, 'cropImage'])->name('crop-image');
+Route::post('/crop-image-test', [ImageController::class, 'cropImageTest'])->name('crop-image-test');
 Route::get('/test-email', [PostController::class, 'testEmail'])->name('test-email');
 
 Route::get('/email/verify', function () {

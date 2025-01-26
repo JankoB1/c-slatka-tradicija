@@ -771,7 +771,24 @@ function searchProducts(target) {
 }
 
 let cropper;
+let globalRotate = 0;
 
+function rotateImage(direction) {
+    let imageContainer = imageCropPopup.querySelector('img').parentElement;
+    let newHeight = imageContainer.offsetWidth + 'px';
+    let newWidth = imageContainer.offsetHeight + 'px';
+    let rotate = 90;
+    if(direction === 'left') {
+        rotate = -90;
+    }
+    cropper.rotate(rotate);
+    globalRotate += rotate;
+    imageContainer.style.height = newHeight;
+    imageContainer.style.width = newWidth;
+
+    cropper.resize();
+    cropper.zoomTo(0);
+}
 addImageBtn.addEventListener('click', function() {
     let addImageInput = document.createElement('input');
     addImageInput.type = 'file';
@@ -799,13 +816,17 @@ addImageBtn.addEventListener('click', function() {
                     if (cropper) {
                         let cropData = {};
                         cropper.destroy();
-                        cropper = null; // Clear the reference
+                        cropper = null;
+                        imageElement.parentElement.removeAttribute('style');
                     }
+                    globalRotate = 0;
                     cropper = new Cropper(imageElement, {
                         autoCropArea: 0.5,
                         aspectRatio: 1.88,
                         viewMode: 2,
                         dragMode: 'none',
+                        rotatable: true,
+                        scalable: true,
                         crop: function(event) {
                             cropData = {
                                 cropBoxHeight: event.detail.height,
@@ -1156,7 +1177,7 @@ function cropImage() {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         },
-        url: window.origin + '/crop-image',
+        url: window.origin + '/crop-image-test',
         data: {
             imagePath: imagePath,
             cropBoxHeight: cropData.cropBoxHeight,
@@ -1165,6 +1186,8 @@ function cropImage() {
             cropBoxLeft: cropData.cropBoxLeft,
             imgHeight: cropData.imgHeight,
             imgWidth: cropData.imgWidth,
+            rotate: globalRotate,
+            vertical: globalRotate / 90 % 2 === 1
         },
         method: 'POST',
         success: function (response) {

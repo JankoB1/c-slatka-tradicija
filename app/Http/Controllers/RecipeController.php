@@ -300,4 +300,14 @@ class RecipeController extends Controller
         $recipes = $this->recipeService->searchRecipe($keyword);
         return view('recipes.search', compact( 'recipes', 'keyword', 'products'));
     }
+
+    public function testShowCreate() {
+        $categories = $this->categoryService->getAllCategories();
+        $ingredients = $this->ingredientService->getIngredientsC();
+
+        return view('recipes.create-test', [
+            'categories' => $categories,
+            'ingredients' => $ingredients,
+        ]);
+    }
 }
