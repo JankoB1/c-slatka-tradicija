@@ -3704,6 +3704,10 @@ p {
     cursor: pointer;
 }
 
+#homepage-banner2 h3, #homepage-banner2 p {
+    color: white !important;
+}
+
 @media only screen and (max-width: 1507px) {
     #main-header {
         padding: 11px 6.5%;
@@ -3849,6 +3853,10 @@ p {
         font-size: 14px;
         line-height: 23px;
         margin-bottom: 20px;
+    }
+
+    #homepage-banner2 h3, #homepage-banner2 p {
+        color: white !important;
     }
 
     #homepage-banner a, #homepage-banner2 a {
@@ -5113,14 +5121,14 @@ p {
 
     #homepage-banner2.login-hero {
         background-image: url("../images/login-register-mobile-hero.png");
-        padding-bottom: 10vh;
-        padding-top: 40vh;
+        padding-bottom: 50vh;
+        padding-top: 0vh;
         margin-top: 60px;
     }
 
     #homepage-banner2.login-hero h3 {
-        padding-top: 80px;
-        color: #2E4765;
+        padding-top: 40px;
+        color: #fff;
         text-align: center;
         font-weight: 700;
     }
