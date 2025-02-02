@@ -50,6 +50,7 @@ class RecipeRepository
             $recipe->preparation_time = $request->preparationTime;
             $recipe->portion_number = $request->portionNum;
             $recipe->description = $request->description;
+            $recipe->yt_video = $request->ytVideo;
             $recipe->save();
             return $recipe;
         } catch (QueryException $exception) {
