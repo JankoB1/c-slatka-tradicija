@@ -363,6 +363,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <div class="rotate-btns">
+                        <i class="fa-solid fa-rotate-left" onclick="rotateImage('left')"></i>
+                        <i class="fa-solid fa-rotate-right" onclick="rotateImage('right')"></i>
+                    </div>
                     <button class="add-recipe" onclick="cropImage()">Završi</button>
                 </div>
             </div>

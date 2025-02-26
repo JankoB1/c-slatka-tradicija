@@ -596,150 +596,150 @@ createRecipeBtn.addEventListener('click', function(e) {
     let imageDivs = document.querySelectorAll('.single-image-div');
     // processImages(imageDivs)
     //     .then(() => {
-            let title = document.querySelector('form input[name="title"]').value;
-            let cat = document.querySelector('.custom-select-category .selected').dataset.value;
-            let subCat = document.querySelector('.custom-select-subcategory .selected').dataset.value;
-            let difficulty = document.querySelector('.custom-select-difficulty .selected').dataset.value;
-            let preparationTime = document.querySelector('.custom-select-preparation_time .selected').dataset.value;
-            let portionNum = document.querySelector('form input[name="portion_number"]').value;
-            let description = document.querySelector('textarea[name="description"]').value;
+    let title = document.querySelector('form input[name="title"]').value;
+    let cat = document.querySelector('.custom-select-category .selected').dataset.value;
+    let subCat = document.querySelector('.custom-select-subcategory .selected').dataset.value;
+    let difficulty = document.querySelector('.custom-select-difficulty .selected').dataset.value;
+    let preparationTime = document.querySelector('.custom-select-preparation_time .selected').dataset.value;
+    let portionNum = document.querySelector('form input[name="portion_number"]').value;
+    let description = document.querySelector('textarea[name="description"]').value;
 
-            let ingredientGroups = document.querySelectorAll('.single-ingredient-group');
-            let independentIngredients = document.querySelectorAll('.single-ingredients-inner .ingredients-cont');
-            let ingredientGroupsParsed = [];
-            let independentIngredientsParsed = [];
+    let ingredientGroups = document.querySelectorAll('.single-ingredient-group');
+    let independentIngredients = document.querySelectorAll('.single-ingredients-inner .ingredients-cont');
+    let ingredientGroupsParsed = [];
+    let independentIngredientsParsed = [];
 
-            let stepGroups = document.querySelectorAll('.single-step-group');
-            let independentSteps = document.querySelectorAll('.single-steps-inner textarea[name="single_step"]');
-            let stepGroupsParsed = [];
-            let independentStepsParsed = [];
+    let stepGroups = document.querySelectorAll('.single-step-group');
+    let independentSteps = document.querySelectorAll('.single-steps-inner textarea[name="single_step"]');
+    let stepGroupsParsed = [];
+    let independentStepsParsed = [];
 
-            ingredientGroups.forEach((singleGroup) => {
-                let groupName = singleGroup.querySelector('input[name="ingredient_group_name"]').value;
-                let groupIngredients = singleGroup.querySelectorAll('.ingredients-cont');
-                let ingredients = [];
-                groupIngredients.forEach((single) => {
-                    let name = single.querySelector('textarea[name="ingredient_name"]').value;
-                    let qty = single.querySelector('input[name="ingredient_quantity"]').value;
-                    let measure = single.querySelector('.selected').dataset.value;
-                    let product = single.querySelector('textarea[name="ingredient_name"]').dataset.productId;
-                    ingredients.push({
-                        title: name,
-                        quantity: qty,
-                        measure: measure,
-                        product: product === null? null: product
-                    });
-                });
-                let group = {
-                    name: groupName,
-                    ingredients: ingredients
-                }
-                ingredientGroupsParsed.push(group);
+    ingredientGroups.forEach((singleGroup) => {
+        let groupName = singleGroup.querySelector('input[name="ingredient_group_name"]').value;
+        let groupIngredients = singleGroup.querySelectorAll('.ingredients-cont');
+        let ingredients = [];
+        groupIngredients.forEach((single) => {
+            let name = single.querySelector('textarea[name="ingredient_name"]').value;
+            let qty = single.querySelector('input[name="ingredient_quantity"]').value;
+            let measure = single.querySelector('.selected').dataset.value;
+            let product = single.querySelector('textarea[name="ingredient_name"]').dataset.productId;
+            ingredients.push({
+                title: name,
+                quantity: qty,
+                measure: measure,
+                product: product === null? null: product
             });
+        });
+        let group = {
+            name: groupName,
+            ingredients: ingredients
+        }
+        ingredientGroupsParsed.push(group);
+    });
 
-            independentIngredients.forEach((single) => {
-                let name = single.querySelector('textarea[name="ingredient_name"]').value;
-                let qty = single.querySelector('input[name="ingredient_quantity"]').value;
-                let measure = single.querySelector('.selected').dataset.value;
-                let product = single.querySelector('textarea[name="ingredient_name"]').dataset.productId;
-                independentIngredientsParsed.push({
-                    title: name,
-                    quantity: qty,
-                    measure: measure,
-                    product: product === null? null: product
-                });
-            });
+    independentIngredients.forEach((single) => {
+        let name = single.querySelector('textarea[name="ingredient_name"]').value;
+        let qty = single.querySelector('input[name="ingredient_quantity"]').value;
+        let measure = single.querySelector('.selected').dataset.value;
+        let product = single.querySelector('textarea[name="ingredient_name"]').dataset.productId;
+        independentIngredientsParsed.push({
+            title: name,
+            quantity: qty,
+            measure: measure,
+            product: product === null? null: product
+        });
+    });
 
-            stepGroups.forEach((singleGroup) => {
-                let groupName = singleGroup.querySelector('input[name="step_group_name"]').value;
-                let groupSteps = singleGroup.querySelectorAll('textarea[name="single_step"]');
-                let gSteps = [];
-                groupSteps.forEach((single) => {
-                    gSteps.push(single.value);
-                });
-                let group = {
-                    name: groupName,
-                    steps: gSteps
-                }
-                stepGroupsParsed.push(group);
-            });
+    stepGroups.forEach((singleGroup) => {
+        let groupName = singleGroup.querySelector('input[name="step_group_name"]').value;
+        let groupSteps = singleGroup.querySelectorAll('textarea[name="single_step"]');
+        let gSteps = [];
+        groupSteps.forEach((single) => {
+            gSteps.push(single.value);
+        });
+        let group = {
+            name: groupName,
+            steps: gSteps
+        }
+        stepGroupsParsed.push(group);
+    });
 
-            independentSteps.forEach((single) => {
-                independentStepsParsed.push(single.value);
-            });
+    independentSteps.forEach((single) => {
+        independentStepsParsed.push(single.value);
+    });
 
-            let ingredients = {
-                ingredientGroups: ingredientGroupsParsed,
-                ingredients: independentIngredientsParsed
+    let ingredients = {
+        ingredientGroups: ingredientGroupsParsed,
+        ingredients: independentIngredientsParsed
+    }
+
+    let stepsForm = {
+        stepGroups: stepGroupsParsed,
+        steps: independentStepsParsed
+    }
+
+    let imagesToDelete = [];
+    imagesUploaded.forEach((image) => {
+        if(!imagesFinal.includes(image)) {
+            imagesToDelete.push(image);
+        }
+    });
+
+    let ytVideoInput = document.querySelector('.yt-video');
+    let ytVideo = null;
+    if(ytVideoInput) {
+        ytVideo = ytVideoInput.value;
+    }
+
+    let data = {
+        title: title,
+        cat: cat,
+        subCat: subCat,
+        difficulty: difficulty,
+        preparationTime: preparationTime,
+        portionNum: portionNum,
+        description: description,
+        ingredients: ingredients,
+        steps: stepsForm,
+        imagesFinal: imagesUploaded,
+        imagesToDelete: [],
+        ytVideo: ytVideo
+    }
+
+    let action = 'store';
+    if(editRecipeId) {
+        action = 'edit';
+        data.recipe_id = parseInt(editRecipeId);
+        let imagesNotToDelete = [];
+        let imageDivs = document.querySelectorAll('.single-img');
+        imageDivs.forEach((im) => {
+            if(im.dataset.imageId !== null) {
+                imagesNotToDelete.push(parseInt(im.dataset.imageId));
             }
+        });
+        data.imagesNotToDelete = imagesNotToDelete;
+    }
+    jQuery.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        },
+        url: window.origin + `/recipes/${action}`,
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        method: 'POST',
+        success: function(response) {
+            window.location.href = window.origin + '/recepti/' + response.category_slug + '/' + response.recipe_slug + '/' + response.recipe_id;
+        }
+    });
 
-            let stepsForm = {
-                stepGroups: stepGroupsParsed,
-                steps: independentStepsParsed
-            }
-
-            let imagesToDelete = [];
-            imagesUploaded.forEach((image) => {
-                if(!imagesFinal.includes(image)) {
-                    imagesToDelete.push(image);
-                }
-            });
-
-            let ytVideoInput = document.querySelector('.yt-video');
-            let ytVideo = null;
-            if(ytVideoInput) {
-                ytVideo = ytVideoInput.value;
-            }
-
-            let data = {
-                title: title,
-                cat: cat,
-                subCat: subCat,
-                difficulty: difficulty,
-                preparationTime: preparationTime,
-                portionNum: portionNum,
-                description: description,
-                ingredients: ingredients,
-                steps: stepsForm,
-                imagesFinal: imagesUploaded,
-                imagesToDelete: [],
-                ytVideo: ytVideo
-            }
-
-            let action = 'store';
-            if(editRecipeId) {
-                action = 'edit';
-                data.recipe_id = parseInt(editRecipeId);
-                let imagesNotToDelete = [];
-                let imageDivs = document.querySelectorAll('.single-img');
-                imageDivs.forEach((im) => {
-                    if(im.dataset.imageId !== null) {
-                        imagesNotToDelete.push(parseInt(im.dataset.imageId));
-                    }
-                });
-                data.imagesNotToDelete = imagesNotToDelete;
-            }
-            jQuery.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                },
-                url: window.origin + `/recipes/${action}`,
-                data: JSON.stringify(data),
-                contentType: 'application/json',
-                method: 'POST',
-                success: function(response) {
-                    window.location.href = window.origin + '/recepti/' + response.category_slug + '/' + response.recipe_slug + '/' + response.recipe_id;
-                }
-            });
-
-            // console.log('All images processed successfully');
-            // console.log('Uploaded images:', imagesUploaded);
-            // console.log('Final images:', imagesFinal);
-        // })
-        // .catch(error => {
-        //     // Handle errors if any of the Promises are rejected
-        //     console.error('Error processing images:', error);
-        // });
+    // console.log('All images processed successfully');
+    // console.log('Uploaded images:', imagesUploaded);
+    // console.log('Final images:', imagesFinal);
+    // })
+    // .catch(error => {
+    //     // Handle errors if any of the Promises are rejected
+    //     console.error('Error processing images:', error);
+    // });
 });
 
 function searchProducts(target) {
@@ -771,7 +771,24 @@ function searchProducts(target) {
 }
 
 let cropper;
+let globalRotate = 0;
 
+function rotateImage(direction) {
+    let imageContainer = imageCropPopup.querySelector('img').parentElement;
+    let newHeight = imageContainer.offsetWidth + 'px';
+    let newWidth = imageContainer.offsetHeight + 'px';
+    let rotate = 90;
+    if(direction === 'left') {
+        rotate = -90;
+    }
+    cropper.rotate(rotate);
+    globalRotate += rotate;
+    imageContainer.style.height = newHeight;
+    imageContainer.style.width = newWidth;
+
+    cropper.resize();
+    cropper.zoomTo(0);
+}
 addImageBtn.addEventListener('click', function() {
     let addImageInput = document.createElement('input');
     addImageInput.type = 'file';
@@ -799,13 +816,17 @@ addImageBtn.addEventListener('click', function() {
                     if (cropper) {
                         let cropData = {};
                         cropper.destroy();
-                        cropper = null; // Clear the reference
+                        cropper = null;
+                        imageElement.parentElement.removeAttribute('style');
                     }
+                    globalRotate = 0;
                     cropper = new Cropper(imageElement, {
                         autoCropArea: 0.5,
                         aspectRatio: 1.88,
                         viewMode: 2,
                         dragMode: 'none',
+                        rotatable: true,
+                        scalable: true,
                         crop: function(event) {
                             cropData = {
                                 cropBoxHeight: event.detail.height,
@@ -1156,7 +1177,7 @@ function cropImage() {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         },
-        url: window.origin + '/crop-image',
+        url: window.origin + '/crop-image-test',
         data: {
             imagePath: imagePath,
             cropBoxHeight: cropData.cropBoxHeight,
@@ -1165,6 +1186,8 @@ function cropImage() {
             cropBoxLeft: cropData.cropBoxLeft,
             imgHeight: cropData.imgHeight,
             imgWidth: cropData.imgWidth,
+            rotate: globalRotate,
+            vertical: globalRotate / 90 % 2 === 1
         },
         method: 'POST',
         success: function (response) {
