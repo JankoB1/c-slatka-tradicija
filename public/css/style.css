@@ -163,6 +163,7 @@ body {
     letter-spacing: 0px;
     color: #FFF;
     margin-bottom: 40px;
+    text-shadow: 3px 4px 10px #474747;
 }
 
 .search-cont {
@@ -3706,6 +3707,7 @@ p {
 
 #homepage-banner2 h3, #homepage-banner2 p {
     color: white !important;
+    text-shadow: 3px 4px 10px #474747;
 }
 
 @media only screen and (max-width: 1507px) {
@@ -3754,7 +3756,7 @@ p {
     }
 
     #main-banner {
-        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/konkurs-mobile-520x360-2.png");
+        background-image:  url("../images/konkurs-mobile-520x360-2.png");
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;

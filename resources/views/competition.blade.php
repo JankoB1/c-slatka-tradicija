@@ -28,10 +28,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <h2>Pošalji recept</h2>
-                    <h4>Učestvuj u konkursu <br>"Čokoladne torte i kolači"</h4>
-                    <p>Uslov za učešće u konkursu jeste slanje recepata za "Čokoladne torte i kolači", koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo te da imaš u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 28. februara 2025. godine.
+                    <h4>Učestvuj u konkursu <br>"Torte i kolači sa pudingom"</h4>
+                    <p>Uslov za učešće u konkursu jeste slanje recepata za "Torte i kolači sa pudingom", koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo te da imaš u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 31. marta 2025. godine.
 
-                        <br><br>Opšte uslove i pravila konkursa možeš pogledati na strani <a href="{{ route('show-competition-rules') }}">Uslovi i pravila konkursa</a> "Čokoladne torte i kolači".  Odabrane recepte sa prethodnih konkursa možeš pogledati na strani <a href="#winners">Odabrani recepti</a>.</p>
+                        <br><br>Opšte uslove i pravila konkursa možeš pogledati na strani <a href="{{ route('show-competition-rules') }}">Uslovi i pravila konkursa</a> "Torte i kolači sa pudingom".  Odabrane recepte sa prethodnih konkursa možeš pogledati na strani <a href="#winners">Odabrani recepti</a>.</p>
                 </div>
                 <div class="col-md-6">
                     <img class="desktop" src="{{ asset('images/konkurs-mobile-520x360-12.png') }}" alt="competition cookies" style="border-radius: 8px;">
@@ -309,7 +309,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Čokoladne torte i <br>kolači"</h3>
+                    <h3>Učestvuj u konkursu<br>"Torte i kolači <br>sa pudingom"</h3>
                     <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>
