@@ -45,15 +45,15 @@
                 </div>
                 <div class="single-nutrition">
                     <p>Od kojih zasićene masne kiseline</p>
-                    <p></p>
-                </div>
-                <div class="single-nutrition">
-                    <p>Ugljeni hidrati</p>
                     <p>{{ $product->saturated_fats }}</p>
                 </div>
                 <div class="single-nutrition">
-                    <p>Od kojih šećeri</p>
+                    <p>Ugljeni hidrati</p>
                     <p>{{ $product->carbonhydrates }}</p>
+                </div>
+                <div class="single-nutrition">
+                    <p>Od kojih šećeri</p>
+                    <p>{{ $product->sugars }}</p>
                 </div>
                 <div class="single-nutrition">
                     <p>Proteini</p>
