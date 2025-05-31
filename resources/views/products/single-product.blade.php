@@ -49,7 +49,7 @@
                 </div>
                 <div class="single-nutrition">
                     <p>Ugljeni hidrati</p>
-                    <p>{{ $product->carbonhydrates }}</p>
+                    <p>{{ $product->carbohydrates }}</p>
                 </div>
                 <div class="single-nutrition">
                     <p>Od kojih šećeri</p>
