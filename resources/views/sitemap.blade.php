@@ -112,7 +112,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Torte i kolači sa Eskimko sladoledom"</h3>
+                    <h3>Učestvuj u konkursu<br>"Letnje torte i kolači"</h3>
                     <a href="{{ route('show-competition') }}">Nagradni konkursi</a>
                 </div>
             </div>
