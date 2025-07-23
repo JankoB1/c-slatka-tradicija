@@ -3139,7 +3139,8 @@ h2.preparation-heading {
     margin-bottom: 60px;
 }
 
-#privacy-note-content p {
+#privacy-note-content p,
+#privacy-note-content li {
     font-family: Montserrat;
     font-size: 19px;
     font-weight: 600;
@@ -3170,13 +3171,14 @@ h2.preparation-heading {
     margin: 50px 0;
 }
 
-#privacy-note-content .privacy-policy-inner p {
+#privacy-note-content .privacy-policy-inner p,
+#privacy-note-content .privacy-policy-inner li {
     font-weight: 500;
 }
 
 #privacy-note-content h6 {
     font-family: Montserrat;
-    font-size: 19px;
+    font-size: 22px;
     font-weight: 700;
     line-height: 41px;
     letter-spacing: 0em;
