@@ -338,6 +338,7 @@
                     Facebook, za šta smo kompanija Facebook i mi zajednički odgovorni. Ovom zajedničkom
                     kontrolom, u smislu zajedničkih rukovaoca, upravlja kompanija Facebook „<a href="https://www.facebook.com/legal/terms/page_controller_addendum" target="_blank">Dodatak o
                     rukovaocu stranice</a>.</li>
+                <li>YouTube kolačiće obezbeđuje kompanija Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irska („YouTube“). Više informacija o kolačićima koje postavlja YouTube možete pronaći <a href="https://policies.google.com/technologies/cookies#types-of-cookies" target="_blank">ovde</a>. Molimo vas da se upoznate i sa Google <a href="https://policies.google.com/privacy" target="_blank">Politikom privatnosti</a>.</li>
             </ul>
             <h6>Informacije važne za obradu podataka o ličnosti</h6>
             <p>Lice na koje se podaci o ličnosti odnose je ovlašćeno da se obrati Dr. Oetker-u, za sva pitanja vezana za
