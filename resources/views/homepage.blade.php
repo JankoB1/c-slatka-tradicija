@@ -22,7 +22,7 @@
 
     <section id="main-banner">
         <div class="main-banner-inner">
-            <h1>Učestvuj u konkursu<br>"Kisela i slatka zimnica"</h1>
+            <h1>Učestvuj u konkursu<br>"Poslastice sa kokosom"</h1>
             <a href="{{ route('show-competition') }}">Pošalji recept</a>
         </div>
     </section>
@@ -296,7 +296,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Kisela i slatka zimnica"</h3>
+                    <h3>Učestvuj u konkursu<br>"Poslastice sa kokosom"</h3>
                     <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>
