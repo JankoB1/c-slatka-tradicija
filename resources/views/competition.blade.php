@@ -29,7 +29,7 @@
                 <div class="col-md-6">
                     <h2>Pošalji recept</h2>
                     <h4>Učestvuj u konkursu <br>"Poslastice sa kokosom"</h4>
-                    <p>Uslov za učešće u konkursu jeste slanje recepata za "Poslastice sa kokosom", koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo te da imaš u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 31. septembra 2025. godine.
+                    <p>Uslov za učešće u konkursu jeste slanje recepata za "Poslastice sa kokosom", koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo te da imaš u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 31. oktobra 2025. godine.
 
                         <br><br>Opšte uslove i pravila konkursa možeš pogledati na strani <a href="{{ route('show-competition-rules') }}">Uslovi i pravila konkursa</a> "Poslastice sa kokosom".  Odabrane recepte sa prethodnih konkursa možeš pogledati na strani <a href="#winners">Odabrani recepti</a>.</p>
                 </div>
