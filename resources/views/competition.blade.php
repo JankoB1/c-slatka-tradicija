@@ -28,10 +28,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <h2>Pošalji recept</h2>
-                    <h4>Učestvuj u konkursu <br>"Poslastice sa kokosom"</h4>
-                    <p>Uslov za učešće u konkursu jeste slanje recepata za "Poslastice sa kokosom", koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo te da imaš u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 31. oktobra 2025. godine.
+                    <h4>Učestvuj u konkursu <br>"Slavske torte i sitni kolači"</h4>
+                    <p>Uslov za učešće u konkursu jeste slanje recepata za "Slavske torte i sitni kolači", koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo te da imaš u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 31. decembra 2025. godine.
 
-                        <br><br>Opšte uslove i pravila konkursa možeš pogledati na strani <a href="{{ route('show-competition-rules') }}">Uslovi i pravila konkursa</a> "Poslastice sa kokosom".  Odabrane recepte sa prethodnih konkursa možeš pogledati na strani <a href="#winners">Odabrani recepti</a>.</p>
+                        <br><br>Opšte uslove i pravila konkursa možeš pogledati na strani <a href="{{ route('show-competition-rules') }}">Uslovi i pravila konkursa</a> "Slavske torte i sitni kolači".  Odabrane recepte sa prethodnih konkursa možeš pogledati na strani <a href="#winners">Odabrani recepti</a>.</p>
                 </div>
                 <div class="col-md-6">
                     <img class="desktop" src="{{ asset('images/konkurs-mobile-520x360-12.png') }}" alt="competition cookies" style="border-radius: 8px;">
@@ -309,7 +309,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Poslastice sa kokosom"</h3>
+                    <h3>Učestvuj u konkursu<br>"Slavske torte i sitni kolači"</h3>
                     <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>
