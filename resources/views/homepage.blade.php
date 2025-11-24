@@ -48,7 +48,7 @@
                             @if(isset($recipes[1]))
                                 <a href="{{ route('show-single-recipe', ['category' => $recipes[1]->category->slug, 'id' => $recipes[1]->id, 'slug' => $recipes[1]->slug]) }}">
                                     <div class="featured-recipe-single mini">
-                                        <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[1]->image_old) }}');"></div>
+                                        <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[1]->images[0]->path) }}');"></div>
                                         <p>{{ $recipes[1]->title }}</p>
                                     </div>
                                 </a>
@@ -58,7 +58,7 @@
                     @if(isset($recipes[2]))
                         <a href="{{ route('show-single-recipe', ['category' => $recipes[2]->category->slug, 'id' => $recipes[2]->id, 'slug' => $recipes[2]->slug]) }}">
                             <div class="featured-recipe-single">
-                                <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[2]->image_old) }}');"></div>
+                                <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[2]->images[0]->path) }}');"></div>
                                 <p>{{ $recipes[2]->title }}</p>
                             </div>
                         </a>
@@ -68,7 +68,7 @@
                     @if(isset($recipes[3]))
                         <a href="{{ route('show-single-recipe', ['category' => $recipes[3]->category->slug, 'id' => $recipes[3]->id, 'slug' => $recipes[3]->slug]) }}">
                             <div class="featured-recipe-single big">
-                                <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[3]->image_old) }}');"></div>
+                                <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[3]->images[0]->path) }}');"></div>
                                 <p>{{ $recipes[3]->title }}</p>
                             </div>
                         </a>
@@ -80,7 +80,7 @@
                     @if(isset($recipes2[0]))
                         <a href="{{ route('show-single-recipe', ['category' => $recipes2[0]->category->slug, 'id' => $recipes2[0]->id, 'slug' => $recipes2[0]->slug]) }}">
                             <div class="featured-recipe-single">
-                                <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes2[0]->image_old) }}');"></div>
+                                <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes2[0]->images[0]->path) }}');"></div>
                                 <p>{{ $recipes2[0]->title }}</p>
                             </div>
                         </a>
@@ -90,7 +90,7 @@
                     @if(isset($recipes2[1]))
                         <a href="{{ route('show-single-recipe', ['category' => $recipes2[1]->category->slug, 'id' => $recipes2[1]->id, 'slug' => $recipes2[1]->slug]) }}">
                             <div class="featured-recipe-single">
-                                <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes2[1]->image_old) }}');"></div>
+                                <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes2[1]->images[0]->path) }}');"></div>
                                 <p>{{ $recipes2[1]->title }}</p>
                             </div>
                         </a>
