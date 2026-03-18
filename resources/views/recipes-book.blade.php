@@ -40,34 +40,34 @@
 {{--        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec velit a orci malesuada fermentum id a massa. Cras interdum porttitor sapien ac congue. </p>--}}
     </section>
 
-    <section id="action" class="action-books">
-        <div class="action-inner container-space">
-            <h2>C Slatka tradicija knjižice recepata</h2>
-            <p>Trebaju ti brza rešenja? C Slatka tradicija tim ti je pripremio 4 već spremne knjižice recepata koje mozeš preuzeti na svoj uređaj.</p>
-            <div class="categories-banners row">
-                <div class="col-md-6">
-                    <div class="single-category-banner">
-                        <p>Uskršnje <br>poslastice</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="single-category-banner">
-                        <p>Tradicionalni <br>recepti</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="single-category-banner">
-                        <p>Sitni <br>kolači</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="single-category-banner">
-                        <p>Oblande</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+{{--    <section id="action" class="action-books">--}}
+{{--        <div class="action-inner container-space">--}}
+{{--            <h2>C Slatka tradicija knjižice recepata</h2>--}}
+{{--            <p>Trebaju ti brza rešenja? C Slatka tradicija tim ti je pripremio 4 već spremne knjižice recepata koje mozeš preuzeti na svoj uređaj.</p>--}}
+{{--            <div class="categories-banners row">--}}
+{{--                <div class="col-md-6">--}}
+{{--                    <div class="single-category-banner">--}}
+{{--                        <p>Uskršnje <br>poslastice</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-6">--}}
+{{--                    <div class="single-category-banner">--}}
+{{--                        <p>Tradicionalni <br>recepti</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-6">--}}
+{{--                    <div class="single-category-banner">--}}
+{{--                        <p>Sitni <br>kolači</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-6">--}}
+{{--                    <div class="single-category-banner">--}}
+{{--                        <p>Oblande</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
     <section id="homepage-banner2">
         <img class="mobile" src="{{ asset('images/konkurs-mobile-520x360-3.png') }}" alt="homepage banner2">
