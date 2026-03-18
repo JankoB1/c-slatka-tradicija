@@ -69,7 +69,7 @@
 {{--        </div>--}}
 {{--    </section>--}}
 
-    <section id="homepage-banner2">
+    <section id="homepage-banner2" style="margin-top: 50px;">
         <img class="mobile" src="{{ asset('images/konkurs-mobile-520x360-3.png') }}" alt="homepage banner2">
         <div class="homepage-banner-inner container-space">
             <div class="row">
