@@ -49,14 +49,14 @@ class RecipeController extends Controller
     }
 
     public function index() {
-        $recipes = Recipe::where('id', '=', 11067)
-            ->orWhere('id', '=', 11003)
-            ->orWhere('id', '=', 10989)
-            ->orWhere('id', '=', 10145)
+        $recipes = Recipe::where('id', '=', 10819)
+            ->orWhere('id', '=', 11294)
+            ->orWhere('id', '=', 10836)
+            ->orWhere('id', '=', 9421)
             ->get();
 
-        $recipes2 = Recipe::where('id', '=', 11157)
-            ->orWhere('id', '=', 11265)
+        $recipes2 = Recipe::where('id', '=', 11625)
+            ->orWhere('id', '=', 11728)
             ->get();
 
         return view('homepage', compact('recipes', 'recipes2'));
