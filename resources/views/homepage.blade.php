@@ -38,7 +38,7 @@
                             @if(isset($recipes[0]))
                                 <a href="{{ route('show-single-recipe', ['category' => $recipes[0]->category->slug, 'id' => $recipes[0]->id, 'slug' => $recipes[0]->slug]) }}">
                                     <div class="featured-recipe-single mini">
-                                        <div class="featured-image-cont" style="background-image: url('{{ asset('storage/upload/' . $recipes[0]->image_old) }}');"></div>
+                                        <div class="featured-image-cont" style="background-image: url('https://www.c-slatkatradicija.rs/storage/upload/1724159076.jpg');"></div>
                                         <p>{{ $recipes[0]->title }}</p>
                                     </div>
                                 </a>
