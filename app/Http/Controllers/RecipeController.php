@@ -49,13 +49,13 @@ class RecipeController extends Controller
     }
 
     public function index() {
-        $recipes = Recipe::where('id', '=', 11653)
-            ->orWhere('id', '=', 11728)
-            ->orWhere('id', '=', 11031)
+        $recipes = Recipe::where('id', '=', 11071)
+            ->orWhere('id', '=', 11734)
+            ->orWhere('id', '=', 11875)
             ->orWhere('id', '=', 10843)
             ->get();
 
-        $recipes2 = Recipe::where('id', '=', 11376)
+        $recipes2 = Recipe::where('id', '=', 10778)
             ->orWhere('id', '=', 11224)
             ->get();
 
@@ -266,7 +266,7 @@ class RecipeController extends Controller
 
     public function winRecipe($id) {
         $recipe = Recipe::find($id);
-        $recipe->contest_id = 2241;
+        $recipe->contest_id = 2242;
         $recipe->save();
     }
 
