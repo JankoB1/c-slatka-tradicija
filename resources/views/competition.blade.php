@@ -28,10 +28,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <h2>Pošalji recept</h2>
-                    <h4>Učestvuj u konkursu <br>"Poslastice sa grizom"</h4>
-                    <p>Uslov za učešće u konkursu jeste slanje recepata za "Poslastice sa grizom", koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo te da imaš u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 30. septembra 2026. godine.
+                    <h4>Učestvuj u konkursu <br>"Mamin recept koji čuvam"</h4>
+                    <p>Uslov za učešće u konkursu jeste slanje recepata za "Mamin recept koji čuvam", koji sadrže barem jedan proizvod iz C Slatka tradicija asortimana. Molimo te da imaš u vidu da će samo recepti poslati putem ovog formulara i formulara na stranici <a href="{{ route('recipes.create') }}">Dodaj recept</a> na ovom web sajtu učestvovati u konkursu. Konkurs traje do 31. oktobra 2026. godine.
 
-                        <br><br>Opšte uslove i pravila konkursa možeš pogledati na strani <a href="{{ route('show-competition-rules') }}">Uslovi i pravila konkursa</a> "Poslastice sa grizom".  Odabrane recepte sa prethodnih konkursa možeš pogledati na strani <a href="#winners">Odabrani recepti</a>.</p>
+                        <br><br>Opšte uslove i pravila konkursa možeš pogledati na strani <a href="{{ route('show-competition-rules') }}">Uslovi i pravila konkursa</a> "Mamin recept koji čuvam".  Odabrane recepte sa prethodnih konkursa možeš pogledati na strani <a href="#winners">Odabrani recepti</a>.</p>
                 </div>
                 <div class="col-md-6">
                     <img class="desktop" src="{{ asset('images/konkurs-mobile-520x360-12.png') }}" alt="competition cookies" style="border-radius: 8px;">
@@ -309,7 +309,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>NAGRADNI KONKURS</p>
-                    <h3>Učestvuj u konkursu<br>"Poslastice sa grizom"</h3>
+                    <h3>Učestvuj u konkursu<br>"Mamin recept koji čuvam"</h3>
                     <a href="{{ route('show-competition') }}">Pošalji recept</a>
                 </div>
             </div>
