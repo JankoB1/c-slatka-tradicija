@@ -108,7 +108,7 @@ class RecipeController extends Controller
 
     public function showEditRecipe($id) {
         $recipe = Recipe::find($id);
-        if ($recipe == null)
+        if ($recipe == null || !$this->canManageRecipe($recipe))
             return redirect()->route('show-all-recipes');
 
         $ingredientGroups = $this->ingredientGroupService->getGroupsByRecipeId($recipe->id);
@@ -151,6 +151,9 @@ class RecipeController extends Controller
     }
 
     public function edit(Request $request) {
+        $existing = Recipe::find($request->recipe_id);
+        abort_if($existing == null || !$this->canManageRecipe($existing), 403);
+
         DB::beginTransaction();
         try {
             $recipe = $this->recipeService->editRecipe($request);
@@ -249,31 +252,47 @@ class RecipeController extends Controller
     }
 
     public function softDelete($recipe_id) {
+        $recipe = Recipe::find($recipe_id);
+        abort_if($recipe == null || !$this->canManageRecipe($recipe), 403);
         $this->recipeService->softDelete($recipe_id);
     }
 
     public function hideRecipe($id) {
+        $this->abortUnlessAdmin();
         $recipe = Recipe::find($id);
         $recipe->active = 'F';
         $recipe->save();
     }
 
     public function showRecipe($id) {
+        $this->abortUnlessAdmin();
         $recipe = Recipe::find($id);
         $recipe->active = 'T';
         $recipe->save();
     }
 
     public function winRecipe($id) {
+        $this->abortUnlessAdmin();
         $recipe = Recipe::find($id);
         $recipe->contest_id = 2245;
         $recipe->save();
     }
 
     public function winRecipeDel($id) {
+        $this->abortUnlessAdmin();
         $recipe = Recipe::find($id);
         $recipe->contest_id = 0;
         $recipe->save();
+    }
+
+    // Recept sme da menja ili brise samo autor ili admin
+    private function canManageRecipe(Recipe $recipe): bool {
+        $user = Auth::user();
+        return $user != null && ($user->admin != 0 || $recipe->user_id == $user->id);
+    }
+
+    private function abortUnlessAdmin(): void {
+        abort_if(Auth::user() == null || Auth::user()->admin == 0, 403);
     }
 
     public function getRecipesByUser($userId)

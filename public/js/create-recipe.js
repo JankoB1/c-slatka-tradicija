@@ -843,6 +843,12 @@ addImageBtn.addEventListener('click', function() {
             },
             error: function(xhr, status, error) {
                 console.error('Error uploading image:', error);
+                if (xhr.status === 422) {
+                    Swal.fire({
+                        title: 'Ovu fotografiju ne možemo da dodamo. Izaberi PNG, JPG, JPEG ili WEBP fajl do 30 MB.',
+                        confirmButtonText: 'Nastavi'
+                    });
+                }
             }
         });
 

@@ -90,6 +90,9 @@ imageInput.addEventListener('change', function(e) {
         },
         error: function(error) {
             console.error('Error uploading image:', error);
+            if (error.status === 422) {
+                alert('Ovu fotografiju ne možemo da dodamo. Izaberi PNG, JPG, JPEG ili WEBP fajl do 30 MB.');
+            }
         }
     });
 });

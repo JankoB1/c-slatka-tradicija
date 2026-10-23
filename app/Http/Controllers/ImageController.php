@@ -14,6 +14,8 @@ use Intervention\Image\ImageManager;
 
 class ImageController
 {
+    // Samo slike do 30 MB. mimes proverava sadrzaj fajla, ne ime koje je poslao klijent.
+    private const IMAGE_RULES = ['required', 'file', 'mimes:jpg,jpeg,png,webp,gif,avif', 'max:30720'];
 
     protected ImageService $imageService;
     function __construct()
@@ -23,6 +25,7 @@ class ImageController
 
     public function uploadImage(Request $request)
     {
+        $request->validate(['image' => self::IMAGE_RULES]);
         $path = $request->file('image')->store('upload', 'public');
         $pathWithoutUpload = Str::replaceFirst('upload/', '', $path);
         return $pathWithoutUpload;
@@ -30,22 +33,26 @@ class ImageController
 
     public function addImage(Request $request)
     {
+        // Frontend salje ime oblika <timestamp>.png; sve ostalo bi moglo da upise fajl van upload/ ili .php
+        $request->validate([
+            'imageData' => ['required', 'string'],
+            'xOffset' => ['nullable', 'numeric'],
+            'imageName' => ['required', 'regex:/^[0-9]{1,20}\.png$/'],
+        ]);
         $this->imageService->saveMaskImage($request);
     }
 
     // Controller method to handle image upload
     public function uploadImageMce(Request $request)
     {
-        $fileName=$request->file('file')->getClientOriginalName();
-        $path=$request->file('file')->storeAs('uploads', $fileName, 'public');
+        $request->validate(['file' => self::IMAGE_RULES]);
+        $path = $request->file('file')->store('uploads', 'public');
         return response()->json(['location' => url("/storage/$path")]);
-
-        /*$imgpath = request()->file('file')->store('uploads', 'public');
-        return response()->json(['location' => "/storage/$imgpath"]);*/
     }
 
     public function uploadImageUser(Request $request)
     {
+        $request->validate(['image' => self::IMAGE_RULES]);
         $image_path = $request->file('image')->store('upload', 'public');
         $user = Auth::user();
         $user->image_path = $image_path;
@@ -58,7 +65,7 @@ class ImageController
 
     public function cropImage(Request $request) {
         $manager = new ImageManager(new Driver());
-        $image = $manager->read(file_get_contents(public_path($request->imagePath)));
+        $image = $manager->read(file_get_contents($this->uploadedImagePath($request)));
 
         $r = $image->width() / $request->imgWidth;
 
@@ -78,7 +85,7 @@ class ImageController
 
     public function cropImageTest(Request $request) {
         $manager = new ImageManager(new Driver());
-        $image = $manager->read(file_get_contents(public_path($request->imagePath)));
+        $image = $manager->read(file_get_contents($this->uploadedImagePath($request)));
         $image->rotate(-$request->rotate);
 
         $direction = $request->vertical != 'false' ? $request->imgHeight : $request->imgWidth;
@@ -96,6 +103,24 @@ class ImageController
         Storage::put($croppedImagePath, (string) $image->encode());
 
         return $imageName;
+    }
+
+    // Crop sme da cita samo fajl iz storage/upload, bez ../ i podfoldera
+    private function uploadedImagePath(Request $request): string
+    {
+        $request->validate([
+            'imagePath' => ['required', 'string', 'regex:#^/storage/upload/[A-Za-z0-9_-][A-Za-z0-9._-]*$#'],
+            'imgWidth' => ['required', 'numeric', 'gt:0'],
+            'imgHeight' => ['nullable', 'numeric', 'gt:0'],
+            'cropBoxTop' => ['required', 'numeric'],
+            'cropBoxLeft' => ['required', 'numeric'],
+            'cropBoxWidth' => ['required', 'numeric'],
+            'cropBoxHeight' => ['required', 'numeric'],
+        ]);
+
+        $path = storage_path('app/public/upload/' . basename($request->imagePath));
+        abort_unless(is_file($path), 404);
+        return $path;
     }
 
 }

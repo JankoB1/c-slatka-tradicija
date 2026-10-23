@@ -27,17 +27,19 @@ Route::get('/pretraga', [RecipeController::class, 'showSearchRecipe'])->name('sh
 
 Route::prefix('recipes')->group(function() {
     Route::get('/', [RecipeController::class, 'retrieve'])->name('recipes.retrieve');
-    Route::post('/store', [RecipeController::class, 'store'])->name('recipes.store');
-    Route::post('/edit/', [RecipeController::class, 'edit'])->name('recipes.edit');
     Route::post('/add-recipes-book', [RecipeController::class, 'saveToSession']);
-    Route::post('/upload-image', [ImageController::class, 'uploadImage']);
-    Route::post('/add-image', [ImageController::class, 'addImage']);
-    Route::delete('/remove-recipe/{recipe_id}', [RecipeController::class, 'softDelete'])->name('deleteRecipe');
-    Route::post('/hide-recipe/{id}', [RecipeController::class, 'hideRecipe'])->name('hide-recipe');
-    Route::post('/show-recipe/{id}', [RecipeController::class, 'showRecipe'])->name('show-recipe');
-    Route::post('/win-recipe/{id}', [RecipeController::class, 'winRecipe'])->name('show-recipe');
-    Route::post('/win-recipe-del/{id}', [RecipeController::class, 'winRecipeDel'])->name('show-recipe');
 
+    Route::middleware('auth')->group(function() {
+        Route::post('/store', [RecipeController::class, 'store'])->name('recipes.store');
+        Route::post('/edit/', [RecipeController::class, 'edit'])->name('recipes.edit');
+        Route::post('/upload-image', [ImageController::class, 'uploadImage']);
+        Route::post('/add-image', [ImageController::class, 'addImage']);
+        Route::delete('/remove-recipe/{recipe_id}', [RecipeController::class, 'softDelete'])->name('deleteRecipe');
+        Route::post('/hide-recipe/{id}', [RecipeController::class, 'hideRecipe'])->name('hide-recipe');
+        Route::post('/show-recipe/{id}', [RecipeController::class, 'showRecipe'])->name('show-recipe');
+        Route::post('/win-recipe/{id}', [RecipeController::class, 'winRecipe'])->name('show-recipe');
+        Route::post('/win-recipe-del/{id}', [RecipeController::class, 'winRecipeDel'])->name('show-recipe');
+    });
 });
 
 Route::prefix('categories')->group(function() {
@@ -86,8 +88,8 @@ Route::middleware(['auth', 'verified'])->group(function() {
 
 Route::get('/pdf', [\App\Http\Controllers\PdfController::class, 'generatePdf'])->name('pdf');
 Route::get('/get-recipes-by-ids', [RecipeController::class, 'getRecipesByIds'])->name('get-recipes-by-ids');
-Route::post('/crop-image', [ImageController::class, 'cropImage'])->name('crop-image');
-Route::post('/crop-image-test', [ImageController::class, 'cropImageTest'])->name('crop-image-test');
+Route::post('/crop-image', [ImageController::class, 'cropImage'])->name('crop-image')->middleware('auth');
+Route::post('/crop-image-test', [ImageController::class, 'cropImageTest'])->name('crop-image-test')->middleware('auth');
 Route::get('/test-email', [PostController::class, 'testEmail'])->name('test-email');
 
 Route::get('/email/verify', function () {
